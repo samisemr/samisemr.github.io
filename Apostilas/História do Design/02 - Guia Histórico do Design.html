@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Histórico do Design - Linha do Tempo Contextualizada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', 'Arial', serif;
+            background-color: #f5f0e8;
+            padding: 48px 24px;
+            color: #2c2c2c;
+            line-height: 1.7;
+        }
+
+        .apostila-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #3a2c1f;
+            border-bottom: 3px solid #c9a87b;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            font-weight: 700;
+            font-family: 'Georgia', serif;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #5a3e2b;
+            border-left: 5px solid #c9a87b;
+            padding-left: 20px;
+            font-weight: 600;
+            font-family: 'Georgia', serif;
+        }
+
+        h3 {
+            font-size: 20px;
+            margin-top: 28px;
+            margin-bottom: 16px;
+            color: #7a5a3a;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #faf6f0;
+            border-left: 5px solid #c9a87b;
+            padding: 18px 24px;
+            margin: 24px 0;
+            border-radius: 8px;
+            color: #3a2c1f;
+        }
+
+        .badge {
+            background-color: #5a3e2b;
+            color: #f5f0e8;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 28px 0;
+            font-size: 15px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        th {
+            background-color: #e8ddd0;
+            border: 1px solid #d4c4b0;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 700;
+            color: #3a2c1f;
+            font-size: 15px;
+        }
+
+        td {
+            border: 1px solid #d4c4b0;
+            padding: 12px 16px;
+            vertical-align: top;
+        }
+
+        .periodo-cell {
+            background-color: #faf6f0;
+            font-weight: 600;
+            width: 12%;
+        }
+        
+        .design-cell {
+            width: 28%;
+        }
+        
+        .contexto-cell {
+            width: 35%;
+        }
+        
+        .conexao-cell {
+            width: 25%;
+        }
+
+        ul, ol {
+            margin: 8px 0 8px 20px;
+        }
+
+        li {
+            margin: 4px 0;
+        }
+
+        hr {
+            margin: 40px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, #e0d0c0, #f5f0e8, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 48px;
+            font-size: 13px;
+            color: #8a7a6a;
+            border-top: 1px solid #e0d0c0;
+            padding-top: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            th, td { font-size: 13px; padding: 8px 10px; }
+        }
+        
+        .linha-tempo-marcador {
+            background: #faf6f0;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-style: italic;
+            border: 1px solid #e0d0c0;
+        }
+        
+        .icone-periodo {
+            font-size: 24px;
+            display: block;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        strong {
+            color: #5a3e2b;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">HISTÓRIA DO DESIGN | GUIA COMPLEMENTAR</span>
+    <h1>Guia Histórico do Design<br><span style="font-size: 20px; color:#8a7a6a;">Linha do tempo contextualizada – fatos, períodos e conexões globais</span></h1>
+    
+    <p>Este guia foi elaborado como material complementar à apostila principal de História do Design. Aqui, você encontrará uma <strong>tabela histórica</strong> que relaciona os principais marcos do design com o contexto histórico, político, social e tecnológico de cada período. O objetivo é ajudar o leitor a compreender as conexões profundas entre o design e os grandes acontecimentos mundiais – afinal, o design nunca existiu em um vácuo; ele é sempre um reflexo de seu tempo.</p>
+    
+    <div class="destaque-box">
+        📌 <strong>Como usar este guia:</strong> Consulte a tabela abaixo em paralelo com a leitura da apostila principal. Para cada período ou movimento do design, identifique o contexto histórico correspondente – isso ajudará a compreender <strong>por que</strong> determinadas soluções estéticas e funcionais surgiram em momentos específicos.
+    </div>
+
+    <h2>Linha do tempo expandida: Design e Contexto Histórico</h2>
+    
+    <div class="linha-tempo-marcador">
+        ⏳ A tabela a seguir organiza cronologicamente os principais acontecimentos do design, relacionando-os com eventos históricos, tecnológicos e culturais. Use as cores e a estrutura para navegar entre os períodos.
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Período</th>
+                <th>Marcos do Design</th>
+                <th>Contexto Histórico Global</th>
+                <th>Conexões e Influências</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- PRÉ-HISTÓRIA E ANTIGUIDADE -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">🏺</span>c. 35000-3000 a.C.</td>
+                <td class="design-cell">
+                    <strong>Pinturas rupestres</strong> (Lascaux, Altamira)<br>
+                    <strong>Petróglifos</strong> (símbolos gravados em rocha)<br>
+                    <strong>Primeiros objetos utilitários decorados</strong>
+                </td>
+                <td class="contexto-cell">
+                    Sociedades nômades de caçadores-coletores<br>
+                    Desenvolvimento da linguagem e da organização social<br>
+                    Surgimento da agricultura e das primeiras aldeias (Neolítico)
+                </td>
+                <td class="conexao-cell">
+                    A necessidade de registrar informações e comunicar ideias visualmente nasce com a própria humanidade. As pinturas rupestres tinham função ritualística e prática (registro de caça).
+                </td>
+            </tr>
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">📜</span>c. 3100-1500 a.C.</td>
+                <td class="design-cell">
+                    <strong>Escrita cuneiforme</strong> (sumérios)<br>
+                    <strong>Hieróglifos egípcios</strong><br>
+                    <strong>Papiros ilustrados</strong> (Livro dos Mortos)<br>
+                    <strong>Sinetes cilíndricos</strong>
+                </td>
+                <td class="contexto-cell">
+                    Formação das primeiras civilizações (Mesopotâmia, Egito)<br>
+                    Desenvolvimento da agricultura irrigada, cidades-Estado, religião organizada e poder centralizado (faraós, reis-sacerdotes)
+                </td>
+                <td class="conexao-cell">
+                    A escrita surge da necessidade de registrar transações comerciais, leis e rituais religiosos. O design visual está a serviço do poder e da religião.
+                </td>
+            </tr>
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">🏛️</span>c. 1000 a.C.-400 d.C.</td>
+                <td class="design-cell">
+                    <strong>Alfabeto fenício</strong><br>
+                    <strong>Alfabeto grego e inscrições monumentais</strong><br>
+                    <strong>Capitais romanas</strong> (Coluna de Trajano)<br>
+                    <strong>Códice (formato de livro)</strong>
+                </td>
+                <td class="contexto-cell">
+                    Expansão do comércio marítimo fenício<br>
+                    Democracia grega, filosofia, teatro<br>
+                    Império Romano, direito romano, engenharia, urbanismo<br>
+                    Ascensão do cristianismo
+                </td>
+                <td class="conexao-cell">
+                    A simplificação do alfabeto (fenícios) democratizou a escrita. Gregos e romanos elevaram as letras à arte, com proporções e harmonias que influenciam o design até hoje.
+                </td>
+            </tr>
+            
+            <!-- IDADE MÉDIA -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">⛪</span>c. 400-1400 d.C.</td>
+                <td class="design-cell">
+                    <strong>Manuscritos iluminados</strong> (Livro de Kells)<br>
+                    <strong>Minúscula carolíngia</strong><br>
+                    <strong>Arquitetura gótica</strong><br>
+                    <strong>Caligrafia islâmica e arabescos</strong>
+                </td>
+                <td class="contexto-cell">
+                    Queda do Império Romano, Idade das Trevas<br>
+                    Expansão do cristianismo e do Islã<br>
+                    Sistema feudal, cruzadas<br>
+                    Universidades medievais (Bolonha, Paris, Oxford)
+                </td>
+                <td class="conexao-cell">
+                    A produção de livros fica restrita aos mosteiros. A iluminação de manuscritos combina fé, arte e conhecimento. A escrita é um ato sagrado e contemplativo.
+                </td>
+            </tr>
+            
+            <!-- RENASCIMENTO E IMPRENSA -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">📖</span>1450-1600</td>
+                <td class="design-cell">
+                    <strong>Tipos móveis de Gutenberg</strong> (1455)<br>
+                    <strong>Bíblia de 42 linhas</strong><br>
+                    <strong>Tipos romanos e itálicos</strong> (Jenson, Manuzio, Garamond)<br>
+                    <strong>Livro ilustrado xilográfico</strong> (Dürer, Koberger)
+                </td>
+                <td class="contexto-cell">
+                    Renascimento italiano e europeu<br>
+                    Humanismo, redescoberta dos clássicos<br>
+                    Reforma Protestante (Lutero, 1517)<br>
+                    Expansão marítima, invenção da bússola, descobrimentos
+                </td>
+                <td class="conexao-cell">
+                    A imprensa democratizou o conhecimento, acelerou a Reforma e a Revolução Científica. O design de tipos se torna uma arte e uma indústria.
+                </td>
+            </tr>
+            
+            <!-- REVOLUÇÃO INDUSTRIAL -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">🏭</span>1760-1850</td>
+                <td class="design-cell">
+                    <strong>Wedgwood</strong> (separação projeto/execução)<br>
+                    <strong>Grande Exposição de 1851</strong> e o Palácio de Cristal<br>
+                    <strong>Primeiros cartazes litográficos</strong><br>
+                    <strong>Tipos de madeira para cartazes</strong>
+                </td>
+                <td class="contexto-cell">
+                    Revolução Industrial (máquina a vapor, teares mecânicos)<br>
+                    Urbanização, êxodo rural, formação da classe operária<br>
+                    Iluminismo, Revolução Francesa (1789), Revolução Americana (1776)<br>
+                    Expansão do capitalismo e do comércio internacional
+                </td>
+                <td class="conexao-cell">
+                    O design emerge como atividade distinta da produção. A máquina permite produção em massa, mas também gera produtos de baixa qualidade, o que provoca reações reformistas.
+                </td>
+            </tr>
+            
+            <!-- ARTS AND CRAFTS E ART NOUVEAU -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">🌿</span>1850-1910</td>
+                <td class="design-cell">
+                    <strong>William Morris e o Arts and Crafts</strong><br>
+                    <strong>Kelmscott Press</strong><br>
+                    <strong>Art Nouveau</strong> (Mucha, Toulouse-Lautrec, Horta, Gaudí)<br>
+                    <strong>Cartaz moderno</strong> (Chéret, Grasset)
+                </td>
+                <td class="contexto-cell">
+                    Segunda Revolução Industrial (eletricidade, petróleo, aço)<br>
+                    Belle Époque, imperialismo europeu<br>
+                    Movimentos socialistas e anarquistas<br>
+                    Avanços na fotografia (Daguerre, Talbot)
+                </td>
+                <td class="conexao-cell">
+                    O Arts and Crafts reage à qualidade inferior dos produtos industriais. O Art Nouveau é o primeiro estilo internacional moderno, celebrando a natureza e a linha orgânica.
+                </td>
+            </tr>
+            
+            <!-- VANGUARDAS E PRIMEIRA GUERRA -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">🎨</span>1900-1920</td>
+                <td class="design-cell">
+                    <strong>Cubismo</strong> (Picasso, Braque)<br>
+                    <strong>Futurismo</strong> (Marinetti, tipografia expressionista)<br>
+                    <strong>Dadaísmo</strong> (fotomontagem, tipografia anárquica)<br>
+                    <strong>De Stijl</strong> (Mondrian, Van Doesburg)
+                </td>
+                <td class="contexto-cell">
+                    Primeira Guerra Mundial (1914-1918)<br>
+                    Revolução Russa (1917)<br>
+                    Avanços na aviação, rádio, cinema<br>
+                    Movimento sufragista (voto feminino)
+                </td>
+                <td class="conexao-cell">
+                    As vanguardas rompem com a tradição e exploram a abstração. O design gráfico ganha novas linguagens visuais (colagem, montagem, tipografia dinâmica).
+                </td>
+            </tr>
+            
+            <!-- ENTREGUERRAS E BAUHAUS -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">🏛️</span>1919-1933</td>
+                <td class="design-cell">
+                    <strong>Bauhaus</strong> (Gropius, Kandinsky, Klee, Moholy-Nagy, Bayer)<br>
+                    <strong>Construtivismo russo</strong> (Rodchenko, Lissitzky)<br>
+                    <strong>Art Déco</strong><br>
+                    <strong>Nova Tipografia</strong> (Tschichold)
+                </td>
+                <td class="contexto-cell">
+                    Período entre guerras<br>
+                    República de Weimar (Alemanha)<br>
+                    Grande Depressão (1929)<br>
+                    Ascensão do nazismo e do fascismo<br>
+                    Revolução Industrial na URSS
+                </td>
+                <td class="conexao-cell">
+                    A Bauhaus sintetiza arte, artesanato e tecnologia. O design é visto como ferramenta de transformação social. O nazismo fecha a escola em 1933, dispersando seus mestres pelo mundo.
+                </td>
+            </tr>
+            
+            <!-- SEGUNDA GUERRA MUNDIAL -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">💣</span>1939-1945</td>
+                <td class="design-cell">
+                    <strong>Propaganda de guerra</strong> (cartazes, posters)<br>
+                    <strong>Design para indústria bélica</strong><br>
+                    <strong>Emigração de designers europeus para os EUA</strong><br>
+                    <strong>Primeiros estudos de ergonomia</strong>
+                </td>
+                <td class="contexto-cell">
+                    Segunda Guerra Mundial<br>
+                    Holocausto, bombas atômicas<br>
+                    Avanços tecnológicos (radar, computadores, foguetes)<br>
+                    Criação da ONU (1945)
+                </td>
+                <td class="conexao-cell">
+                    A guerra acelera inovações tecnológicas e cria demanda maciça por design de equipamentos. O design gráfico é usado como arma de propaganda.
+                </td>
+            </tr>
+            
+            <!-- PÓS-GUERRA E ESTILO INTERNACIONAL -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">🌍</span>1945-1960</td>
+                <td class="design-cell">
+                    <strong>Estilo Tipográfico Internacional</strong> (Escola Suíça)<br>
+                    <strong>Identidade corporativa</strong> (Rand para IBM, Golden para CBS)<br>
+                    <strong>Good Design</strong> (MOMA)<br>
+                    <strong>Escola de Ulm</strong> (Aicher, Maldonado)
+                </td>
+                <td class="contexto-cell">
+                    Guerra Fria, Cortina de Ferro<br>
+                    Plano Marshall (reconstrução da Europa)<br>
+                    Baby boom, expansão do consumo nos EUA<br>
+                    Guerra da Coreia (1950-1953)<br>
+                    Descolonização da Ásia e África
+                </td>
+                <td class="conexao-cell">
+                    O design se torna uma ferramenta de marketing e identidade nacional. A Escola Suíça impõe a grid e a clareza como valores universais. O design corporativo cresce.
+                </td>
+            </tr>
+            
+            <!-- CONTRA CULTURA E PSICODELISMO -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">✌️</span>1960-1970</td>
+                <td class="design-cell">
+                    <strong>Push Pin Studios</strong> (Glaser, Chwast)<br>
+                    <strong>Cartazes psicodélicos</strong> (Wilson, Moscoso)<br>
+                    <strong>Pop Design</strong> (Itália, Archizoom, Superstudio)<br>
+                    <strong>Design de capas de disco</strong> (Berg, Steinweiss)
+                </td>
+                <td class="contexto-cell">
+                    Guerra do Vietnã, protestos estudantis (1968)<br>
+                    Contracultura, movimento hippie, direitos civis nos EUA<br>
+                    Maio de 1968 na França<br>
+                    Corrida espacial (homem na Lua, 1969)
+                </td>
+                <td class="conexao-cell">
+                    O design questiona o funcionalismo e abraça o humor, o ecletismo e a expressão pessoal. A cultura pop e o rock influenciam a estética visual.
+                </td>
+            </tr>
+            
+            <!-- PÓS-MODERNISMO -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">🎭</span>1970-1990</td>
+                <td class="design-cell">
+                    <strong>Pós-modernismo no design</strong> (Weingart, Greiman, Brody)<br>
+                    <strong>Grupo Memphis</strong> (Sottsass, 1981)<br>
+                    <strong>Design vernacular e retrô</strong><br>
+                    <strong>Tipografia digital nascente</strong>
+                </td>
+                <td class="contexto-cell">
+                    Crise do petróleo (1973, 1979)<br>
+                    Fim da Guerra do Vietnã (1975)<br>
+                    Governos Thatcher e Reagan (neoliberalismo)<br>
+                    Queda do Muro de Berlim (1989)<br>
+                    Avanços da computação pessoal
+                </td>
+                <td class="conexao-cell">
+                    O pós-modernismo rejeita os dogmas modernistas. O design se torna plural, histórico, decorativo e irônico. A computação começa a transformar a produção gráfica.
+                </td>
+            </tr>
+            
+            <!-- REVOLUÇÃO DIGITAL -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">💻</span>1990-2010</td>
+                <td class="design-cell">
+                    <strong>Design digital e software gráfico</strong> (Photoshop, Illustrator)<br>
+                    <strong>Tipografia digital</strong> (Emigre, Mrs Eaves)<br>
+                    <strong>Web design e interfaces</strong><br>
+                    <strong>Design responsivo</strong>
+                </td>
+                <td class="contexto-cell">
+                    Popularização da internet (anos 1990)<br>
+                    Queda da URSS (1991)<br>
+                    Globalização, ascensão da China<br>
+                    Atentados de 11 de setembro de 2001<br>
+                    Expansão dos smartphones (iPhone, 2007)
+                </td>
+                <td class="conexao-cell">
+                    O computador revoluciona o design: produção mais rápida, novas possibilidades formais, democratização das ferramentas. O web design cria novas linguagens e interações.
+                </td>
+            </tr>
+            
+            <!-- CONTEMPORÂNEO -->
+            <tr>
+                <td class="periodo-cell"><span class="icone-periodo">📱</span>2010-atualidade</td>
+                <td class="design-cell">
+                    <strong>Design de interfaces (UI/UX)</strong><br>
+                    <strong>Motion design e identidade animada</strong><br>
+                    <strong>Sustentabilidade e design ecológico</strong><br>
+                    <strong>Design de serviços e experiência do usuário</strong><br>
+                    <strong>IA generativa no design</strong>
+                </td>
+                <td class="contexto-cell">
+                    Era das redes sociais, big data, inteligência artificial<br>
+                    Mudanças climáticas, agenda ambiental<br>
+                    Pandemia de COVID-19 (2020-2022)<br>
+                    Trabalho remoto, economia de plataforma<br>
+                    Avanços em realidade virtual e aumentada
+                </td>
+                <td class="conexao-cell">
+                    O design está presente em cada clique, cada app, cada tela. A experiência do usuário se torna central. Sustentabilidade e acessibilidade são questões urgentes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Eixos transversais para análise histórica</h2>
+    <p>Além da cronologia, é útil observar como certos temas perpassam toda a história do design. Os eixos abaixo ajudam a compreender as transformações do campo:</p>
+    
+    <div class="destaque-box">
+        <strong>🔧 1. Tecnologia e materiais</strong><br>
+        Do estilete de junco sumério à prensa de Gutenberg, da litografia ao computador – cada inovação tecnológica redefiniu o que era possível fazer e como. O design é, em grande medida, uma resposta às ferramentas disponíveis.
+    </div>
+    
+    <div class="destaque-box">
+        <strong>🏛️ 2. Poder e ideologia</strong><br>
+        Hieróglifos a serviço dos faraós, cartazes de propaganda na guerra, identidade corporativa como instrumento de poder – o design sempre serviu a interesses políticos e econômicos. Compreender o contexto é essencial para uma leitura crítica.
+    </div>
+    
+    <div class="destaque-box">
+        <strong>👥 3. Função social e democratização</strong><br>
+        A invenção da imprensa democratizou o conhecimento; o Arts and Crafts lutou pela dignidade do trabalhador; o modernismo prometeu (nem sempre cumpriu) boa qualidade a preços acessíveis. O design tem uma dimensão ética inescapável.
+    </div>
+    
+    <div class="destaque-box">
+        <strong>🎨 4. Estética e linguagem visual</strong><br>
+        Do ornamento medieval à austeridade modernista, da exuberância psicodélica ao minimalismo digital – o design é um espelho das sensibilidades estéticas de cada época.
+    </div>
+
+    <h2>Exercício de fixação: conectando os períodos</h2>
+    <div class="destaque-box" style="background-color: #f0ede8;">
+        <strong>📝 Propostas de atividades complementares:</strong>
+        <ol style="margin-top: 12px;">
+            <li>Escolha um marco do design da tabela e pesquise mais a fundo seu contexto histórico. Como as condições sociais e políticas da época influenciaram aquele design específico?</li>
+            <li>Crie uma linha do tempo visual (física ou digital) destacando os períodos e conectando-os com imagens representativas.</li>
+            <li>Identifique um objeto do seu cotidiano (uma cadeira, um site, uma embalagem) e tente rastrear suas influências históricas – ele tem traços do Estilo Internacional? Do pós-modernismo? Do art déco?</li>
+            <li>Reflita sobre o papel do design hoje: como as questões ambientais, a diversidade e a tecnologia estão moldando o design contemporâneo?</li>
+        </ol>
+    </div>
+
+    <hr>
+    
+    <div class="destaque-box" style="background-color: #e8ddd0; border-left-color: #5a3e2b;">
+        📚 <strong>Uso combinado com a apostila principal:</strong><br>
+        Este guia foi concebido para ser utilizado em conjunto com a apostila "História do Design – Das Origens à Era Digital". Consulte a tabela acima sempre que encontrar um movimento ou período mencionado na apostila – isso ajudará a construir uma visão integrada e contextualizada da evolução do design.
+    </div>
+
+    <footer>
+        Guia complementar de História do Design – Linha do tempo contextualizada<br>
+        Baseado em Meggs & Purvis ("História do Design Gráfico") e Rafael Cardoso Denis ("Uma Introdução à História do Design")
+    </footer>
+</div>
+</body>
+</html>

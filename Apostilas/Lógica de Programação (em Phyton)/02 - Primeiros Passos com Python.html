@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila: Primeiros Passos com Python - Entrada, Saída, Variáveis e Operadores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+            background-color: #F2EAE0;
+            padding: 48px 24px;
+            color: #2c2c2c;
+            line-height: 1.65;
+        }
+
+        .apostila-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #9B8EC7;
+            border-left: 6px solid #BDA6CE;
+            padding-left: 22px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #9B8EC7;
+            border-bottom: 2px solid #B4D3D9;
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: #BDA6CE;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #F2EAE0;
+            border-left: 5px solid #BDA6CE;
+            padding: 18px 24px;
+            margin: 28px 0;
+            border-radius: 20px;
+            line-height: 1.65;
+            color: #2c2c2c;
+        }
+
+        code {
+            background-color: #eef2fa;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: #9B8EC7;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2c2c2c;
+            color: #F2EAE0;
+            padding: 20px 24px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 24px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            color: #F2EAE0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #B4D3D9;
+            border: 1px solid #cbdbe2;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #2c2c2c;
+        }
+
+        td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            background-color: #fff;
+        }
+
+        ul, ol {
+            margin: 16px 0 20px 28px;
+            line-height: 1.7;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .micro-atividade {
+            background-color: #F2EAE0;
+            border: 1px solid #BDA6CE;
+            border-radius: 28px;
+            padding: 22px 28px;
+            margin: 32px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .micro-atividade h4 {
+            font-size: 20px;
+            color: #9B8EC7;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            background-color: #9B8EC7;
+            color: #F2EAE0;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        hr {
+            margin: 36px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #B4D3D9, #F2EAE0, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 0.8rem;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+        }
+
+        footer p{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+        }
+
+        strong {
+            color: #9B8EC7;
+        }
+        
+        .figura-placeholder {
+            background: #B4D3D9;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #2c2c2c;
+            font-style: italic;
+        }
+        
+        .saida-exemplo {
+            background: #e8f0f2;
+            border-left: 3px solid #9B8EC7;
+            padding: 10px 16px;
+            margin: 10px 0;
+            font-family: monospace;
+            color: #2c2c2c;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">PYTHON | LÓGICA DE PROGRAMAÇÃO</span>
+    <h1>Primeiros Passos com Python<br><span style="font-size: 22px; color:#BDA6CE;">Entrada, saída, variáveis, operadores e manipulação de strings</span></h1>
+    
+    <p>Chegou o momento de colocar a mão no código! Nesta apostila, você aprenderá os fundamentos práticos da programação com Python: como exibir informações na tela (<strong>saída</strong>), como receber dados do usuário (<strong>entrada</strong>), como armazenar e manipular dados com <strong>variáveis</strong>, os principais <strong>tipos de dados</strong> (números, textos, booleanos), <strong>operadores aritméticos e relacionais</strong>, e técnicas de <strong>manipulação de strings</strong>. Tudo isso com exemplos práticos, exercícios e a tradição do "Olá, Mundo!".</p>
+
+    <h2>1. Ambientes de desenvolvimento e o primeiro programa</h2>
+    
+    <h3>1.1 Onde escrever código Python?</h3>
+    <p>Você pode programar em Python de várias formas:</p>
+    <ul>
+        <li><strong>IDLE</strong> – ambiente simples que acompanha a instalação do Python.</li>
+        <li><strong>PyCharm</strong> – IDE profissional (gratuita para a comunidade).</li>
+        <li><strong>Google Colab</strong> – plataforma online que não exige instalação (recomendado para iniciantes).</li>
+        <li><strong>VS Code</strong> – editor leve com extensões para Python.</li>
+    </ul>
+    <div class="destaque-box">
+        💡 <strong>Recomendação para este curso:</strong> Utilize o <strong>Google Colab</strong> (colab.research.google.com). É gratuito, funciona no navegador e permite misturar texto explicativo com código executável.
+    </div>
+    
+    <h3>1.2 O primeiro programa: "Olá, Mundo!"</h3>
+    <p>A tradição na programação é começar exibindo essa mensagem. Em Python, usamos a função <code>print()</code>.</p>
+    <pre><code>print('Olá, Mundo!')</code></pre>
+    <div class="saida-exemplo">
+        Saída: Olá, Mundo!
+    </div>
+    
+    <h3>1.3 Regras básicas do Python</h3>
+    <ul>
+        <li><strong>Case sensitive:</strong> <code>print</code> é diferente de <code>Print</code>. Use sempre minúsculas.</li>
+        <li><strong>Parênteses e aspas:</strong> toda abertura deve ter fechamento correspondente.</li>
+        <li><strong>Indentação:</strong> o Python usa espaços para organizar blocos de código (veremos mais adiante).</li>
+    </ul>
+    
+    <div class="micro-atividade">
+        <h4>🎯 Micro-atividade 1: Seu primeiro programa</h4>
+        <p>No Google Colab ou em qualquer editor Python, escreva <code>print('Olá, Mundo!')</code> e execute. Depois, experimente:</p>
+        <ul>
+            <li>Trocar a mensagem para "Bem-vindo à programação!".</li>
+            <li>Usar aspas duplas em vez de simples: <code>print("Olá")</code>.</li>
+            <li>Escrever <code>Print("teste")</code> com P maiúsculo e veja o erro.</li>
+        </ul>
+    </div>
+
+    <h2>2. Ciclo de processamento e função de saída (print)</h2>
+    <p>Todo programa computacional segue três etapas: <strong>entrada</strong> (receber dados), <strong>processamento</strong> (manipular/calcular) e <strong>saída</strong> (exibir resultados). Vamos começar pela saída.</p>
+    
+    <h3>2.1 A função print</h3>
+    <p><code>print()</code> exibe mensagens na tela. Pode receber textos (entre aspas), números, variáveis e até resultados de operações.</p>
+    <pre><code># Texto literal
+print('Olá, mundo!')
+
+# Números e operações
+print(2 + 3)        # Saída: 5
+print(10 * 2)       # Saída: 20
+
+# Múltiplos itens (separados por vírgula)
+print('O resultado é', 2 + 3)   # Saída: O resultado é 5
+
+# Concatenação com + (junta strings)
+print('2' + '3')    # Saída: 23 (concatenação, não soma)</code></pre>
+    
+    <h3>2.2 Operadores aritméticos em Python</h3>
+    <table>
+        <tr><th>Operador</th><th>Operação</th><th>Exemplo</th><th>Resultado</th></tr>
+        <tr><td><code>+</code></code>么Adição</code>么<code>5 + 3</code></code>么8</code></tr>
+        <tr><td><code>-</code></code>么Subtração</code>么<code>10 - 4</code></code>么6</code></tr>
+        <tr><td><code>*</code></code>么Multiplicação</code>么<code>6 * 7</code></code>么42</code></tr>
+        <tr><td><code>/</code></code>么Divisão (float)</code>么<code>10 / 3</code></code>么3.333...</code></tr>
+        <tr><td><code>//</code></code>么Divisão inteira</code>么<code>10 // 3</code></code>么3</code></tr>
+        <tr><td><code>%</code></code>么Módulo (resto)</code>么<code>10 % 3</code></code>么1</code></tr>
+        <tr><td><code>**</code></code>么Exponenciação</code>么<code>2 ** 3</code></code>么8</code></tr>
+    </table>
+    
+    <div class="destaque-box">
+        📐 <strong>Precedência de operadores:</strong> Assim como na matemática, primeiro os parênteses, depois exponenciação, multiplicação/divisão, e por último adição/subtração.
+    </div>
+    
+    <div class="micro-atividade">
+        <h4>🧮 Micro-atividade 2: Calculando expressões</h4>
+        <p>Calcule as seguintes expressões no Python (use o print):</p>
+        <ol>
+            <li>15 + 3 * 2</li>
+            <li>(15 + 3) * 2</li>
+            <li>20 / 4 + 5</li>
+            <li>20 / (4 + 5)</li>
+            <li>2 ** 4 - 3</li>
+            <li>17 % 5</li>
+        </ol>
+        <p>Confira se os resultados batem com o que você esperava.</p>
+    </div>
+
+    <h2>3. Variáveis e tipos de dados</h2>
+    <p><strong>Variáveis</strong> são espaços na memória que armazenam valores. Em Python, você não precisa declarar o tipo – ele é inferido automaticamente.</p>
+    
+    <h3>3.1 Regras para nomes de variáveis</h3>
+    <ul>
+        <li>Podem conter letras, números e sublinhado (<code>_</code>).</li>
+        <li>Não podem começar com número.</li>
+        <li>Não podem conter espaços ou caracteres especiais (<code>@, #, $</code>).</li>
+        <li>Case sensitive: <code>nome</code> é diferente de <code>Nome</code>.</li>
+        <li>Exemplos válidos: <code>idade</code>, <code>nota_final</code>, <code>_valor</code>, <code>precoProduto</code>.</li>
+    </ul>
+    
+    <h3>3.2 Tipos primitivos</h3>
+    <table>
+        <tr><th>Tipo</th><th>Descrição</th><th>Exemplo em Python</th></tr>
+        <tr><td><strong>int</strong></code>么Números inteiros</code>么<code>idade = 25</code>, <code>quantidade = -10</code></code></tr>
+        <tr><td><strong>float</strong></code>么Números decimais (ponto flutuante)</code>么<code>altura = 1.75</code>, <code>pi = 3.14159</code></code></tr>
+        <tr><td><strong>bool</strong></code>么Valores lógicos (Verdadeiro/Falso)</code>么<code>aprovado = True</code>, <code>ativo = False</code></code></tr>
+        <tr><td><strong>str</strong></code>么Cadeia de caracteres (texto)</code>么<code>nome = "Ana"</code>, <code>curso = 'Python'</code></code></tr>
+    </table>
+    
+    <pre><code># Exemplos de variáveis
+nome = "João"
+idade = 30
+altura = 1.78
+maior_idade = idade >= 18
+
+print(nome)          # João
+print(idade)         # 30
+print(altura)        # 1.78
+print(maior_idade)   # True</code></pre>
+    
+    <h3>3.3 Operadores relacionais (resultam em booleano)</h3>
+    <table>
+        <tr><th>Operador</th><th>Significado</th><th>Exemplo</th><th>Resultado</th></tr>
+        <tr><td><code>==</code>么Igual a</code>么<code>5 == 5</code>么<code>True</code></code></tr>
+        <tr><td><code>!=</code>么Diferente de</code>么<code>5 != 3</code>么<code>True</code></code></tr>
+        <tr><td><code>&gt;</code>么Maior que</code>么<code>10 &gt; 5</code>么<code>True</code></code></tr>
+        <tr><td><code>&lt;</code>么Menor que</code>么<code>3 &lt; 7</code>么<code>True</code></code></tr>
+        <tr><td><code>&gt;=</code>么Maior ou igual</code>么<code>8 &gt;= 8</code>么<code>True</code></code></tr>
+        <tr><td><code>&lt;=</code>么Menor ou igual</code>么<code>4 &lt;= 5</code>么<code>True</code></code></tr>
+    </table>
+    
+    <div class="micro-atividade">
+        <h4>📦 Micro-atividade 3: Trabalhando com variáveis</h4>
+        <p>Crie variáveis para armazenar:</p>
+        <ul>
+            <li>Seu nome (string)</li>
+            <li>Sua idade (inteiro)</li>
+            <li>Sua altura (float)</li>
+            <li>Um booleano que indique se você é maior de idade</li>
+        </ul>
+        <p>Depois, exiba todos os valores com <code>print()</code> usando concatenação ou f-strings.</p>
+    </div>
+
+    <h2>4. Manipulação de strings (textos)</h2>
+    <p>Strings são sequências de caracteres. Python oferece várias facilidades para manipulá-las.</p>
+    
+    <h3>4.1 Concatenação e repetição</h3>
+    <pre><code># Concatenação com +
+nome = "Ana"
+sobrenome = "Silva"
+nome_completo = nome + " " + sobrenome
+print(nome_completo)  # Ana Silva
+
+# Repetição com *
+linha = "-" * 20
+print(linha)          # --------------------</code></pre>
+    
+    <h3>4.2 Acessando caracteres por índice</h3>
+    <p>O primeiro caractere está no índice <strong>0</strong> (zero).</p>
+    <pre><code>texto = "Python"
+print(texto[0])   # P
+print(texto[1])   # y
+print(texto[-1])  # n (último caractere)</code></pre>
+    
+    <h3>4.3 Fatiamento (slicing)</h3>
+    <pre><code>texto = "Lógica de Programação"
+print(texto[0:6])   # Lógica (índices 0 a 5)
+print(texto[:6])    # Lógica (do início até o 5)
+print(texto[10:])   # Programação (do 10 até o fim)
+print(texto[:])     # string completa</code></pre>
+    
+    <h3>4.4 Tamanho da string (len)</h3>
+    <pre><code>frase = "Olá, mundo!"
+tamanho = len(frase)
+print(tamanho)      # 12 (inclui espaços e pontuação)</code></pre>
+    
+    <h3>4.5 Três formas de formatar strings</h3>
+    <p><strong>Maneira clássica (estilo C):</strong> usando <code>%</code> e marcadores (<code>%s</code> para string, <code>%d</code> para inteiro, <code>%f</code> para float).</p>
+    <pre><code>nome = "Carlos"
+idade = 25
+print("Meu nome é %s e tenho %d anos." % (nome, idade))</code></pre>
+    
+    <p><strong>Maneira moderna (format):</strong> mais flexível, usando <code>{}</code> e <code>.format()</code>.</p>
+    <pre><code>print("Meu nome é {} e tenho {} anos.".format(nome, idade))</code></pre>
+    
+    <p><strong>Maneira recomendada (f-string):</strong> disponível a partir do Python 3.6, mais legível.</p>
+    <pre><code>print(f"Meu nome é {nome} e tenho {idade} anos.")</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>✂️ Micro-atividade 4: Manipulando strings</h4>
+        <p>Dada a frase <code>"Aprendendo Python é divertido!"</code>, faça:</p>
+        <ol>
+            <li>Exiba apenas a palavra "Python" usando fatiamento.</li>
+            <li>Exiba o tamanho total da string.</li>
+            <li>Crie uma nova string que repita a palavra "Python " três vezes.</li>
+            <li>Use f-string para exibir "Estou aprendendo Python. É muito legal!"</li>
+        </ol>
+    </div>
+
+    <h2>5. Função de entrada (input) e conversão de tipos</h2>
+    <p>A função <code>input()</code> permite receber dados digitados pelo usuário. Por padrão, ela sempre retorna uma <strong>string</strong> (texto). Para usar números, precisamos converter.</p>
+    
+    <h3>5.1 Usando input</h3>
+    <pre><code>nome = input("Digite seu nome: ")
+print(f"Olá, {nome}! Seja bem-vindo(a).")</code></pre>
+    
+    <h3>5.2 Conversão de tipos (casting)</h3>
+    <pre><code># Convertendo para inteiro
+idade = int(input("Digite sua idade: "))
+
+# Convertendo para float
+altura = float(input("Digite sua altura: "))
+
+# Convertendo para string (geralmente não necessário)
+texto = str(123)   # "123"</code></pre>
+    
+    <h3>5.3 Exemplo completo: soma de dois números</h3>
+    <pre><code># Entrada
+num1 = int(input("Digite o primeiro número: "))
+num2 = int(input("Digite o segundo número: "))
+
+# Processamento
+soma = num1 + num2
+
+# Saída
+print(f"A soma de {num1} e {num2} é {soma}.")</code></pre>
+    
+    <div class="destaque-box">
+        ⚠️ <strong>Atenção:</strong> Se você esquecer de converter e tentar somar strings, o Python irá <strong>concatenar</strong> (juntar) ao invés de somar. Exemplo: <code>"2" + "3"</code> resulta em <code>"23"</code>.
+    </div>
+
+    <h2>6. Fluxo de execução e teste de mesa</h2>
+    <p>O Python executa as instruções <strong>em ordem, de cima para baixo</strong>, uma linha após a outra. Entender isso é fundamental para prever o comportamento do programa.</p>
+    
+    <pre><code># Exemplo de fluxo
+x = 10            # Linha 1: x recebe 10
+y = 5             # Linha 2: y recebe 5
+z = x + y         # Linha 3: z recebe 15
+print(z)          # Linha 4: exibe 15</code></pre>
+    
+    <p><strong>Teste de mesa</strong> é a técnica de simular manualmente a execução do programa, anotando os valores das variáveis linha a linha. É muito útil para encontrar erros de lógica.</p>
+    
+    <div class="micro-atividade">
+        <h4>📝 Micro-atividade 5: Calculadora de conversão de tempo</h4>
+        <p>Desenvolva um programa que:</p>
+        <ol>
+            <li>Pergunte ao usuário uma quantidade de dias, horas, minutos e segundos.</li>
+            <li>Calcule o total de segundos (considere: 1 dia = 86400 segundos, 1 hora = 3600, 1 minuto = 60).</li>
+            <li>Exiba o resultado: "O total de segundos é X".</li>
+        </ol>
+        <p><strong>Exemplo:</strong> 1 dia, 2 horas, 30 minutos, 10 segundos = 1×86400 + 2×3600 + 30×60 + 10 = 87310 segundos.</p>
+    </div>
+    
+    <div class="micro-atividade">
+        <h4>🌡️ Micro-atividade 6: Conversão de temperatura</h4>
+        <p>Crie um programa que converta uma temperatura de <strong>Celsius para Fahrenheit</strong>. A fórmula é:</p>
+        <p style="text-align: center; font-size: 18px;"><strong>F = (9 × C / 5) + 32</strong></p>
+        <ol>
+            <li>Solicite ao usuário a temperatura em Celsius (valor decimal).</li>
+            <li>Calcule o valor em Fahrenheit.</li>
+            <li>Exiba o resultado com duas casas decimais (use <code>:.2f</code> dentro das chaves: <code>f"{variavel:.2f}"</code>).</li>
+        </ol>
+    </div>
+
+    <h2>7. Exercícios resolvidos (para consulta)</h2>
+    
+    <h3>Exercício 2.1: Soma de dois números inteiros</h3>
+    <pre><code># Entrada
+x = int(input("Digite um número inteiro: "))
+y = int(input("Digite outro número inteiro: "))
+
+# Processamento e saída com f-string
+print(f"O resultado da soma de {x} com {y} é {x + y}.")</code></pre>
+    
+    <h3>Exercício 2.2: Total de segundos</h3>
+    <pre><code>dias = int(input("Quantos dias? "))
+horas = int(input("Quantas horas? "))
+minutos = int(input("Quantos minutos? "))
+segundos = int(input("Quantos segundos? "))
+
+total = segundos + (minutos * 60) + (horas * 3600) + (dias * 86400)
+print(f"O total de segundos calculado é de {total}.")</code></pre>
+    
+    <h3>Exercício 2.3: Desconto em produto</h3>
+    <pre><code>preco = float(input("Digite o preço do produto: R$ "))
+percentual = float(input("Digite o percentual de desconto: "))
+
+desconto = preco * (percentual / 100)
+preco_final = preco - desconto
+
+print(f"Desconto: R$ {desconto:.2f}")
+print(f"Preço final: R$ {preco_final:.2f}")</code></pre>
+    
+    <h3>Exercício 2.4: Celsius para Fahrenheit</h3>
+    <pre><code>celsius = float(input("Digite a temperatura em Celsius: "))
+fahrenheit = (9 * celsius / 5) + 32
+print(f"{celsius}°C equivalem a {fahrenheit:.1f}°F")</code></pre>
+
+    <hr>
+    <h2>Resumo da apostila</h2>
+    <ul>
+        <li><strong>Saída:</strong> <code>print()</code> exibe dados na tela.</li>
+        <li><strong>Entrada:</strong> <code>input()</code> lê dados do teclado (sempre retorna string).</li>
+        <li><strong>Conversão:</strong> <code>int()</code>, <code>float()</code>, <code>str()</code> convertem tipos.</li>
+        <li><strong>Variáveis:</strong> armazenam dados; nomes devem ser descritivos e seguir regras.</li>
+        <li><strong>Tipos básicos:</strong> int, float, bool, str.</li>
+        <li><strong>Operadores aritméticos:</strong> +, -, *, /, //, %, **.</li>
+        <li><strong>Operadores relacionais:</strong> ==, !=, >, <, >=, <= (resultam em True/False).</li>
+        <li><strong>Strings:</strong> indexação (começa em 0), fatiamento, concatenação (+), repetição (*), len(), f-strings.</li>
+    </ul>
+    
+    <div class="destaque-box" style="background: #B4D3D9; border-left-color: #9B8EC7;">
+        🚀 <strong>Próximos passos:</strong> Agora que você já domina entrada, saída, variáveis e operadores, o próximo conteúdo abordará estruturas condicionais (if/else) e laços de repetição (for/while) – fundamentais para criar algoritmos mais inteligentes e dinâmicos.
+    </div>
+
+    <footer>
+        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
+        <p>Edição 1 | Junho de 2026</p>
+    </footer>
+</div>
+</body>
+</html>

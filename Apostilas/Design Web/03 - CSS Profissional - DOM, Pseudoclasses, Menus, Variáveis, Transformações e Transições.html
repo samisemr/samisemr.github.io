@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila: CSS Avançado - Seletores, Menus, Variáveis, Transformações e Transições</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+            background-color: #F2D8CE;
+            padding: 48px 24px;
+            color: #1E3259;
+            line-height: 1.65;
+        }
+
+        .apostila-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #243E73;
+            border-left: 6px solid #8BB4D9;
+            padding-left: 22px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #1E3259;
+            border-bottom: 2px solid #8BB4D9;
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: #243E73;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #F2D8CE;
+            border-left: 5px solid #A67E6F;
+            padding: 18px 24px;
+            margin: 28px 0;
+            border-radius: 20px;
+            line-height: 1.65;
+            color: #1E3259;
+        }
+
+        code {
+            background-color: #eef2fa;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: #A67E6F;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #1E3259;
+            color: #F2D8CE;
+            padding: 20px 24px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 24px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            color: #F2D8CE;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #8BB4D9;
+            border: 1px solid #cbdbe2;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #1E3259;
+        }
+
+        td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            background-color: #fff;
+        }
+
+        ul, ol {
+            margin: 16px 0 20px 28px;
+            line-height: 1.7;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .micro-atividade {
+            background-color: #F2D8CE;
+            border: 1px solid #A67E6F;
+            border-radius: 28px;
+            padding: 22px 28px;
+            margin: 32px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .micro-atividade h4 {
+            font-size: 20px;
+            color: #243E73;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            background-color: #243E73;
+            color: #F2D8CE;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        hr {
+            margin: 36px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #8BB4D9, #F2D8CE, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 13px;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+        }
+
+        footer p{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+        }
+
+        strong {
+            color: #243E73;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">CSS AVANÇADO | WEB + MULTIMÍDIA</span>
+    <h1>CSS Profissional: DOM, Pseudoclasses, Menus, Variáveis, Transformações e Transições<br><span style="font-size: 22px; color:#1E3259;">Domine seletores complexos, crie menus interativos e adicione movimento às suas páginas</span></h1>
+    
+    <p>Nesta apostila, você vai além do básico do CSS. Aprenderá a navegar pela <strong>árvore do documento (DOM)</strong>, usar <strong>pseudoclasses e pseudoelementos</strong> para estilizar estados e partes específicas, construir <strong>menus profissionais (vertical, horizontal e suspenso)</strong>, trabalhar com <strong>variáveis CSS</strong>, controlar o <strong>dimensionamento de caixas</strong> e ainda criar <strong>animações suaves com transformações 2D e transições</strong>. Tudo com exemplos práticos e situações reais de mercado.</p>
+
+    <h2>1. Árvore do documento (DOM) e seletores avançados</h2>
+    <h3>1.1 O que é o DOM?</h3>
+    <p>O <strong>Document Object Model (DOM)</strong> é uma representação hierárquica (em árvore) dos elementos HTML. Entender essa hierarquia permite aplicar estilos de forma precisa, usando relações como <strong>pai-filho</strong>, <strong>ancestral-descendente</strong> e <strong>irmãos</strong>. No CSS, podemos mirar elementos com base nessas relações, sem precisar de classes ou IDs.</p>
+    
+    <div class="destaque-box">
+        📌 <strong>Exemplo prático de hierarquia:</strong><br>
+        <code>div &gt; p</code> → seleciona apenas parágrafos que são <strong>filhos diretos</strong> de uma div.<br>
+        <code>div p</code> → seleciona todos os parágrafos <strong>descendentes</strong> da div (qualquer nível).<br>
+        <code>h1 + p</code> → seleciona o parágrafo que vem <strong>imediatamente após</strong> um h1 (irmão adjacente).<br>
+        <code>h1 ~ h2</code> → seleciona todos os h2 que são irmãos <strong>posteriores</strong> a um h1.
+    </div>
+    
+    <h3>1.2 Seletores estruturais (first-child, last-child, etc.)</h3>
+    <p>Esses seletores permitem estilizar elementos com base na posição dentro do pai.</p>
+    <ul>
+        <li><code>li:first-child</code> → primeiro item de uma lista.</li>
+        <li><code>li:last-child</code> → último item.</li>
+        <li><code>p:nth-child(2)</code> → segundo filho do tipo parágrafo (independente do tipo).</li>
+    </ul>
+    <pre><code>/* Exemplo: estiliza o primeiro link dentro de um nav */
+nav &gt; a:first-child {
+    font-weight: bold;
+    color: #A67E6F;
+}</code></pre>
+    
+    <h3>1.3 Herança no CSS</h3>
+    <p>Algumas propriedades (como <code>color</code>, <code>font-family</code>) são herdadas pelos elementos filhos. Outras (como <code>width</code>, <code>border</code>) não são. Saber isso evita repetição de código.</p>
+
+    <!-- Microatividade 1 -->
+    <div class="micro-atividade">
+        <h4>🌳 Micro-atividade 1: Navegando pela árvore DOM</h4>
+        <p>Crie uma estrutura HTML com uma <code>&lt;div&gt;</code> contendo um <code>&lt;header&gt;</code> com título e um <code>&lt;nav&gt;</code> com três links. Use seletores CSS avançados para: (1) deixar o primeiro link do nav em negrito; (2) aplicar uma borda inferior apenas no título que é filho direto do header; (3) alterar a cor de todos os parágrafos que são irmãos de um h2. Teste no navegador.</p>
+    </div>
+
+    <h2>2. Pseudoclasses e pseudoelementos</h2>
+    <h3>2.1 Pseudoclasses: estilizando estados</h3>
+    <p>Pseudoclasses (<code>:</code>) definem o estilo de um elemento em um <strong>estado específico</strong>.</p>
+    <table>
+        <tr><th>Pseudoclasse</th><th>Aplicação</th><th>Exemplo real</th></tr>
+        <tr><td><code>:link</code></td><td>Link não visitado</td><td><code>a:link { color: #243E73; }</code></td></tr>
+        <tr><td><code>:visited</code></td><td>Link já visitado</td><td><code>a:visited { color: #A67E6F; }</code></td></tr>
+        <tr><td><code>:hover</code></td><td>Mouse sobre o elemento</td><td>Menu que muda de cor ao passar o mouse</td></tr>
+        <tr><td><code>:active</code></td><td>Elemento sendo clicado</td><td>Botão com efeito de clique</td></tr>
+        <tr><td><code>:focus</code></td><td>Campo de formulário selecionado</td><td><code>input:focus { border: 2px solid #8BB4D9; }</code></td></tr>
+        <tr><td><code>:checked</code></td><td>Radio ou checkbox marcado</td><td>Personalizar botões de opção</td></tr>
+        <tr><td><code>:enabled / :disabled</code></td><td>Campos habilitados/desabilitados</td><td>Estilizar campos bloqueados com fundo cinza</td></tr>
+    </table>
+    <p><strong>Ordem importante para links:</strong> <code>:link → :visited → :hover → :active</code> (LVHA).</p>
+    
+    <h3>2.2 Pseudoelementos: estilizando partes específicas</h3>
+    <p>Pseudoelementos (<code>::</code>) permitem estilizar <strong>partes de um elemento</strong> ou inserir conteúdo virtual.</p>
+    <ul>
+        <li><code>::first-letter</code> → primeira letra (cria efeito de letra capitular).</li>
+        <li><code>::first-line</code> → primeira linha de um texto.</li>
+        <li><code>::before</code> e <code>::after</code> → inserem conteúdo antes/depois do elemento (ex: ícones, aspas).</li>
+        <li><code>::marker</code> → estiliza marcadores de lista (bullets ou números).</li>
+        <li><code>::selection</code> → estiliza o texto selecionado pelo usuário.</li>
+    </ul>
+    <pre><code>/* Exemplo prático: letra capitular */
+p::first-letter {
+    font-size: 40px;
+    font-weight: bold;
+    color: #A67E6F;
+    float: left;
+    margin-right: 8px;
+}
+
+/* Inserir ícone antes de cada link externo */
+a[target="_blank"]::after {
+    content: "🔗";
+    margin-left: 5px;
+}</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>✨ Micro-atividade 2: Efeitos com pseudoclasses e pseudoelementos</h4>
+        <p>Crie uma página com um formulário simples (nome, e-mail, checkbox). Aplique: (1) campo de texto com borda azul ao receber foco; (2) botão de enviar com fundo que escurece no hover; (3) use <code>::before</code> para adicionar um ícone de "✔️" antes de cada item de uma lista de vantagens; (4) altere a cor do texto selecionado para branco com fundo #243E73.</p>
+    </div>
+
+    <h2>3. Barra de navegação (menus) e botões</h2>
+    <h3>3.1 Menu vertical estilizado</h3>
+    <p>Menus são tradicionalmente construídos com listas <code>&lt;ul&gt;</code>. Para um menu vertical profissional:</p>
+    <pre><code>ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #8BB4D9;
+}
+li a {
+    display: block;  /* torna toda a área clicável */
+    color: #1E3259;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #243E73;
+    color: #F2D8CE;
+}</code></pre>
+
+    <h3>3.2 Menu horizontal com <code>display: inline-block</code> ou <code>float</code></h3>
+    <p>Para transformar o menu vertical em horizontal, basta mudar os <code>&lt;li&gt;</code> para <code>display: inline-block;</code> ou usar <code>float: left;</code>.</p>
+    <pre><code>li {
+    display: inline-block;
+}
+/* ou */
+li {
+    float: left;
+}</code></pre>
+
+    <h3>3.3 Menu suspenso (dropdown) com subnível</h3>
+    <p>Um submenu é criado aninhando outra <code>&lt;ul&gt;</code> dentro de um <code>&lt;li&gt;</code>. No CSS, usamos <code>position: relative</code> no item pai e <code>position: absolute</code> no submenu, que fica oculto (<code>display: none</code>) até o hover.</p>
+    <pre><code>&lt;ul&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Lojas&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Notícias&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    <pre><code>li { position: relative; }
+li ul {
+    position: absolute;
+    left: 150px;
+    top: 0;
+    display: none;
+}
+li:hover ul {
+    display: block;
+}</code></pre>
+    
+    <h3>3.4 Botões estilizados</h3>
+    <p>Botões podem ser criados com <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> ou <code>&lt;input&gt;</code>. Aplique uma classe .btn para padronizar.</p>
+    <pre><code>.btn {
+    background-color: #243E73;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 30px;
+    transition: background 0.3s;
+}
+.btn:hover {
+    background-color: #8BB4D9;
+    cursor: pointer;
+}</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>🧭 Micro-atividade 3: Menu completo com submenu e botões</h4>
+        <p>Construa um site simples com: (1) barra de navegação horizontal com pelo menos 3 itens, sendo um deles com submenu (ex: "Serviços" → Design, Vídeo, Motion); (2) ao lado, um botão de "Contato" estilizado que abre um link fictício; (3) o menu deve ter efeito hover com mudança de cor suave.</p>
+    </div>
+
+    <h2>4. Dimensionamento, variáveis e formatação de imagens</h2>
+    <h3>4.1 Box-sizing: controlando o cálculo de largura</h3>
+    <p>Por padrão, <code>width</code> + <code>padding</code> + <code>border</code> = largura real. Para incluir padding e border dentro da largura definida, use <code>box-sizing: border-box</code>. Recomenda-se aplicar a todos os elementos:</p>
+    <pre><code>* {
+    box-sizing: border-box;
+}</code></pre>
+    
+    <h3>4.2 Variáveis CSS (Custom Properties)</h3>
+    <p>Variáveis evitam repetição e facilitam manutenção. Defina no <code>:root</code> (escopo global) e use com <code>var()</code>.</p>
+    <pre><code>:root {
+    --cor-primaria: #243E73;
+    --cor-destaque: #A67E6F;
+    --espaco-padrao: 16px;
+}
+h1 {
+    color: var(--cor-primaria);
+    margin-bottom: var(--espaco-padrao);
+}</code></pre>
+    
+    <h3>4.3 Formatações para imagens</h3>
+    <ul>
+        <li><strong>Cantos arredondados:</strong> <code>border-radius: 10px;</code></li>
+        <li><strong>Imagem circular:</strong> <code>border-radius: 50%;</code> (com largura/altura iguais)</li>
+        <li><strong>Opacidade:</strong> <code>opacity: 0.8;</code></li>
+        <li><strong>Centralizar:</strong> <code>display: block; margin: auto;</code></li>
+        <li><strong>Responsiva:</strong> <code>max-width: 100%; height: auto;</code></li>
+    </ul>
+    
+    <div class="micro-atividade">
+        <h4>🎨 Micro-atividade 4: Variáveis e imagens responsivas</h4>
+        <p>Crie uma galeria com 3 imagens. Use variáveis CSS para definir a cor de borda e o espaçamento entre elas. Aplique border-radius uniforme, opacidade no hover (0.8) e garanta que todas as imagens sejam responsivas (max-width 100%). Centralize cada imagem com margin automática.</p>
+    </div>
+
+    <h2>5. Movimentos em CSS: transformações 2D e transições</h2>
+    <h3>5.1 Transformações 2D (<code>transform</code>)</h3>
+    <p>A propriedade <code>transform</code> permite mover, girar, escalar e inclinar elementos.</p>
+    <table>
+        <tr><th>Método</th><th>Efeito</th><th>Exemplo</th></tr>
+        <tr><td><code>translate(x, y)</code></td><td>Move o elemento</td><td><code>transform: translate(50px, 20px);</code></td></tr>
+        <tr><td><code>rotate(deg)</code></td><td>Gira o elemento</td><td><code>transform: rotate(45deg);</code></td></tr>
+        <tr><td><code>scale(x, y)</code></td><td>Altera o tamanho</td><td><code>transform: scale(1.5);</code> (aumenta 50%)</td></tr>
+        <tr><td><code>skewX(deg)</code> / <code>skewY(deg)</code></td><td>Inclina o elemento</td><td><code>transform: skewX(10deg);</code></td></tr>
+    </table>
+    
+    <h3>5.2 Transições suaves</h3>
+    <p>Transições (<code>transition</code>) criam animações suaves entre estados. Defina a <strong>propriedade</strong> e a <strong>duração</strong>.</p>
+    <pre><code>.box {
+    width: 150px;
+    height: 150px;
+    background: #243E73;
+    transition: all 0.4s ease;  /* 'all' anima todas as propriedades que mudarem */
+}
+.box:hover {
+    transform: rotate(10deg) scale(1.1);
+    background: #A67E6F;
+}</code></pre>
+    <p>Propriedades complementares: <code>transition-delay</code> (atraso), <code>transition-timing-function</code> (aceleração: ease, linear, ease-in-out).</p>
+    
+    <div class="destaque-box">
+        💡 <strong>Dica profissional:</strong> Combine transformações com transições para criar efeitos sutis em cards, botões e menus. Exemplo: um card que sobe levemente (<code>translateY(-5px)</code>) e aumenta sombra no hover.
+    </div>
+    
+    <div class="micro-atividade">
+        <h4>🚀 Micro-atividade 5: Card animado com transform e transition</h4>
+        <p>Crie um card de produto (div com 200px de largura, borda arredondada, sombra). No hover, o card deve: (1) aumentar 5% (scale 1.05); (2) girar 2 graus (rotate(2deg)); (3) mudar a cor da borda suavemente em 0.3s. Utilize transição para todas as propriedades.</p>
+    </div>
+
+    <hr>
+    <h2>Resumo prático para consulta rápida</h2>
+    <ul>
+        <li><strong>Seletores avançados:</strong> <code>E > F</code> (filho), <code>E + F</code> (irmão adjacente), <code>:first-child</code>.</li>
+        <li><strong>Pseudoclasses comuns:</strong> <code>:hover</code>, <code>:focus</code>, <code>:checked</code>.</li>
+        <li><strong>Pseudoelementos úteis:</strong> <code>::before</code>, <code>::after</code>, <code>::first-letter</code>.</li>
+        <li><strong>Menus:</strong> use <code>&lt;ul&gt;</code> com <code>list-style: none</code>, <code>display: block</code> nos links, e submenu com <code>position: absolute</code>.</li>
+        <li><strong>Variáveis:</strong> <code>:root { --nome: valor; }</code> e <code>var(--nome)</code>.</li>
+        <li><strong>Transformações:</strong> <code>translate()</code>, <code>rotate()</code>, <code>scale()</code>, <code>skew()</code>.</li>
+        <li><strong>Transições:</strong> <code>transition: propriedade duração timing;</code> (ex: <code>all 0.3s ease</code>).</li>
+    </ul>
+
+    <!-- Projeto integrador final -->
+    <div class="destaque-box" style="background:#eef2fa; border-left-color: #243E73;">
+        🧩 <strong>Projeto integrador (site completo):</strong> Desenvolva um pequeno site institucional com:
+        <ul style="margin-top: 12px;">
+            <li>Menu horizontal com dropdown (ex: "Serviços" com subitens).</li>
+            <li>Banner com imagem e texto, usando transform/transition suave no hover.</li>
+            <li>Seção de diferenciais com ícones criados via <code>::before</code>.</li>
+            <li>Galeria de imagens responsivas com bordas arredondadas e efeito de escala no hover.</li>
+            <li>Rodapé com formulário de contato estilizado (campos com foco colorido).</li>
+            <li>Utilize variáveis CSS para cores e espaçamentos.</li>
+        </ul>
+        <p>Este projeto consolida todos os tópicos das três apostilas: HTML estrutural, CSS básico e CSS avançado.</p>
+    </div>
+
+    <footer>
+        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
+        <p>Edição 1 | Junho de 2026</p>
+    </footer>
+</div>
+</body>
+</html>

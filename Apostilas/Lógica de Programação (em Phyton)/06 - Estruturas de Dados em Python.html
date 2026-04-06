@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila: Estruturas de Dados em Python - Tuplas, Listas, Dicionários e Strings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+            background-color: #F2EAE0;
+            padding: 48px 24px;
+            color: #2c2c2c;
+            line-height: 1.65;
+        }
+
+        .apostila-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #9B8EC7;
+            border-left: 6px solid #BDA6CE;
+            padding-left: 22px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #9B8EC7;
+            border-bottom: 2px solid #B4D3D9;
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: #BDA6CE;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #F2EAE0;
+            border-left: 5px solid #BDA6CE;
+            padding: 18px 24px;
+            margin: 28px 0;
+            border-radius: 20px;
+            line-height: 1.65;
+            color: #2c2c2c;
+        }
+
+        code {
+            background-color: #eef2fa;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: #9B8EC7;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2c2c2c;
+            color: #F2EAE0;
+            padding: 20px 24px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 24px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            color: #F2EAE0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #B4D3D9;
+            border: 1px solid #cbdbe2;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #2c2c2c;
+        }
+
+        td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            background-color: #fff;
+        }
+
+        ul, ol {
+            margin: 16px 0 20px 28px;
+            line-height: 1.7;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .micro-atividade {
+            background-color: #F2EAE0;
+            border: 1px solid #BDA6CE;
+            border-radius: 28px;
+            padding: 22px 28px;
+            margin: 32px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .micro-atividade h4 {
+            font-size: 20px;
+            color: #9B8EC7;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            background-color: #9B8EC7;
+            color: #F2EAE0;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        hr {
+            margin: 36px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #B4D3D9, #F2EAE0, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 13px;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+        }
+
+        footer p{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+        }
+
+        strong {
+            color: #9B8EC7;
+        }
+        
+        .figura-placeholder {
+            background: #B4D3D9;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #2c2c2c;
+            font-style: italic;
+        }
+        
+        .saida-exemplo {
+            background: #e8f0f2;
+            border-left: 3px solid #9B8EC7;
+            padding: 10px 16px;
+            margin: 10px 0;
+            font-family: monospace;
+            color: #2c2c2c;
+        }
+        
+        .comparativo {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">PYTHON | ESTRUTURAS DE DADOS</span>
+    <h1>Estruturas de Dados em Python<br><span style="font-size: 22px; color:#BDA6CE;">Tuplas, Listas, Dicionários e Métodos Avançados de Strings</span></h1>
+    
+    <p>Até agora, trabalhávamos com <strong>variáveis simples</strong> que armazenam um único valor. Mas e quando precisamos armazenar <strong>múltiplos valores</strong> relacionados? Para isso, usamos <strong>estruturas de dados</strong>. Nesta apostila, você aprenderá as três principais estruturas do Python: <strong>tuplas</strong> (imutáveis), <strong>listas</strong> (mutáveis e versáteis) e <strong>dicionários</strong>(pares chave-valor). Também exploraremos métodos avançados de strings para manipulação de texto.</p>
+
+    <h2>1. Tuplas – estruturas imutáveis</h2>
+    <p>Uma <strong>tupla</strong> é uma coleção ordenada e <strong>imutável</strong> de elementos. Uma vez criada, não pode ser alterada (não é possível adicionar, remover ou modificar elementos). É ideal para dados que não devem mudar, como dias da semana, coordenadas geográficas, etc.</p>
+    
+    <h3>1.1 Criando e acessando tuplas</h3>
+    <pre><code># Tupla com parênteses (opcional, mas recomendado)
+frutas = ("maçã", "banana", "laranja")
+print(frutas)          # ('maçã', 'banana', 'laranja')
+
+# Tupla sem parênteses (também funciona)
+coordenadas = 10, 20, 30
+print(coordenadas)     # (10, 20, 30)
+
+# Acesso por índice (começa em 0)
+print(frutas[0])       # maçã
+print(frutas[-1])      # laranja (último elemento)
+
+# Fatiamento (slicing)
+print(frutas[0:2])     # ('maçã', 'banana')</code></pre>
+    
+    <h3>1.2 Imutabilidade</h3>
+    <pre><code># Tentativa de modificar (gera erro)
+frutas = ("maçã", "banana", "laranja")
+# frutas[0] = "uva"  # TypeError: 'tuple' object does not support item assignment
+
+# Para "alterar", é necessário criar uma nova tupla
+novas_frutas = frutas + ("uva",)
+print(novas_frutas)    # ('maçã', 'banana', 'laranja', 'uva')</code></pre>
+    
+    <h3>1.3 Iterando sobre tuplas</h3>
+    <pre><code># Usando for
+for fruta in frutas:
+    print(fruta)
+
+# Usando for com índice
+for i in range(len(frutas)):
+    print(f"{i}: {frutas[i]}")</code></pre>
+    
+    <h3>1.4 Desempacotamento de tuplas</h3>
+    <pre><code>coordenadas = (10, 20, 30)
+x, y, z = coordenadas
+print(f"x={x}, y={y}, z={z}")  # x=10, y=20, z=30
+
+# Desempacotamento com * (resto)
+numeros = (1, 2, 3, 4, 5)
+primeiro, *resto = numeros
+print(primeiro)  # 1
+print(resto)     # [2, 3, 4, 5] (lista)</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>📦 Micro-atividade 1: Trabalhando com tuplas</h4>
+        <p>Crie uma tupla com os nomes de 5 cidades. Em seguida:</p>
+        <ol>
+            <li>Exiba a terceira cidade da tupla.</li>
+            <li>Tente alterar a primeira cidade para "São Paulo" e veja o erro.</li>
+            <li>Crie uma nova tupla concatenando a original com mais duas cidades.</li>
+            <li>Use um laço for para exibir todas as cidades.</li>
+        </ol>
+    </div>
+
+    <h2>2. Listas – estruturas mutáveis e versáteis</h2>
+    <p><strong>Listas</strong> são coleções ordenadas e <strong>mutáveis</strong>. Podemos adicionar, remover e modificar elementos. São as estruturas mais usadas em Python para sequências dinâmicas.</p>
+    
+    <h3>2.1 Criando e acessando listas</h3>
+    <pre><code># Lista com colchetes
+frutas = ["maçã", "banana", "laranja"]
+print(frutas)          # ['maçã', 'banana', 'laranja']
+
+# Lista vazia
+vazia = []
+vazia2 = list()
+
+# Acesso por índice (igual tuplas)
+print(frutas[0])       # maçã
+frutas[0] = "uva"      # modificação permitida
+print(frutas)          # ['uva', 'banana', 'laranja']</code></pre>
+    
+    <h3>2.2 Métodos principais de listas</h3>
+    <table>
+        <tr><th>Método</th><th>Descrição</th><th>Exemplo</th></tr>
+        <tr><td><code>append()</code></code>么Adiciona no final</code>么<code>frutas.append("pera")</code></code></tr>
+        <tr><td><code>insert()</code></code>么Insere em posição específica</code>么<code>frutas.insert(1, "manga")</code></code></tr>
+        <tr><td><code>remove()</code></code>么Remove pelo valor (primeira ocorrência)</code>么<code>frutas.remove("banana")</code></code></tr>
+        <tr><td><code>pop()</code></code>么Remove e retorna o último (ou índice)</code>么<code>ultimo = frutas.pop()</code></code></tr>
+        <tr><td><code>index()</code></code>么Retorna índice do valor</code>么<code>frutas.index("laranja")</code></code></tr>
+        <tr><td><code>sort()</code></code>么Ordena a lista</code>么<code>numeros.sort()</code></code></tr>
+        <tr><td><code>reverse()</code></code>么Inverte a ordem</code>么<code>frutas.reverse()</code></code></tr>
+        <tr><td><code>len()</code></code>么Tamanho da lista (função)</code>么<code>len(frutas)</code></code></tr>
+    </table>
+    
+    <h3>2.3 Exemplos práticos com listas</h3>
+    <pre><code># Lista de números
+numeros = [3, 1, 4, 1, 5, 9, 2]
+
+# Adicionar elementos
+numeros.append(6)           # [3, 1, 4, 1, 5, 9, 2, 6]
+numeros.insert(2, 99)       # [3, 1, 99, 4, 1, 5, 9, 2, 6]
+
+# Remover elementos
+numeros.remove(1)           # remove o primeiro 1
+ultimo = numeros.pop()      # remove e retorna 6
+
+# Ordenar
+numeros.sort()              # [1, 2, 3, 4, 5, 9, 99]
+numeros.reverse()           # [99, 9, 5, 4, 3, 2, 1]
+
+# Verificar existência
+if 5 in numeros:
+    print("5 está na lista")</code></pre>
+    
+    <h3>2.4 Cópia de listas (cuidado!)</h3>
+    <pre><code># ATENÇÃO: isso cria uma referência, não uma cópia
+lista1 = [1, 2, 3]
+lista2 = lista1          # lista2 aponta para o mesmo objeto
+lista2[0] = 99
+print(lista1)            # [99, 2, 3] (lista1 também foi alterada!)
+
+# Para copiar de verdade:
+lista2 = lista1.copy()   # ou lista1[:]
+lista2[0] = 100
+print(lista1)            # [99, 2, 3] (não altera)</code></pre>
+    
+    <h3>2.5 Listas aninhadas (listas de listas)</h3>
+    <pre><code># Matriz 3x3
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print(matriz[0][1])      # 2 (linha 0, coluna 1)
+
+# Lista de compras com nome, quantidade, preço
+compras = []
+compras.append(["Arroz", 2, 25.90])
+compras.append(["Feijão", 3, 8.50])
+for item in compras:
+    print(f"{item[0]}: {item[1]} x R$ {item[2]} = R$ {item[1] * item[2]:.2f}")</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>🛒 Micro-atividade 2: Gerenciando uma lista de tarefas</h4>
+        <p>Crie um programa que gerencie uma lista de tarefas. O usuário pode:</p>
+        <ol>
+            <li>Adicionar uma nova tarefa (append)</li>
+            <li>Remover uma tarefa (remove ou pop)</li>
+            <li>Exibir todas as tarefas</li>
+            <li>Sair do programa</li>
+        </ol>
+        <p>Use um loop while para o menu e uma lista para armazenar as tarefas.</p>
+    </div>
+
+    <h2>3. Dicionários – pares chave-valor</h2>
+    <p><strong>Dicionários</strong> armazenam dados em pares <strong>chave: valor</strong>. Em vez de índices numéricos, usamos chaves (geralmente strings) para acessar os valores. São ideais para representar registros (como um cadastro de aluno).</p>
+    
+    <h3>3.1 Criando e acessando dicionários</h3>
+    <pre><code># Dicionário com chaves e valores
+aluno = {
+    "nome": "Ana Silva",
+    "idade": 20,
+    "curso": "Engenharia"
+}
+print(aluno)               # {'nome': 'Ana Silva', 'idade': 20, 'curso': 'Engenharia'}
+
+# Acesso por chave
+print(aluno["nome"])       # Ana Silva
+print(aluno["idade"])      # 20
+
+# Adicionar/modificar
+aluno["nota"] = 8.5        # adiciona nova chave
+aluno["idade"] = 21        # modifica valor existente
+
+# Dicionário vazio
+vazio = {}
+vazio2 = dict()</code></pre>
+    
+    <h3>3.2 Métodos de dicionários</h3>
+    <pre><code># keys() - retorna todas as chaves
+print(aluno.keys())        # dict_keys(['nome', 'idade', 'curso', 'nota'])
+
+# values() - retorna todos os valores
+print(aluno.values())      # dict_values(['Ana Silva', 21, 'Engenharia', 8.5])
+
+# items() - retorna pares (chave, valor)
+for chave, valor in aluno.items():
+    print(f"{chave}: {valor}")
+
+# get() - acesso seguro (não gera erro se chave não existir)
+print(aluno.get("endereco", "Não informado"))  # Não informado
+
+# Verificar se chave existe
+if "nome" in aluno:
+    print("Nome está cadastrado")
+
+# Remover
+del aluno["nota"]          # remove a chave "nota"
+idade = aluno.pop("idade") # remove e retorna o valor</code></pre>
+    
+    <h3>3.3 Listas de dicionários (cadastro de múltiplos itens)</h3>
+    <pre><code># Lista de alunos (cada aluno é um dicionário)
+alunos = []
+
+while True:
+    nome = input("Nome do aluno (ou 'sair'): ")
+    if nome.lower() == 'sair':
+        break
+    idade = int(input("Idade: "))
+    nota = float(input("Nota: "))
+    
+    aluno = {"nome": nome, "idade": idade, "nota": nota}
+    alunos.append(aluno)
+
+# Exibir todos os alunos
+print("\n--- Lista de Alunos ---")
+for a in alunos:
+    print(f"{a['nome']} - {a['idade']} anos - Nota: {a['nota']}")</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>📚 Micro-atividade 3: Cadastro de produtos</h4>
+        <p>Crie um dicionário para armazenar produtos de uma loja, onde a chave é o nome do produto e o valor é uma lista com [preço, quantidade]. Em seguida:</p>
+        <ol>
+            <li>Adicione 3 produtos (ex: "arroz", "feijão", "açúcar").</li>
+            <li>Pergunte ao usuário qual produto ele quer comprar e a quantidade.</li>
+            <li>Se houver estoque suficiente, exiba o valor a pagar e atualize o estoque.</li>
+            <li>Ao final, exiba o estoque atualizado.</li>
+        </ol>
+    </div>
+
+    <h2>4. Métodos avançados de strings</h2>
+    <p>Strings também possuem métodos úteis para manipulação e validação de texto.</p>
+    
+    <h3>4.1 Verificação de início/fim e conversão de caso</h3>
+    <pre><code>texto = "Python é uma linguagem poderosa"
+
+# startswith / endswith
+print(texto.startswith("Python"))   # True
+print(texto.endswith("poderosa"))   # True
+
+# upper / lower
+print(texto.upper())   # PYTHON É UMA LINGUAGEM PODEROSA
+print(texto.lower())   # python é uma linguagem poderosa
+print(texto.capitalize())  # Python é uma linguagem poderosa
+
+# count - conta ocorrências
+print(texto.count("a"))          # 4
+print(texto.lower().count("a"))  # 5 (inclui maiúscula)</code></pre>
+    
+    <h3>4.2 Validação de conteúdo</h3>
+    <pre><code># isalpha() - só letras (sem espaços)
+print("Python".isalpha())      # True
+print("Python3".isalpha())     # False (tem número)
+print("Python é".isalpha())    # False (tem espaço)
+
+# isdigit() - só dígitos
+print("123".isdigit())         # True
+print("12.3".isdigit())        # False (ponto)
+
+# isalnum() - letras e números (sem espaços)
+print("Python3".isalnum())     # True
+print("Python 3".isalnum())    # False (espaço)
+
+# isspace() - só espaços
+print("   ".isspace())         # True</code></pre>
+    
+    <h3>4.3 Split, join e replace</h3>
+    <pre><code># split - divide string em lista
+frase = "maçã,banana,laranja,uva"
+lista = frase.split(",")
+print(lista)        # ['maçã', 'banana', 'laranja', 'uva']
+
+# join - junta lista em string
+nova_frase = "-".join(lista)
+print(nova_frase)   # maçã-banana-laranja-uva
+
+# replace - substitui
+texto = "O rato roeu a roupa do rei de Roma"
+novo = texto.replace("rato", "gato")
+print(novo)         # O gato roeu a roupa do rei de Roma
+
+# strip - remove espaços das extremidades
+texto_com_espacos = "   Olá   "
+print(texto_com_espacos.strip())  # "Olá"</code></pre>
+    
+    <h3>4.4 Find e centralização</h3>
+    <pre><code># find - encontra posição da primeira ocorrência
+texto = "Python é incrível, Python é poderoso"
+pos = texto.find("Python")
+print(pos)          # 0 (primeira ocorrência)
+print(texto.find("Java"))   # -1 (não encontrado)
+
+# center - centraliza texto
+titulo = "MENU"
+print(titulo.center(20, "-"))   # --------MENU---------</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>✂️ Micro-atividade 4: Processamento de texto</h4>
+        <p>Peça ao usuário para digitar uma frase. Em seguida, faça:</p>
+        <ol>
+            <li>Exiba a frase em maiúsculas e em minúsculas.</li>
+            <li>Conte quantas vogais (a, e, i, o, u) existem na frase (ignore maiúsculas).</li>
+            <li>Substitua todos os espaços por hífens (-) e exiba o resultado.</li>
+            <li>Divida a frase em palavras (split) e exiba a lista de palavras.</li>
+        </ol>
+    </div>
+
+    <h2>5. Comparativo entre as estruturas</h2>
+    
+    <table>
+        <td><th>Característica</th><th>Tupla</th><th>Lista</th><th>Dicionário</th></tr>
+        <tr><td>Mutabilidade</code>么Imutável</code>么Mutável</code>么Mutável</code></tr>
+        <tr><td>Índice</code>么Numérico (0, 1, 2...)</code>么Numérico (0, 1, 2...)</code>么Chave (string, int, etc.)</code></tr>
+        <tr><td>Sintaxe</code>么<code>()</code></code>么<code>[]</code></code>么<code>{}</code></code></td>
+        <tr><td>Velocidade de busca</code>么Mais rápida</code>么Razoável</code>么Muito rápida (hash)</code></td>
+        <tr><td>Uso típico</code>么Dados constantes, coordenadas</code>么Sequências dinâmicas</code>么Registros, catálogos</code></tr>
+    </table>
+    
+    <div class="destaque-box">
+        🧠 <strong>Resumo prático:</strong>
+        <ul>
+            <li><strong>Use tuplas</strong> para dados que não devem mudar (dias da semana, coordenadas, constantes).</li>
+            <li><strong>Use listas</strong> para sequências que precisam ser alteradas (lista de tarefas, notas de alunos).</li>
+            <li><strong>Use dicionários</strong> para dados que serão acessados por chave (cadastro de clientes, configurações).</li>
+        </ul>
+    </div>
+
+    <h2>6. Exercícios resolvidos</h2>
+    
+    <h3>Exercício 1: Busca sequencial em lista</h3>
+    <pre><code>def busca_sequencial(lista, valor):
+    for i in range(len(lista)):
+        if lista[i] == valor:
+            return i
+    return -1
+
+numeros = [10, 20, 30, 40, 50]
+print(busca_sequencial(numeros, 30))  # 2
+print(busca_sequencial(numeros, 99))  # -1</code></pre>
+    
+    <h3>Exercício 2: Cadastro de notas com média</h3>
+    <pre><code>notas = []
+while True:
+    n = float(input("Digite uma nota (negativo para sair): "))
+    if n < 0:
+        break
+    notas.append(n)
+
+if notas:
+    media = sum(notas) / len(notas)
+    print(f"Notas: {notas}")
+    print(f"Média: {media:.2f}")
+else:
+    print("Nenhuma nota cadastrada.")</code></pre>
+    
+    <h3>Exercício 3: Dicionário de alunos (aprovado/reprovado)</h3>
+    <pre><code>aluno = {}
+aluno['nome'] = input("Nome: ")
+n1 = float(input("Nota 1: "))
+n2 = float(input("Nota 2: "))
+n3 = float(input("Nota 3: "))
+
+media = (n1 + n2 + n3) / 3
+aluno['media'] = media
+
+if media >= 7:
+    aluno['situacao'] = "Aprovado"
+elif media >= 5:
+    aluno['situacao'] = "Exame"
+else:
+    aluno['situacao'] = "Reprovado"
+
+for chave, valor in aluno.items():
+    print(f"{chave}: {valor}")</code></pre>
+
+    <hr>
+    <h2>Resumo da apostila</h2>
+    <ul>
+        <li><strong>Tuplas</strong>: imutáveis, usam <code>()</code>, acesso por índice. Boas para dados constantes.</li>
+        <li><strong>Listas</strong>: mutáveis, usam <code>[]</code>, métodos <code>append()</code>, <code>insert()</code>, <code>remove()</code>, <code>pop()</code>, <code>sort()</code>.</li>
+        <li><strong>Dicionários</strong>: pares chave-valor, usam <code>{}</code>, acesso por chave. Métodos <code>keys()</code>, <code>values()</code>, <code>items()</code>.</li>
+        <li><strong>Strings</strong>: métodos úteis como <code>upper()</code>, <code>lower()</code>, <code>split()</code>, <code>join()</code>, <code>replace()</code>, <code>strip()</code>.</li>
+        <li><strong>Validação de strings</strong>: <code>isalpha()</code>, <code>isdigit()</code>, <code>isalnum()</code>, <code>isspace()</code>.</li>
+    </ul>
+    
+    <div class="destaque-box" style="background: #B4D3D9; border-left-color: #9B8EC7;">
+        🚀 <strong>Conclusão do curso:</strong> Parabéns! Você concluiu todas as apostilas do curso de Lógica de Programação e Algoritmos. Agora você domina os fundamentos: variáveis, operadores, estruturas condicionais, laços de repetição, funções e estruturas de dados. Continue praticando e explorando projetos reais para consolidar seu conhecimento. O próximo passo é aprofundar-se em programação orientada a objetos e bibliotecas Python!
+    </div>
+
+    <footer>
+        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
+        <p>Edição 1 | Junho de 2026</p>
+    </footer>
+</div>
+</body>
+</html>

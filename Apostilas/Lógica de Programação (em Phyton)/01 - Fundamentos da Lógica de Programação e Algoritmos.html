@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila: Lógica de Programação e Algoritmos - Fundamentos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+            background-color: #F2EAE0;
+            padding: 48px 24px;
+            color: #2c2c2c;
+            line-height: 1.65;
+        }
+
+        .apostila-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #9B8EC7;
+            border-left: 6px solid #BDA6CE;
+            padding-left: 22px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #9B8EC7;
+            border-bottom: 2px solid #B4D3D9;
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: #BDA6CE;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #F2EAE0;
+            border-left: 5px solid #BDA6CE;
+            padding: 18px 24px;
+            margin: 28px 0;
+            border-radius: 20px;
+            line-height: 1.65;
+            color: #2c2c2c;
+        }
+
+        code {
+            background-color: #eef2fa;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: #9B8EC7;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2c2c2c;
+            color: #F2EAE0;
+            padding: 20px 24px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 24px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            color: #F2EAE0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #B4D3D9;
+            border: 1px solid #cbdbe2;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #2c2c2c;
+        }
+
+        td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            background-color: #fff;
+        }
+
+        ul, ol {
+            margin: 16px 0 20px 28px;
+            line-height: 1.7;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .micro-atividade {
+            background-color: #F2EAE0;
+            border: 1px solid #BDA6CE;
+            border-radius: 28px;
+            padding: 22px 28px;
+            margin: 32px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .micro-atividade h4 {
+            font-size: 20px;
+            color: #9B8EC7;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            background-color: #9B8EC7;
+            color: #F2EAE0;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        hr {
+            margin: 36px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #B4D3D9, #F2EAE0, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 0.8rem;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+        }
+
+        footer p{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+        }
+
+        strong {
+            color: #9B8EC7;
+        }
+        
+        .figura-placeholder {
+            background: #B4D3D9;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #2c2c2c;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">LÓGICA DE PROGRAMAÇÃO | ALGORITMOS</span>
+    <h1>Fundamentos da Lógica de Programação e Algoritmos<br><span style="font-size: 22px; color:#BDA6CE;">O primeiro passo para se tornar um programador</span></h1>
+    
+    <p>Antes de escrever qualquer código, é preciso <strong>pensar</strong> de forma estruturada. A lógica de programação é a habilidade de organizar ideias e ações em uma sequência lógica para resolver problemas. O <strong>algoritmo</strong> é a materialização dessa sequência. Esta apostila apresenta os conceitos fundamentais: o que são algoritmos, como representá-los, como funciona um computador por dentro e o que são linguagens de programação. Tudo com exemplos práticos do dia a dia e exercícios para fixação.</p>
+
+    <h2>1. Introdução à lógica e aos algoritmos</h2>
+    
+    <h3>1.1 O que é lógica?</h3>
+    <p>Lógica é a ciência que estuda as formas do pensamento e as operações intelectuais. No contexto da programação, lógica é a <strong>maneira como organizamos instruções e pensamentos para resolver um problema de forma racional</strong>. Todo dia usamos lógica: ao acordar, decidimos a ordem de nos vestir, tomar café e escovar os dentes. Essas decisões têm um motivo, mesmo que automático.</p>
+    
+    <div class="destaque-box">
+        📌 <strong>Lógica na computação:</strong> “Maneira pela qual instruções, assertivas e pressupostos são organizados num algoritmo para viabilizar a implantação de um programa” (Dicionário Michaelis).
+    </div>
+    
+    <h3>1.2 O que é um algoritmo?</h3>
+    <p><strong>Algoritmo</strong> é uma sequência finita de passos bem definidos e ordenados que, quando executados, resolvem um problema ou realizam uma tarefa. Algoritmos existem muito antes dos computadores: uma receita de bolo, as instruções para trocar um pneu, a fórmula de Bhaskara – tudo isso são algoritmos.</p>
+    
+    <p><strong>Exemplo clássico: fazer um sanduíche</strong></p>
+    <ol>
+        <li>Pegue duas fatias de pão.</li>
+        <li>Passe manteiga em uma das fatias.</li>
+        <li>Coloque uma fatia de queijo sobre a manteiga.</li>
+        <li>Coloque uma fatia de presunto sobre o queijo.</li>
+        <li>Cubra com a segunda fatia de pão.</li>
+        <li>Seu sanduíche está pronto!</li>
+    </ol>
+    <p>Se você trocar a ordem (colocar o presunto antes do queijo), o resultado final pode ser diferente – mas ainda será um sanduíche. Já em operações matemáticas, a ordem é <strong>crítica</strong>.</p>
+    
+    <p><strong>Exemplo matemático: resolver [(a + b) × c + d]</strong></p>
+    <ol>
+        <li>Calcule a + b (dentro dos parênteses).</li>
+        <li>Multiplique o resultado por c.</li>
+        <li>Some d ao resultado.</li>
+    </ol>
+    <p>Qualquer outra ordem produziria um resultado incorreto, pois viola as regras da precedência de operadores.</p>
+    
+    <div class="micro-atividade">
+        <h4>📝 Micro-atividade 1: Criando algoritmos do dia a dia</h4>
+        <p>Escreva um algoritmo (sequência de passos) para as seguintes tarefas do cotidiano:</p>
+        <ol>
+            <li>Trocar uma lâmpada queimada.</li>
+            <li>Calcular a média de duas notas escolares.</li>
+            <li>Sacar dinheiro em um caixa eletrônico.</li>
+        </ol>
+        <p>Use descrição narrativa (linguagem natural) e depois tente pensar se algum passo poderia ser mais específico para evitar ambiguidades.</p>
+    </div>
+
+    <h2>2. Sistemas de computação – como um computador funciona</h2>
+    <p>Algoritmos são executados por computadores. Para entender programação, é útil conhecer a <strong>arquitetura básica</strong> de um computador.</p>
+    
+    <h3>2.1 A máquina de von Neumann</h3>
+    <p>Proposta em 1946 por John von Neumann, essa arquitetura é a base de praticamente todos os computadores modernos. Ela possui cinco componentes principais:</p>
+    
+    <div class="figura-placeholder">
+        🖥️ [DIAGRAMA DA MÁQUINA DE VON NEUMANN]<br>
+        Memória → ULA ←→ UC ←→ Entrada/Saída
+    </div>
+    
+    <ul>
+        <li><strong>Memória (RAM):</strong> armazena o programa em execução e os dados. Tudo em código binário (0 e 1).</li>
+        <li><strong>Unidade Lógica e Aritmética (ULA):</strong> realiza cálculos (soma, subtração, comparações).</li>
+        <li><strong>Unidade de Controle (UC):</strong> gerencia o fluxo de execução – decide qual instrução executar a seguir.</li>
+        <li><strong>Dispositivos de entrada:</strong> teclado, mouse, scanner – por onde inserimos dados.</li>
+        <li><strong>Dispositivos de saída:</strong> monitor, impressora – por onde o computador nos mostra resultados.</li>
+    </ul>
+    <p>A ULA e a UC juntas formam a <strong>CPU (Central Processing Unit)</strong> – o "cérebro" do computador.</p>
+    
+    <h3>2.2 Bit, byte e palavra</h3>
+    <ul>
+        <li><strong>Bit (binary digit):</strong> a menor unidade de informação. Pode ser 0 ou 1.</li>
+        <li><strong>Byte:</strong> 8 bits. É a unidade básica de armazenamento (ex: um caractere 'A' ocupa 1 byte).</li>
+        <li><strong>Palavra (word):</strong> bloco de bits que a CPU manipula de uma vez. Computadores atuais usam 64 bits (8 bytes).</li>
+    </ul>
+    
+    <table>
+        <tr><th>Unidade</th><th>Equivalência</th><th>Abreviação</th></tr>
+        <tr><td>1 byte</td><td>8 bits</td><td>B</td></tr>
+        <tr><td>1 kilobyte</td><td>1.024 bytes</td><td>KB</td></tr>
+        <tr><td>1 megabyte</td><td>1.024 KB</td><td>MB</td></tr>
+        <tr><td>1 gigabyte</td><td>1.024 MB</td><td>GB</td></tr>
+        <tr><td>1 terabyte</td><td>1.024 GB</td><td>TB</td></tr>
+    </table>
+    
+    <h3>2.3 Sistema operacional</h3>
+    <p>O <strong>sistema operacional (SO)</strong> é um software que gerencia o hardware e permite que outros programas sejam executados. Ele <strong>abstrai as complexidades do hardware</strong>, permitindo que você escreva programas para o SO, não para uma máquina específica. Exemplos: Windows, Linux, macOS, Android, iOS.</p>
+    
+    <div class="micro-atividade">
+        <h4>💡 Micro-atividade 2: Identificando componentes</h4>
+        <p>Pesquise ou reflita: No seu computador ou celular, identifique:</p>
+        <ul>
+            <li>Qual é o processador (CPU)? Quantos bits ele opera?</li>
+            <li>Quantos gigabytes de memória RAM ele possui?</li>
+            <li>Qual sistema operacional está instalado?</li>
+        </ul>
+        <p>Essas informações ajudam a entender os recursos disponíveis para executar seus programas.</p>
+    </div>
+
+    <h2>3. Representações de algoritmos</h2>
+    <p>Algoritmos podem ser representados de diferentes formas. Conhecer essas representações é essencial para planejar soluções antes de codificar.</p>
+    
+    <h3>3.1 Descrição narrativa</h3>
+    <p>É a forma mais simples: escrever os passos em <strong>linguagem natural</strong> (português). É flexível, mas pode ser <strong>ambígua</strong>. Exemplo:</p>
+    <pre><code>Algoritmo para verificar se dois números são iguais:
+1. Ler dois valores (x e y).
+2. Verificar se x e y são iguais.
+3. Se forem iguais, mostrar "Valores iguais!".
+4. Se forem diferentes, mostrar "Valores diferentes!".
+5. Fim.</code></pre>
+    <p>Problema: o passo 2 é vago – "como verificar"? A descrição narrativa é útil para rascunhos, mas não para implementação direta.</p>
+    
+    <h3>3.2 Pseudocódigo</h3>
+    <p>O <strong>pseudocódigo</strong> é uma representação intermediária entre a linguagem natural e a linguagem de programação. Ele usa regras mais rígidas (palavras-chave como <code>SE</code>, <code>ENTÃO</code>, <code>SENÃO</code>, <code>ENQUANTO</code>) e é compreensível para humanos e fácil de converter para código real.</p>
+    <pre><code>ALGORITMO verificar_igualdade
+VAR
+    x, y: INTEIRO
+INÍCIO
+    LER(x, y)
+    SE x = y ENTÃO
+        ESCREVER("Valores iguais!")
+    SENÃO
+        ESCREVER("Valores diferentes!")
+    FIM_SE
+FIM</code></pre>
+    
+    <h3>3.3 Fluxograma</h3>
+    <p>O <strong>fluxograma</strong> é uma representação gráfica do algoritmo, usando símbolos padronizados (ISO 5807). É excelente para visualizar o fluxo de decisões e repetições.</p>
+    
+    <div class="figura-placeholder">
+        🔷 [SÍMBOLOS DE FLUXOGRAMA]<br>
+        ⚪ Terminal (início/fim) | ▭ Processo (ação/atribuição) | ◇ Decisão (condição) | ⬇️ Setas (fluxo)
+    </div>
+    
+    <p><strong>Exemplo de fluxograma para verificar igualdade:</strong></p>
+    <pre><code>(Início) → [Ler x, y] → ◇ (x = y?) 
+                              ├─ Sim → [Exibir "Iguais"] → (Fim)
+                              └─ Não → [Exibir "Diferentes"] → (Fim)</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>✏️ Micro-atividade 3: Convertendo representações</h4>
+        <p>Dado o algoritmo de cálculo da média de três números (somar os três e dividir por 3), represente-o de três maneiras:</p>
+        <ol>
+            <li>Descrição narrativa</li>
+            <li>Pseudocódigo (use as palavras INÍCIO, LER, CALCULAR, ESCREVER, FIM)</li>
+            <li>Fluxograma (desenhe no papel ou descreva os símbolos)</li>
+        </ol>
+    </div>
+
+    <h2>4. Linguagens de programação e compiladores</h2>
+    <p>O computador só entende <strong>linguagem de máquina</strong> (binário: 0 e 1). Programar diretamente em binário é extremamente trabalhoso (imagine escrever "10110000 01100001" para somar dois números!).</p>
+    
+    <h3>4.1 O que é uma linguagem de programação?</h3>
+    <p>Uma <strong>linguagem de programação</strong> é um conjunto de regras (sintaxe) que permite ao programador escrever instruções de forma mais próxima da linguagem humana. Exemplos: Python, Java, C, JavaScript.</p>
+    
+    <h3>4.2 Compilador vs. interpretador</h3>
+    <ul>
+        <li><strong>Compilador:</strong> traduz o código-fonte inteiro para código de máquina <strong>antes</strong> da execução. Gera um arquivo executável (.exe, por exemplo). Exemplos: C, C++, Go.</li>
+        <li><strong>Interpretador:</strong> traduz e executa o código linha por linha, em tempo real. Exemplos: Python, JavaScript, PHP.</li>
+    </ul>
+    
+    <div class="destaque-box">
+        🔄 <strong>Processo de compilação:</strong><br>
+        Código-fonte (texto) → Compilador → Código de máquina (binário) → Execução<br>
+        <strong>Interpretação:</strong><br>
+        Código-fonte → Interpretador (executa linha a linha) → Resultado
+    </div>
+    
+    <p>Linguagens compiladas geralmente são mais rápidas; linguagens interpretadas são mais flexíveis e portáteis. O Python, que usaremos, é uma linguagem <strong>interpretada</strong>.</p>
+    
+    <h3>4.3 As linguagens mais populares (2023, segundo Stack Overflow)</h3>
+    
+    <div class="figura-placeholder">
+        📊 JavaScript (63%) | Python (49%) | Java (30%) | C# (27%) | C++ (22%) | PHP (18%)
+    </div>
+    
+    <ul>
+        <li><strong>JavaScript:</strong> líder em desenvolvimento web (front-end e back-end).</li>
+        <li><strong>Python:</strong> versátil, fácil de aprender, líder em ciência de dados e IA.</li>
+        <li><strong>Java:</strong> robusta, usada em sistemas corporativos e Android.</li>
+        <li><strong>C/C++:</strong> alto desempenho, usadas em jogos, sistemas operacionais, embarcados.</li>
+        <li><strong>C#:</strong> da Microsoft, forte em jogos (Unity) e aplicações Windows.</li>
+        <li><strong>PHP:</strong> desenvolvimento web (ainda muito usado em back-end).</li>
+    </ul>
+    
+    <div class="micro-atividade">
+        <h4>🌐 Micro-atividade 4: Pesquisa de mercado</h4>
+        <p>Pesquise no LinkedIn ou em sites de vagas (ex: Indeed, Catho) as seguintes linguagens: Python, Java, JavaScript, C#. Anote quantas vagas aparecem para cada uma na sua região. Qual é a mais requisitada? Isso ajuda a direcionar os estudos para o mercado local.</p>
+    </div>
+
+    <h2>5. Linguagem Python – a escolha deste curso</h2>
+    <p><strong>Python</strong> é uma linguagem de propósito geral, interpretada, de alto nível e com sintaxe limpa e legível. Criada por Guido van Rossum no final dos anos 1980, seu nome é uma homenagem ao grupo britânico <em>Monty Python</em> (não à cobra!).</p>
+    
+    <h3>5.1 Por que Python é tão popular?</h3>
+    <ul>
+        <li><strong>Sintaxe simples e intuitiva</strong> – parece quase português estruturado.</li>
+        <li><strong>Multiparadigma:</strong> suporta programação estruturada, orientada a objetos e funcional.</li>
+        <li><strong>Imensa coleção de bibliotecas</strong> – para web (Django, Flask), dados (Pandas, NumPy), IA (TensorFlow, PyTorch), jogos (Pygame) e muito mais.</li>
+        <li><strong>Multiplataforma:</strong> roda em Windows, Linux, macOS, dispositivos móveis e até em microcontroladores.</li>
+        <li><strong>Open source</strong> e com enorme comunidade ativa.</li>
+    </ul>
+    
+    <h3>5.2 O Zen do Python</h3>
+    <p>Tim Peters, um dos desenvolvedores da linguagem, escreveu um "manifesto" chamado <strong>Zen do Python</strong>. Alguns princípios:</p>
+    <ul>
+        <li><em>Bonito é melhor que feio.</em></li>
+        <li><em>Explícito é melhor que implícito.</em></li>
+        <li><em>Simples é melhor que complexo.</em></li>
+        <li><em>Legibilidade faz diferença.</em></li>
+        <li><em>Deve haver um – e preferencialmente só um – modo óbvio para fazer algo.</em></li>
+    </ul>
+    
+    <h3>5.3 Aplicações reais do Python</h3>
+    <ul>
+        <li><strong>Google:</strong> muitos sistemas internos e o próprio buscador usam Python.</li>
+        <li><strong>YouTube:</strong> grande parte da plataforma foi escrita em Python.</li>
+        <li><strong>Netflix:</strong> usa Python para recomendações e análise de dados.</li>
+        <li><strong>Industrial Light & Magic (Star Wars, Jurassic Park):</strong> softwares de efeitos visuais em Python.</li>
+        <li><strong>Ciência de dados e IA:</strong> líder absoluto.</li>
+    </ul>
+    
+    <div class="micro-atividade">
+        <h4>🐍 Micro-atividade 5: Instalando Python e primeiro teste</h4>
+        <p>Se você ainda não tem Python instalado, acesse <a href="https://python.org/downloads" target="_blank">python.org/downloads</a> e baixe a versão mais recente do Python 3. Após instalar, abra o terminal (ou prompt de comando) e digite <code>python --version</code> para confirmar. Depois, digite <code>python</code> para entrar no modo interativo e experimente:</p>
+        <pre><code>>>> print("Olá, mundo!")
+>>> 2 + 3 * 4
+>>> nome = "Ana"
+>>> print(f"Bem-vinda, {nome}!")</code></pre>
+        <p>Isso é apenas uma amostra – nos próximos conteúdos programaremos de verdade!</p>
+    </div>
+
+    <hr>
+    <h2>Resumo da apostila</h2>
+    <ul>
+        <li><strong>Lógica:</strong> organização racional do pensamento para resolver problemas.</li>
+        <li><strong>Algoritmo:</strong> sequência finita de passos para realizar uma tarefa.</li>
+        <li><strong>Arquitetura de von Neumann:</strong> modelo de computador com memória, ULA, UC, entrada e saída.</li>
+        <li><strong>Bit/Byte:</strong> unidades de informação – bit é 0/1, byte = 8 bits.</li>
+        <li><strong>Representações de algoritmos:</strong> descrição narrativa (texto solto), pseudocódigo (regras), fluxograma (gráfico).</li>
+        <li><strong>Linguagens de programação:</strong> ferramentas para escrever instruções de forma legível. Compiladas vs. interpretadas.</li>
+        <li><strong>Python:</strong> linguagem escolhida – simples, poderosa, versátil, ideal para iniciantes.</li>
+    </ul>
+    
+    <div class="destaque-box" style="background:#B4D3D9; border-left-color: #9B8EC7;">
+        🎯 <strong>Próximos passos:</strong> Agora que você entende os conceitos fundamentais, o próximo conteúdo começará a aplicar esses conceitos na prática com Python – variáveis, tipos de dados, operadores e estruturas de controle. Não pule esta base teórica; ela é o alicerce de tudo o que virá!
+    </div>
+
+    <footer>
+        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
+        <p>Edição 1 | Junho de 2026</p>
+    </footer>
+</div>
+</body>
+</html>

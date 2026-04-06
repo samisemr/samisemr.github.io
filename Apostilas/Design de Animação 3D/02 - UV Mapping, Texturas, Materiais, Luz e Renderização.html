@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design de Animação 3D | Parte 2: UV, Texturas, Materiais e Render</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #1e0a2f 0%, #2e1748 100%);
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+            line-height: 1.75;
+            padding: 2rem 1rem;
+            color: #f0ebe0;
+        }
+        .apostila {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 2rem;
+            overflow: hidden;
+            color: #2d241f;
+            font-family: 'Segoe UI', 'Roboto', Georgia, serif;
+        }
+        .hero {
+            background: linear-gradient(135deg, #ffb347 0%, #ff6b4a 40%, #9b2e6b 100%);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff0c0, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.2);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+        }
+        .conteudo {
+            padding: 2.5rem 2.2rem;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #9b2e6b;
+            border-left: 8px solid #ff914d;
+            padding-left: 1rem;
+            margin: 2rem 0 1.2rem 0;
+        }
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #c75c3a;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #a5422c;
+            margin: 1.2rem 0 0.5rem;
+        }
+        p {
+            margin-bottom: 1.1rem;
+            text-align: justify;
+        }
+        .dica, .curiosidade, .saiba-mais {
+            background: #fff7ed;
+            border-left: 8px solid #ff9800;
+            padding: 1rem 1.6rem;
+            margin: 1.6rem 0;
+            border-radius: 24px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .dica::before { content: "💡 DICA: "; font-weight: 800; color: #c95a1a; }
+        .curiosidade::before { content: "✨ CURIOSIDADE: "; font-weight: 800; color: #9b2e6b; }
+        .saiba-mais::before { content: "📘 SAIBA MAIS: "; font-weight: 800; color: #b45f2b; }
+        .exercicio {
+            background: #fef3e4;
+            border-radius: 28px;
+            padding: 1.3rem 1.8rem;
+            margin: 1.8rem 0;
+            border: 1px solid #ffd4a3;
+        }
+        .exercicio h4 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #bc4a2a;
+        }
+        .exercicio h4::before { content: "🎯"; font-size: 1.3rem; }
+        .figura-placeholder {
+            background: #f5efe5;
+            border: 2px dashed #c69c6d;
+            border-radius: 32px;
+            padding: 1.5rem;
+            margin: 1.8rem 0;
+            text-align: center;
+            font-family: monospace;
+            color: #8a633b;
+        }
+        .figura-placeholder .img-descricao {
+            display: block;
+            margin-top: 10px;
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+        ul, ol {
+            margin: 0.8rem 0 1rem 1.8rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fffaf2;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        th {
+            background-color: #9b2e6b;
+            color: white;
+            padding: 10px;
+            font-weight: 700;
+        }
+        td {
+            border: 1px solid #f0dbbc;
+            padding: 10px;
+            background-color: #fffef9;
+        }
+        .resumo-final {
+            background: linear-gradient(120deg, #ffeada, #ffefdb);
+            padding: 1.8rem 2rem;
+            border-radius: 36px;
+            margin-top: 2rem;
+        }
+        .resumo-final h3 { color: #9b2e6b; margin-top: 0; }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            font-size: 0.8rem;
+            border-top: 1px solid #eedfcb;
+            color: #a77c53;
+        }
+        .aviso-parte {
+            background-color: #9b2e6b20;
+            border: 2px solid #9b2e6b;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 48px;
+            margin: 2rem 0 1rem;
+            font-weight: bold;
+        }
+        @media (max-width: 750px) {
+            .conteudo { padding: 1.3rem; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="apostila">
+    <div class="hero">
+        <h1>🎨 DESIGN DE ANIMAÇÃO 3D</h1>
+        <p>Parte 2 – UV Mapping, Texturas, Materiais, Luz e Renderização</p>
+    </div>
+    <div class="conteudo">
+        <p><strong>Bem-vindo à Parte 2 da apostila de Design de Animação 3D.</strong> Aqui você aprenderá como "desembrulhar" seus modelos 3D para aplicar texturas, entenderá os diferentes tipos de mapas (Diffuse, Normal, Roughness, Metalness, etc.), descobrirá o que é PBR (Physically Based Rendering) e como os materiais interagem com a luz. Também abordaremos iluminação básica (esquema de três pontos) e o processo de renderização, desde motores de render até formatos de saída. Tudo com analogias, exemplos práticos (Blender) e foco em aplicação profissional.</p>
+
+        <!-- ========================================= -->
+        <!-- 1. O QUE É UV MAPPING -->
+        <!-- ========================================= -->
+        <h2>1. O que é UV Mapping e para que serve</h2>
+        <p><strong>UV Mapping</strong> é o processo de projetar a superfície tridimensional de um modelo em um plano bidimensional (como uma folha de papel) para aplicar texturas. As letras <strong>U e V</strong> representam os eixos horizontais e verticais da textura (já que X, Y, Z são usados para coordenadas 3D). Sem UV, o software não sabe onde colocar cada pixel da textura sobre o modelo.</p>
+        
+        <h3>1.1 Analogia da caixa de papelão desmontada</h3>
+        <p>Imagine uma caixa de papelão fechada (nosso modelo 3D). Para pintar a superfície externa com uma imagem, precisamos <strong>desmontar a caixa</strong> cortando suas arestas e aplainando todas as faces no chão. Assim, cada face da caixa vira uma peça plana (chamada de <strong>UV island</strong> – "ilha UV"). O desenho (textura) é aplicado sobre essas peças planas e, quando remontamos a caixa, o desenho aparece no lugar correto. As arestas onde cortamos são chamadas de <strong>seams (costuras)</strong>.</p>
+        
+        <h3>1.2 Analogia do tapete de pele de animal (didática, sem crueldade)</h3>
+        <p>Outra analogia: imagine um tecido estampado que precisa cobrir um animal de pelúcia. O animal tem forma tridimensional complexa (pernas, cabeça, cauda). Para estampar o tecido perfeitamente, você precisa <strong>cortar o tecido em partes planas</strong> (costas, barriga, patas) e depois costurá-las sobre o corpo. No 3D, o "corte" é feito definindo seams; o "tecido" é a textura; a "costura" é a junção das ilhas UV. Uma boa abertura de UV evita distorções (áreas esticadas) e costuras visíveis.</p>
+        
+        <div class="figura-placeholder">
+            🖼️ [IMAGEM: Caixa de papelão desmontada com faces separadas (UV islands) ao lado de uma esfera com seams marcados e seu UV unwrapped (desdobrado) mostrando as ilhas]
+            <span class="img-descricao">Figura 1 – UV unwrapping: modelo 3D (esquerda) e sua representação plana no editor UV (direita).</span>
+        </div>
+
+        <h3>1.3 Como fazer UV Mapping na prática</h3>
+        <p>No Blender (e em outros softwares), o processo básico é:</p>
+        <ol>
+            <li>Selecione o modelo no modo de edição.</li>
+            <li>Marque as <strong>seams (costuras)</strong> nas arestas onde o modelo será "cortado" (tecla U → Mark Seam ou Ctrl+E → Mark Seam). Em personagens, seams comuns são atrás da cabeça, na parte interna dos braços, na sola dos pés.</li>
+            <li>Selecione todas as faces (A) e pressione <strong>U → Unwrap</strong>.</li>
+            <li>Abra o <strong>Editor UV</strong> para visualizar e ajustar as ilhas (mover, rotacionar, escalonar).</li>
+            <li>Use <strong>Average Islands Scale</strong> e <strong>Pack Islands</strong> para uniformizar densidade de texel e otimizar espaço.</li>
+        </ol>
+        <div class="dica">
+            Evite esticar as ilhas UV: no Blender, ative a opção "Stretch" no editor UV (cores azul = sem esticamento, vermelho = esticado). Regiões vermelhas precisam de mais seams ou ajustes.
+        </div>
+        
+        <h2>2. Mapas de textura: o que são, como funcionam, como criar e aplicar</h2>
+        <p><strong>Mapa de textura</strong> é uma imagem (ou conjunto de imagens) aplicada sobre a superfície 3D para definir atributos visuais como cor, relevo, brilho, transparência, etc. Cada mapa tem uma função específica.</p>
+        
+        <h3>2.1 Principais tipos de mapa</h3>
+        <ul>
+            <li><strong>Diffuse (ou Albedo / Base Color)</strong>: define a cor base do material, sem reflexos ou sombras. É o mapa mais básico. Ex: a pele do personagem, a cor da camisa.</li>
+            <li><strong>Normal Map (Mapa de normais)</strong>: codifica em cores RGB a direção das normais da superfície, simulando relevo detalhado (parafusos, poros, costuras) sem adicionar geometria. É o mapa mais importante para otimização.</li>
+            <li><strong>Bump Map</strong>: mapa em tons de cinza (preto = baixo, branco = alto) que também simula relevo, mas de forma menos precisa que o Normal Map. Mais leve, porém menos realista.</li>
+            <li><strong>Displacement Map (Deslocamento)</strong>: diferente do Normal/Bump, este mapa <strong>desloca vértices de verdade</strong>, alterando a geometria. Usado para montanhas, rugas profundas, detalhes extremos. Exige malha subdividida.</li>
+            <li><strong>Specular / Metallic (Especularidade / Metalicidade)</strong>: define como a superfície reflete a luz. Em PBR, usamos <strong>Metalness</strong> (1 = metálico, 0 = não metálico) e <strong>Roughness</strong> (rugosidade).</li>
+            <li><strong>Roughness (Rugosidade)</strong>: controla o espalhamento da reflexão. Valores baixos = superfície lisa e brilhante (espelho); valores altos = superfície fosca (pedra, borracha).</li>
+            <li><strong>Ambient Occlusion (AO – Oclusão de ambiente)</strong>: simula sombras suaves em fendas e cantos (onde a luz ambiente não penetra). Geralmente é multiplicado ao diffuse para dar profundidade.</li>
+            <li><strong>Emissive (Emissão)</strong>: áreas que brilham com luz própria (telas, neon, lâmpadas). Não reage à iluminação da cena.</li>
+            <li><strong>Opacity / Alpha (Opacidade)</strong>: define transparência (preto = transparente, branco = opaco). Usado para cabelos, folhas, rendas.</li>
+        </ul>
+        
+        <div class="figura-placeholder">
+            🖼️ [IMAGEM: Esfera dividida em quadrantes mostrando cada mapa separadamente: Diffuse (cor), Normal (roxo/ciano), Roughness (cinza do fosco ao brilhante), Metalness (branco = metal), e o resultado final renderizado]
+            <span class="img-descricao">Figura 2 – Mapas PBR essenciais e o resultado final combinado.</span>
+        </div>
+        
+        <h3>2.2 Como criar mapas de textura</h3>
+        <p>Existem várias técnicas:</p>
+        <ul>
+            <li><strong>Pintura manual</strong>: use software como <strong>Substance Painter</strong> (padrão da indústria), <strong>Photoshop</strong> ou <strong>Blender (Texture Paint)</strong>. Você pinta diretamente sobre o modelo 3D ou sobre a imagem UV.</li>
+            <li><strong>Baking (assamento)</strong>: a partir de um modelo high poly, você "assar" mapas (Normal, AO, Curvature, etc.) para um modelo low poly (explicado na Parte 1).</li>
+            <li><strong>Procedural (processual)</strong>: usando nós matemáticos dentro do software (Blender Shader Editor, Substance Designer) para gerar texturas infinitas e não destrutivas.</li>
+            <li><strong>Fotografias / scans</strong>: tirar fotos de superfícies reais (madeira, ferrugem, tecido) e tratá-las como texturas.</li>
+        </ul>
+        
+        <div class="curiosidade">
+            Substance Painter se tornou padrão na indústria de games e VFX porque permite pintura em 3D com máscaras inteligentes (ex: desgaste em bordas, sujeira em reentrâncias).
+        </div>
+        
+        <h2>3. Materiais e sua relação com a luz</h2>
+        <p><strong>Material</strong> é a "receita" que define como uma superfície interage com a luz. Ele combina vários mapas (cor, rugosidade, metalicidade, etc.) e parâmetros (índice de refração, transmissão, sub-superfície). Um mesmo modelo pode ter vários materiais (ex: metal, plástico, vidro, pele).</p>
+        
+        <h3>3.1 PBR (Physically Based Rendering – Renderização Baseada na Física)</h3>
+        <p><strong>PBR</strong> é um sistema de materiais que simula o comportamento real da luz, usando parâmetros fisicamente mensuráveis (metalicidade, rugosidade). Diferente dos shaders antigos (que usavam "specular hardness" arbitrária), o PBR garante que o material pareça correto sob qualquer iluminação – dentro de um estúdio, sob o sol, em uma masmorra escura. Mapas PBR fundamentais:</p>
+        <ul>
+            <li><strong>Base Color (Albedo)</strong>: a cor intrínseca, sem reflexos.</li>
+            <li><strong>Metalness (Metalicidade)</strong>: 1 = metal (reflexões coloridas), 0 = não metal (reflexões brancas/difusas).</li>
+            <li><strong>Roughness (Rugosidade)</strong>: 0 = espelho perfeito, 1 = superfície totalmente fosca.</li>
+            <li><strong>Normal Map</strong>: relevo falso.</li>
+            <li><strong>Ambient Occlusion</strong>: sombreamento suave em fendas.</li>
+        </ul>
+        <p>No Blender, o nó <strong>Principled BSDF</strong> é um shader PBR completo. Você conecta as imagens nos sockets correspondentes.</p>
+        
+        <div class="dica">
+            <strong>Regra de ouro PBR</strong>: materiais não metálicos (dielétricos) nunca têm reflexões coloridas – a reflexão é sempre branca/acinzentada. Metais refletem a cor do próprio metal (ouro reflete amarelo, cobre reflete laranja).
+        </div>
+        
+        <h3>3.2 Canais do material e suas especificações</h3>
+        <p>Cada canal do material controla um aspecto visual. Além dos mapas, parâmetros como <strong>IQR (Índice de Refração)</strong>, <strong>Subsurface Scattering (SSS – espalhamento subsuperficial)</strong> (para pele, cera, mármore), e <strong>Transmission (transmissão)</strong> (vidro, água) são usados em materiais avançados.</p>
+        
+        <div class="saiba-mais">
+            O SSS é crucial para pele humana e cera: a luz penetra na superfície, espalha internamente e sai em outro ponto, criando um brilho suave e avermelhado (translucidez).
+        </div>
+        
+        <h2>4. Luz básica – iluminação para renderizar imagens</h2>
+        <p>A iluminação é o que torna uma cena 3D crível. Sem luz, tudo é preto. Existem vários tipos de luzes nos softwares 3D:</p>
+        <ul>
+            <li><strong>Point Light (ponto de luz)</strong>: emite luz em todas as direções (como uma lâmpada desprotegida).</li>
+            <li><strong>Sun (sol)</strong>: luz direcional paralela (simula o sol, sombras paralelas).</li>
+            <li><strong>Spot (holofote)</strong>: cone de luz direcionado (como um refletor de teatro).</li>
+            <li><strong>Area Light (luz de área)</strong>: emite luz a partir de uma superfície retangular (produz sombras suaves, mais realista).</li>
+            <li><strong>HDRI (High Dynamic Range Image)</strong>: imagem esférica de 360° que ilumina a cena globalmente (ambiente + reflexos).</li>
+        </ul>
+        
+        <h3>4.1 Esquema de três pontos (Three-point lighting)</h3>
+        <p>É a técnica básica de iluminação para personagens e objetos, usada no cinema e na fotografia. Composta por:</p>
+        <ul>
+            <li><strong>Key Light (luz principal)</strong>: é a luz mais forte, define a direção da iluminação e as sombras principais. Geralmente colocada a 45° do objeto.</li>
+            <li><strong>Fill Light (luz de preenchimento)</strong>: mais fraca, posicionada no lado oposto à key light. Suaviza as sombras. Pode ser uma área light ou um HDRI fraco.</li>
+            <li><strong>Back Light (luz de fundo / contra-luz)</strong>: atrás do objeto, separa o personagem do fundo, criando um contorno iluminado (rim light). Adiciona profundidade.</li>
+        </ul>
+        <div class="figura-placeholder">
+            🖼️ [IMAGEM: Diagrama mostrando a posição das três luzes em relação ao personagem (key light 45° esquerda, fill light direita suave, back light atrás superior)]
+            <span class="img-descricao">Figura 3 – Esquema de iluminação de três pontos: Key, Fill e Back Light.</span>
+        </div>
+        
+        <div class="curiosidade">
+            Em animação, o esquema de três pontos pode ser adaptado para emoções: luz frontal e suave (inocência), luz lateral forte (drama/mistério), luz por baixo (medo/terror).
+        </div>
+        
+        <h2>5. Renderização (Render)</h2>
+        <p><strong>Renderizar</strong> é o processo de calcular luz, sombras, reflexos, refrações e materiais para gerar a imagem final (ou sequência de frames). É a etapa final do pipeline 3D.</p>
+        
+        <h3>5.1 Motores de render – Ray Tracing vs Tempo Real</h3>
+        <ul>
+            <li><strong>Ray Tracing (traçado de raios)</strong>: simula fisicamente o caminho de cada raio de luz (reflexões, refrações, sombras suaves, cáusticas). Produz realismo extremo, mas é lento. Exemplos: <strong>Cycles (Blender)</strong>, <strong>Arnold (Maya)</strong>, <strong>V-Ray</strong>, <strong>RenderMan (Pixar)</strong>.</li>
+            <li><strong>Render em tempo real (Real-time)</strong>: usa aproximações e técnicas de rasterização para rodar a 30+ quadros por segundo. Ideal para jogos e pré-visualização. Exemplos: <strong>Eevee (Blender)</strong>, <strong>Unreal Engine</strong>, <strong>Unity</strong>.</li>
+        </ul>
+        
+        <h3>5.2 Configurações comuns de render</h3>
+        <ul>
+            <li><strong>Resolução</strong>: largura x altura em pixels. Padrões: 1920x1080 (Full HD), 3840x2160 (4K), 1280x720 (HD).</li>
+            <li><strong>Quadros por segundo (FPS)</strong>: 24 fps (cinema), 30 fps (TV brasileira/web), 60 fps (jogos).</li>
+            <li><strong>Formato de saída</strong>: para animações, renderize <strong>sequência de imagens</strong> (PNG, EXR, TIFF) – se travar no meio, você retorna do último frame. Depois use um editor de vídeo (DaVinci Resolve, Premiere) para compilar em MP4.</li>
+            <li><strong>Amostras (Samples)</strong>: no ray tracing, controla a qualidade. Mais amostras = menos ruído, mas mais tempo de render.</li>
+            <li><strong>Bounces (rebatimentos)</strong>: número de vezes que a luz pode refletir/refratar. Mais rebatimentos = mais realismo (especialmente em vidro e ambientes fechados).</li>
+        </ul>
+        
+        <div class="dica">
+            <strong>Otimização de render</strong>: use <strong>denoising</strong> (desruído) para reduzir amostras pela metade sem perder qualidade. No Blender, ative o denoiser (OptiX ou Open Image Denoise).
+        </div>
+        
+        <div class="figura-placeholder">
+            🖼️ [IMAGEM: Comparativo entre render com ray tracing (Cycles) – sombras suaves, reflexos realistas – e render em tempo real (Eevee) – mais rápido, com pequenas aproximações]
+            <span class="img-descricao">Figura 4 – Diferença visual entre ray tracing (Cycles) e render em tempo real (Eevee).</span>
+        </div>
+        
+        <h3>5.3 Render para animação vs render para imagem estática</h3>
+        <p>Para uma imagem única, você pode usar amostras altas (ex: 1024 samples) e demorar minutos por frame. Para animação de 30 segundos a 24 fps (720 frames), o tempo total explode. Estratégias:</p>
+        <ul>
+            <li>Use denoising e amostras moderadas (128-256).</li>
+            <li>Prefira motores otimizados para animação (Eevee para pré-visualização).</li>
+            <li>Renderize em fazendas de render (servidores na nuvem) para produções profissionais.</li>
+        </ul>
+        
+        <!-- EXERCÍCIOS PRÁTICOS PARTE 2 -->
+        <h2>Exercícios práticos – UV, Texturas e Materiais</h2>
+        <div class="exercicio">
+            <h4>Exercício 1 – Desembrulhando um personagem simples</h4>
+            <p>Modele um boneco simples (cabeça, tronco, braços cilíndricos). Marque seams (costuras) atrás da cabeça, na parte interna dos braços e sob os pés. Faça o UV Unwrap e organize as ilhas no editor UV. Exporte o UV layout como imagem e pinte uma textura básica no Photoshop/Blender Texture Paint.</p>
+        </div>
+        <div class="exercicio">
+            <h4>Exercício 2 – Criando materiais PBR com nós</h4>
+            <p>No Blender, crie uma esfera. No Shader Editor, adicione um nó Principled BSDF. Conecte imagens de textura PBR (baixe gratuitamente em sites como AmbientCG ou Poly Haven) nos sockets Base Color, Roughness, Metalness e Normal. Ajuste a iluminação com um HDRI para ver o resultado realista.</p>
+        </div>
+        <div class="exercicio">
+            <h4>Exercício 3 – Esquema de três pontos</h4>
+            <p>Crie uma cena simples com um personagem ou objeto. Adicione uma Key Light (Point ou Sun), uma Fill Light (fraca, lado oposto) e uma Back Light (atrás, intensidade média). Renderize três versões: só key light, key + fill, e o completo com back light. Compare a profundidade e o destaque.</p>
+        </div>
+        <div class="exercicio">
+            <h4>Exercício 4 – Bake de normal map</h4>
+            <p>Crie um modelo high poly (cubo com detalhes esculpidos) e um low poly (cubo simples com mesma forma geral). Faça o UV do low poly. Utilize o modificador "Bake" no Blender (Cycles) para gerar um Normal Map da high para a low poly. Aplique o normal map no low poly e compare o resultado visual.</p>
+        </div>
+        
+        <!-- RESUMO FINAL DA PARTE 2 -->
+        <div class="resumo-final">
+            <h3>📌 Resumo – Parte 2: UV, Texturas, Materiais e Render</h3>
+            <ul>
+                <li><strong>UV Mapping</strong>: projetar o modelo 3D em um plano 2D usando seams (costuras). Ilhas UV não podem se sobrepor.</li>
+                <li><strong>Mapas de textura</strong>: Diffuse (cor), Normal (relevo), Roughness (fosco/brilhante), Metalness (metal/dielétrico), AO (sombras suaves), Emissive (brilho próprio).</li>
+                <li><strong>Materiais PBR</strong>: simulação física realista; metal não metálico reflete em branco, metais refletem em cor.</li>
+                <li><strong>Iluminação</strong>: esquema de três pontos (Key, Fill, Back). Tipos de luz: Point, Sun, Spot, Area, HDRI.</li>
+                <li><strong>Renderização</strong>: ray tracing (realista/lento) vs tempo real (rápido/ aproximado). Sempre use sequência de imagens (PNG/EXR).</li>
+                <li><strong>Otimização</strong>: denoising, amostras equilibradas, resolução adequada ao destino (web, cinema, games).</li>
+            </ul>
+            <p>Com esses conhecimentos, você é capaz de texturizar seus modelos 3D profissionalmente e criar renders impressionantes.</p>
+        </div>
+        
+        <div class="aviso-parte">
+            ✨ Fim da Parte 2 – UV, Texturas, Materiais e Render ✨<br>
+            A Parte 3 (Animação, Rigging, Graph Editor, Câmera e Técnicas Cinematográficas) será entregue em sequência.
+        </div>
+        
+        <footer>
+            <p>Conteúdo baseado em pipelines profissionais de texturização e render. Ferramentas de referência: Blender, Substance Painter, Photoshop, ZBrush, Maya.</p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

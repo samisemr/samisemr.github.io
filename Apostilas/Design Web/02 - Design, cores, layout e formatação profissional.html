@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila: CSS Essencial - Estilização para Web e Multimídia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+            background-color: #F2D8CE;
+            padding: 48px 24px;
+            color: #1E3259;
+            line-height: 1.65;
+        }
+
+        .apostila-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #243E73;
+            border-left: 6px solid #8BB4D9;
+            padding-left: 22px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #1E3259;
+            border-bottom: 2px solid #8BB4D9;
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: #243E73;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #F2D8CE;
+            border-left: 5px solid #A67E6F;
+            padding: 18px 24px;
+            margin: 28px 0;
+            border-radius: 20px;
+            line-height: 1.65;
+            color: #1E3259;
+        }
+
+        code {
+            background-color: #eef2fa;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: #A67E6F;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #1E3259;
+            color: #F2D8CE;
+            padding: 20px 24px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 24px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            color: #F2D8CE;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #8BB4D9;
+            border: 1px solid #cbdbe2;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #1E3259;
+        }
+
+        td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            background-color: #fff;
+        }
+
+        ul, ol {
+            margin: 16px 0 20px 28px;
+            line-height: 1.7;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .micro-atividade {
+            background-color: #F2D8CE;
+            border: 1px solid #A67E6F;
+            border-radius: 28px;
+            padding: 22px 28px;
+            margin: 32px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .micro-atividade h4 {
+            font-size: 20px;
+            color: #243E73;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            background-color: #243E73;
+            color: #F2D8CE;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        hr {
+            margin: 36px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #8BB4D9, #F2D8CE, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 13px;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+        }
+        
+        footer p{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+        }
+        strong {
+            color: #243E73;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">CSS | WEB + MULTIMÍDIA</span>
+    <h1>Folhas de Estilo em Cascata (CSS)<br><span style="font-size: 22px; color:#1E3259;">Design, cores, layout e formatação profissional</span></h1>
+    
+    <p>Se o HTML é o <strong>esqueleto</strong> da página, o CSS é a <strong>aparência</strong>: cores, fontes, espaçamentos, posicionamento e responsividade. Nesta apostila você aprenderá na prática como aplicar estilos, usar seletores, trabalhar com cores, bordas, margens, o modelo de caixa (<em>box model</em>) e técnicas de layout como <code>float</code>, <code>display</code> e <code>position</code>. Tudo com exemplos reais de mercado, direto ao ponto.</p>
+
+    <h2>1. Introdução ao CSS: sintaxe e formas de uso</h2>
+    <h3>1.1 O que é CSS?</h3>
+    <p><strong>Cascading Style Sheets</strong> é a linguagem que define a apresentação visual de documentos HTML. Enquanto o HTML estrutura, o CSS estiliza. Separar conteúdo (HTML) de estilo (CSS) é uma prática essencial para manutenção e escalabilidade.</p>
+    
+    <div class="destaque-box">
+        📌 <strong>Sintaxe básica:</strong><br>
+        <code>seletor { propriedade: valor; }</code><br>
+        Exemplo: <code>h1 { color: #243E73; font-size: 32px; }</code><br>
+        → O seletor aponta para o elemento HTML. As declarações ficam entre chaves, cada uma com propriedade e valor, separadas por ponto e vírgula.
+    </div>
+
+    <h3>1.2 Seletores essenciais (ID, classe, universal e agrupamento)</h3>
+    <ul>
+        <li><strong>Seletor de elemento</strong>: <code>p { }</code> → afeta todos os parágrafos.</li>
+        <li><strong>Seletor de ID (#)</strong>: <code>#cabecalho { }</code> → único na página, prioridade alta.</li>
+        <li><strong>Seletor de classe (.)</strong>: <code>.destaque { }</code> → reutilizável em vários elementos.</li>
+        <li><strong>Seletor universal (*)</strong>: <code>* { margin:0; }</code> → aplica a todos os elementos.</li>
+        <li><strong>Agrupamento</strong>: <code>h1, h2, p { text-align: center; }</code> → evita repetição.</li>
+    </ul>
+    <pre><code>/* Exemplo prático */
+#menu { background-color: #8BB4D9; }
+.card-produto { border: 1px solid #A67E6F; padding: 15px; }
+h1, h2 { font-family: 'Arial', sans-serif; }</code></pre>
+
+    <h3>1.3 Três formas de aplicar CSS</h3>
+    <table>
+        <tr><th>Método</th><th>Onde escrever</th><th>Quando usar</th></tr>
+        <tr><td><strong>Externo</strong> (recomendado)</td>
+            <td>Arquivo <code>.css</code> separado, linkado no <code>&lt;head&gt;</code> com <code>&lt;link&gt;</code></td>
+            <td>Sites com várias páginas, fácil manutenção</td>
+        </tr>
+        <tr><td><strong>Interno</strong></td>
+            <td>Dentro da tag <code>&lt;style&gt;</code> no <code>&lt;head&gt;</code></td>
+            <td>Páginas únicas com estilo específico</td>
+        </tr>
+        <tr><td><strong>Inline</strong></td>
+            <td>Atributo <code>style</code> diretamente na tag HTML</td>
+            <td>Ajustes pontuais e urgentes (evite abusar)</td>
+        </tr>
+    </table>
+    <pre><code>&lt;!-- CSS externo (melhor prática) --&gt;
+&lt;link rel="stylesheet" href="estilos.css"&gt;
+
+&lt;style&gt; /* CSS interno */ body { background: #F2D8CE; } &lt;/style&gt;
+
+&lt;h1 style="color: #243E73;"&gt;Inline pontual&lt;/h1&gt;</code></pre>
+
+    <h3>1.4 Hierarquia (Cascata)</h3>
+    <p>Quando há conflito, o navegador prioriza: <strong>1º inline > 2º interno/externo (o último declarado) > 3º padrão do navegador</strong>. Além disso, seletores mais específicos (ID) ganham de classes.</p>
+
+    <!-- Microatividade 1 -->
+    <div class="micro-atividade">
+        <h4>🎨 Micro-atividade 1: Primeiros passos com seletores</h4>
+        <p>Crie um arquivo HTML e um CSS externo. Estilize: um título <code>&lt;h1&gt;</code> com cor #243E73, centralizado; uma classe ".texto-destaque" com cor #A67E6F e negrito; e um ID "#rodape" com fundo #8BB4D9. Pratique o agrupamento para centralizar todos os títulos.</p>
+    </div>
+
+    <h2>2. Cores, fundos, bordas, margin e padding</h2>
+    <h3>2.1 Cores no CSS</h3>
+    <p>Você pode definir cores por: <strong>nomes</strong> (red, tomato), <strong>RGB</strong> (rgb(36,62,115)), <strong>hexadecimal</strong> (#243E73), <strong>HSL</strong> (hsl(220, 50%, 30%)). Use a ferramenta Adobe Color para criar paletas harmônicas.</p>
+    
+    <h3>2.2 Background (plano de fundo)</h3>
+    <pre><code>body { background-color: #F2D8CE; }
+.caixa { background-image: url('fundo-textura.jpg'); background-repeat: no-repeat; background-size: cover; }</code></pre>
+
+    <h3>2.3 Bordas (border)</h3>
+    <p>Propriedades: <code>border-width</code>, <code>border-style</code> (solid, dotted, dashed) e <code>border-color</code>. Atalho: <code>border: 2px solid #A67E6F;</code>. Bordas arredondadas: <code>border-radius: 15px;</code>.</p>
+    
+    <h3>2.4 Margin (margem externa) e Padding (preenchimento interno)</h3>
+    <p><strong>Margin</strong>: espaço fora da borda, afasta outros elementos. <strong>Padding</strong>: espaço dentro da borda, afasta o conteúdo da borda. Ambos podem ter valores individuais (top, right, bottom, left) ou abreviados.</p>
+    <pre><code>.card {
+    margin: 20px 15px;   /* 20px top/bottom, 15px left/right */
+    padding: 30px;
+    border: 1px solid #8BB4D9;
+}</code></pre>
+    <div class="destaque-box">
+        💡 <strong>Box Model essencial:</strong> Todo elemento é uma caixa: <strong>content → padding → border → margin</strong>. A largura total soma esses valores. Use <code>box-sizing: border-box;</code> para incluir padding e border na largura definida.
+    </div>
+
+    <h2>3. Largura, altura, formatação de texto e box model</h2>
+    <h3>3.1 Largura (width) e altura (height)</h3>
+    <p>Podem ser definidas em pixels (<code>px</code>), porcentagem (<code>%</code>) ou viewport (<code>vw/vh</code>). Para layouts responsivos, use % ou flexbox/grid.</p>
+    
+    <h3>3.2 Formatação de texto e fonte</h3>
+    <ul>
+        <li><code>color</code>: cor do texto.</li>
+        <li><code>text-align</code>: left, center, right, justify.</li>
+        <li><code>text-decoration</code>: underline, overline, line-through (evite sublinhar textos que não são links).</li>
+        <li><code>font-family</code>: define a fonte. Prefira fontes seguras como Arial, Verdana, e sempre inclua fallback.</li>
+        <li><code>font-size</code>: tamanho da fonte (px, em, rem).</li>
+        <li><code>font-weight</code>: normal, bold, etc.</li>
+    </ul>
+    <pre><code>body { font-family: 'Arial', sans-serif; font-size: 16px; }
+h1 { font-size: 2.5rem; text-align: center; letter-spacing: 1px; }</code></pre>
+
+    <!-- Microatividade 2 -->
+    <div class="micro-atividade">
+        <h4>✍️ Micro-atividade 2: Estilizando um card de portfólio</h4>
+        <p>Crie um card simples (div) com largura de 300px, padding interno de 20px, borda arredondada (border-radius: 20px), cor de fundo #8BB4D9 e margem centralizada (margin: auto). Dentro coloque um título e um parágrafo com texto justificado. Adicione uma imagem fictícia com fundo cinza. Aplique box-sizing para que a largura total permaneça 300px.</p>
+    </div>
+
+    <h2>4. Float, clear e elementos block vs inline</h2>
+    <h3>4.1 Float e Clear</h3>
+    <p><code>float</code> faz o elemento “flutuar” à esquerda ou direita, permitindo que textos e outros elementos o envolvam. Muito usado em layouts antigos, hoje substituído por Flexbox/Grid, mas ainda útil para imagens com texto ao redor. <code>clear</code> força o próximo elemento a ficar abaixo do float.</p>
+    <pre><code>.imagem-produto { float: left; margin-right: 20px; }
+.clearfix { clear: both; }</code></pre>
+
+    <h3>4.2 Elementos block x inline</h3>
+    <ul>
+        <li><strong>Block</strong>: ocupam 100% da largura, quebram linha (ex: <code>&lt;div&gt;, &lt;p&gt;, &lt;h1&gt;</code>).</li>
+        <li><strong>Inline</strong>: ocupam apenas o espaço do conteúdo, ficam na mesma linha (ex: <code>&lt;span&gt;, &lt;a&gt;, &lt;img&gt;</code>).</li>
+        <li>Podemos alterar o comportamento com <code>display: block;</code> ou <code>display: inline;</code>.</li>
+    </ul>
+    <p><strong>Exemplo prático:</strong> menu horizontal com <code>&lt;li&gt;</code> (que são block) usando <code>display: inline;</code>.</p>
+
+    <h2>5. Display, position, z-index e overflow</h2>
+    <h3>5.1 Display (além do block/inline)</h3>
+    <p><code>display: none;</code> → remove o elemento da tela (não ocupa espaço). <code>display: flex;</code> → modelo flexível (recomendado para layouts modernos).</p>
+    
+    <h3>5.2 Position (posicionamento avançado)</h3>
+    <ul>
+        <li><strong>static</strong>: padrão, segue o fluxo da página.</li>
+        <li><strong>relative</strong>: posiciona relativamente à sua posição original. Permite usar <code>top, left, right, bottom</code>.</li>
+        <li><strong>absolute</strong>: posiciona em relação ao ancestral mais próximo com position diferente de static. Sai do fluxo normal.</li>
+        <li><strong>fixed</strong>: fixo em relação à viewport (não rola junto).</li>
+        <li><strong>sticky</strong>: híbrido entre relative e fixed.</li>
+    </ul>
+    <pre><code>.barra-fixa { position: fixed; bottom: 20px; right: 20px; background: #243E73; padding: 10px; }
+.modal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }</code></pre>
+
+    <h3>5.3 Z-index – empilhamento de camadas</h3>
+    <p>Controla a ordem de sobreposição. Só funciona em elementos posicionados (relative, absolute, fixed, sticky). Quanto maior o <code>z-index</code>, mais acima aparece.</p>
+    
+    <h3>5.4 Overflow – lidando com conteúdo extravasado</h3>
+    <p>Define como lidar com conteúdo maior que o container: <code>visible</code> (padrão), <code>hidden</code> (corta), <code>scroll</code> (adiciona barra de rolagem), <code>auto</code> (rolagem automática).</p>
+    <pre><code>.caixa-texto { width: 200px; height: 100px; overflow: auto; }</code></pre>
+
+    <!-- Microatividade 3 -->
+    <div class="micro-atividade">
+        <h4>📐 Micro-atividade 3: Banner fixo com sobreposição</h4>
+        <p>Simule um “botão flutuante” de atendimento: posicione um elemento <code>position: fixed</code> no canto inferior direito, com fundo #A67E6F, texto branco, padding e borda arredondada. Use z-index para garantir que fique sobre todo o conteúdo. Além disso, crie uma div com overflow: scroll e texto longo para testar a rolagem.</p>
+    </div>
+
+    <h2>6. Bônus: boas práticas e dicas de layout</h2>
+    <ul>
+        <li><strong>Organização:</strong> Use classes semânticas (ex: <code>.botao-primario</code>, <code>.card-destaque</code>).</li>
+        <li><strong>Flexbox e Grid</strong> são hoje as principais ferramentas de layout (mais modernas que float). Recomendamos estudar em sequência.</li>
+        <li><strong>Responsividade:</strong> Use unidades relativas (rem, %, vw) e media queries para adaptar o design a celulares.</li>
+        <li><strong>Ferramentas do navegador:</strong> Utilize o “Inspecionar” (F12) para testar CSS ao vivo.</li>
+    </ul>
+
+    <hr>
+    <h2>Resumo rápido para consulta</h2>
+    <ul>
+        <li><strong>Sintaxe:</strong> seletor { propriedade: valor; }</li>
+        <li><strong>Seletores principais:</strong> elemento, .classe, #id, *, agrupamento.</li>
+        <li><strong>Cores:</strong> hexadecimal (#243E73), RGB, nomes.</li>
+        <li><strong>Box model:</strong> content + padding + border + margin. Use border-box para facilitar.</li>
+        <li><strong>Posicionamento:</strong> static, relative, absolute, fixed.</li>
+        <li><strong>Display:</strong> block, inline, flex, none.</li>
+        <li><strong>Float/clear:</strong> usado para imagens e layouts antigos.</li>
+    </ul>
+
+    <!-- Projeto sugerido -->
+    <div class="destaque-box" style="background:#eef2fa; border-left-color: #243E73;">
+        🧩 <strong>Projeto integrador (sugestão):</strong> Desenvolva uma landing page pessoal com HTML e CSS. Utilize CSS externo, box model, formulário estilizado, menu horizontal com display inline, cartões com bordas arredondadas e um rodapé fixo (position relative). Aplique a paleta de cores (#243E73, #8BB4D9, #A67E6F, #F2D8CE). Este projeto consolida todos os tópicos da apostila.
+    </div>
+
+    <footer>
+        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
+        <p>Edição 1 | Junho de 2026</p>
+    </footer>
+</div>
+</body>
+</html>

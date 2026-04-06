@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila: Estruturas Condicionais em Python - if, else, elif e Expressões Lógicas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+            background-color: #F2EAE0;
+            padding: 48px 24px;
+            color: #2c2c2c;
+            line-height: 1.65;
+        }
+
+        .apostila-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #9B8EC7;
+            border-left: 6px solid #BDA6CE;
+            padding-left: 22px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #9B8EC7;
+            border-bottom: 2px solid #B4D3D9;
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: #BDA6CE;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #F2EAE0;
+            border-left: 5px solid #BDA6CE;
+            padding: 18px 24px;
+            margin: 28px 0;
+            border-radius: 20px;
+            line-height: 1.65;
+            color: #2c2c2c;
+        }
+
+        code {
+            background-color: #eef2fa;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: #9B8EC7;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2c2c2c;
+            color: #F2EAE0;
+            padding: 20px 24px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 24px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            color: #F2EAE0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #B4D3D9;
+            border: 1px solid #cbdbe2;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #2c2c2c;
+        }
+
+        td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            background-color: #fff;
+        }
+
+        ul, ol {
+            margin: 16px 0 20px 28px;
+            line-height: 1.7;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .micro-atividade {
+            background-color: #F2EAE0;
+            border: 1px solid #BDA6CE;
+            border-radius: 28px;
+            padding: 22px 28px;
+            margin: 32px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .micro-atividade h4 {
+            font-size: 20px;
+            color: #9B8EC7;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            background-color: #9B8EC7;
+            color: #F2EAE0;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        hr {
+            margin: 36px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #B4D3D9, #F2EAE0, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 13px;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+        }
+
+        footer p{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+        }
+
+        strong {
+            color: #9B8EC7;
+        }
+        
+        .figura-placeholder {
+            background: #B4D3D9;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #2c2c2c;
+            font-style: italic;
+        }
+        
+        .saida-exemplo {
+            background: #e8f0f2;
+            border-left: 3px solid #9B8EC7;
+            padding: 10px 16px;
+            margin: 10px 0;
+            font-family: monospace;
+            color: #2c2c2c;
+        }
+        
+        .tabela-verdade {
+            font-family: monospace;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">PYTHON | ESTRUTURAS CONDICIONAIS</span>
+    <h1>Estruturas Condicionais em Python<br><span style="font-size: 22px; color:#BDA6CE;">if, else, elif, expressões lógicas e tomada de decisões</span></h1>
+    
+    <p>Até agora, nossos programas executavam todas as instruções em sequência, sem qualquer variação. Mas a maioria dos problemas do mundo real exige <strong>decisões</strong>: "se estiver chovendo, levo guarda-chuva; senão, não levo". Nesta apostila, você aprenderá as <strong>estruturas condicionais</strong> em Python: <code>if</code> (simples), <code>if/else</code> (composta), <code>elif</code> (múltipla escolha), além de <strong>expressões lógicas</strong> com operadores <code>and</code>, <code>or</code>, <code>not</code> e <strong>condicionais aninhadas</strong>. Com esses recursos, seus programas poderão tomar decisões inteligentes e se adaptar a diferentes situações.</p>
+
+    <h2>1. Algoritmos sequenciais vs. algoritmos com decisão</h2>
+    <p>Um <strong>algoritmo sequencial</strong> executa todas as instruções na ordem em que foram escritas, sem desvios. Já um algoritmo com <strong>estruturas de decisão</strong> pode executar diferentes blocos de código dependendo de uma condição.</p>
+    
+    <div class="destaque-box">
+        🧭 <strong>Exemplo lúdico:</strong> Um lenhador vai até a floresta cortar lenha. Se ele escolher o caminho da esquerda, encontra um lobo e precisa enfrentá-lo. Se escolher o caminho da direita, não encontra obstáculos. A decisão (esquerda/direita) altera o fluxo do algoritmo.
+    </div>
+    
+    <h3>1.1 Fluxograma de uma decisão</h3>
+    <div class="figura-placeholder">
+        🔷 [FLUXOGRAMA - ESTRUTURA DE DECISÃO]<br>
+        Início → Entrada de dados → Losango (condição?) → Sim → Ação A → Fim<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ Não<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ação B → Fim
+    </div>
+
+    <h2>2. Condicional simples (if)</h2>
+    <p>A estrutura <strong>condicional simples</strong> executa um bloco de código <strong>apenas se a condição for verdadeira</strong>. Se for falsa, o bloco é ignorado e o programa continua.</p>
+    
+    <h3>2.1 Sintaxe em Python</h3>
+    <pre><code>if condicao:
+    # bloco executado se condicao for True
+    instrucao_1
+    instrucao_2</code></pre>
+    <p><strong>Importante:</strong> O bloco deve estar <strong>indentado</strong> (recuado) – em Python, a indentação define o escopo do bloco!</p>
+    
+    <h3>2.2 Exemplo prático</h3>
+    <pre><code># Verifica se o primeiro número é maior que o segundo
+x = int(input("Digite o primeiro valor: "))
+y = int(input("Digite o segundo valor: "))
+
+if x > y:
+    print(f"O primeiro valor ({x}) é maior que o segundo ({y}).")
+
+print("Fim do programa.")</code></pre>
+    <div class="saida-exemplo">
+        Digite o primeiro valor: 10<br>
+        Digite o segundo valor: 5<br>
+        O primeiro valor (10) é maior que o segundo (5).<br>
+        Fim do programa.
+    </div>
+    
+    <div class="micro-atividade">
+        <h4>✅ Micro-atividade 1: Condicional simples</h4>
+        <p>Crie um programa que leia a idade do usuário. Se a idade for maior ou igual a 18, exiba a mensagem "Você já pode tirar a carteira de motorista". Independentemente da condição, o programa deve sempre exibir "Fim da verificação".</p>
+    </div>
+
+    <h2>3. Condicional composta (if/else)</h2>
+    <p>A estrutura <strong>if/else</strong> executa um bloco se a condição for verdadeira, e outro bloco (diferente) se for falsa. É uma escolha entre duas alternativas.</p>
+    
+    <h3>3.1 Sintaxe</h3>
+    <pre><code>if condicao:
+    # bloco executado se condicao for True
+    instrucao_A
+else:
+    # bloco executado se condicao for False
+    instrucao_B</code></pre>
+    
+    <h3>3.2 Exemplo: par ou ímpar</h3>
+    <pre><code>numero = int(input("Digite um número inteiro: "))
+
+if numero % 2 == 0:
+    print(f"O número {numero} é PAR.")
+else:
+    print(f"O número {numero} é ÍMPAR.")</code></pre>
+    <div class="saida-exemplo">
+        Digite um número inteiro: 7<br>
+        O número 7 é ÍMPAR.
+    </div>
+    
+    <div class="destaque-box">
+        💡 <strong>Dica de desempenho:</strong> Sempre que possível, prefira if/else em vez de dois ifs separados. O if/else executa apenas um teste lógico; dois ifs executam dois testes, dobrando o trabalho do processador.
+    </div>
+    
+    <div class="micro-atividade">
+        <h4>🔄 Micro-atividade 2: Aprovado ou Reprovado</h4>
+        <p>Crie um programa que leia a nota de um aluno (0 a 100). Se a nota for maior ou igual a 60, exiba "Aprovado". Caso contrário, exiba "Reprovado". Use if/else.</p>
+    </div>
+
+    <h2>4. Expressões lógicas (álgebra booleana)</h2>
+    <p>Muitas vezes, precisamos combinar múltiplas condições. Para isso, usamos os <strong>operadores lógicos</strong>: <code>and</code> (E), <code>or</code> (OU) e <code>not</code> (NÃO).</p>
+    
+    <h3>4.1 Operador and (E)</h3>
+    <p>Resulta em <code>True</code> <strong>somente se ambas as condições forem verdadeiras</strong>.</p>
+    <table>
+        <tr><th>A</th><th>B</th><th>A and B</th></tr>
+        <td>False</code>么False</code>么False</code></tr>
+        <tr><td>False</code>么True</code>么False</code></tr>
+        <tr><td>True</code>么False</code>么False</code></tr>
+        <tr><td>True</code>么True</code>么True</code></tr>
+    </table>
+    
+    <h3>4.2 Operador or (OU)</h3>
+    <p>Resulta em <code>True</code> se <strong>pelo menos uma</strong> das condições for verdadeira.</p>
+    <table>
+        <tr><th>A</th><th>B</th><th>A or B</th></tr>
+        <tr><td>False</code>么False</code>么False</code></tr>
+        <tr><td>False</code>么True</code>么True</code></tr>
+        <tr><td>True</code>么False</code>么True</code></tr>
+        <tr><td>True</code>么True</code>么True</code></tr>
+    </table>
+    
+    <h3>4.3 Operador not (NÃO)</h3>
+    <p>Inverte o valor lógico: <code>not True</code> = <code>False</code>, <code>not False</code> = <code>True</code>.</p>
+    
+    <h3>4.4 Exemplos práticos</h3>
+    <pre><code># and: ambas as condições devem ser verdadeiras
+idade = 25
+tem_carteira = True
+
+if idade >= 18 and tem_carteira:
+    print("Pode dirigir.")
+else:
+    print("Não pode dirigir.")
+
+# or: pelo menos uma condição verdadeira
+dia = "sabado"
+if dia == "sabado" or dia == "domingo":
+    print("Fim de semana!")
+else:
+    print("Dia útil.")
+
+# not: inverte a condição
+chovendo = False
+if not chovendo:
+    print("Não está chovendo. Pode sair sem guarda-chuva.")</code></pre>
+    
+    <h3>4.5 Precedência dos operadores</h3>
+    <p>Ordem de avaliação (do mais prioritário ao menos prioritário):</p>
+    <ol>
+        <li>Parênteses <code>()</code></li>
+        <li>Operadores aritméticos (<code>**</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>+</code>, <code>-</code>)</li>
+        <li>Operadores relacionais (<code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>)</li>
+        <li><code>not</code></li>
+        <li><code>and</code></li>
+        <li><code>or</code></li>
+    </ol>
+    
+    <div class="micro-atividade">
+        <h4>🔗 Micro-atividade 3: Combinando condições</h4>
+        <p>Crie um programa que leia três notas de um aluno (0 a 10). O aluno é aprovado se <strong>todas as notas forem maiores ou iguais a 7</strong>. Use o operador <code>and</code>. Exiba "Aprovado" ou "Reprovado".</p>
+    </div>
+
+    <h2>5. Condicionais aninhadas</h2>
+    <p>Quando temos uma estrutura condicional <strong>dentro de outra</strong>, chamamos de <strong>aninhamento</strong>. Isso é útil quando uma decisão depende de outra decisão anterior.</p>
+    
+    <h3>5.1 Exemplo: bônus por tempo de empresa</h3>
+    <p>Funcionários com mais de 10 anos recebem 30% de bônus; com mais de 5 anos (mas menos de 10), 20%; outros, 10%.</p>
+    <pre><code>salario = float(input("Salário: R$ "))
+anos = int(input("Tempo de empresa (anos): "))
+
+if anos > 10:
+    bonus = salario * 0.30
+else:
+    if anos > 5:
+        bonus = salario * 0.20
+    else:
+        bonus = salario * 0.10
+
+print(f"Bônus: R$ {bonus:.2f}")
+print(f"Salário final: R$ {salario + bonus:.2f}")</code></pre>
+    
+    <div class="destaque-box">
+        📌 <strong>Indentação:</strong> Note que o segundo <code>if/else</code> está indentado dentro do <code>else</code> do primeiro. Em Python, a indentação é fundamental para definir a hierarquia dos blocos.
+    </div>
+    
+    <div class="micro-atividade">
+        <h4>📐 Micro-atividade 4: Classificação de triângulos</h4>
+        <p>Crie um programa que leia três lados de um triângulo. Verifique se eles formam um triângulo válido (nenhum lado pode ser zero, e cada lado deve ser menor que a soma dos outros dois). Se for válido, classifique como:</p>
+        <ul>
+            <li>Equilátero (todos os lados iguais)</li>
+            <li>Isósceles (dois lados iguais)</li>
+            <li>Escaleno (todos diferentes)</li>
+        </ul>
+        <p>Use condicionais aninhadas.</p>
+    </div>
+
+    <h2>6. Condicional de múltipla escolha (elif)</h2>
+    <p>Quando temos <strong>múltiplas condições</strong> que dependem da mesma variável, usar <code>if/elif/else</code> é mais organizado do que aninhar vários ifs. O <code>elif</code> é a junção de <code>else</code> + <code>if</code>.</p>
+    
+    <h3>6.1 Sintaxe</h3>
+    <pre><code>if condicao_1:
+    # bloco 1
+elif condicao_2:
+    # bloco 2
+elif condicao_3:
+    # bloco 3
+else:
+    # bloco padrão (opcional)</code></pre>
+    
+    <h3>6.2 Exemplo: calculadora com menu</h3>
+    <pre><code>print("=== CALCULADORA ===")
+print("1 - Adição")
+print("2 - Subtração")
+print("3 - Multiplicação")
+print("4 - Divisão")
+
+opcao = int(input("Escolha a operação: "))
+a = float(input("Primeiro número: "))
+b = float(input("Segundo número: "))
+
+if opcao == 1:
+    print(f"{a} + {b} = {a + b}")
+elif opcao == 2:
+    print(f"{a} - {b} = {a - b}")
+elif opcao == 3:
+    print(f"{a} × {b} = {a * b}")
+elif opcao == 4:
+    if b != 0:
+        print(f"{a} ÷ {b} = {a / b}")
+    else:
+        print("Erro: divisão por zero!")
+else:
+    print("Opção inválida!")</code></pre>
+    
+    <h3>6.3 Exemplo: conversão de notas em conceitos</h3>
+    <pre><code>nota = float(input("Digite a nota (0 a 100): "))
+
+if nota >= 90:
+    conceito = "A"
+elif nota >= 80:
+    conceito = "B"
+elif nota >= 70:
+    conceito = "C"
+elif nota >= 60:
+    conceito = "D"
+else:
+    conceito = "F"
+
+print(f"Conceito: {conceito}")</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>📱 Micro-atividade 5: Cardápio digital</h4>
+        <p>Crie um programa que exiba um menu com 3 opções de lanches (1 - Hambúrguer R$ 15, 2 - Pizza R$ 25, 3 - Salada R$ 12). O usuário escolhe o número e a quantidade. Calcule e exiba o valor total a pagar. Se a opção for inválida, exiba uma mensagem de erro. Use <code>elif</code>.</p>
+    </div>
+
+    <h2>7. Exercícios resolvidos</h2>
+    
+    <h3>Exercício 1: Verificar maioridade para CNH</h3>
+    <pre><code>ano_nasc = int(input("Ano de nascimento: "))
+ano_atual = int(input("Ano atual: "))
+idade = ano_atual - ano_nasc
+print(f"Você tem {idade} anos.")
+
+if idade >= 18:
+    print("Já pode tirar a carteira de motorista!")</code></pre>
+    
+    <h3>Exercício 2: Bônus por tempo de empresa</h3>
+    <pre><code>salario = float(input("Salário: R$ "))
+anos = int(input("Anos de empresa: "))
+
+if anos > 5:
+    bonus = salario * 0.20
+else:
+    bonus = salario * 0.10
+
+print(f"Bônus: R$ {bonus:.2f}")</code></pre>
+    
+    <h3>Exercício 3: Intervalos numéricos</h3>
+    <pre><code>x = int(input("Digite um número inteiro: "))
+if (x >= 1 and x <= 100) or (x >= -100 and x <= -1):
+    print("O número está dentro dos intervalos permitidos.")
+else:
+    print("Fora dos intervalos.")</code></pre>
+    
+    <h3>Exercício 4: Compra de frutas com elif</h3>
+    <pre><code>print("1 - Maçã (R$ 2,30)")
+print("2 - Laranja (R$ 3,60)")
+print("3 - Banana (R$ 1,85)")
+
+opcao = int(input("Escolha a fruta: "))
+qtd = int(input("Quantidade: "))
+
+if opcao == 1:
+    total = qtd * 2.30
+    print(f"Total: R$ {total:.2f}")
+elif opcao == 2:
+    total = qtd * 3.60
+    print(f"Total: R$ {total:.2f}")
+elif opcao == 3:
+    total = qtd * 1.85
+    print(f"Total: R$ {total:.2f}")
+else:
+    print("Opção inválida!")</code></pre>
+
+    <hr>
+    <h2>Resumo da apostila</h2>
+    <ul>
+        <li><strong>if simples:</strong> executa um bloco apenas se a condição for verdadeira.</li>
+        <li><strong>if/else:</strong> escolhe entre dois blocos (verdadeiro/falso).</li>
+        <li><strong>Operadores lógicos:</strong> <code>and</code> (E), <code>or</code> (OU), <code>not</code> (NÃO).</li>
+        <li><strong>Condicionais aninhadas:</strong> um if dentro de outro – útil para decisões em cascata.</li>
+        <li><strong>elif:</strong> múltipla escolha – mais legível que aninhamentos profundos.</li>
+        <li><strong>Indentação:</strong> fundamental em Python – define quais instruções pertencem a cada bloco.</li>
+        <li><strong>Precedência:</strong> parênteses > aritméticos > relacionais > not > and > or.</li>
+    </ul>
+    
+    <div class="destaque-box" style="background: #B4D3D9; border-left-color: #9B8EC7;">
+        🚀 <strong>Próximos passos:</strong> Agora que você domina as estruturas condicionais, o próximo conteúdo abordará os <strong>laços de repetição (for e while)</strong>, que permitem executar blocos de código várias vezes – essencial para processar listas, fazer validações e criar programas mais robustos.
+    </div>
+
+    <footer>
+        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
+        <p>Edição 1 | Junho de 2026</p>
+    </footer>
+</div>
+</body>
+</html>

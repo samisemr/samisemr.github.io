@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila: HTML Semântico, Grid, Flexbox e Design Responsivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+            background-color: #F2D8CE;
+            padding: 48px 24px;
+            color: #1E3259;
+            line-height: 1.65;
+        }
+
+        .apostila-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #243E73;
+            border-left: 6px solid #8BB4D9;
+            padding-left: 22px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #1E3259;
+            border-bottom: 2px solid #8BB4D9;
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: #243E73;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #F2D8CE;
+            border-left: 5px solid #A67E6F;
+            padding: 18px 24px;
+            margin: 28px 0;
+            border-radius: 20px;
+            line-height: 1.65;
+            color: #1E3259;
+        }
+
+        code {
+            background-color: #eef2fa;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: #A67E6F;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #1E3259;
+            color: #F2D8CE;
+            padding: 20px 24px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 24px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            color: #F2D8CE;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #8BB4D9;
+            border: 1px solid #cbdbe2;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #1E3259;
+        }
+
+        td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            background-color: #fff;
+        }
+
+        ul, ol {
+            margin: 16px 0 20px 28px;
+            line-height: 1.7;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .micro-atividade {
+            background-color: #F2D8CE;
+            border: 1px solid #A67E6F;
+            border-radius: 28px;
+            padding: 22px 28px;
+            margin: 32px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .micro-atividade h4 {
+            font-size: 20px;
+            color: #243E73;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            background-color: #243E73;
+            color: #F2D8CE;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        hr {
+            margin: 36px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #8BB4D9, #F2D8CE, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 13px;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+        }
+
+        footer p{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+        }
+
+        strong {
+            color: #243E73;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">HTML5 + CSS3 | DESIGN RESPONSIVO</span>
+    <h1>Layouts Modernos: HTML Semântico, Grid, Flexbox e Responsividade<br><span style="font-size: 22px; color:#1E3259;">Construa sites adaptáveis a qualquer dispositivo com as ferramentas atuais do mercado</span></h1>
+    
+    <p>Chegamos ao nível profissional: você vai aprender a estruturar páginas com <strong>elementos semânticos do HTML5</strong> (header, nav, section, article, aside, footer), dominar dois poderosos sistemas de layout – <strong>CSS Grid</strong> (bidimensional) e <strong>Flexbox</strong> (unidimensional) – e tornar tudo <strong>responsivo</strong> com <strong>Media Queries</strong> e imagens flexíveis. Ao final, você será capaz de criar sites que funcionam perfeitamente em smartphones, tablets e desktops.</p>
+
+    <h2>1. HTML Semântico: estruturando com significado</h2>
+    <p>No passado, usávamos <code>&lt;div&gt;</code> para tudo. Hoje, o HTML5 oferece elementos que descrevem <strong>o que cada parte do conteúdo representa</strong>. Isso melhora a acessibilidade, o SEO e a manutenção do código.</p>
+    
+    <h3>1.1 Principais elementos estruturais</h3>
+    <table>
+        <tr><th>Elemento</th><th>Significado</th><th>Uso típico</th></tr>
+        <tr><td><code>&lt;header&gt;</code></td><td>Cabeçalho da página ou seção</td><td>Logotipo, título, navegação principal</td></tr>
+        <tr><td><code>&lt;nav&gt;</code></td><td>Navegação principal</td><td>Menu de links para outras páginas</td></tr>
+        <tr><td><code>&lt;main&gt;</code></td><td>Conteúdo principal único</td><td>Parte central e exclusiva da página</td></tr>
+        <tr><td><code>&lt;section&gt;</code></td><td>Agrupamento temático de conteúdo</td><td>Seção de serviços, diferenciais, notícias</td></tr>
+        <tr><td><code>&lt;article&gt;</code></td><td>Conteúdo independente e reutilizável</td><td>Post de blog, comentário, card de produto</td></tr>
+        <tr><td><code>&lt;aside&gt;</code></td><td>Conteúdo relacionado (barra lateral)</td><td>Links extras, propaganda, biografia</td></tr>
+        <tr><td><code>&lt;footer&gt;</code></td><td>Rodapé da página ou seção</td><td>Copyright, contato, links legais</td></tr>
+        <tr><td><code>&lt;hgroup&gt;</code></td><td>Agrupa título e subtítulo</td><td><code>&lt;h1&gt;Título&lt;/h1&gt;&lt;h2&gt;Subtítulo&lt;/h2&gt;</code></td></tr>
+    </table>
+    
+    <div class="destaque-box">
+        📌 <strong>Regra de ouro:</strong> Use <code>&lt;div&gt;</code> apenas quando nenhum outro elemento semântico for adequado. Prefira sempre <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;nav&gt;</code> etc. para dar significado ao conteúdo.
+    </div>
+    
+    <h3>1.2 Exemplo de estrutura semântica completa</h3>
+    <pre><code>&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Meu Site&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#"&gt;Sobre&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Nossos Serviços&lt;/h2&gt;
+      &lt;article&gt;Serviço 1&lt;/article&gt;
+      &lt;article&gt;Serviço 2&lt;/article&gt;
+    &lt;/section&gt;
+    &lt;aside&gt;
+      &lt;h3&gt;Links Úteis&lt;/h3&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+  
+  &lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2025 - Todos os direitos reservados&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+    <div class="micro-atividade">
+        <h4>🏗️ Micro-atividade 1: Transformando divs em semântica</h4>
+        <p>Pegue uma página antiga cheia de <code>&lt;div&gt;</code> com classes como "cabecalho", "menu", "conteudo-principal", "sidebar", "rodape". Substitua pelos elementos semânticos correspondentes (header, nav, main, section, aside, footer). Visualize e veja que o layout permanece igual, mas o código ficou muito mais significativo.</p>
+    </div>
+
+    <h2>2. CSS Grid Layout – layout bidimensional poderoso</h2>
+    <p><strong>Grid</strong> é ideal para criar layouts complexos em duas dimensões (linhas E colunas simultaneamente). Perfeito para estruturar a página inteira.</p>
+    
+    <h3>2.1 Conceitos fundamentais</h3>
+    <ul>
+        <li><strong>Grid container:</strong> elemento com <code>display: grid;</code></li>
+        <li><strong>Grid item:</strong> filhos diretos do container.</li>
+        <li><strong>Linhas (rows) e colunas (columns):</strong> definidas com <code>grid-template-rows</code> e <code>grid-template-columns</code>.</li>
+        <li><strong>Gap:</strong> espaçamento entre células (<code>gap: 20px;</code>).</li>
+        <li><strong>Unidade fr:</strong> fração do espaço disponível. Ex: <code>1fr 2fr</code>.</li>
+    </ul>
+    
+    <h3>2.2 Exemplo prático: layout clássico de página</h3>
+    <pre><code>.container {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px;  /* 3 colunas: laterais fixas, centro flexível */
+    grid-template-rows: auto 1fr auto;       /* header, conteúdo principal, footer */
+    gap: 20px;
+    min-height: 100vh;
+}
+header { grid-column: 1 / -1; }  /* ocupa todas as colunas */
+nav { grid-column: 1 / 2; }
+main { grid-column: 2 / 3; }
+aside { grid-column: 3 / 4; }
+footer { grid-column: 1 / -1; }</code></pre>
+    
+    <h3>2.3 Nomeando áreas com <code>grid-template-areas</code></h3>
+    <p>É a forma mais intuitiva de criar layouts com Grid.</p>
+    <pre><code>.container {
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+    grid-template-columns: 200px 1fr 200px;
+    gap: 15px;
+}
+header { grid-area: header; }
+nav { grid-area: nav; }
+main { grid-area: main; }
+aside { grid-area: aside; }
+footer { grid-area: footer; }</code></pre>
+    
+    <h3>2.4 Funções úteis: <code>repeat()</code>, <code>minmax()</code> e <code>calc()</code></h3>
+    <ul>
+        <li><code>repeat(3, 1fr)</code> → cria 3 colunas com 1fr cada.</li>
+        <li><code>minmax(200px, auto)</code> → coluna com largura mínima de 200px e máxima automática.</li>
+        <li><code>calc(100% - 40px)</code> → calcula valores dinamicamente.</li>
+    </ul>
+    
+    <div class="micro-atividade">
+        <h4>📐 Micro-atividade 2: Página inteira com Grid</h4>
+        <p>Recrie o layout de um portal de notícias usando Grid: header com logo/menu, nav lateral com categorias, main com artigos em grade, aside com anúncios, footer com informações. Use <code>grid-template-areas</code> e torne o layout responsivo (ajustando as áreas para mobile depois).</p>
+    </div>
+
+    <h2>3. Flexbox – layout unidimensional para componentes</h2>
+    <p>Enquanto o Grid é ótimo para o layout geral da página, o <strong>Flexbox</strong> é perfeito para alinhar e distribuir espaços dentro de um componente, como cards, menus, barras de ferramentas e listas horizontais.</p>
+    
+    <h3>3.1 Ativando o Flexbox</h3>
+    <pre><code>.flex-container {
+    display: flex;
+    flex-direction: row;  /* row (padrão), column, row-reverse, column-reverse */
+    justify-content: space-between;  /* alinhamento horizontal */
+    align-items: center;  /* alinhamento vertical */
+    flex-wrap: wrap;  /* permite quebra de linha */
+}</code></pre>
+    
+    <h3>3.2 Propriedades essenciais</h3>
+    <table>
+        <tr><th>Propriedade</th><th>O que faz</th><th>Valores comuns</th></tr>
+        <tr><td><code>justify-content</code></td><td>Alinha itens no eixo principal (horizontal em row)</td><td>flex-start, center, space-between, space-around</td></tr>
+        <tr><td><code>align-items</code></td><td>Alinha itens no eixo transversal (vertical em row)</td><td>flex-start, center, stretch, baseline</td></tr>
+        <tr><td><code>flex-direction</code></td><td>Define direção principal</td><td>row, column, row-reverse</td></tr>
+        <tr><td><code>flex-wrap</code></td><td>Permite ou não quebra de linha</td><td>nowrap, wrap</td></tr>
+        <tr><td><code>gap</code></td><td>Espaçamento entre itens</td><td>10px, 1rem</td></tr>
+    </table>
+    
+    <h3>3.3 Exemplo: menu horizontal e cards flexíveis</h3>
+    <pre><code>/* Menu horizontal */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background: #243E73;
+    padding: 15px;
+}
+/* Cards que se ajustam */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.card {
+    flex: 1 1 250px;  /* cresce, encolhe, base 250px */
+    background: #F2D8CE;
+    padding: 20px;
+    border-radius: 12px;
+}</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>🧩 Micro-atividade 3: Galeria flexível</h4>
+        <p>Crie uma galeria de produtos usando Flexbox. Os produtos devem aparecer em linhas, com quantidade variável por linha (usando <code>flex-wrap</code>). Cada card deve ter largura mínima de 220px e máxima de 1fr. Centralize a galeria e adicione espaçamento entre os cards com <code>gap</code>.</p>
+    </div>
+
+    <h2>4. Media Queries – responsividade para todos os dispositivos</h2>
+    <p><strong>Media Queries</strong> permitem aplicar CSS diferente dependendo das características do dispositivo, principalmente a <strong>largura da tela</strong>. É o coração do design responsivo.</p>
+    
+    <h3>4.1 Sintaxe básica</h3>
+    <pre><code>/* Para telas com largura máxima de 768px (tablets e celulares) */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .menu {
+        flex-direction: column;
+    }
+}
+
+/* Para telas entre 769px e 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+    }
+}</code></pre>
+    
+    <h3>4.2 Breakpoints mais comuns no mercado</h3>
+    <ul>
+        <li><strong>Mobile:</strong> até 600px</li>
+        <li><strong>Tablet:</strong> 601px a 900px</li>
+        <li><strong>Desktop pequeno:</strong> 901px a 1200px</li>
+        <li><strong>Desktop grande:</strong> acima de 1200px</li>
+    </ul>
+    
+    <h3>4.3 Estratégia Mobile First</h3>
+    <p>Comece o CSS com estilos para dispositivos móveis (padrão) e use <code>min-width</code> para adicionar melhorias em telas maiores. Isso é mais performático e recomendado pelo Google.</p>
+    <pre><code>/* Estilos base (mobile) */
+.container { display: flex; flex-direction: column; }
+/* Tablet e acima */
+@media (min-width: 768px) {
+    .container { flex-direction: row; flex-wrap: wrap; }
+}
+/* Desktop */
+@media (min-width: 1024px) {
+    .container { max-width: 1200px; margin: auto; }
+}</code></pre>
+
+    <div class="micro-atividade">
+        <h4>📱 Micro-atividade 4: Adaptando layout com Media Queries</h4>
+        <p>Pegue o layout com Grid que você criou na atividade 2 e torne-o responsivo: em telas menores que 768px, transforme as 3 colunas em 1 coluna (grid-template-areas deve virar apenas "header", "nav", "main", "aside", "footer" empilhados). Teste redimensionando o navegador.</p>
+    </div>
+
+    <h2>5. Imagens responsivas e elementos picture</h2>
+    <p>Imagens são parte crucial do design responsivo. Use as técnicas abaixo para garantir que elas carreguem bem e se adaptem.</p>
+    
+    <h3>5.1 Imagem fluida com CSS</h3>
+    <pre><code>img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;  /* centraliza */
+}</code></pre>
+    <p>Isso faz com que a imagem nunca ultrapasse o container e mantenha a proporção.</p>
+    
+    <h3>5.2 Atributo <code>srcset</code> – imagens diferentes por resolução</h3>
+    <p>Permite ao navegador escolher a imagem mais adequada conforme a largura da tela ou densidade de pixels.</p>
+    <pre><code>&lt;img src="imagem-pequena.jpg"
+     srcset="imagem-media.jpg 800w,
+             imagem-grande.jpg 1200w"
+     sizes="(max-width: 600px) 100vw, 50vw"
+     alt="Descrição"&gt;</code></pre>
+    
+    <h3>5.3 Elemento <code>&lt;picture&gt;</code> – direção de arte</h3>
+    <p>Quando a imagem precisa ser <strong>cortada ou reposicionada</strong> em diferentes telas (art direction), use <code>&lt;picture&gt;</code> com múltiplos <code>&lt;source&gt;</code>.</p>
+    <pre><code>&lt;picture&gt;
+  &lt;source media="(min-width: 1024px)" srcset="imagem-desktop.jpg"&gt;
+  &lt;source media="(min-width: 768px)" srcset="imagem-tablet.jpg"&gt;
+  &lt;img src="imagem-mobile.jpg" alt="Exemplo de direção de arte"&gt;
+&lt;/picture&gt;</code></pre>
+    
+    <h3>5.4 Background responsivo com CSS</h3>
+    <pre><code>.hero {
+    background-image: url('mobile.jpg');
+    background-size: cover;
+    background-position: center;
+}
+@media (min-width: 768px) {
+    .hero { background-image: url('desktop.jpg'); }
+}</code></pre>
+
+    <div class="micro-atividade">
+        <h4>🖼️ Micro-atividade 5: Galeria com picture e srcset</h4>
+        <p>Crie uma página que exiba uma imagem de banner. Use <code>&lt;picture&gt;</code> para fornecer três versões: uma para celular (cortada no centro), uma para tablet (mais larga) e uma para desktop (cena completa). Teste redimensionando a janela e veja a imagem mudando nos breakpoints.</p>
+    </div>
+
+    <h2>6. Juntando tudo: projeto responsivo completo</h2>
+    <p>Um site profissional combina HTML semântico, Grid ou Flexbox (ou ambos) e Media Queries. Exemplo de estrutura híbrida:</p>
+    <pre><code>&lt;body&gt;
+  &lt;div class="grid-container"&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+    &lt;main&gt;
+      &lt;div class="cards-flex"&gt;  &lt;!-- Flexbox para os cards --&gt;
+        &lt;article&gt;Card 1&lt;/article&gt;
+        &lt;article&gt;Card 2&lt;/article&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+    &lt;aside&gt;...&lt;/aside&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+    
+    <div class="destaque-box">
+        🧠 <strong>Dica profissional:</strong> Use <strong>Grid para o macro layout</strong> (estrutura da página) e <strong>Flexbox para componentes internos</strong> (cards, listas, barras). Essa combinação é a mais usada no mercado atualmente.
+    </div>
+
+    <!-- Projeto final integrador -->
+    <div class="micro-atividade" style="background-color: #eef2fa; border-color: #243E73;">
+        <h4>🎯 PROJETO FINAL – Site responsivo completo</h4>
+        <p><strong>Desafio:</strong> Construa um site de portfólio ou landing page para uma agência criativa. Requisitos obrigatórios:</p>
+        <ul>
+            <li>HTML 100% semântico (header, nav, main, section, article, aside, footer).</li>
+            <li>Layout principal com CSS Grid (3 colunas em desktop, 1 coluna em mobile).</li>
+            <li>Cards de serviços/projetos usando Flexbox (flex-wrap, gap, centralização).</li>
+            <li>Menu de navegação responsivo (horizontal em desktop, vertical/empilhado em mobile via media query).</li>
+            <li>Imagem de banner com <code>&lt;picture&gt;</code> ou <code>srcset</code> adaptada para 3 tamanhos.</li>
+            <li>Media queries com pelo menos dois breakpoints (tablet e desktop).</li>
+            <li>Use variáveis CSS para cores (a paleta #243E73, #8BB4D9, #A67E6F, #F2D8CE).</li>
+        </ul>
+        <p>Este projeto consolida TODOS os conhecimentos das 4 apostilas: HTML básico, CSS básico, CSS avançado e layout responsivo. Parabéns por chegar até aqui!</p>
+    </div>
+
+    <hr>
+    <h2>Resumo para consulta rápida</h2>
+    <ul>
+        <li><strong>HTML Semântico:</strong> header, nav, main, section, article, aside, footer.</li>
+        <li><strong>CSS Grid:</strong> layout bidimensional, <code>display: grid</code>, <code>grid-template-areas</code>, unidade <code>fr</code>, <code>gap</code>.</li>
+        <li><strong>Flexbox:</strong> layout unidimensional, <code>display: flex</code>, <code>justify-content</code>, <code>align-items</code>, <code>flex-wrap</code>.</li>
+        <li><strong>Media Queries:</strong> <code>@media (max-width: 768px) { ... }</code>, breakpoints, mobile first.</li>
+        <li><strong>Imagens responsivas:</strong> <code>max-width: 100%</code>, <code>srcset</code>, elemento <code>&lt;picture&gt;</code>.</li>
+    </ul>
+
+    <footer>
+        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
+        <p>Edição 1 | Junho de 2026</p>
+    </footer>
+</div>
+</body>
+</html>

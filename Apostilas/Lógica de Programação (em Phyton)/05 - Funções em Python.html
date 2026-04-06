@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila: Funções em Python - Modularização, Parâmetros, Retorno e Escopos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+            background-color: #F2EAE0;
+            padding: 48px 24px;
+            color: #2c2c2c;
+            line-height: 1.65;
+        }
+
+        .apostila-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #9B8EC7;
+            border-left: 6px solid #BDA6CE;
+            padding-left: 22px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #9B8EC7;
+            border-bottom: 2px solid #B4D3D9;
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: #BDA6CE;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #F2EAE0;
+            border-left: 5px solid #BDA6CE;
+            padding: 18px 24px;
+            margin: 28px 0;
+            border-radius: 20px;
+            line-height: 1.65;
+            color: #2c2c2c;
+        }
+
+        code {
+            background-color: #eef2fa;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: #9B8EC7;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2c2c2c;
+            color: #F2EAE0;
+            padding: 20px 24px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 24px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            color: #F2EAE0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #B4D3D9;
+            border: 1px solid #cbdbe2;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #2c2c2c;
+        }
+
+        td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            background-color: #fff;
+        }
+
+        ul, ol {
+            margin: 16px 0 20px 28px;
+            line-height: 1.7;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .micro-atividade {
+            background-color: #F2EAE0;
+            border: 1px solid #BDA6CE;
+            border-radius: 28px;
+            padding: 22px 28px;
+            margin: 32px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .micro-atividade h4 {
+            font-size: 20px;
+            color: #9B8EC7;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            background-color: #9B8EC7;
+            color: #F2EAE0;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        hr {
+            margin: 36px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #B4D3D9, #F2EAE0, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 13px;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+        }
+
+        footer p{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+        }
+
+        strong {
+            color: #9B8EC7;
+        }
+        
+        .figura-placeholder {
+            background: #B4D3D9;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #2c2c2c;
+            font-style: italic;
+        }
+        
+        .saida-exemplo {
+            background: #e8f0f2;
+            border-left: 3px solid #9B8EC7;
+            padding: 10px 16px;
+            margin: 10px 0;
+            font-family: monospace;
+            color: #2c2c2c;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">PYTHON | FUNÇÕES</span>
+    <h1>Funções em Python<br><span style="font-size: 22px; color:#BDA6CE;">Modularização, parâmetros, retorno, escopos e tratamento de exceções</span></h1>
+    
+    <p>Até agora, seus programas eram escritos de forma linear ou com loops, mas todo o código ficava no mesmo bloco. À medida que os programas crescem, essa abordagem se torna confusa e difícil de manter. As <strong>funções</strong> resolvem esse problema: elas permitem <strong>modularizar</strong> o código, reaproveitar trechos e organizar melhor a lógica. Nesta apostila, você aprenderá a criar suas próprias funções, trabalhar com parâmetros (obrigatórios e opcionais), retornar valores, entender <strong>escopo de variáveis</strong> (global vs. local) e até mesmo tratar erros com <code>try/except</code>.</p>
+
+    <h2>1. Por que usar funções?</h2>
+    <p>Funções são blocos de código reutilizáveis que executam uma tarefa específica. Em vez de repetir o mesmo código várias vezes, você escreve a função uma vez e a <strong>chama</strong> sempre que precisar.</p>
+    
+    <div class="destaque-box">
+        🧭 <strong>Exemplo prático:</strong> Se você precisa exibir um menu estilizado com bordas em várias partes do programa, crie uma função <code>mostrar_menu()</code> e chame-a onde for necessário. Se precisar mudar o estilo da borda, altera apenas a função, não todas as ocorrências.
+    </div>
+    
+    <h3>1.1 Vantagens das funções</h3>
+    <ul>
+        <li><strong>Reutilização:</strong> escreva uma vez, use muitas vezes.</li>
+        <li><strong>Organização:</strong> o código fica mais legível e estruturado.</li>
+        <li><strong>Manutenção:</strong> alterações são feitas em um único lugar.</li>
+        <li><strong>Testabilidade:</strong> é mais fácil testar partes isoladas do programa.</li>
+    </ul>
+
+    <h2>2. Definindo e chamando funções (sem parâmetros)</h2>
+    <p>Em Python, usamos a palavra-chave <code>def</code> (definition) para definir uma função.</p>
+    
+    <h3>2.1 Sintaxe básica</h3>
+    <pre><code>def nome_da_funcao():
+    # corpo da função (bloco indentado)
+    print("Executando a função")</code></pre>
+    
+    <h3>2.2 Exemplo: função que exibe uma borda</h3>
+    <pre><code>def realce():
+    print("+" + "-" * 10 + "+")
+    print("|" + " " * 10 + "|")
+    print("|   MENU   |")
+    print("|" + " " * 10 + "|")
+    print("+" + "-" * 10 + "+")
+
+# Chamando a função (programa principal)
+realce()
+print("1 - Opção 1")
+print("2 - Opção 2")
+realce()</code></pre>
+    <div class="saida-exemplo">
+        +----------+<br>
+        |          |<br>
+        |   MENU   |<br>
+        |          |<br>
+        +----------+<br>
+        1 - Opção 1<br>
+        2 - Opção 2<br>
+        +----------+<br>
+        |          |<br>
+        |   MENU   |<br>
+        |          |<br>
+        +----------+
+    </div>
+    
+    <div class="destaque-box">
+        📌 <strong>Importante:</strong> A função deve ser <strong>definida antes de ser chamada</strong>. O Python executa o código linha por linha; se você chamar a função antes de defini-la, ocorrerá um erro.
+    </div>
+    
+    <div class="micro-atividade">
+        <h4>🎯 Micro-atividade 1: Criando uma função de boas-vindas</h4>
+        <p>Crie uma função chamada <code>cabecalho()</code> que exibe um título estilizado com asteriscos. Exemplo de saída:</p>
+        <pre>******************
+*   MEU PROGRAMA   *
+******************</pre>
+        <p>Chame a função três vezes no programa principal.</p>
+    </div>
+
+    <h2>3. Funções com parâmetros</h2>
+    <p>Parâmetros são <strong>dados de entrada</strong> que a função recebe para trabalhar. Eles tornam a função mais flexível.</p>
+    
+    <h3>3.1 Sintaxe com parâmetros</h3>
+    <pre><code>def saudacao(nome):
+    print(f"Olá, {nome}! Seja bem-vindo(a).")
+
+saudacao("Ana")   # Olá, Ana! Seja bem-vindo(a).
+saudacao("João")  # Olá, João! Seja bem-vindo(a).</code></pre>
+    
+    <h3>3.2 Múltiplos parâmetros</h3>
+    <pre><code>def soma(a, b):
+    resultado = a + b
+    print(f"{a} + {b} = {resultado}")
+
+soma(5, 3)   # 5 + 3 = 8
+soma(10, 20) # 10 + 20 = 30</code></pre>
+    
+    <h3>3.3 Parâmetros opcionais (valor padrão)</h3>
+    <p>Você pode definir valores padrão para parâmetros. Se o usuário não fornecer o argumento, o valor padrão é usado.</p>
+    <pre><code>def potencia(base, expoente=2):
+    return base ** expoente
+
+print(potencia(3))     # 9 (3^2)
+print(potencia(3, 3))  # 27 (3^3)
+print(potencia(5, 4))  # 625 (5^4)</code></pre>
+    
+    <h3>3.4 Ordem dos parâmetros</h3>
+    <p>A ordem dos argumentos importa. O primeiro argumento vai para o primeiro parâmetro, e assim por diante.</p>
+    <pre><code>def subtracao(a, b):
+    return a - b
+
+print(subtracao(10, 3))  # 7 (10 - 3)
+print(subtracao(3, 10))  # -7 (3 - 10)
+
+# Para inverter a ordem, use parâmetros nomeados
+print(subtracao(b=10, a=3))  # -7 (3 - 10) - menos legível, evite</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>📦 Micro-atividade 2: Função com parâmetros</h4>
+        <p>Crie uma função chamada <code>calcula_imc(peso, altura)</code> que recebe o peso (kg) e a altura (m) e exibe o IMC calculado. Use a fórmula: <code>imc = peso / (altura ** 2)</code>. Exiba também a classificação (abaixo do peso, normal, sobrepeso, obesidade).</p>
+    </div>
+
+    <h2>4. Retorno de valores (return)</h2>
+    <p>Até agora, nossas funções apenas <strong>exibiam</strong> resultados. Mas muitas vezes queremos que a função <strong>retorne um valor</strong> para ser usado no programa principal. Para isso, usamos <code>return</code>.</p>
+    
+    <h3>4.1 Exemplo: função que retorna a soma</h3>
+    <pre><code>def somar(a, b):
+    return a + b
+
+resultado = somar(10, 5)
+print(f"Resultado: {resultado}")  # Resultado: 15
+
+# Pode usar diretamente
+print(somar(7, 3))  # 10</code></pre>
+    
+    <h3>4.2 Exemplo: função que retorna par ou ímpar</h3>
+    <pre><code>def par_ou_impar(numero):
+    if numero % 2 == 0:
+        return "par"
+    else:
+        return "ímpar"
+
+n = int(input("Digite um número: "))
+print(f"O número {n} é {par_ou_impar(n)}")</code></pre>
+    
+    <h3>4.3 Múltiplos retornos</h3>
+    <p>Uma função pode retornar mais de um valor (como uma tupla).</p>
+    <pre><code>def operacoes(a, b):
+    soma = a + b
+    subtracao = a - b
+    multiplicacao = a * b
+    return soma, subtracao, multiplicacao
+
+s, sub, m = operacoes(10, 3)
+print(f"Soma: {s}, Subtração: {sub}, Multiplicação: {m}")
+# Soma: 13, Subtração: 7, Multiplicação: 30</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>🔄 Micro-atividade 3: Função com retorno</h4>
+        <p>Crie uma função chamada <code>fatorial(n)</code> que recebe um número inteiro positivo e retorna o seu fatorial. Use um laço <code>for</code> para calcular. Teste com <code>fatorial(5)</code> que deve retornar 120.</p>
+    </div>
+
+    <h2>5. Escopo de variáveis (global x local)</h2>
+    <p><strong>Escopo</strong> é a região do programa onde uma variável é acessível. Python tem dois escopos principais:</p>
+    <ul>
+        <li><strong>Local:</strong> variáveis criadas dentro de uma função. Só existem dentro da função e são destruídas quando a função termina.</li>
+        <li><strong>Global:</strong> variáveis criadas no programa principal (fora de qualquer função). Podem ser acessadas por qualquer parte do programa.</li>
+    </ul>
+    
+    <h3>5.1 Exemplo: variável local</h3>
+    <pre><code>def teste():
+    x = 10  # variável local
+    print(f"Dentro da função: x = {x}")
+
+teste()
+# print(x)  # ERRO! x não existe fora da função</code></pre>
+    
+    <h3>5.2 Exemplo: variável global</h3>
+    <pre><code>nome = "João"  # variável global
+
+def saudacao():
+    print(f"Olá, {nome}!")  # acessa a variável global
+
+saudacao()  # Olá, João!</code></pre>
+    
+    <h3>5.3 Modificando variáveis globais dentro da função (global)</h3>
+    <p>Por padrão, se você tentar <strong>alterar</strong> uma variável global dentro de uma função, o Python cria uma variável local de mesmo nome. Para modificar a global, use a palavra-chave <code>global</code>.</p>
+    <pre><code>contador = 0
+
+def incrementar():
+    global contador
+    contador += 1
+
+incrementar()
+incrementar()
+print(contador)  # 2</code></pre>
+    
+    <div class="destaque-box">
+        ⚠️ <strong>Boa prática:</strong> Evite usar variáveis globais sempre que possível. Prefira passar valores como parâmetros e retornar resultados. Isso torna o código mais previsível e fácil de testar.
+    </div>
+    
+    <div class="micro-atividade">
+        <h4>🌐 Micro-atividade 4: Entendendo escopo</h4>
+        <p>Crie uma variável global <code>total = 0</code>. Depois, crie uma função <code>adicionar(valor)</code> que deve modificar a variável global <code>total</code> (usando <code>global</code>) somando o valor recebido. Teste chamando a função três vezes e exiba o resultado final.</p>
+    </div>
+
+    <h2>6. Tratamento de exceções (try/except)</h2>
+    <p><strong>Exceções</strong> são erros que ocorrem durante a execução do programa (ex: divisão por zero, conversão de tipo inválida). Com <code>try/except</code>, podemos <strong>tratar</strong> esses erros sem que o programa quebre.</p>
+    
+    <h3>6.1 Exemplo: tratando divisão por zero</h3>
+    <pre><code>try:
+    num1 = int(input("Digite o primeiro número: "))
+    num2 = int(input("Digite o segundo número: "))
+    resultado = num1 / num2
+    print(f"Resultado: {resultado}")
+except ZeroDivisionError:
+    print("Erro: divisão por zero não é permitida!")
+except ValueError:
+    print("Erro: você deve digitar números inteiros!")
+except Exception as e:
+    print(f"Ocorreu um erro inesperado: {e}")</code></pre>
+    
+    <h3>6.2 Exemplo: validando entrada com try/except</h3>
+    <pre><code>def ler_inteiro(mensagem):
+    while True:
+        try:
+            valor = int(input(mensagem))
+            return valor
+        except ValueError:
+            print("Valor inválido! Digite um número inteiro.")
+
+idade = ler_inteiro("Digite sua idade: ")
+print(f"Idade: {idade}")</code></pre>
+    
+    <h3>6.3 Finally (executa sempre)</h3>
+    <pre><code>try:
+    arquivo = open("dados.txt", "r")
+    conteudo = arquivo.read()
+except FileNotFoundError:
+    print("Arquivo não encontrado!")
+finally:
+    # Executa independentemente de erro ou sucesso
+    print("Finalizando operação...")</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>⚠️ Micro-atividade 5: Tratamento de erros</h4>
+        <p>Crie uma função <code>dividir(a, b)</code> que retorna a divisão de <code>a</code> por <code>b</code>. Se <code>b</code> for zero, trate a exceção e retorne a mensagem "Erro: divisão por zero". Teste com valores válidos e com zero.</p>
+    </div>
+
+    <h2>7. Funções lambda (funções anônimas)</h2>
+    <p><strong>Lambda</strong> são funções pequenas e anônimas (sem nome) que podem ser escritas em uma única linha. São úteis para operações simples.</p>
+    
+    <h3>7.1 Sintaxe</h3>
+    <pre><code>lambda parametros: expressao</code></pre>
+    
+    <h3>7.2 Exemplos</h3>
+    <pre><code># Função que eleva ao quadrado
+quadrado = lambda x: x ** 2
+print(quadrado(5))  # 25
+
+# Função com dois parâmetros
+soma = lambda a, b: a + b
+print(soma(3, 7))   # 10
+
+# Usando lambda diretamente (sem variável)
+print((lambda x: x * 2)(4))  # 8
+
+# Útil com funções como map, filter
+numeros = [1, 2, 3, 4, 5]
+dobros = list(map(lambda x: x * 2, numeros))
+print(dobros)  # [2, 4, 6, 8, 10]</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>⚡ Micro-atividade 6: Função lambda</h4>
+        <p>Crie uma função lambda que recebe três números e retorna a média deles. Atribua a uma variável chamada <code>media</code> e teste com <code>media(7, 8, 9)</code>.</p>
+    </div>
+
+    <h2>8. Exercícios resolvidos</h2>
+    
+    <h3>Exercício 1: Função com validação de string</h3>
+    <pre><code>def valida_string(pergunta, min_caracteres, max_caracteres):
+    while True:
+        texto = input(pergunta)
+        if min_caracteres <= len(texto) <= max_caracteres:
+            return texto
+        print(f"O texto deve ter entre {min_caracteres} e {max_caracteres} caracteres.")
+
+nome = valida_string("Digite seu nome (3 a 20 caracteres): ", 3, 20)
+print(f"Nome válido: {nome}")</code></pre>
+    
+    <h3>Exercício 2: Função que calcula fatorial</h3>
+    <pre><code>def fatorial(n):
+    if n < 0:
+        return None  # fatorial não definido para negativos
+    resultado = 1
+    for i in range(2, n + 1):
+        resultado *= i
+    return resultado
+
+num = int(input("Digite um número para calcular o fatorial: "))
+fat = fatorial(num)
+if fat is None:
+    print("Fatorial não definido para números negativos.")
+else:
+    print(f"{num}! = {fat}")</code></pre>
+    
+    <h3>Exercício 3: Validação de número inteiro</h3>
+    <pre><code>def valida_int(pergunta, min_valor, max_valor):
+    while True:
+        try:
+            valor = int(input(pergunta))
+            if min_valor <= valor <= max_valor:
+                return valor
+            print(f"Valor deve estar entre {min_valor} e {max_valor}.")
+        except ValueError:
+            print("Digite um número inteiro válido.")
+
+x = valida_int("Digite um valor entre 1 e 100: ", 1, 100)
+print(f"Valor aceito: {x}")</code></pre>
+
+    <hr>
+    <h2>Resumo da apostila</h2>
+    <ul>
+        <li><strong>def:</strong> palavra-chave para definir funções.</li>
+        <li><strong>Parâmetros:</strong> dados de entrada da função. Podem ser obrigatórios ou opcionais (valor padrão).</li>
+        <li><strong>return:</strong> retorna um valor da função para quem a chamou. Sem return, a função retorna <code>None</code>.</li>
+        <li><strong>Escopo local:</strong> variáveis criadas dentro da função. Não são acessíveis fora dela.</li>
+        <li><strong>Escopo global:</strong> variáveis criadas fora das funções. Para modificar uma global dentro de uma função, use <code>global</code>.</li>
+        <li><strong>try/except:</strong> tratamento de exceções (erros em tempo de execução).</li>
+        <li><strong>Lambda:</strong> funções anônimas de uma linha, úteis para operações simples.</li>
+        <li><strong>Reutilização:</strong> funções evitam repetição de código e facilitam a manutenção.</li>
+    </ul>
+    
+    <div class="destaque-box" style="background: #B4D3D9; border-left-color: #9B8EC7;">
+        🚀 <strong>Próximos passos:</strong> Com as funções, você pode começar a criar programas mais complexos e modulares. Pratique criando funções para tarefas específicas (validação de dados, cálculos, exibição de menus). No próximo conteúdo, exploraremos estruturas de dados como listas, tuplas e dicionários.
+    </div>
+
+    <footer>
+        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
+        <p>Edição 1 | Junho de 2026</p>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila: Estruturas de Repetição em Python - while, for, laços aninhados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
+            background-color: #F2EAE0;
+            padding: 48px 24px;
+            color: #2c2c2c;
+            line-height: 1.65;
+        }
+
+        .apostila-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #9B8EC7;
+            border-left: 6px solid #BDA6CE;
+            padding-left: 22px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #9B8EC7;
+            border-bottom: 2px solid #B4D3D9;
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: #BDA6CE;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .destaque-box {
+            background-color: #F2EAE0;
+            border-left: 5px solid #BDA6CE;
+            padding: 18px 24px;
+            margin: 28px 0;
+            border-radius: 20px;
+            line-height: 1.65;
+            color: #2c2c2c;
+        }
+
+        code {
+            background-color: #eef2fa;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: #9B8EC7;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #2c2c2c;
+            color: #F2EAE0;
+            padding: 20px 24px;
+            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 24px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background: none;
+            color: #F2EAE0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #B4D3D9;
+            border: 1px solid #cbdbe2;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: #2c2c2c;
+        }
+
+        td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            background-color: #fff;
+        }
+
+        ul, ol {
+            margin: 16px 0 20px 28px;
+            line-height: 1.7;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .micro-atividade {
+            background-color: #F2EAE0;
+            border: 1px solid #BDA6CE;
+            border-radius: 28px;
+            padding: 22px 28px;
+            margin: 32px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .micro-atividade h4 {
+            font-size: 20px;
+            color: #9B8EC7;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .badge {
+            background-color: #9B8EC7;
+            color: #F2EAE0;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        hr {
+            margin: 36px 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #B4D3D9, #F2EAE0, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 13px;
+            color: #6c7a89;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 28px;
+        }
+
+        footer p{
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .apostila-container {
+                padding: 28px 20px;
+            }
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+        }
+
+        strong {
+            color: #9B8EC7;
+        }
+        
+        .figura-placeholder {
+            background: #B4D3D9;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #2c2c2c;
+            font-style: italic;
+        }
+        
+        .saida-exemplo {
+            background: #e8f0f2;
+            border-left: 3px solid #9B8EC7;
+            padding: 10px 16px;
+            margin: 10px 0;
+            font-family: monospace;
+            color: #2c2c2c;
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <span class="badge">PYTHON | ESTRUTURAS DE REPETIÇÃO</span>
+    <h1>Laços de Repetição em Python<br><span style="font-size: 22px; color:#BDA6CE;">while, for, contadores, acumuladores e laços aninhados</span></h1>
+    
+    <p>Muitas tarefas na programação exigem que um bloco de código seja executado <strong>várias vezes</strong>. Imagine escrever 1000 vezes o mesmo comando "Mover" para um personagem andar 1000 passos – seria impraticável. As <strong>estruturas de repetição</strong> (laços ou loops) resolvem esse problema. Nesta apostila, você aprenderá <code>while</code> (repetição com condição), <code>for</code> (repetição com contador), <strong>contadores</strong> e <strong>acumuladores</strong>, além de <strong>laços aninhados</strong> e comandos como <code>break</code> e <code>continue</code>.</p>
+
+    <h2>1. Por que usar estruturas de repetição?</h2>
+    <p>Suponha que você precise imprimir os números de 1 a 1000 na tela. Fazer isso com 1000 prints seria um trabalho enorme e geraria um código gigantesco. Com um laço de repetição, escrevemos apenas algumas linhas e o computador se encarrega de repetir.</p>
+    
+    <div class="destaque-box">
+        🧭 <strong>Exemplo lúdico:</strong> Um lenhador precisa andar 5 quadrados até a tora de madeira. Em vez de escrever "Mover" cinco vezes, usamos um laço que repete a ação 5 vezes. Se fossem 1000 passos, a mesma estrutura funciona – basta mudar o limite.
+    </div>
+    
+    <h2>2. Estrutura de repetição while (enquanto)</h2>
+    <p>O comando <code>while</code> repete um bloco de código <strong>enquanto</strong> uma condição for verdadeira. A repetição termina quando a condição se torna falsa.</p>
+    
+    <h3>2.1 Sintaxe e fluxograma</h3>
+    <pre><code>while condicao:
+    # bloco executado repetidamente
+    instrucao_1
+    instrucao_2</code></pre>
+    
+    <div class="figura-placeholder">
+        🔷 [FLUXOGRAMA DO WHILE]<br>
+        → Condição? ── Sim → Bloco de instruções → (volta para condição)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓ Não<br>
+        → Fim do laço (continua o programa)
+    </div>
+    
+    <h3>2.2 Exemplo: imprimir números de 1 a 5</h3>
+    <pre><code>contador = 1
+while contador <= 5:
+    print(contador)
+    contador = contador + 1   # incremento (importante para não gerar loop infinito)</code></pre>
+    <div class="saida-exemplo">
+        Saída:<br>
+        1<br>2<br>3<br>4<br>5
+    </div>
+    
+    <div class="destaque-box">
+        ⚠️ <strong>Cuidado com loops infinitos!</strong> Se esquecer de atualizar a variável de controle (como o <code>contador += 1</code>), a condição nunca se torna falsa e o programa executa para sempre.
+    </div>
+    
+    <h3>2.3 Contadores (incremento constante)</h3>
+    <p>Um <strong>contador</strong> é uma variável que aumenta (ou diminui) de um valor fixo a cada repetição. É usado para controlar o número de iterações.</p>
+    <pre><code># Contagem regressiva de 10 a 1
+contador = 10
+while contador >= 1:
+    print(contador)
+    contador -= 1   # equivalente a contador = contador - 1
+print("Fogo!")</code></pre>
+    
+    <h3>2.4 Acumuladores (somatório de valores variáveis)</h3>
+    <p>Um <strong>acumulador</strong> é uma variável que soma valores diferentes a cada repetição. É muito usado para calcular somatórios, médias, etc.</p>
+    <pre><code># Calcula a soma de 5 números digitados pelo usuário
+soma = 0
+contador = 1
+while contador <= 5:
+    numero = float(input(f"Digite o {contador}º número: "))
+    soma = soma + numero
+    contador += 1
+print(f"Somatório: {soma}")
+print(f"Média: {soma / 5}")</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>🧮 Micro-atividade 1: Soma de números pares</h4>
+        <p>Crie um programa que leia números inteiros digitados pelo usuário até que ele digite 0 (zero). O programa deve exibir a soma de <strong>todos os números pares</strong> digitados. Use <code>while</code>.</p>
+    </div>
+
+    <h2>3. Validação de dados com while</h2>
+    <p>Uma aplicação muito comum do <code>while</code> é <strong>validar entradas do usuário</strong>, repetindo a pergunta até que um valor válido seja fornecido.</p>
+    
+    <h3>3.1 Exemplo: garantindo um número positivo</h3>
+    <pre><code>numero = int(input("Digite um número positivo: "))
+while numero <= 0:
+    print("Valor inválido! O número deve ser positivo.")
+    numero = int(input("Digite um número positivo: "))
+print(f"Valor aceito: {numero}")</code></pre>
+    
+    <h3>3.2 Exemplo: repetindo até digitar "sair"</h3>
+    <pre><code>print("Digite uma mensagem (ou 'sair' para encerrar):")
+texto = input()
+while texto != "sair":
+    print(f"Você digitou: {texto}")
+    texto = input()</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>✅ Micro-atividade 2: Validação de idade</h4>
+        <p>Crie um programa que solicite a idade do usuário. A idade deve ser entre 0 e 120 anos. Enquanto o valor digitado estiver fora dessa faixa, o programa deve pedir novamente. Ao final, exiba "Idade válida: X".</p>
+    </div>
+
+    <h2>4. Comandos break e continue</h2>
+    <p><code>break</code> e <code>continue</code> alteram o fluxo normal de um laço de repetição.</p>
+    
+    <h3>4.1 break – interrompe o laço imediatamente</h3>
+    <pre><code># Encerra quando o usuário digitar "sair"
+while True:   # loop infinito (intencional)
+    texto = input("Digite algo (ou 'sair'): ")
+    if texto == "sair":
+        break   # sai do while
+    print(f"Você digitou: {texto}")
+print("Programa encerrado.")</code></pre>
+    
+    <h3>4.2 continue – pula para a próxima iteração</h3>
+    <pre><code># Só exibe números ímpares (pula os pares)
+numero = 0
+while numero < 10:
+    numero += 1
+    if numero % 2 == 0:
+        continue   # volta ao início do while sem executar o print
+    print(numero)</code></pre>
+    <div class="saida-exemplo">
+        Saída: 1, 3, 5, 7, 9
+    </div>
+    
+    <div class="micro-atividade">
+        <h4>⏸️ Micro-atividade 3: Login com break</h4>
+        <p>Crie um programa que simule um login. O usuário tem até 3 tentativas para acertar a senha "1234". Se acertar, exiba "Acesso concedido" e encerre o programa com <code>break</code>. Se errar 3 vezes, exiba "Acesso bloqueado".</p>
+    </div>
+
+    <h2>5. Estrutura de repetição for (para)</h2>
+    <p>O <code>for</code> é usado quando <strong>sabemos quantas vezes</strong> o laço deve repetir. Ele é ideal para percorrer sequências (como intervalos de números) e é mais compacto que o <code>while</code> nesses casos.</p>
+    
+    <h3>5.1 Sintaxe básica com range()</h3>
+    <pre><code>for variavel in range(inicio, fim, passo):
+    # bloco executado para cada valor</code></pre>
+    <ul>
+        <li><code>range(5)</code> → 0, 1, 2, 3, 4 (inicia em 0, termina antes do 5)</li>
+        <li><code>range(1, 6)</code> → 1, 2, 3, 4, 5</li>
+        <li><code>range(2, 11, 2)</code> → 2, 4, 6, 8, 10 (passo 2)</li>
+        <li><code>range(10, 0, -1)</code> → 10, 9, 8, ..., 1 (passo negativo)</li>
+    </ul>
+    
+    <h3>5.2 Exemplos práticos</h3>
+    <pre><code># Exemplo 1: imprimir de 1 a 10
+for i in range(1, 11):
+    print(i)
+
+# Exemplo 2: tabuada do 5
+numero = 5
+for i in range(1, 11):
+    print(f"{numero} x {i} = {numero * i}")
+
+# Exemplo 3: contagem regressiva
+for i in range(10, 0, -1):
+    print(i)
+print("Fogo!")</code></pre>
+    
+    <h3>5.3 Comparativo while vs for</h3>
+    <p>Ambos resolvem o mesmo problema, mas <code>for</code> é mais conciso quando o número de repetições é conhecido.</p>
+    <pre><code># Usando while
+i = 1
+while i <= 5:
+    print(i)
+    i += 1
+
+# Usando for (mais simples)
+for i in range(1, 6):
+    print(i)</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>🔄 Micro-atividade 4: Tabuada personalizada</h4>
+        <p>Peça ao usuário um número e exiba a tabuada desse número (de 1 a 10) usando <code>for</code>. Formate a saída como: "2 x 1 = 2", "2 x 2 = 4", etc.</p>
+    </div>
+
+    <h2>6. Laços aninhados</h2>
+    <p>Podemos colocar um laço dentro de outro. O <strong>laço interno</strong> é completamente executado para cada iteração do <strong>laço externo</strong>.</p>
+    
+    <h3>6.1 Exemplo: tabuada completa de 1 a 10</h3>
+    <pre><code># Laço externo: números de 1 a 10
+for numero in range(1, 11):
+    print(f"\n--- Tabuada do {numero} ---")
+    # Laço interno: multiplicadores de 1 a 10
+    for i in range(1, 11):
+        print(f"{numero} x {i} = {numero * i}")</code></pre>
+    <p>O laço externo executa 10 vezes. Para cada uma dessas 10 execuções, o laço interno executa 10 vezes. Total: 100 iterações do <code>print</code>.</p>
+    
+    <h3>6.2 Exemplo: números primos</h3>
+    <pre><code># Encontra números primos entre 2 e 50
+for numero in range(2, 51):
+    primo = True
+    for divisor in range(2, numero):
+        if numero % divisor == 0:
+            primo = False
+            break
+    if primo:
+        print(f"{numero} é primo")</code></pre>
+    
+    <div class="micro-atividade">
+        <h4>🔢 Micro-atividade 5: Laços aninhados</h4>
+        <p>Crie um programa que exiba o seguinte padrão (usando laços aninhados):<br>
+        *<br>
+        **<br>
+        ***<br>
+        ****<br>
+        *****<br>
+        Dica: use um <code>for</code> externo para as linhas e um <code>for</code> interno para os asteriscos.</p>
+    </div>
+
+    <h2>7. Truthy e Falsey</h2>
+    <p>Em Python, valores não booleanos podem ser tratados como <code>True</code> ou <code>False</code> em condições:</p>
+    <ul>
+        <li><strong>Falsey</strong> (considerados falsos): <code>0</code>, <code>0.0</code>, <code>""</code> (string vazia), <code>None</code>, <code>[]</code> (lista vazia), <code>{}</code> (dicionário vazio).</li>
+        <li><strong>Truthy</strong> (considerados verdadeiros): qualquer outro valor (números diferentes de zero, strings não vazias, etc.)</li>
+    </ul>
+    
+    <h3>7.1 Exemplo prático</h3>
+    <pre><code>nome = ""
+while not nome:   # enquanto nome estiver vazio (Falsey)
+    nome = input("Digite seu nome (não pode ficar em branco): ")
+print(f"Olá, {nome}!")
+
+valor = int(input("Digite um número: "))
+if valor:   # equivalente a "if valor != 0"
+    print("Você digitou um número diferente de zero.")
+else:
+    print("Você digitou zero.")</code></pre>
+
+    <h2>8. Operadores especiais de atribuição (atalhos)</h2>
+    <p>Python oferece atalhos para operações comuns de atribuição:</p>
+    
+    <table>
+        <tr><th>Operador</th><th>Exemplo</th><th>Equivalente</th></tr>
+        <tr><td><code>+=</code></code>么<code>x += 5</code></code>么<code>x = x + 5</code></code></tr>
+        <tr><td><code>-=</code></code>么<code>y -= 2</code></code>么<code>y = y - 2</code></code></tr>
+        <tr><td><code>*=</code></code>么<code>z *= 3</code></code>么<code>z = z * 3</code></code></tr>
+        <tr><td><code>/=</code></code>么<code>w /= 4</code></code>么<code>w = w / 4</code></code></tr>
+        <tr><td><code>%=</code></code>么<code>r %= 2</code></code>么<code>r = r % 2</code></code></tr>
+    </table>
+    
+    <h3>8.1 Exemplo</h3>
+    <pre><code># Sem operadores especiais
+contador = contador + 1
+soma = soma + numero
+
+# Com operadores especiais (mais conciso)
+contador += 1
+soma += numero</code></pre>
+
+    <h2>9. Exercícios resolvidos</h2>
+    
+    <h3>Exercício 1: Multiplicação por soma</h3>
+    <p>Multiplique dois números usando apenas somas sucessivas.</p>
+    <pre><code>a = int(input("Primeiro número: "))
+b = int(input("Segundo número: "))
+resultado = 0
+for i in range(a):
+    resultado += b
+print(f"{a} x {b} = {resultado}")</code></pre>
+    
+    <h3>Exercício 2: Média dos pares de 1 a 100</h3>
+    <pre><code>soma = 0
+quantidade = 0
+for i in range(1, 101):
+    if i % 2 == 0:
+        soma += i
+        quantidade += 1
+media = soma / quantidade
+print(f"Média dos números pares entre 1 e 100: {media:.2f}")</code></pre>
+    
+    <h3>Exercício 3: Números primos de 2 a 99</h3>
+    <pre><code>print("Números primos entre 2 e 99:")
+for numero in range(2, 100):
+    primo = True
+    for divisor in range(2, numero):
+        if numero % divisor == 0:
+            primo = False
+            break
+    if primo:
+        print(numero, end=" ")</code></pre>
+    
+    <h3>Exercício 4: Validando intervalo de horas</h3>
+    <pre><code>h_inicio = int(input("Hora inicial (0-23): "))
+h_fim = int(input("Hora final (0-23): "))
+
+while h_inicio < 0 or h_inicio > 23 or h_fim < 0 or h_fim > 23 or h_inicio >= h_fim:
+    print("Intervalo inválido! A hora inicial deve ser menor que a final e entre 0 e 23.")
+    h_inicio = int(input("Hora inicial: "))
+    h_fim = int(input("Hora final: "))
+
+for hora in range(h_inicio, h_fim + 1):
+    for minuto in range(0, 60):
+        for segundo in range(0, 60):
+            print(f"{hora:02d}:{minuto:02d}:{segundo:02d}")</code></pre>
+
+    <hr>
+    <h2>Resumo da apostila</h2>
+    <ul>
+        <li><strong>while:</strong> repete enquanto condição for verdadeira. Ideal para número indeterminado de iterações ou validação de dados.</li>
+        <li><strong>for:</strong> repete para cada elemento de uma sequência (range, string, lista). Ideal para número conhecido de iterações.</li>
+        <li><strong>Contador:</strong> variável que incrementa valor constante (ex: <code>i += 1</code>).</li>
+        <li><strong>Acumulador:</strong> variável que soma valores variáveis (ex: <code>soma += valor</code>).</li>
+        <li><strong>break:</strong> interrompe o laço imediatamente.</li>
+        <li><strong>continue:</strong> pula para a próxima iteração.</li>
+        <li><strong>Truthy/Falsey:</strong> 0, "", None, etc. são falsos; outros valores são verdadeiros.</li>
+        <li><strong>Operadores especiais:</strong> <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>.</li>
+    </ul>
+    
+    <div class="destaque-box" style="background: #B4D3D9; border-left-color: #9B8EC7;">
+        🚀 <strong>Próximos passos:</strong> Agora que você domina laços de repetição, está apto a criar programas que processam grandes volumes de dados, validam entradas e executam tarefas repetitivas de forma eficiente. Continue praticando com os exercícios!
+    </div>
+
+    <footer>
+        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
+        <p>Edição 1 | Junho de 2026</p>
+    </footer>
+</div>
+</body>
+</html>
