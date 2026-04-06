@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design de Animação 3D | Parte 3: Animação, Rigging, Câmera e Render</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #1e0a2f 0%, #2e1748 100%);
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+            line-height: 1.75;
+            padding: 2rem 1rem;
+            color: #f0ebe0;
+        }
+        .apostila {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 2rem;
+            overflow: hidden;
+            color: #2d241f;
+            font-family: 'Segoe UI', 'Roboto', Georgia, serif;
+        }
+        .hero {
+            background: linear-gradient(135deg, #ffb347 0%, #ff6b4a 40%, #9b2e6b 100%);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff0c0, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.2);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+        }
+        .conteudo {
+            padding: 2.5rem 2.2rem;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #9b2e6b;
+            border-left: 8px solid #ff914d;
+            padding-left: 1rem;
+            margin: 2rem 0 1.2rem 0;
+        }
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #c75c3a;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #a5422c;
+            margin: 1.2rem 0 0.5rem;
+        }
+        p {
+            margin-bottom: 1.1rem;
+            text-align: justify;
+        }
+        .dica, .curiosidade, .saiba-mais {
+            background: #fff7ed;
+            border-left: 8px solid #ff9800;
+            padding: 1rem 1.6rem;
+            margin: 1.6rem 0;
+            border-radius: 24px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .dica::before { content: "💡 DICA: "; font-weight: 800; color: #c95a1a; }
+        .curiosidade::before { content: "✨ CURIOSIDADE: "; font-weight: 800; color: #9b2e6b; }
+        .saiba-mais::before { content: "📘 SAIBA MAIS: "; font-weight: 800; color: #b45f2b; }
+        .exercicio {
+            background: #fef3e4;
+            border-radius: 28px;
+            padding: 1.3rem 1.8rem;
+            margin: 1.8rem 0;
+            border: 1px solid #ffd4a3;
+        }
+        .exercicio h4 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #bc4a2a;
+        }
+        .exercicio h4::before { content: "🎯"; font-size: 1.3rem; }
+        .figura-placeholder {
+            background: #f5efe5;
+            border: 2px dashed #c69c6d;
+            border-radius: 32px;
+            padding: 1.5rem;
+            margin: 1.8rem 0;
+            text-align: center;
+            font-family: monospace;
+            color: #8a633b;
+        }
+        .figura-placeholder .img-descricao {
+            display: block;
+            margin-top: 10px;
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+        ul, ol {
+            margin: 0.8rem 0 1rem 1.8rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fffaf2;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        th {
+            background-color: #9b2e6b;
+            color: white;
+            padding: 10px;
+            font-weight: 700;
+        }
+        td {
+            border: 1px solid #f0dbbc;
+            padding: 10px;
+            background-color: #fffef9;
+        }
+        .resumo-final {
+            background: linear-gradient(120deg, #ffeada, #ffefdb);
+            padding: 1.8rem 2rem;
+            border-radius: 36px;
+            margin-top: 2rem;
+        }
+        .resumo-final h3 { color: #9b2e6b; margin-top: 0; }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            font-size: 0.8rem;
+            border-top: 1px solid #eedfcb;
+            color: #a77c53;
+        }
+        .aviso-parte {
+            background-color: #9b2e6b20;
+            border: 2px solid #9b2e6b;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 48px;
+            margin: 2rem 0 1rem;
+            font-weight: bold;
+        }
+        @media (max-width: 750px) {
+            .conteudo { padding: 1.3rem; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="apostila">
+    <div class="hero">
+        <h1>🎬 DESIGN DE ANIMAÇÃO 3D</h1>
+        <p>Parte 3 – Animação, Rigging, Graph Editor, Câmera e Render de Animação</p>
+    </div>
+    <div class="conteudo">
+        <p><strong>Bem-vindo à Parte 3 – a alma do 3D: a animação.</strong> Aqui você aprenderá a dar vida aos seus modelos. Abordaremos desde os fundamentos (os 12 princípios da animação) até técnicas avançadas de rigging (ossos, IK/FK, skinning), uso do Graph Editor para curvas suaves, criação de actions/bibliotecas de animação, iluminação cinematográfica, composição de câmera (regra dos terços, planos) e finalmente o render de animação (sequência de frames, formatos, otimização). Tudo com exemplos práticos e aplicável em qualquer software (Blender, Maya, 3ds Max).</p>
+
+        <!-- ========================================= -->
+        <!-- 1. O QUE É ANIMAÇÃO 3D -->
+        <!-- ========================================= -->
+        <h2>1. O que é animação 3D e onde é usada</h2>
+        <p><strong>Animação 3D</strong> é a técnica de criar a ilusão de movimento em objetos tridimensionais ao longo do tempo. Diferente da animação 2D (desenho quadro a quadro), a animação 3D manipula modelos digitais, ossos e controladores. Aplicações: filmes (Toy Story, Frozen), jogos (The Last of Us, Elden Ring), simulações médicas, arquitetura (walkthroughs), publicidade, realidade virtual e engenharia.</p>
+        <div class="curiosidade">
+            O primeiro longa-metragem totalmente em 3D foi <strong>Toy Story (1995)</strong>, da Pixar. Desde então, a tecnologia evoluiu para permitir simulações de cabelo, pele, água e destruição em tempo real.
+        </div>
+
+        <h2>2. Fundamentos – Os 12 Princípios da Animação (Disney)</h2>
+        <p>Criados por Ollie Johnston e Frank Thomas (animadores lendários da Disney), esses princípios são a base de qualquer animação convincente, seja 2D ou 3D. Vamos detalhar cada um com exemplos práticos no 3D.</p>
+        <ol>
+            <li><strong>Squash & Stretch (Compressão e Alongamento)</strong>: objetos ganham peso ao achatar (squash) quando atingem uma superfície e alongar (stretch) quando ganham velocidade. Ex: bola quicando. No 3D, use escalonamento não uniforme em keyframes (ex: escala Y reduzida no squash, aumentada no stretch).</li>
+            <li><strong>Antecipação (Anticipation)</strong>: movimento preparatório antes da ação principal. Um personagem que vai pular primeiro agacha. Ajuda o espectador a entender o que vem a seguir.</li>
+            <li><strong>Staging (Encenação)</strong>: apresentar a ação de forma clara, usando câmera, iluminação e pose. Evite elementos que desviam a atenção. No 3D, posicione a câmera e a luz para destacar a ação principal.</li>
+            <li><strong>Pose to Pose / Straight Ahead</strong>: Pose to Pose: define poses-chave (extremas) e depois os intervalos (mais controle). Straight Ahead: anima quadro a quadro (orgânico, usado para efeitos como fogo/fumaça). No 3D, combinamos ambas.</li>
+            <li><strong>Follow Through & Overlap (Ação Continuada e Sobreposição)</strong>: partes soltas (orelhas, roupas, cabelo) continuam se movendo após a parada (follow through). Overlap: diferentes partes se movem em momentos ligeiramente diferentes.</li>
+            <li><strong>Ease In / Ease Out (Aceleração e Desaceleração)</strong>: movimentos naturais começam devagar, aceleram e desaceleram no final. No Graph Editor, isso se traduz em curvas Bezier com tangentes suaves.</li>
+            <li><strong>Arcs (Arcos)</strong>: movimentos orgânicos seguem trajetórias curvas, não lineares. Braços, pernas, cabeça – todos descrevem arcos. No 3D, ajuste os handles das curvas para formar arcos.</li>
+            <li><strong>Secondary Action (Ação Secundária)</strong>: pequenos movimentos que reforçam a ação principal. Ex: enquanto um personagem anda (principal), seus braços balançam e o cabelo se move (secundárias).</li>
+            <li><strong>Timing (Ritmo / Tempo)</strong>: número de frames controla o peso. Um objeto leve usa poucos frames (rápido). Um objeto pesado usa muitos frames (lento). Ex: uma bola de borracha quica em 12 frames; uma bola de boliche leva 40 frames.</li>
+            <li><strong>Exagero (Exaggeration)</strong>: intensifique expressões e ações para torná-las mais legíveis. O realismo puro muitas vezes parece sem vida; o exagero traz emoção.</li>
+            <li><strong>Solid Drawing (Desenho Sólido)</strong>: mesmo no 3D, o modelo deve ter volume, peso e anatomia corretos. Evite deformações que quebram a tridimensionalidade.</li>
+            <li><strong>Appeal (Apelo / Carisma)</strong>: o personagem precisa ser interessante visualmente. Design atraente, expressões cativantes e movimento fluido geram conexão emocional.</li>
+        </ol>
+        <div class="figura-placeholder">
+            🖼️ [IMAGEM: Diagrama dos 12 princípios com miniaturas: bola quicando (squash/stretch), personagem agachando (antecipação), braço em arco, curva do graph editor (ease in/out)]
+            <span class="img-descricao">Figura 1 – Os 12 princípios da animação aplicados ao 3D.</span>
+        </div>
+
+        <h2>3. Timeline, FPS e Keyframes</h2>
+        <p><strong>Timeline (linha do tempo)</strong>: é a régua onde os frames são organizados. Cada frame é um instante no tempo. <strong>FPS (Frames Per Second – quadros por segundo)</strong>: define quantos frames existem em um segundo de animação. Padrões: 24 fps (cinema), 30 fps (TV/web), 60 fps (jogos).</p>
+        <p><strong>Keyframe (quadro-chave)</strong>: é um frame onde você define uma propriedade específica (posição, rotação, escala, cor, etc.). O software calcula automaticamente os frames intermediários (<strong>interpolação</strong>). Ex: no frame 1, a bola está no chão; no frame 24, a bola está no ar. O software cria os frames 2 a 23 automaticamente.</p>
+        <div class="dica">
+            No Blender, insira keyframes pressionando <strong>I</strong> (tecla I) com o mouse sobre a viewport 3D. Escolha o tipo (Location, Rotation, Scale, LocRotScale, etc.).
+        </div>
+
+        <h2>4. Ease In / Ease Out – Aceleração e desaceleração</h2>
+        <p>Movimentos naturais raramente são lineares (velocidade constante). Eles <strong>aceleram</strong> do repouso (<strong>Ease In</strong>) e <strong>desaceleram</strong> antes de parar (<strong>Ease Out</strong>). No Graph Editor, isso se traduz em curvas <strong>Bezier</strong> com tangentes suaves (formato de "S" achatado). A interpolação linear (reta) resulta em movimento robótico.</p>
+        <div class="figura-placeholder">
+            🖼️ [IMAGEM: Comparação entre curva linear (reta) e curva Bezier com ease in/out (formato de S) no Graph Editor]
+            <span class="img-descricao">Figura 2 – Curva linear (movimento constante) vs curva com ease in/out (aceleração/desaceleração).</span>
+        </div>
+
+        <h2>5. Bones (ossos), hierarquia, Rigging e Skinning</h2>
+        <h3>5.1 Bones (ossos) e hierarquia</h3>
+        <p><strong>Bones</strong> são estruturas rígidas que simulam um esqueleto. Eles são organizados em <strong>hierarquia</strong> (pai → filho). Ex: a coxa é pai da canela, que é pai do pé. Quando você move a coxa, a canela e o pé acompanham. No Blender, adicione bones no modo <strong>Edit Mode</strong> do Armature.</p>
+        
+        <h3>5.2 Rigging – a engenharia do movimento</h3>
+        <p><strong>Rigging</strong> (termo em inglês, sem tradução direta) é a criação de um sistema de controladores (ossos + restrições + interfaces) para que o animador mova o personagem de forma intuitiva. Componentes de um rig:</p>
+        <ul>
+            <li><strong>IK (Inverse Kinematics – Cinemática Inversa)</strong>: ao mover a mão, o cotovelo e ombro se ajustam automaticamente. Essencial para pés no chão (o pé fica fixo, a coxa e canela se ajustam).</li>
+            <li><strong>FK (Forward Kinematics – Cinemática Direta)</strong>: cada osso é rotacionado individualmente (como um boneco de articulação). Ideal para braços em movimentos aéreos (acenar, lançar).</li>
+            <li><strong>Controladores (custom shapes)</strong>: curvas coloridas (círculos, quadrados, setas) que o animador seleciona. São mais fáceis de clicar do que os ossos diretamente.</li>
+            <li><strong>Constraints (restrições)</strong>: limitam movimento (ex: olhos seguem um alvo, mão segura um objeto).</li>
+        </ul>
+        
+        <h3>5.3 Skinning e Weight Paint (pintura de pesos)</h3>
+        <p><strong>Skinning</strong> (ou <strong>weight painting</strong>) é o processo de vincular a malha do personagem aos ossos, definindo a <strong>influência (peso)</strong> de cada osso sobre cada vértice. Cores: <strong>azul</strong> = sem influência, <strong>vermelho</strong> = influência máxima (100%). Uma boa transição de pesos evita deformações irreais (ex: cotovelo que "quebra" ou ombro que afunda).</p>
+        <div class="dica">
+            No Blender, entre em <strong>Weight Paint mode</strong> e use pincéis para pintar pesos manualmente. Áreas como ombros e quadris quase sempre exigem ajustes finos.
+        </div>
+        <div class="figura-placeholder">
+            🖼️ [IMAGEM: Personagem 3D com esqueleto visível (ossos verdes), controladores IK/FK (círculos coloridos), e visualização de weight painting (vermelho = influência alta, azul = baixa)]
+            <span class="img-descricao">Figura 3 – Rig completo (ossos + controladores) e weight painting nos ombros.</span>
+        </div>
+
+        <h2>6. Graph Editor – o coração da animação refinada</h2>
+        <p><strong>Graph Editor</strong> (Editor de Curvas) é uma ferramenta que exibe cada propriedade animada (posição X, rotação Y, escala Z, etc.) como uma <strong>curva</strong> ao longo do tempo. Para que serve?</p>
+        <ul>
+            <li><strong>Ajustar interpolação</strong>: trocar entre linear, Bezier, constante ou de passo (step).</li>
+            <li><strong>Controlar ease in/out</strong>: manipulando as alças (handles) das curvas Bezier.</li>
+            <li><strong>Suavizar movimentos</strong>: removendo picos indesejados.</li>
+            <li><strong>Copiar curvas entre eixos</strong> ou entre personagens.</li>
+        </ul>
+        <p><strong>Quando usar?</strong> Sempre que a animação automática estiver estranha (movimento robótico, transições bruscas, falta de peso). Um animador profissional passa tanto tempo no Graph Editor quanto na viewport 3D.</p>
+        <div class="curiosidade">
+            No Blender, o Graph Editor também permite <strong>modificadores de ruído</strong> (para tremor natural) e <strong>ciclos</strong> (loop de animação). Essencial para caminhadas e corridas.
+        </div>
+
+        <h2>7. Actions (bibliotecas de animação)</h2>
+        <p><strong>Actions (Ações)</strong> são blocos de animação reutilizáveis. Ex: uma action "andar", outra "pular", outra "correr". Você cria cada ação separadamente e depois as combina no <strong>NLA Editor (Non-Linear Animation)</strong>. Isso é essencial para jogos (animações reproduzidas por gatilhos) e para animação de personagens secundários. Como criar no Blender:</p>
+        <ol>
+            <li>Anime um trecho (ex: andar de 0 a 24 frames).</li>
+            <li>No Dope Sheet → Action Editor, dê um nome (ex: "walk_cycle").</li>
+            <li>Crie uma nova action ("jump") e anime outro trecho.</li>
+            <li>No NLA Editor, empilhe as actions (primeiro anda, depois pula, depois anda).</li>
+        </ol>
+
+        <h2>8. Iluminação para animação – esquema de três pontos e luz emocional</h2>
+        <p>A iluminação não é apenas técnica – ela conta uma história. O <strong>esquema de três pontos</strong> (Key, Fill, Back) é a base, mas podemos adaptar para emoções:</p>
+        <ul>
+            <li><strong>Luz frontal suave</strong>: inocência, pureza (comum em comédias românticas).</li>
+            <li><strong>Luz lateral forte</strong>: drama, mistério, conflito (filme noir).</li>
+            <li><strong>Luz por baixo (contra-luz inferior)</strong>: medo, terror (rosto iluminado de baixo para cima).</li>
+            <li><strong>Luz colorida</strong>: vermelho = perigo/paixão; azul = tristeza/frio; amarelo = alegria/calor.</li>
+        </ul>
+        <p>Além disso, <strong>HDRI (imagem esférica de 360°)</strong> é excelente para iluminação ambiente realista (céu, reflexos).</p>
+        <div class="figura-placeholder">
+            🖼️ [IMAGEM: Quatro retratos do mesmo personagem com diferentes iluminações: frontal suave (alegria), lateral (drama), por baixo (terror), azulada (tristeza)]
+            <span class="img-descricao">Figura 4 – Iluminação emocional: como a luz afeta a percepção do personagem.</span>
+        </div>
+
+        <h2>9. Composição, câmera e regra dos terços</h2>
+        <p><strong>Composição</strong> é a disposição dos elementos dentro do quadro. A <strong>regra dos terços</strong> é a técnica mais básica: divida a imagem em 9 retângulos iguais (duas linhas horizontais, duas verticais). Os pontos de interseção são os "pontos fortes" – posicione o elemento principal ali. Evite centralizar personagens a menos que seja intencional (simetria para poder).</p>
+        <p><strong>Planos de câmera</strong> (cinema):</p>
+        <ul>
+            <li><strong>Plano geral</strong>: mostra o ambiente inteiro, personagem pequeno.</li>
+            <li><strong>Plano médio</strong>: da cintura para cima.</li>
+            <li><strong>Close-up</strong>: rosto ou objeto em detalhe.</li>
+            <li><strong>Plano detalhe</strong>: olho, mão, objeto pequeno.</li>
+        </ul>
+        <p><strong>Movimentos de câmera</strong>: <strong>Pan</strong> (horizontal), <strong>Tilt</strong> (vertical), <strong>Zoom</strong> (aproximação ótica), <strong>Dolly</strong> (câmera se move fisicamente), <strong>Tracking</strong> (acompanha personagem).</p>
+        <div class="dica">
+            No Blender, adicione uma câmera e ative o <strong>Quadro de visualização da câmera (Numpad 0)</strong>. Use a regra dos terços ativando a grade (overlay) no viewport.
+        </div>
+
+        <h2>10. Bake de animação</h2>
+        <p><strong>Bake de animação</strong> (ou "assar animação") é o processo de converter animações baseadas em rig/controladores (IK, restrições, curvas) em <strong>keyframes simples</strong> (frame a frame) em cada osso. Por que fazer?</p>
+        <ul>
+            <li>Para exportar para jogos (motores como Unity/Unreal não entendem rigs complexos com IK).</li>
+            <li>Para congelar a animação e evitar mudanças acidentais.</li>
+            <li>Para otimizar performance.</li>
+        </ul>
+        <p>No Blender: selecione o armature, vá para <strong>Object → Animation → Bake Action</strong>. Escolha "Clear Constraints" e "Visual Keying". O resultado são keyframes em cada osso a cada N frames.</p>
+
+        <h2>11. Render de animação – sequência de frames e formatos</h2>
+        <p>Renderizar uma animação é diferente de renderizar uma imagem estática. As recomendações profissionais:</p>
+        <ul>
+            <li><strong>Sempre renderize em sequência de imagens</strong> (PNG, EXR, TIFF). Se o computador travar no frame 342 de 1000, você pode retomar do frame 343 sem perder nada. Depois use um editor de vídeo (DaVinci Resolve, Premiere, Blender VSE) para compilar os frames em MP4.</li>
+            <li><strong>Formato EXR</strong> (OpenEXR) de 32 bits é o padrão para VFX e composição (preserva faixa dinâmica).</li>
+            <li><strong>Otimização de tempo</strong>: use denoising (desruído) para reduzir amostras pela metade. No Blender Cycles, ative o denoiser OptiX ou Open Image Denoise.</li>
+            <li><strong>Resolução e FPS</strong>: defina antes de renderizar. Ex: 1920x1080, 24 fps.</li>
+        </ul>
+        <div class="figura-placeholder">
+            🖼️ [IMAGEM: Tela de configuração de render no Blender mostrando formato PNG, resolução Full HD, FPS 24, e opção de sequência de frames (frame_0001.png a frame_0240.png)]
+            <span class="img-descricao">Figura 5 – Configuração de render de animação: sequência de imagens PNG.</span>
+        </div>
+
+        <!-- EXERCÍCIOS PRÁTICOS PARTE 3 -->
+        <h2>Exercícios práticos – Animação 3D</h2>
+        <div class="exercicio">
+            <h4>Exercício 1 – Bola quicando com os 12 princípios</h4>
+            <p>Anime uma bola quicando no chão (24 fps, duração 48 frames). Aplique: squash & stretch (achatar no impacto), arco de trajetória, ease in/out (desacelerar no topo, acelerar na queda), timing (leve = frames mais curtos). Use o Graph Editor para suavizar as curvas.</p>
+        </div>
+        <div class="exercicio">
+            <h4>Exercício 2 – Rigging simples de um braço</h4>
+            <p>Crie um braço simples (cilindro alongado com 3 segmentos: ombro, cotovelo, punho). Adicione 3 ossos, faça skinning (weight paint) e crie um controlador IK para a mão. Animar a mão movendo-se em arco.</p>
+        </div>
+        <div class="exercicio">
+            <h4>Exercício 3 – Graph Editor na prática</h4>
+            <p>Anime um pêndulo (ou cauda) usando keyframes. Inicialmente use interpolação linear. Depois entre no Graph Editor, converta para Bezier e ajuste as alças para criar ease in/out. Compare o resultado.</p>
+        </div>
+        <div class="exercicio">
+            <h4>Exercício 4 – Animação de caminhada (walk cycle)</h4>
+            <p>Crie um personagem simples com rig básico. Anime um ciclo de caminhada de 24 frames (contacto, descida, passagem, subida). Use a NLA Editor para repetir o ciclo. Renderize 120 frames.</p>
+        </div>
+        <div class="exercicio">
+            <h4>Exercício 5 – Iluminação e câmera cinematográfica</h4>
+            <p>Com a animação de caminhada pronta, adicione três luzes (Key, Fill, Back). Posicione a câmera em um ângulo baixo (contra-plongée) para dar poder ao personagem. Renderize 2 versões: iluminação feliz (amarela) e iluminação dramática (luz lateral azulada).</p>
+        </div>
+
+        <!-- RESUMO FINAL DA PARTE 3 -->
+        <div class="resumo-final">
+            <h3>📌 Resumo – Parte 3: Animação, Rigging, Câmera e Render</h3>
+            <ul>
+                <li><strong>12 princípios da animação</strong>: base para qualquer movimento crível (squash/stretch, antecipação, arcos, timing, exagero, etc.).</li>
+                <li><strong>Keyframes e FPS</strong>: 24/30/60 fps. Keyframes definem pontos-chave; interpolação preenche os intervalos.</li>
+                <li><strong>Ease in/out</strong>: aceleração e desaceleração. Controlado pelo Graph Editor (curvas Bezier).</li>
+                <li><strong>Rigging</strong>: ossos, hierarquia, IK (cinemática inversa) e FK (cinemática direta). Controladores customizados.</li>
+                <li><strong>Skinning/Weight Paint</strong>: vinculação da malha aos ossos. Pesos graduais (vermelho = alta influência).</li>
+                <li><strong>Graph Editor</strong>: ajuste fino de curvas, remoção de movimentos robóticos.</li>
+                <li><strong>Actions e NLA Editor</strong>: reutilização de animações (andar, pular, correr).</li>
+                <li><strong>Iluminação emocional</strong>: três pontos + cor e direção da luz contam história.</li>
+                <li><strong>Câmera e composição</strong>: regra dos terços, planos (close, médio, geral), movimentos (pan, tilt, dolly).</li>
+                <li><strong>Bake de animação</strong>: converter rig IK/keyframes em keyframes simples para exportação.</li>
+                <li><strong>Render de animação</strong>: sequência de imagens (PNG/EXR) → depois compilar em MP4. Use denoising.</li>
+            </ul>
+            <p>Com estas três partes (Modelagem, UV/Texturas, Animação), você domina o pipeline completo de criação 3D: do primeiro vértice ao render final animado.</p>
+        </div>
+
+        <div class="aviso-parte">
+            🎉 Fim da Parte 3 – Animação. Trilogia completa! 🎉<br>
+            Com as Partes 1, 2 e 3, você tem um material robusto para estudar e praticar Design de Animação 3D.
+        </div>
+
+        <footer>
+            <p>Conteúdo baseado em princípios clássicos da animação (Disney), pipelines de rigging profissional e técnicas cinematográficas. Softwares de referência: Blender, Maya, Unity, Unreal Engine.</p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

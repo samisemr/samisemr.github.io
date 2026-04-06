@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apostila Completa: Produção Textual Técnica e Argumentativa</title>
+    <title>Apostilas - Portal do Aluno</title>
     <style>
         * {
             margin: 0;
@@ -12,399 +12,214 @@
         }
 
         body {
-            background-color: #f0f2ed;
-            font-family: 'Georgia', 'Times New Roman', Times, serif;
-            color: #1f2a1f;
-            line-height: 1.7;
-            padding: 2rem 1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
-        .apostila {
-            max-width: 1150px;
-            margin: 0 auto;
-            background-color: #fffef7;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            padding: 2.5rem 2.2rem;
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 30px;
         }
 
         h1 {
-            font-size: 2.3rem;
-            font-weight: 700;
-            color: #2c5e2f;
-            border-left: 7px solid #d9a13b;
-            padding-left: 1.2rem;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
+            color: #1a1a2e;
+            font-size: 2rem;
+            margin-bottom: 8px;
+            border-left: 5px solid #e94560;
+            padding-left: 20px;
         }
 
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #2c5e2f;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.3rem;
-            border-bottom: 2px solid #e0d5b5;
-        }
-
-        h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #3e6b41;
-            margin-top: 1.5rem;
-            margin-bottom: 0.6rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-
-        .dica, .curiosidade, .saiba-mais {
-            background-color: #f8faf3;
-            border-left: 6px solid #d9a13b;
-            padding: 1rem 1.3rem;
-            margin: 1.5rem 0;
-            border-radius: 16px;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-        }
-
-        .dica::before {
-            content: "💡 Dica: ";
-            font-weight: bold;
-            color: #b45f1b;
-        }
-
-        .curiosidade::before {
-            content: "🔎 Curiosidade: ";
-            font-weight: bold;
-            color: #2c5e2f;
-        }
-
-        .saiba-mais::before {
-            content: "📘 Saiba mais: ";
-            font-weight: bold;
-            color: #9e762c;
-        }
-
-        .exercicio {
-            background-color: #fff5e6;
-            border: 1px solid #eeddbb;
-            border-radius: 24px;
-            padding: 1.2rem 1.6rem;
-            margin: 1.8rem 0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-        }
-
-        .exercicio h4 {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #b1621a;
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .exercicio h4::before {
-            content: "✍️";
-            font-size: 1.3rem;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            font-size: 0.9rem;
-            font-family: 'Segoe UI', system-ui;
-        }
-
-        th, td {
-            border: 1px solid #cfdec2;
-            padding: 10px 12px;
-            vertical-align: top;
-        }
-
-        th {
-            background-color: #eaf1e4;
-            color: #1f4a21;
-            font-weight: 700;
-        }
-
-        .figura-placeholder {
-            background: #f4f7ef;
-            border: 2px dashed #b3c7a2;
-            border-radius: 28px;
-            padding: 1.5rem;
-            margin: 1.8rem 0;
-            text-align: center;
-            font-family: 'Segoe UI', monospace;
-        }
-        
-        .figura-placeholder img{
-            width: 100%;
-
-        }
-
-        .figura-placeholder .img-descricao {
-            display: block;
-            margin-top: 12px;
-            font-style: italic;
-            color: #4c6842;
+        .subtitulo {
+            color: #666;
+            margin-bottom: 30px;
+            padding-left: 25px;
             font-size: 0.9rem;
         }
 
-        ul, ol {
-            margin: 0.8rem 0 1rem 1.8rem;
-        }
-
-        li {
-            margin: 0.4rem 0;
-        }
-
-        blockquote {
-            font-style: normal;
-            background: #fef9e8;
-            border-left: 5px solid #c9ad7a;
-            padding: 0.9rem 1.3rem;
-            margin: 1.2rem 0;
+        /* Estilo das disciplinas */
+        .disciplina {
+            background: #f8f9fa;
             border-radius: 12px;
-            font-family: 'Segoe UI', sans-serif;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.2s;
         }
 
-        hr {
-            margin: 2rem 0;
-            border: none;
-            height: 1px;
-            background: linear-gradient(90deg, #e2dbc8, transparent);
+        .disciplina:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        .resumo-final {
-            background-color: #ecf3e6;
-            padding: 1.6rem 2rem;
-            border-radius: 32px;
-            margin-top: 2rem;
-            border: 1px solid #ccddbb;
+        .disciplina-header {
+            background: #1a1a2e;
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
         }
 
-        .resumo-final h3 {
-            margin-top: 0;
-            color: #2c5e2f;
+        .disciplina-header:hover {
+            background: #16213e;
+        }
+
+        .disciplina-header h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        /* Lista de apostilas (inicialmente escondida) */
+        .apostilas-list {
+            display: none;
+            padding: 15px 20px;
+            background: white;
+        }
+
+        .apostilas-list.show {
+            display: block;
+        }
+
+        .apostila-item {
+            display: block;
+            background: #f8f9fa;
+            margin: 8px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #1a1a2e;
+            transition: all 0.2s;
+            border-left: 3px solid #e94560;
+        }
+
+        .apostila-item:hover {
+            background: #e94560;
+            color: white;
+            transform: translateX(5px);
+            border-left-color: white;
+        }
+
+        .apostila-nome {
+            font-weight: 500;
+        }
+
+        .apostila-desc {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .apostila-item:hover .apostila-desc {
+            color: rgba(255,255,255,0.8);
         }
 
         footer {
+            margin-top: 30px;
             text-align: center;
-            margin-top: 3rem;
             font-size: 0.8rem;
-            color: #6a7c5e;
-            border-top: 1px solid #e2e8da;
-            padding-top: 1.5rem;
-        }
-
-        footer p{
-            text-align: center;
-        }
-
-        @media (max-width: 680px) {
-            .apostila {
-                padding: 1.5rem;
-            }
-            h1 { font-size: 1.9rem; }
+            color: #aaa;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
         }
     </style>
 </head>
 <body>
-<div class="apostila">
-    <h1>📖 Produção Textual: Leitura de Dados, Argumentação e Escrita Técnica</h1>
-    <p><strong>Bem-vindo(a)!</strong> Esta apostila integra os conteúdos essenciais para estudantes de nível técnico e superior que desejam dominar a produção textual no ambiente acadêmico e profissional. Abordamos desde a <strong>interpretação de gráficos, tabelas e fluxogramas</strong> até a <strong>redação de relatórios técnicos</strong>, passando por <strong>paráfrase, citação, progressão temática, coesão, coerência, repertórios socioculturais e o processo de planejamento-reescrita</strong>. Tudo com linguagem clara, exemplos práticos e exercícios.</p>
+    <div class="container">
+        <h1>📚 Apostilas</h1>
+        <div class="subtitulo">Selecione uma disciplina e clique na apostila desejada</div>
 
-    <!-- PARTE 1: LEITURA CRÍTICA (Aula 1) -->
-    <h2>1. Leitura e interpretação de textos não verbais</h2>
-    <p>Antes de escrever bem, é preciso ler o mundo — incluindo dados visuais. Gráficos, tabelas e fluxogramas são <strong>textos não verbais</strong> que exigem análise crítica para embasar argumentos técnicos.</p>
-    
-    <h3>1.1 Gráficos: tendências e comparações</h3>
-    <p>Ao analisar um gráfico, observe: título, eixos (variáveis), legenda, unidade de medida e fonte dos dados. Identifique padrões de crescimento, declínio ou estabilidade.</p>
-    <div class="figura-placeholder">
-        <img src="Imagens/Figura 01.png" alt="ERRO">
-        🖼️ [IMAGEM: Gráfico de linhas mostrando expansão da capacidade de geração elétrica no Brasil (2000–2024) com destaque para o crescimento da solar distribuída após 2020.]
-        <span class="img-descricao">Figura 1 – Evolução da matriz energética brasileira: diversificação e descentralização.</span>
-    </div>
-    <p><strong>Exemplo prático:</strong> Se um gráfico mostra queda de produtividade após a implantação de um novo software, não conclua imediatamente que o software é ruim. Verifique se houve treinamento adequado ou mudanças no quadro de funcionários.</p>
-    
-    <h3>1.2 Tabelas: dados organizados</h3>
-    <p>Tabelas permitem comparar valores exatos. Analise valores extremos, calcule proporções e relacione os números ao contexto.</p>
-    <div class="figura-placeholder">
-        <img src="Imagens/Figura 02.png" alt="">
-        🖼️ [IMAGEM: Tabela comparativa de custos diretos entre concreto moldado in loco e pré-moldado – pilares, vigas, lajes.]
-        <span class="img-descricao">Figura 2 – Comparação de custos: moldado in loco vs. pré-moldado.</span>
-    </div>
-    
-    <h3>1.3 Fluxogramas: lógica processual</h3>
-    <p>Fluxogramas usam símbolos (início/fim, decisão, ação). Preste atenção nos pontos de decisão (losangos) e nos ciclos de repetição.</p>
-    <div class="exercicio">
-        <h4>Microatividade 1 – Interpretando um fluxograma</h4>
-        <p>Um fluxograma de qualidade industrial apresenta: "Receber matéria-prima → Inspecionar → Aprovada? (Sim: Armazenar / Não: Recusar e registrar)". Se a inspeção reprovar 15% dos lotes, qual seria uma recomendação técnica plausível?</p>
-        <p><em>Resposta sugerida: "Revisar critérios de aceitação com fornecedor ou ajustar o processo de transporte para reduzir danos."</em></p>
-    </div>
-    
-    <div class="dica">
-        Evite erros comuns: conclusões precipitadas (amostra pequena), confundir correlação com causalidade e ignorar fatores externos.
+        <!-- Disciplina 1: Design de Animação 3D -->
+        <div class="disciplina">
+            <div class="disciplina-header" onclick="toggleDisciplina(this)">
+                <h2>🕹️ Design de Animação 3D</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="apostilas-list">
+                <a href="Apostilas/Design de Animação 3D/01 - Modelagem e Escultura.html" class="apostila-item" target="_bank">
+                    <div class="apostila-nome">01 - Modelagem e Escultura</div>
+                    <div class="apostila-desc">Fundamentos completos para criação de ativos 3D</div>
+                </a>
+                <a href="Apostilas/Design de Animação 3D/02 - UV Mapping, Texturas, Materiais, Luz e Renderização.html" class="apostila-item" target="_bank">
+                    <div class="apostila-nome">02 - UV Mapping, Texturas, Materiais, Luz e Renderização</div>
+                    <div class="apostila-desc">Aplicando a roupagem dos objetos 3D</div>
+                </a>
+                <a href="Apostilas/Design de Animação 3D/03 - Animação, Rigging, Graph Editor, Câmera e Render de Animação.html" class="apostila-item" target="_bank">
+                    <div class="apostila-nome">03 - Animação, Rigging, Graph Editor, Câmera e Render de Animação</div>
+                    <div class="apostila-desc">Fundamentos da animação e aplicação no universo 3D</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Disciplina 2: Design Web -->
+        <div class="disciplina">
+            <div class="disciplina-header" onclick="toggleDisciplina(this)">
+                <h2>🖼️ Design Web</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="apostilas-list">
+                <a href="Apostilas/Design Web/01 - Fundamentos de HTML – Estrutura, Conteúdo e Primeiros Passos.html" class="apostila-item" target="_bank">
+                    <div class="apostila-nome">01 - Fundamentos de HTML – Estrutura, Conteúdo e Primeiros Passos</div>
+                    <div class="apostila-desc"></div>
+                </a>
+                <a href="Apostilas/Design Web/02 - Design, cores, layout e formatação profissional.html" class="apostila-item" target="_bank">
+                    <div class="apostila-nome">02 - Design, cores, layout e formatação profissional</div>
+                    <div class="apostila-desc"></div>
+                </a>
+                <a href="Apostilas/Design Web/03 - CSS Profissional - DOM, Pseudoclasses, Menus, Variáveis, Transformações e Transições.html" class="apostila-item" target="_bank">
+                    <div class="apostila-nome">03 - CSS Profissional - DOM, Pseudoclasses, Menus, Variáveis, Transformações e Transições</div>
+                    <div class="apostila-desc"></div>
+                </a>
+                <a href="Apostilas/Design Web/04 - Layouts Modernos - HTML Semântico, Grid, Flexbox e Responsividade.html" class="apostila-item" target="_bank">
+                    <div class="apostila-nome">04 - Layouts Modernos - HTML Semântico, Grid, Flexbox e Responsividade</div>
+                    <div class="apostila-desc"></div>
+                </a>
+                <a href="Apostilas/Design Web/05 - Introdução ao JavaScript.html" class="apostila-item" target="_bank">
+                    <div class="apostila-nome">05 - Introdução ao JavaScript</div>
+                    <div class="apostila-desc"></div>
+                </a>
+                <a href="Apostilas/Design Web/06 - Aprofundamento em JavaScript.html" class="apostila-item" target="_bank">
+                    <div class="apostila-nome">06 - Aprofundamento em JavaScript</div>
+                    <div class="apostila-desc"></div>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            Clique na disciplina para expandir e ver as apostilas disponíveis
+        </footer>
     </div>
 
-    <!-- PARTE 2: COESÃO, COERÊNCIA E PROGRESSÃO TEMÁTICA -->
-    <h2>2. Coesão, coerência e progressão temática</h2>
-    <p><strong>Coesão</strong> é o encadeamento harmonioso por meio de conectivos (portanto, contudo, além disso) e pronomes. <strong>Coerência</strong> é a lógica global do texto — as ideias não podem se contradizer. <strong>Progressão temática</strong> significa que cada parágrafo acrescenta informação nova sem repetir desnecessariamente.</p>
-    <blockquote>
-        Exemplo de texto coeso, mas incoerente: "É uma índia com colar. A tarde linda que não quer se pôr. Dançam as ilhas sobre o mar." — Frases conectadas? Sim, mas sem sentido global.
-    </blockquote>
-    <p>Na escrita técnica, a progressão temática exige que os parágrafos avancem: do problema para a análise, da análise para a recomendação, sempre com encadeamento lógico.</p>
-    
-    <h2>3. Paráfrase e citação: ferramentas essenciais</h2>
-    <p><strong>Paráfrase</strong> é reescrever uma ideia de outra pessoa com suas próprias palavras, mantendo o sentido original. Evita plágio e demonstra compreensão. <strong>Citação direta</strong> reproduz exatamente as palavras da fonte (entre aspas). <strong>Citação indireta</strong> é a paráfrase com menção ao autor.</p>
-    
-    <div class="figura-placeholder">
-        <img src="Imagens/Figura 03.png" alt="">
-        🖼️ [IMAGEM: Exemplo comparativo – Texto original, ao lado sua paráfrase e uma citação direta destacada.]
-        <span class="img-descricao">Figura 3 – Diferenças entre citação direta, indireta (paráfrase) e plágio.</span>
-    </div>
-    
-    <p><strong>Exemplo:</strong><br>
-    Original: "A energia solar fotovoltaica reduziu os custos em 70% na última década." (Fonte: ABENS, 2023)<br>
-    <strong>Paráfrase correta:</strong> De acordo com a ABENS (2023), os custos da energia solar fotovoltaica caíram drasticamente, cerca de 70% nos últimos dez anos.<br>
-    <strong>Citação direta:</strong> Conforme a ABENS (2023): "A energia solar fotovoltaica reduziu os custos em 70% na última década."</p>
-    
-    <div class="exercicio">
-        <h4>Microatividade 2 – Praticando paráfrase</h4>
-        <p>Parafraseie o trecho abaixo sem alterar o sentido:<br>
-        <em>"O uso de inteligência artificial na análise de dados acelera a tomada de decisão, mas exige validação humana para evitar vieses."</em></p>
-        <p style="margin-top: 6px;"><strong>Resposta possível:</strong> "Embora a IA agilize a análise de dados e a tomada de decisão, é indispensável a supervisão humana para prevenir distorções ou preconceitos nos resultados."</p>
-    </div>
-    
-    <div class="curiosidade">
-        ABNT NBR 10520 regulamenta citações. Em textos técnicos internos, a informalidade na citação é aceita, mas sempre indique a fonte.
-    </div>
-    
-    <h2>4. Repertórios socioculturais e argumentação consistente</h2>
-    <p>Argumentos fortes nascem de <strong>repertórios confiáveis</strong>: dados oficiais (IBGE, IPEA), artigos científicos, documentos setoriais, casos reais e legislação. Evite senso comum ou opiniões pessoais sem embasamento.</p>
-    <ul>
-        <li><strong>Argumento de autoridade:</strong> "Segundo a OMS, o saneamento básico reduz em 30% as doenças de veiculação hídrica."</li>
-        <li><strong>Argumento por exemplificação:</strong> "A empresa X adotou coleta seletiva e reduziu custos em 15%."</li>
-        <li><strong>Argumento de causa-consequência:</strong> "O aumento da temperatura média leva à maior demanda por climatização."</li>
-    </ul>
-    
-    <h2>5. Escrita técnica: linguagem formal, objetividade e relatório</h2>
-    <p>A comunicação profissional exige clareza e impessoalidade. Compare:</p>
-    <blockquote>
-        ❌ <strong>Informal:</strong> "A gente foi lá na estação e viu que tava saindo pouca água. Parece que tem alguma coisa entupida."<br>
-        ✅ <strong>Técnico:</strong> "Durante a vistoria na estação elevatória, constatou-se vazão reduzida. Indícios apontam obstrução no sistema de filtragem."
-    </blockquote>
-    
-    <h3>5.1 Estrutura do relatório técnico</h3>
-    <p>Relatórios são documentos-chave na engenharia, TI e gestão. Estruture da seguinte forma:</p>
-    <ol>
-        <li><strong>Identificação:</strong> título, empresa, cliente, equipamento, local, data/horário.</li>
-        <li><strong>Introdução:</strong> objetivo do documento e público-alvo.</li>
-        <li><strong>Descrição dos serviços:</strong> metodologia, atividades, resultados.</li>
-        <li><strong>Registro fotográfico:</strong> cada imagem com legenda e análise.</li>
-        <li><strong>Conclusão e recomendações:</strong> síntese e próximas ações.</li>
-        <li><strong>Assinaturas/referências.</strong></li>
-    </ol>
-    
-    <div class="figura-placeholder">
-        <img src="Imagens/Figura 04.png" alt="">
-        🖼️ [IMAGEM: Modelo de relatório técnico com cabeçalho, fotos legendadas e itens de conclusão.]
-        <span class="img-descricao">Figura 4 – Exemplo visual de laudo de vistoria com estrutura padronizada.</span>
-    </div>
-    
-    <div class="exercicio">
-        <h4>Microatividade 3 – Reescrevendo com linguagem técnica</h4>
-        <p>Transforme em parágrafo de relatório:<br>
-        <em>"Oi, testamos o sistema novo ontem e ele parece ok. Só que deu um bug quando geramos o relatório. Melhor revisar antes de liberar."</em></p>
-        <p><strong>Modelo de resposta:</strong> "O sistema foi testado em 05/04. As funcionalidades principais operaram conforme esperado, exceto o módulo de geração de relatórios, que apresentou falha. Recomenda-se análise técnica antes da liberação geral."</p>
-    </div>
-    
-    <h2>6. Processo de escrita: planejamento, textualização e reescrita</h2>
-    <p>Escrever bem é um processo em três etapas:</p>
-    <ul>
-        <li><strong>Planejamento:</strong> defina objetivo, público, levante dados e faça um esboço (tópicos ou mapa mental).</li>
-        <li><strong>Textualização (escrita):</strong> produza o primeiro rascunho sem se preocupar com perfeição — foque em desenvolver as ideias.</li>
-        <li><strong>Revisão e reescrita:</strong> leia em voz alta, verifique coesão, coerência, elimine repetições e ambiguidades. A paráfrase é uma técnica de reescrita valiosa para evitar cópias literais.</li>
-    </ul>
-    <div class="dica">
-        Autoavaliação: use uma checklist – "Meu texto tem progressão temática? Usei conectivos variados? As citações/paráfrases estão claras?"
-    </div>
-    
-    <h2>7. Comparativo prático: texto acadêmico vs. técnico</h2>
-    <table>
-        <thead><tr><th>Critério</th><th>Texto técnico (relatório, laudo)</th><th>Texto acadêmico (artigo, TCC)</th></tr></thead>
-        <tbody>
-            <tr><td>Público</td><td>Gestores, equipes, clientes</td><td>Professores, pares pesquisadores</td></tr>
-            <tr><td>Linguagem</td><td>Objetiva, impessoal, direta</td><td>Formal, analítica, com discussão teórica</td></tr>
-            <tr><td>Estrutura</td><td>Identificação, descrição, fotos, recomendações</td><td>Introdução, método, resultados, discussão, conclusão</td></tr>
-            <tr><td>Uso de citações</td><td>Raro ou apenas referências técnicas</td><td>Frequente, com normas ABNT</td></tr>
-        </tbody>
-    </table>
-    
-    <h2>8. Progressão temática e organização de ideias</h2>
-    <p>A progressão temática ocorre quando cada parágrafo parte de uma informação já dada (tema) e acrescenta uma informação nova (rema). Exemplo:</p>
-    <blockquote>
-        <strong>Parágrafo 1:</strong> A empresa implantou um sistema de gestão de resíduos. <strong>(tema dado)</strong> Esse sistema reduziu em 40% o descarte irregular. <strong>(informação nova)</strong><br>
-        <strong>Parágrafo 2:</strong> A redução do descarte irregular gerou economia anual de R$ 120 mil. <strong>(nova progressão)</strong>
-    </blockquote>
-    <p>Evite parágrafos que apenas repetem o mesmo conteúdo com palavras diferentes — isso quebra a progressão.</p>
-    
-    <div class="exercicio">
-        <h4>Microatividade 4 – Analisando progressão</h4>
-        <p>Leia o trecho: "O novo equipamento aumentou a produção. Ele é mais rápido. Sua velocidade é superior ao modelo antigo." O que há de errado com a progressão temática? Reescreva corrigindo.</p>
-        <p><strong>Resposta:</strong> O trecho repete a mesma ideia. Correção: "O novo equipamento aumentou a produção em 25%. Esse ganho decorre de sua velocidade superior — 120 peças/hora contra 80 do modelo antigo."</p>
-    </div>
-    
-    <div class="saiba-mais">
-        Livros indicados: Koch & Elias – "Ler e escrever: estratégias de produção textual"; Faulstich – "Como ler, entender e redigir um texto".
-    </div>
-    
-    <h2>9. Aplicação integrada: da tabela ao parágrafo argumentativo</h2>
-    <p>Suponha a tabela abaixo (dados hipotéticos de eficiência hídrica):</p>
-    <div class="figura-placeholder">
-        <img src="Imagens/Figura 05.png" alt="">
-        🖼️ [IMAGEM: Tabela com três setores – Indústria: 200m³/dia, Comércio: 85m³/dia, Residencial: 450m³/dia. Eficiência: Litros por funcionário/unidade.]
-        <span class="img-descricao">Figura 5 – Consumo de água por setor (dados fictícios).</span>
-    </div>
-    <p><strong>Análise com progressão e paráfrase:</strong> "Os dados indicam que o setor residencial é o maior consumidor absoluto de água (450 m³/dia). Em comparação, a indústria (200 m³/dia) e o comércio (85 m³/dia) representam fração menor. Conforme parafraseando estudo da ANA (2022), campanhas de conscientização residencial geram maior impacto na conservação hídrica do que ações focadas apenas na indústria."</p>
-    
-    <h2>10. Erros frequentes na produção textual (e como evitá-los)</h2>
-    <ul>
-        <li><strong>Plágio involuntário:</strong> sempre parafraseie ou use aspas + fonte.</li>
-        <li><strong>Falta de conectivos:</strong> use portanto, no entanto, conforme, além disso.</li>
-        <li><strong>Tom pessoal excessivo:</strong> evite "eu acho", "nós vimos". Prefira "os dados mostram", "verificou-se".</li>
-        <li><strong>Saltos de argumento:</strong> garanta que cada conclusão seja apoiada por evidência ou raciocínio explícito.</li>
-        <li><strong>Desconsiderar o público:</strong> um relatório para engenheiros pode usar jargões; para clientes leigos, simplifique.</li>
-    </ul>
-    
-    <div class="curiosidade">
-        A ferramenta de IA pode ajudar a gerar perguntas críticas ou sugerir paráfrases, mas a revisão final sempre deve ser humana para garantir precisão técnica.
-    </div>
-    
-    <!-- RESUMO FINAL -->
-    <div class="resumo-final">
-        <h3>📌 Síntese dos principais conceitos</h3>
-        <ul>
-            <li><strong>Leitura de dados:</strong> gráficos, tabelas e fluxogramas exigem análise de título, escalas, contexto e possíveis vieses.</li>
-            <li><strong>Coesão e coerência:</strong> conectivos e lógica global; progressão temática = cada parágrafo adiciona ideia nova.</li>
-            <li><strong>Paráfrase e citação:</strong> evite plágio; reescreva com suas palavras mantendo o sentido original.</li>
-            <li><strong>Repertórios socioculturais:</strong> argumentos sólidos usam fontes confiáveis (dados oficiais, artigos, casos reais).</li>
-            <li><strong>Escrita técnica:</strong> linguagem objetiva, impessoal; relatórios seguem estrutura padrão (identificação, descrição, fotos, conclusão).</li>
-            <li><strong>Processo de escrita:</strong> planejamento → textualização → reescrita. Autoavaliação é obrigatória.</li>
-        </ul>
-        <p>Domine essas habilidades e você produzirá textos autorais, críticos e de alto impacto no ambiente técnico e acadêmico.</p>
-    </div>
-    
-    <footer>
-        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso das ferramentas <strong>DeepSeek</strong> e <strong>Gemini Nano Banana</strong>.</p>
-        <p>Edição 1 | Junho de 2026</p>
-    </footer>
-</div>
+    <script>
+        function toggleDisciplina(header) {
+            // Pega a lista de apostilas dentro desta disciplina
+            const apostilasList = header.nextElementSibling;
+            
+            // Alterna a classe 'show'
+            apostilasList.classList.toggle('show');
+            
+            // Rotaciona o ícone
+            const icon = header.querySelector('.toggle-icon');
+            if (apostilasList.classList.contains('show')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
 </body>
 </html>
