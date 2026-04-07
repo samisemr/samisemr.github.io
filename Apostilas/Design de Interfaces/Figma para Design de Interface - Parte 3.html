@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figma para Design de Interface - Parte 3 | Prototipagem, Testes e Projeto Final</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1e1e2f;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #e0e0e0;
+            padding: 2rem 1rem;
+        }
+
+        .apostila-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #2a2a3a;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            overflow: hidden;
+            padding: 2rem 2rem 3rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', 'Merriweather', Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+            color: #ffffff;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-top: 0.2em;
+            border-left: 6px solid #a259ff;
+            padding-left: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #3a3a4e;
+            padding-bottom: 0.3rem;
+            color: #d9d9ff;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.4em;
+            color: #c084fc;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: #cfcfdf;
+        }
+
+        .dica, .curiosidade, .saibamais {
+            background: #2f2f42;
+            border-left: 5px solid #a259ff;
+            padding: 1rem 1.5rem;
+            margin: 1.6rem 0;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            color: #e2e2f0;
+        }
+
+        .dica::before {
+            content: "💡 DICA: ";
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .curiosidade::before {
+            content: "🔍 CURIOSIDADE: ";
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .saibamais::before {
+            content: "📘 SAIBA MAIS: ";
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .tabela-comparativa {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #2a2a3a;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .tabela-comparativa th {
+            background-color: #3a3a55;
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .tabela-comparativa td {
+            border: 1px solid #3a3a4e;
+            padding: 10px 16px;
+            vertical-align: top;
+            color: #cfcfdf;
+        }
+
+        .exercicio {
+            background: #1e1e2e;
+            border-radius: 20px;
+            padding: 1.3rem 1.8rem;
+            margin: 2rem 0;
+            border-left: 6px solid #f4a261;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .exercicio strong {
+            color: #ffb347;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .figura-placeholder {
+            background: #232335;
+            border: 2px dashed #5a5a7a;
+            border-radius: 24px;
+            padding: 2rem 1rem;
+            margin: 1.8rem 0;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .figura-placeholder .icone {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .figura-placeholder .img-descricao {
+            display: block;
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #8a8aaa;
+            font-style: italic;
+        }
+
+        ul, ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+            color: #cfcfdf;
+        }
+
+        li {
+            margin: 0.4rem 0;
+        }
+
+        .resumo-box {
+            background: #1e1e30;
+            padding: 1.6rem;
+            border-radius: 24px;
+            margin: 2rem 0 1rem;
+            border: 1px solid #3a3a55;
+        }
+
+        .resumo-box h3 {
+            margin-top: 0;
+            color: #c084fc;
+        }
+
+        .projeto-final {
+            background: linear-gradient(135deg, #2a2a4a 0%, #1e1e3a 100%);
+            padding: 1.8rem;
+            border-radius: 28px;
+            margin: 2rem 0;
+            border: 1px solid #5a5a8a;
+        }
+
+        .projeto-final h3 {
+            margin-top: 0;
+            color: #c084fc;
+        }
+
+        .atalho {
+            background: #00000030;
+            font-family: monospace;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            color: #ffd966;
+        }
+
+        .codigo {
+            background: #1a1a2a;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #b0b0d0;
+            border: 1px solid #3a3a55;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #3a3a4e, transparent);
+        }
+
+        @media (max-width: 680px) {
+            .apostila-container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <h1>🔗 Figma para Design de Interface · Parte 3</h1>
+    <p><strong>Prototipagem Interativa, Testes de Usabilidade e Projeto Final</strong></p>
+    <p>Parabéns por chegar até aqui! Agora você vai aprender a <strong>transformar seus designs em protótipos funcionais</strong>, simular interações, testar com usuários e entregar um projeto completo. Ao final, um <strong>projeto guia</strong> consolida tudo o que você aprendeu nas três partes práticas.</p>
+
+    <!-- SEÇÃO 1: PROTOTIPAGEM NO FIGMA -->
+    <h2>1. Prototipagem: conectando telas com interações</h2>
+    <p>No Figma, a prototipagem é feita conectando frames através de <strong>linhas de fluxo</strong>. Você define gatilhos (clique, arrasto, hover) e ações (navegar para tela, abrir overlay, scroll).</p>
+
+    <h3>Modo Prototype</h3>
+    <p>Clique na aba <strong>Prototype</strong> (canto superior direito, ao lado de Design). Selecione um elemento ou frame, arraste o círculo azul (⚪) até o destino.</p>
+
+    <div class="figura-placeholder">
+        <div class="icone">🔗</div>
+        <div>[IMAGEM: Dois frames lado a lado, com uma seta azul conectando o botão "Login" ao frame "Dashboard"]</div>
+        <span class="img-descricao">Figura 1 – Conexão de protótipo: clique no botão leva para outra tela.</span>
+    </div>
+
+    <h3>Configurações de interação</h3>
+    <table class="tabela-comparativa">
+        <thead>
+            <tr><th>Configuração</th><th>Opções</th><th>Quando usar</th>
+        </thead>
+        <tbody>
+            <tr><td><strong>Gatilho (Trigger)</strong></td><td>On Click, On Drag, While Hover, After Delay</td><td>Clique é o mais comum. Hover para menus suspensos.</td></tr>
+            <tr><td><strong>Ação (Action)</strong></td><td>Navigate to, Open Overlay, Scroll to, Back</td><td>Navigate to = troca de tela. Overlay = modal, menu lateral.</td></tr>
+            <tr><td><strong>Animação</strong></td><td>Instant, Dissolve, Push, Slide, Smart Animate</td><td>Smart Animate cria transições suaves entre elementos similares.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="curiosidade">
+        <strong>Smart Animate</strong> é um recurso incrível: se dois frames têm elementos com o mesmo nome, o Figma anima automaticamente a transição (posição, tamanho, cor, opacidade). Ótimo para microinterações!
+    </div>
+
+    <div class="dica">
+        Para testar seu protótipo, clique no botão <strong>Present</strong> (ícone de play) no canto superior direito. Você pode gerar um link compartilhável clicando em <strong>Share Prototype</strong>.
+    </div>
+
+    <div class="exercicio">
+        <strong>🔗 MICROATIVIDADE – Crie um fluxo de 3 telas</strong>
+        Crie três frames: Tela Inicial → Tela de Detalhes → Tela de Confirmação. Adicione botões e conecte com interações "On Click → Navigate to". Teste o protótipo no modo Present.
+    </div>
+
+    <!-- SEÇÃO 2: OVERLAYS, MENUS E SCROLL -->
+    <h2>2. Componentes interativos avançados</h2>
+    <p>Nem toda interação precisa trocar de tela. Overlays (modais, pop-ups, menus) mantêm o contexto enquanto exibem conteúdo complementar.</p>
+
+    <h3>Criando um overlay (modal)</h3>
+    <ol>
+        <li>Desenhe o conteúdo do modal em um frame separado (ex: 300x200px).</li>
+        <li>Selecione o botão que abrirá o modal → vá em Prototype.</li>
+        <li>Conecte o botão ao frame do modal.</li>
+        <li>Na configuração, escolha <strong>Action = Open Overlay</strong>.</li>
+        <li>Defina posição (Manual, Center, Top, Bottom) e um fundo escurecido (Background overlay).</li>
+    </ol>
+
+    <div class="figura-placeholder">
+        <div class="icone">🪟</div>
+        <div>[IMAGEM: Tela principal com um botão "Abrir modal" → clique exibe uma caixa flutuante com texto e botão "Fechar"]</div>
+        <span class="img-descricao">Figura 2 – Exemplo de modal aberto como overlay sobre a tela principal.</span>
+    </div>
+
+    <h3>Scroll vertical e horizontal</h3>
+    <p>Para simular listas roláveis (feed, produtos), selecione um frame e ative <strong>Overflow behavior = Vertical scrolling</strong> ou <strong>Horizontal scrolling</strong> no painel de Prototype.</p>
+
+    <div class="dica">
+        Combine scrolling com <strong>Fixed elements</strong> (cabeçalho que não rola). Selecione um elemento no frame → Prototype → Scroll behavior → "Fix position when scrolling".
+    </div>
+
+    <!-- SEÇÃO 3: TESTES DE USABILIDADE NO FIGMA -->
+    <h2>3. Testando protótipos com usuários reais</h2>
+    <p>O Figma oferece recursos para validar seu design antes da programação. Além do modo Present, você pode usar plugins e integrações.</p>
+
+    <h3>Ferramentas de teste</h3>
+    <ul>
+        <li><strong>Figma Mirror</strong> (app mobile): visualize o protótipo no celular em tempo real.</li>
+        <li><strong>Plugin Maze</strong>: converte seu protótipo em teste de usabilidade com métricas (taxa de sucesso, tempo, mapas de calor).</li>
+        <li><strong>Compartilhar link com observação:</strong> ao gerar o link do protótipo, marque a opção "Password protect" ou "Allow viewers to leave comments".</li>
+    </ul>
+
+    <div class="figura-placeholder">
+        <div class="icone">🧪</div>
+        <div>[IMAGEM: Pesquisador observando um usuário testando o protótipo em um celular; ao lado, um tablet mostra o Maze registrando cliques]</div>
+        <span class="img-descricao">Figura 3 – Sessão de teste de usabilidade com protótipo Figma.</span>
+    </div>
+
+    <h3>Roteiro de teste prático</h3>
+    <ol>
+        <li><strong>Defina tarefas:</strong> ex: "Encontre um produto e adicione ao carrinho".</li>
+        <li><strong>Recrute 3-5 usuários:</strong> colegas ou pessoas do público-alvo.</li>
+        <li><strong>Observe e anote:</strong> onde hesitaram, onde clicaram errado, quanto tempo levaram.</li>
+        <li><strong>Itere:</strong> corrija os problemas no design e teste novamente.</li>
+    </ol>
+
+    <div class="saibamais">
+        O plugin <strong>Utterly</strong> permite gravar sessões de teste de usabilidade diretamente no Figma, com áudio e vídeo.
+    </div>
+
+    <div class="exercicio">
+        <strong>🧪 EXERCÍCIO – Teste com um colega</strong>
+        Pegue o protótipo de 3 telas que você criou. Peça para um colega realizar a tarefa: "Clique no botão da tela inicial, depois no botão de confirmação na segunda tela". Observe se ele consegue sem ajuda. Documente o que aconteceu.
+    </div>
+
+    <!-- SEÇÃO 4: COLABORAÇÃO E FEEDBACK -->
+    <h2>4. Trabalhando em equipe e recebendo feedback</h2>
+    <p>O Figma é nativamente colaborativo. Várias pessoas podem editar o mesmo arquivo simultaneamente, como um Google Docs para design.</p>
+
+    <h3>Compartilhando arquivos</h3>
+    <ul>
+        <li>Clique em <strong>Share</strong> (botão azul no topo direito).</li>
+        <li>Defina permissões: <strong>Can view</strong> (só visualizar), <strong>Can comment</strong> (deixar comentários), <strong>Can edit</strong> (editar).</li>
+        <li>Envie o link por e-mail ou copie para compartilhar.</li>
+    </ul>
+
+    <h3>Deixando e respondendo comentários</h3>
+    <p>No modo <strong>View</strong> ou <strong>Edit</strong>, clique no ícone de balão de comentários (sidebar esquerda) ou pressione <span class="atalho">C</span>. Clique em qualquer lugar do canvas, escreva seu feedback e marque colegas com @nome.</p>
+
+    <div class="figura-placeholder">
+        <div class="icone">💬</div>
+        <div>[IMAGEM: Painel de comentários no Figma com vários feedbacks: "Aumentar contraste deste botão", "Revisar espaçamento do título"]</div>
+        <span class="img-descricao">Figura 4 – Fluxo de revisão com comentários ancorados em elementos específicos.</span>
+    </div>
+
+    <div class="dica">
+        Use o <strong>Modo de observação</strong> (ícone de olho no canto superior direito) para seguir o cursor de um colega durante uma reunião de design remota.
+    </div>
+
+    <!-- SEÇÃO 5: PROJETO FINAL – PASSO A PASSO COMPLETO -->
+    <div class="projeto-final">
+        <h3>🎯 PROJETO FINAL – Aplicativo de Tarefas (To-Do List)</h3>
+        <p>Este projeto consolida TUDO que você aprendeu nas 3 partes práticas. Siga os passos abaixo e entregue um protótipo funcional.</p>
+
+        <h3 style="margin-top: 1rem; color: #c084fc;">Etapa 1 – Estrutura e Design System (Partes 1 e 2)</h3>
+        <ul>
+            <li>Crie um arquivo Figma chamado "Projeto Final - To-Do List".</li>
+            <li>Crie uma página "Design System" com: 3 estilos de cor (Primária #A259FF, Secundária #2C7DA0, Cinza claro para fundos), 2 estilos de texto (Título e Corpo).</li>
+            <li>Crie componentes: Botão Primário, Botão Secundário, Card de Tarefa (com checkbox, título, data).</li>
+        </ul>
+
+        <h3 style="margin-top: 1rem; color: #c084fc;">Etapa 2 – Telas e Layout (Partes 1 e 2)</h3>
+        <ul>
+            <li>Crie 3 frames (mobile 390x844): "Lista de Tarefas", "Adicionar Tarefa", "Detalhes da Tarefa".</li>
+            <li>Aplique grid de colunas (mobile: 4 colunas) nos frames.</li>
+            <li>Use Auto Layout para organizar listas e formulários.</li>
+        </ul>
+
+        <h3 style="margin-top: 1rem; color: #c084fc;">Etapa 3 – Prototipagem (Parte 3)</h3>
+        <ul>
+            <li>Conecte as telas: botão "+" → navega para "Adicionar Tarefa"; botão "Salvar" → volta para "Lista de Tarefas".</li>
+            <li>Adicione um modal de confirmação ao excluir uma tarefa (overlay).</li>
+            <li>Teste o protótipo no modo Present.</li>
+        </ul>
+
+        <h3 style="margin-top: 1rem; color: #c084fc;">Etapa 4 – Teste e Feedback (Parte 3)</h3>
+        <ul>
+            <li>Compartilhe o link do protótipo com 2 colegas. Peça que realizem as tarefas: "Adicionar uma nova tarefa" e "Marcar como concluída".</li>
+            <li>Colete os comentários diretamente no Figma.</li>
+            <li>Faça pelo menos uma iteração com base no feedback recebido.</li>
+        </ul>
+
+        <p style="margin-top: 1rem;"><strong>✅ Entregável:</strong> Link do arquivo Figma com todas as telas, componentes e protótipo funcional. Você terá um portfólio sólido para mostrar em entrevistas!</p>
+    </div>
+
+    <!-- SEÇÃO 6: DICAS PARA ENTREGAR PROJETOS PROFISSIONAIS -->
+    <h2>5. Dicas finais: do Figma para o mundo real</h2>
+    
+    <h3>Como preparar arquivos para desenvolvedores</h3>
+    <ul>
+        <li><strong>Inspect mode:</strong> Desenvolvedores podem clicar em qualquer elemento e ver CSS, iOS, Android nativamente (altura, largura, cores, fontes).</li>
+        <li><strong>Handoff com Zeplin ou Figma dev mode:</strong> o modo Dev (pago) facilita ainda mais a entrega.</li>
+        <li><strong>Exporte assets organizados:</strong> ícones em SVG, imagens em 1x/2x/3x.</li>
+    </ul>
+
+    <h3>Versionamento de projetos</h3>
+    <p>O Figma salva automaticamente o histórico de versões. Acesse <strong>File → Show version history</strong>. Você pode nomear versões importantes (ex: "V1 - Wireframes", "V2 - Protótipo testado").</p>
+
+    <div class="figura-placeholder">
+        <div class="icone">📦</div>
+        <div>[IMAGEM: Janela de Version History mostrando versões nomeadas com timestamps e opção de restaurar]</div>
+        <span class="img-descricao">Figura 5 – Histórico de versões: nunca perca seu trabalho.</span>
+    </div>
+
+    <div class="curiosidade">
+        Figma também suporta <strong>Branching e Merging</strong> (similar ao Git) para equipes grandes. Você pode criar um branch para experimentar mudanças sem afetar o arquivo principal.
+    </div>
+
+    <!-- Resumo Final da Parte 3 -->
+    <div class="resumo-box">
+        <h3>📌 Resumo – Parte 3 (e conclusão da trilha prática)</h3>
+        <ul>
+            <li><strong>Prototipagem:</strong> conecte frames com interações (On Click, Smart Animate, Overlays).</li>
+            <li><strong>Testes de usabilidade:</strong> use Figma Mirror, Maze ou sessões presenciais para validar seu design.</li>
+            <li><strong>Colaboração:</strong> compartilhe arquivos, use comentários e Modo de Observação.</li>
+            <li><strong>Projeto Final:</strong> construa um aplicativo To-Do List completo com Design System, Auto Layout e protótipo testado.</li>
+            <li><strong>Handoff:</strong> prepare assets e use o modo Inspect para devs.</li>
+        </ul>
+        <p style="margin-top: 1rem;"><strong>🎉 Parabéns! Você concluiu as 3 partes do curso prático de Figma para Design de Interface.</strong> Agora pratique com projetos pessoais, explore plugins e participe da comunidade Figma. O próximo passo é construir um portfólio com seus melhores trabalhos.</p>
+    </div>
+
+    <hr />
+    <p style="font-size: 0.85rem; text-align: center; color: #8a8aaa;">Figma para Design de Interface – Parte 3 (final) | Prototipagem, Testes e Projeto Final. Domine a ferramenta mais amada por designers!</p>
+</div>
+</body>
+</html>

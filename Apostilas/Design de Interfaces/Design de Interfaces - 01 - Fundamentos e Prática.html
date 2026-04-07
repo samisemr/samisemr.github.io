@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design de Interface - Apostila | Parte 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #1a2a3a;
+            padding: 2rem 1rem;
+        }
+
+        .apostila-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 2rem 2rem 3rem;
+        }
+
+        /* Tipografia */
+        h1, h2, h3 {
+            font-family: 'Poppins', 'Merriweather', Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+            color: #0f2b3d;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-top: 0.2em;
+            border-left: 6px solid #2c7da0;
+            padding-left: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #cbdde6;
+            padding-bottom: 0.3rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.4em;
+            color: #1f5068;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+
+        /* Destaques e blocos */
+        .dica, .curiosidade, .saibamais {
+            background: #eef3fa;
+            border-left: 5px solid #2c7da0;
+            padding: 1rem 1.5rem;
+            margin: 1.6rem 0;
+            border-radius: 16px;
+            font-size: 0.95rem;
+        }
+
+        .dica::before {
+            content: "💡 DICA: ";
+            font-weight: bold;
+            color: #1f5068;
+        }
+
+        .curiosidade::before {
+            content: "🔍 CURIOSIDADE: ";
+            font-weight: bold;
+            color: #1f5068;
+        }
+
+        .saibamais::before {
+            content: "📘 SAIBA MAIS: ";
+            font-weight: bold;
+            color: #1f5068;
+        }
+
+        /* Tabelas comparativas */
+        .tabela-comparativa {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .tabela-comparativa th {
+            background-color: #2c7da0;
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .tabela-comparativa td {
+            border: 1px solid #e2edf2;
+            padding: 10px 16px;
+            vertical-align: top;
+        }
+
+        /* Exercícios */
+        .exercicio {
+            background: #fef9e6;
+            border-radius: 20px;
+            padding: 1.3rem 1.8rem;
+            margin: 2rem 0;
+            border-left: 6px solid #f4a261;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+
+        .exercicio strong {
+            color: #bc6c25;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        /* Placeholder de imagem */
+        .figura-placeholder {
+            background: #f0f4f8;
+            border: 2px dashed #8eb3c2;
+            border-radius: 24px;
+            padding: 2rem 1rem;
+            margin: 1.8rem 0;
+            text-align: center;
+            font-family: monospace;
+            transition: 0.2s;
+        }
+
+        .figura-placeholder .icone {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .figura-placeholder .img-descricao {
+            display: block;
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #2c5a6e;
+            font-style: italic;
+        }
+
+        /* listas */
+        ul, ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+        }
+
+        li {
+            margin: 0.4rem 0;
+        }
+
+        /* rodapé / resumo */
+        .resumo-box {
+            background: #e9f2f5;
+            padding: 1.6rem;
+            border-radius: 24px;
+            margin: 2rem 0 1rem;
+            border: 1px solid #cde3ec;
+        }
+
+        .resumo-box h3 {
+            margin-top: 0;
+            color: #0e4b64;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #cbdde6, transparent);
+        }
+
+        @media (max-width: 680px) {
+            .apostila-container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <h1>Design de Interface · Fundamentos e Prática</h1>
+    <p>Você já interagiu com um aplicativo que parecia “intuitivo” ou navegou por um site onde tudo fazia sentido? Esse resultado é fruto de um bom <strong>design de interface</strong>. Nesta apostila, você aprenderá os conceitos essenciais para criar interfaces digitais eficientes, agradáveis e centradas no usuário. Vamos explorar desde os fundamentos de usabilidade até técnicas de wireframing, planejamento e prototipagem.</p>
+
+    <!-- SEÇÃO 1 -->
+    <h2>1. O que é Design de Interface? Usabilidade e Experiência do Usuário</h2>
+    <p>Design de interface (ou <em>UI Design</em>) envolve a criação de pontos de contato entre um produto digital e o usuário: telas, botões, ícones, tipografia, espaçamentos e todos os elementos visuais e interativos. Um bom design não apenas “enfeita”, mas sim facilita a realização de tarefas, reduz erros e aumenta a satisfação.</p>
+    <p>Dois pilares sustentam essa área: <strong>Usabilidade</strong> (facilidade de uso) e <strong>Experiência do Usuário (UX)</strong> (percepção global antes, durante e após a interação). Uma interface pode ser bonita, mas se for confusa, a usabilidade estará comprometida.</p>
+    
+    <div class="figura-placeholder">
+        <div class="icone">🖼️</div>
+        <div>[IMAGEM: Comparação entre interface confusa vs. interface organizada]</div>
+        <span class="img-descricao">Figura 1 – Exemplo de layout com hierarquia visual clara (direita) e layout poluído (esquerda).</span>
+    </div>
+    
+    <h3>Princípios básicos da usabilidade (Jakob Nielsen)</h3>
+    <ul>
+        <li><strong>Visibilidade do estado do sistema:</strong> o usuário sempre sabe o que está acontecendo.</li>
+        <li><strong>Correspondência entre o sistema e o mundo real:</strong> usar linguagem familiar.</li>
+        <li><strong>Liberdade e controle do usuário:</strong> desfazer/refazer ações facilmente.</li>
+        <li><strong>Consistência e padrões:</strong> elementos similares se comportam da mesma forma.</li>
+        <li><strong>Prevenção de erros:</strong> evitar situações problemáticas antes que ocorram.</li>
+    </ul>
+    
+    <div class="dica">
+        Ao projetar uma interface, pergunte-se: “Um iniciante consegue realizar a tarefa principal em menos de 10 segundos sem ajuda?”. Se a resposta for não, revise a usabilidade.
+    </div>
+    
+    <div class="exercicio">
+        <strong>✏️ MICROATIVIDADE – Situação-problema</strong>
+        Você está desenvolvendo o app de entregas “RápidoBairro”. O botão de finalizar pedido está na cor cinza claro, no canto inferior direito, e muitos usuários não o encontram. Proponha duas soluções baseadas nos princípios de usabilidade e justifique.
+    </div>
+
+    <!-- SEÇÃO 2 -->
+    <h2>2. Arquitetura da Informação e Estrutura de Navegação</h2>
+    <p>Antes de desenhar qualquer tela, precisamos organizar o conteúdo de forma lógica. A <strong>Arquitetura da Informação (AI)</strong> é a disciplina que estrutura, rotula e organiza as informações para que o usuário encontre o que precisa com facilidade. Já a <strong>estrutura de navegação</strong> define como o usuário se move entre telas (menus, barras, links, breadcrumbs).</p>
+    
+    <h3>Modelos comuns de navegação</h3>
+    <table class="tabela-comparativa">
+        <thead>
+            <tr><th>Modelo</th><th>Características</th><th>Exemplo real</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Navegação hierárquica</td><td>Menu principal → subcategorias → páginas de detalhe</td><td>E-commerces (Categoria > Produto)</td></tr>
+            <tr><td>Navegação global + local</td><td>Menu fixo no topo + submenu contextual</td><td>Sites de notícias, portais</td></tr>
+            <tr><td>Navegação por abas</td><td>Agrupa conteúdo relacionado sem sair da tela</td><td>Perfil de redes sociais (posts, fotos, reels)</td></tr>
+            <tr><td>Navegação híbrida (mobile)</td><td>Bottom tab bar + hamburger menu</td><td>Apps bancários, Spotify</td></tr>
+        </tbody>
+    </table>
+
+    <p>Uma boa arquitetura de informação evita que o usuário se perca. Para isso, são criados <strong>mapas de fluxo</strong> (diagramas de tarefas) e <strong>wireframes responsivos</strong>, que representam o esqueleto da interface sem distrações visuais.</p>
+
+    <div class="figura-placeholder">
+        <div class="icone">🗺️</div>
+        <div>[IMAGEM: Mapa de fluxo mostrando caminhos do usuário – login, catálogo, carrinho e finalização]</div>
+        <span class="img-descricao">Figura 2 – Exemplo de mapa de fluxo para um e-commerce mobile.</span>
+    </div>
+
+    <div class="curiosidade">
+        Muitos designers começam com cartões (card sorting) para entender como os usuários agrupariam informações. Depois, validam com testes de árvore (tree testing). Isso reduz retrabalhos na fase de prototipagem.
+    </div>
+
+    <h3>Wireframes responsivos: o alicerce visual</h3>
+    <p>Wireframes são rascunhos de baixa ou média fidelidade que mostram posicionamento de elementos, hierarquia e fluxos. Ser responsivo significa que o wireframe se adapta a diferentes tamanhos de tela (desktop, tablet, smartphone). Ferramentas como Figma, Adobe XD ou até papel e caneta ajudam nessa etapa.</p>
+
+    <div class="exercicio">
+        <strong>🧩 MICROATIVIDADE – Criando um wireframe mental</strong>
+        Pense em um aplicativo de previsão do tempo. Liste os 5 elementos principais que devem estar visíveis na tela inicial. Depois, descreva rapidamente como reorganizaria esses elementos em um celular (largura 375px) versus um desktop (largura 1280px).
+    </div>
+
+    <!-- SEÇÃO 3 -->
+    <h2>3. Planejamento de Interfaces: Estratégia, Escopo, Estrutura e Grades</h2>
+    <p>O planejamento de interfaces vai além do aspecto visual. Envolve decisões estratégicas: qual problema estamos resolvendo? Quem é o público? Quais as restrições técnicas e de custos? O conteúdo programático do curso TEC-046.04 destaca aspectos como <strong>definição, conceituação, plataformas de desenvolvimento, dispositivos, geração de ideias e planejamento de grids</strong>.</p>
+
+    <h3>Fases essenciais do planejamento</h3>
+    <ul>
+        <li><strong>Estratégia:</strong> objetivos do produto, métricas de sucesso.</li>
+        <li><strong>Escopo:</strong> funcionalidades (o que faz parte do MVP).</li>
+        <li><strong>Estrutura:</strong> arquitetura da informação e fluxos de interação.</li>
+        <li><strong>Esqueleto (Skeleton):</strong> wireframes, navegação, organização da informação.</li>
+        <li><strong>Superfície (Surface):</strong> design visual final (cores, tipografia, ícones).</li>
+    </ul>
+
+    <div class="saibamais">
+        Modelo de design thinking: empatia, definição, ideação, prototipagem e testes. No design de interface, cada iteração refina tanto o esqueleto quanto a superfície.
+    </div>
+
+    <h3>Grades e layout: a base da ordem visual</h3>
+    <p>Grades (grids) são sistemas de colunas e linhas que organizam o conteúdo. Uma grade bem aplicada garante coerência, ritmo e facilita a responsividade. Exemplos: grade de 12 colunas (Bootstrap), grade modular, grade hierárquica.</p>
+
+    <table class="tabela-comparativa">
+        <thead><tr><th>Tipo de grade</th><th>Quando usar</th><th>Vantagem</th></tr></thead>
+        <tbody>
+            <tr><td>Grade de colunas</td><td>Sites e dashboards</td><td>Flexibilidade, fácil adaptação mobile</td></tr>
+            <tr><td>Grade modular</td><td>Portfólios, revistas digitais</td><td>Organiza blocos de conteúdo variado</td></tr>
+            <tr><td>Grade hierárquica</td><td>Landing pages, storytelling</td><td>Guiado pelo peso visual, não por colunas fixas</td></tr>
+        </tbody>
+    </table>
+
+    <div class="figura-placeholder">
+        <div class="icone">📐</div>
+        <div>[IMAGEM: Exemplo de grid de 12 colunas com margens e gutters, aplicado a um wireframe de dashboard]</div>
+        <span class="img-descricao">Figura 3 – Sistema de grid para interface responsiva: elementos se alinham às colunas.</span>
+    </div>
+
+    <p>O <strong>comprimento da página</strong> e as <strong>dimensões da página</strong> também devem ser planejadas. Telas muito longas podem cansar; telas curtas podem esconder informações. Use hierarquia para priorizar conteúdo acima da dobra (fold).</p>
+
+    <div class="exercicio">
+        <strong>⚙️ EXERCÍCIO PRÁTICO – Planejando uma tela de checkout</strong>
+        Imagine uma loja virtual de roupas. Desenhe (descreva ou esboce mentalmente) a estrutura da página de checkout utilizando uma grade de 8 colunas. Que blocos aparecem à esquerda (informações de entrega) e à direita (resumo do pedido)? Justifique a escolha.
+    </div>
+
+    <!-- SEÇÃO 4: coerência e elementos básicos de tela -->
+    <h2>4. Coerência Visual e Comportamentos da Interface</h2>
+    <p>Um dos maiores desafios no design de interface é manter a <strong>coerência</strong> entre estilos, comportamentos e elementos de tela. Botões primários devem sempre ter a mesma aparência, mensagens de erro seguem um padrão de cor e ícone, e a navegação principal repete-se nas mesmas posições. A coerência reduz a carga cognitiva do usuário, que aprende rapidamente como o sistema funciona.</p>
+
+    <h3>Elementos básicos de tela e suas funções</h3>
+    <ul>
+        <li><strong>Botões:</strong> ações primárias (cor sólida), secundárias (outline) e terciárias (texto link).</li>
+        <li><strong>Campos de formulário:</strong> labels claros, placeholders úteis, feedback de validação.</li>
+        <li><strong>Ícones e pictogramas:</strong> comunicam ações rapidamente (lupa = busca, coração = favorito).</li>
+        <li><strong>Menus e barras laterais:</strong> ajudam na orientação e descoberta.</li>
+        <li><strong>Cards e containers:</strong> agrupam informações relacionadas.</li>
+    </ul>
+
+    <p>Outro ponto vital é a <strong>mancha gráfica e diagramação equilibrada</strong> – distribuição dos pesos visuais (texto, imagens, espaços vazios). Uma interface com boa diagramação guia o olhar do usuário do elemento mais importante para os secundários.</p>
+
+    <div class="figura-placeholder">
+        <div class="icone">🎨</div>
+        <div>[IMAGEM: Comparação de diagramação – layout desequilibrado (pesado à esquerda) vs. layout com respiro e alinhamento]</div>
+        <span class="img-descricao">Figura 4 – Princípios de equilíbrio visual aplicados à interface de um dashboard.</span>
+    </div>
+
+    <div class="dica">
+        Para testar coerência, faça o “teste do botão”: mostre cinco telas diferentes de um mesmo sistema para alguém e pergunte: “Onde fica o botão salvar?”. Se a pessoa hesitar ou errar, a consistência está falhando.
+    </div>
+
+    <h3>Paletas, escalas de cores e hierarquia visual</h3>
+    <p>As cores não são apenas decoração: indicam estados (verde = sucesso, vermelho = erro), criam contraste e guiam a atenção. Use uma paleta reduzida (3-5 cores principais) e garanta contraste adequado para acessibilidade. A escala tipográfica (tamanhos de fonte) estabelece hierarquia: títulos maiores, textos corridos legíveis.</p>
+    
+    <div class="exercicio">
+        <strong>🎯 MICROATIVIDADE – Identificando inconsistências</strong>
+        Analise mentalmente um site que você usa com frequência. Existe algum comportamento inconsistente? Exemplo: um botão “cancelar” aparece ora à esquerda, ora à direita. Como você corrigiria essa inconsistência no redesign?
+    </div>
+
+    <!-- SEÇÃO 5: Resumo da Parte 1 -->
+    <div class="resumo-box">
+        <h3>📌 Resumo dos principais pontos – Parte 1</h3>
+        <ul>
+            <li><strong>Design de Interface</strong> une usabilidade (facilidade de uso) e experiência do usuário (satisfação geral).</li>
+            <li><strong>Arquitetura da informação</strong> organiza conteúdos; navegações bem estruturadas evitam frustração.</li>
+            <li><strong>Wireframes responsivos</strong> são o esqueleto do projeto; mapas de fluxo ajudam a visualizar jornadas.</li>
+            <li><strong>Planejamento estratégico</strong> (escopo, estrutura, grades) é a base para um projeto sólido.</li>
+            <li><strong>Coerência visual</strong> e <strong>diagramação equilibrada</strong> garantem interfaces intuitivas e profissionais.</li>
+            <li>Elementos de tela (botões, formulários, ícones) devem seguir padrões consistentes.</li>
+        </ul>
+        <p>Na <strong>Parte 2</strong> avançaremos para prototipação digital, ferramentas de layout responsivo, testes com usuários e aspectos de inovação. Continue praticando os exercícios para fixar cada conceito!</p>
+    </div>
+
+    <hr />
+    <p style="font-size: 0.85rem; text-align: center; color: #5c7f8c;">Material didático baseado no itinerário TEC-046.04 (Técnico Integrado em Multimídia). Foco em Design de Interface – Conceitos essenciais para iniciantes.</p>
+</div>
+</body>
+</html>

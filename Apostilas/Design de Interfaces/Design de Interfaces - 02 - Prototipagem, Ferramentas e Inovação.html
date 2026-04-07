@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design de Interface - Apostila | Parte 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #1a2a3a;
+            padding: 2rem 1rem;
+        }
+
+        .apostila-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 2rem 2rem 3rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', 'Merriweather', Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+            color: #0f2b3d;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-top: 0.2em;
+            border-left: 6px solid #2c7da0;
+            padding-left: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #cbdde6;
+            padding-bottom: 0.3rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.4em;
+            color: #1f5068;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        .dica, .curiosidade, .saibamais {
+            background: #eef3fa;
+            border-left: 5px solid #2c7da0;
+            padding: 1rem 1.5rem;
+            margin: 1.6rem 0;
+            border-radius: 16px;
+            font-size: 0.95rem;
+        }
+
+        .dica::before {
+            content: "💡 DICA: ";
+            font-weight: bold;
+            color: #1f5068;
+        }
+
+        .curiosidade::before {
+            content: "🔍 CURIOSIDADE: ";
+            font-weight: bold;
+            color: #1f5068;
+        }
+
+        .saibamais::before {
+            content: "📘 SAIBA MAIS: ";
+            font-weight: bold;
+            color: #1f5068;
+        }
+
+        .tabela-comparativa {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .tabela-comparativa th {
+            background-color: #2c7da0;
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .tabela-comparativa td {
+            border: 1px solid #e2edf2;
+            padding: 10px 16px;
+            vertical-align: top;
+        }
+
+        .exercicio {
+            background: #fef9e6;
+            border-radius: 20px;
+            padding: 1.3rem 1.8rem;
+            margin: 2rem 0;
+            border-left: 6px solid #f4a261;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+
+        .exercicio strong {
+            color: #bc6c25;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .figura-placeholder {
+            background: #f0f4f8;
+            border: 2px dashed #8eb3c2;
+            border-radius: 24px;
+            padding: 2rem 1rem;
+            margin: 1.8rem 0;
+            text-align: center;
+            font-family: monospace;
+            transition: 0.2s;
+        }
+
+        .figura-placeholder .icone {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .figura-placeholder .img-descricao {
+            display: block;
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #2c5a6e;
+            font-style: italic;
+        }
+
+        ul, ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+        }
+
+        li {
+            margin: 0.4rem 0;
+        }
+
+        .resumo-box {
+            background: #e9f2f5;
+            padding: 1.6rem;
+            border-radius: 24px;
+            margin: 2rem 0 1rem;
+            border: 1px solid #cde3ec;
+        }
+
+        .resumo-box h3 {
+            margin-top: 0;
+            color: #0e4b64;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #cbdde6, transparent);
+        }
+
+        .badge-ferramenta {
+            display: inline-block;
+            background: #e2edf2;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            color: #1f5068;
+        }
+
+        @media (max-width: 680px) {
+            .apostila-container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <h1>Design de Interface · Prototipagem, Ferramentas e Inovação</h1>
+    <p>Na Parte 1, consolidamos os fundamentos de usabilidade, arquitetura da informação e planejamento visual. Agora é hora de colocar a mão na massa: vamos explorar <strong>protótipos digitais</strong>, selecionar ferramentas profissionais, trabalhar com responsividade e aplicar inovação no processo criativo. Também abordaremos competências socioeconômicas essenciais — gestão do tempo, comunicação e trabalho em equipe —, indispensáveis para designers de interface.</p>
+
+    <!-- SEÇÃO 1: Prototipagem -->
+    <h2>1. Prototipagem Digital: da ideia ao clique</h2>
+    <p>Um protótipo é uma representação interativa da interface, que simula fluxos e comportamentos sem exigir código final. Os protótipos podem ter baixa fidelidade (wireframes clicáveis) ou alta fidelidade (com cores, tipografia e microinterações). Eles servem para validar conceitos, testar com usuários e alinhar expectativas com a equipe de desenvolvimento.</p>
+    
+    <div class="figura-placeholder">
+        <div class="icone">🖱️</div>
+        <div>[IMAGEM: Sequência evolutiva – wireframe de baixa fidelidade → protótipo de média fidelidade → protótipo de alta fidelidade com interações]</div>
+        <span class="img-descricao">Figura 5 – Níveis de fidelidade em prototipagem. Cada etapa agrega realismo e feedback.</span>
+    </div>
+
+    <h3>Principais ferramentas para criação de protótipos</h3>
+    <p>O mercado oferece soluções robustas para diferentes níveis de complexidade. Conhecer pelo menos duas delas amplia sua empregabilidade.</p>
+    <table class="tabela-comparativa">
+        <thead><tr><th>Ferramenta</th><th>Melhor para</th><th>Diferencial</th></tr></thead>
+        <tbody>
+            <tr><td>Figma</td><td>Design colaborativo, prototipagem avançada, componentes reutilizáveis</td><td>Navegador, multiplataforma, bibliotecas de design system</td></tr>
+            <tr><td>Adobe XD</td><td>Integração com Creative Cloud, prototipagem com voz</td><td>Ferramentas de repetição de grade e plugins poderosos</td></tr>
+            <tr><td>Sketch</td><td>Ecossistema macOS, símbolos e overlays</td><td>Comunidade madura de plugins</td></tr>
+            <tr><td>Balsamiq</td><td>Wireframes de baixa fidelidade estilo esboço</td><td>Extremamente rápido para ideação inicial</td></tr>
+        </tbody>
+    </table>
+
+    <div class="dica">
+        Se você está começando, foque no Figma: é gratuito para estudantes, possui tutoriais vastos e permite exportar especificações para desenvolvedores.
+    </div>
+
+    <div class="exercicio">
+        <strong>🧪 MICROATIVIDADE – Escolha da ferramenta</strong>
+        Você precisa prototipar um aplicativo de entregas com 12 telas. O prazo é curto e você trabalhará com dois colegas remotos. Qual ferramenta você escolheria? Justifique com base em colaboração e velocidade.
+    </div>
+
+    <h3>Do protótipo à implementação: templates e validação</h3>
+    <p>Após criar protótipos interativos, o designer prepara <strong>templates</strong> (componentes base) e documenta estilos. A fase de <strong>testes de validação com usuários reais</strong> é crucial: observe pessoas executando tarefas no protótipo, identifique pontos de atrito e refine a interface antes da codificação. O material de apoio do curso TEC-046.04 enfatiza a importância de “publicar protótipos ou versões iniciais” para coleta de feedback.</p>
+    
+    <div class="curiosidade">
+        Testes de validação não precisam ser complexos. O “teste de 5 usuários” já identifica cerca de 85% dos problemas de usabilidade (Nielsen Norman Group).
+    </div>
+
+    <!-- SEÇÃO 2: Layout responsivo e estruturas técnicas -->
+    <h2>2. Responsividade: interfaces que se adaptam</h2>
+    <p>Dispositivos variam em tamanho, resolução e orientação. Uma interface responsiva reorganiza conteúdo, redimensiona elementos e ajusta navegação para proporcionar boa experiência em smartphones, tablets e desktops. Para isso, utilizamos <strong>grades fluidas</strong>, imagens flexíveis e <strong>media queries</strong> (no front-end) ou, na fase de design, criamos versões alternativas do wireframe para breakpoints principais.</p>
+    
+    <h3>Estratégias práticas de responsividade no design</h3>
+    <ul>
+        <li><strong>Mobile first:</strong> projete primeiro para a tela menor e depois adicione complexidade para telas maiores.</li>
+        <li><strong>Pontos de quebra (breakpoints) comuns:</strong> 375px (celular), 768px (tablet), 1024px (desktop pequeno), 1280px+ (desktop wide).</li>
+        <li><strong>Componentes adaptáveis:</strong> menu hamburger vira menu horizontal em desktop, cards de 1 coluna viram 3 colunas.</li>
+    </ul>
+    
+    <div class="figura-placeholder">
+        <div class="icone">📱💻</div>
+        <div>[IMAGEM: Mesma interface exibida em três dispositivos – celular (coluna única), tablet (duas colunas) e desktop (três colunas com barra lateral)]</div>
+        <span class="img-descricao">Figura 6 – Layout responsivo: reorganização de cards e menu conforme o tamanho de tela.</span>
+    </div>
+    
+    <div class="dica">
+        Use plugins como “Figma Mirror” ou “Adobe XD Preview” para testar a responsividade diretamente no seu celular durante a prototipagem.
+    </div>
+
+    <p>No anexo técnico, também se menciona a importância de identificar <strong>estruturas técnicas para desenvolvimento de layout responsivo</strong>. Isso envolve entender como frameworks CSS (Bootstrap, Tailwind) implementam grids, mas, como designer, você precisa garantir que seus wireframes indiquem como o conteúdo deve se comportar em cada breakpoint.</p>
+
+    <div class="exercicio">
+        <strong>📱 EXERCÍCIO – Adaptando uma galeria de fotos</strong>
+        Crie mentalmente um wireframe responsivo para uma galeria de portfólio. No celular, as imagens aparecem em 1 coluna com legendas abaixo. No tablet, 2 colunas. No desktop, 4 colunas. Descreva como o título da página e os filtros se reposicionariam.
+    </div>
+
+    <!-- SEÇÃO 3: Ferramentas, plugins e personalização -->
+    <h2>3. Softwares, aplicativos e plugins para design de interface</h2>
+    <p>Além das ferramentas principais, plugins e extensões potencializam o fluxo de trabalho. Eles auxiliam na geração de ícones, acessibilidade, criação de gráficos, animações e até na conversão de designs em código.</p>
+    
+    <table class="tabela-comparativa">
+        <thead><tr><th>Plugins/Recursos</th><th>Função principal</th></tr></thead>
+        <tbody>
+            <tr><td>Unsplash / Pexels (Figma/XD)</td><td>Inserir imagens stock sem sair da ferramenta</td></tr>
+            <tr><td>Stark</td><td>Verificar contraste de cores e simular daltonismo</td></tr>
+            <tr><td>Autoflow (Figma)</td><td>Desenhar mapas de fluxo com conexões dinâmicas</td></tr>
+            <tr><td>Iconify / Feather Icons</td><td>Bibliotecas de ícones vetoriais editáveis</td></tr>
+            <tr><td>Anima ou HTML.to.design</td><td>Exportar código HTML/CSS para facilitar transição dev</td></tr>
+        </tbody>
+    </table>
+    
+    <div class="saibamais">
+        Manter-se atualizado sobre plugins é uma forma de inovação no dia a dia. Participe de comunidades como “Figma Community” e canais de design no Discord.
+    </div>
+
+    <h3>Customização de mídias: textos, imagens, áudio e vídeo</h3>
+    <p>Uma interface pode incluir elementos multimídia. Saber editar imagens, otimizar vídeos e até tratar áudio melhora a qualidade do projeto. Ferramentas como Adobe Photoshop, GIMP, DaVinci Resolve (vídeo) e Audacity (áudio) complementam o trabalho do designer de interface. O importante é garantir que esses elementos não comprometam o desempenho e a usabilidade.</p>
+    
+    <div class="figura-placeholder">
+        <div class="icone">🎬</div>
+        <div>[IMAGEM: Interface de player de vídeo customizada com botões de play, timeline e controles de volume, demonstrando integração de mídia]</div>
+        <span class="img-descricao">Figura 7 – Integração de elementos multimídia (vídeo, áudio) em uma interface educacional.</span>
+    </div>
+
+    <!-- SEÇÃO 4: Inovação, gestão do tempo e relações profissionais -->
+    <h2>4. Inovação e Gestão no Design de Interface</h2>
+    <p>O material TEC-046.04 reforça repetidas vezes a importância de <strong>aplicar aspectos de inovação</strong> na gestão e nas atividades profissionais. Inovar não significa apenas usar novas tecnologias, mas também repensar processos, experimentar alternativas e propor soluções originais para problemas antigos. No design de interface, inovar pode ser adotar microinterações surpreendentes, explorar novos padrões de navegação ou aplicar design inclusivo desde o início.</p>
+    
+    <h3>Gestão do tempo e qualidade dos serviços</h3>
+    <p>Um designer de interface lida com prazos, revisões e demandas concorrentes. Técnicas de gestão do tempo — como Pomodoro, matriz de Eisenhower ou sprints de design — aumentam a produtividade e a qualidade final. Organizar seu posto de trabalho (arquivos nomeados, versionamento com Figma History) também evita retrabalho.</p>
+    
+    <ul>
+        <li><strong>Pomodoro:</strong> 25 min focado, 5 min pausa. Ótimo para criar wireframes sem distrações.</li>
+        <li><strong>Matriz de prioridades:</strong> urgente vs. importante. Foque primeiro no que impacta a experiência do usuário.</li>
+        <li><strong>Checklists diários:</strong> evita esquecer testes de validação ou exportar assets.</li>
+    </ul>
+    
+    <div class="dica">
+        Use ferramentas como Trello, Notion ou Todoist para gerenciar suas tarefas de design. Compartilhe o quadro com a equipe para alinhar expectativas.
+    </div>
+
+    <h3>Comunicação, conflitos e comportamento profissional</h3>
+    <p>O designer raramente trabalha sozinho. Interage com desenvolvedores, product managers, redatores e clientes. Ter <strong>comportamento íntegro, transparente e responsável</strong> gera confiança. Além disso, intervir em situações de conflito buscando consenso é uma habilidade socioeconômica fundamental. Quando um desenvolvedor afirma que uma interação é impossível tecnicamente, ao invés de ignorar, negocie soluções alternativas que preservem a experiência do usuário.</p>
+    
+    <div class="figura-placeholder">
+        <div class="icone">🤝</div>
+        <div>[IMAGEM: Reunião de design review com designer, desenvolvedor e cliente ao redor de um protótipo projetado na parede]</div>
+        <span class="img-descricao">Figura 8 – Dinâmica colaborativa: alinhamento entre equipe multidisciplinar reduz conflitos.</span>
+    </div>
+
+    <div class="exercicio">
+        <strong>🗣️ MICROATIVIDADE – Mediação de conflito</strong>
+        Você projetou um menu suspenso com animação suave, mas o desenvolvedor alega que isso atrasaria o projeto em 2 dias. O que você faz? Apresente três argumentos baseados em inovação, usabilidade ou cronograma para chegar a um consenso.
+    </div>
+
+    <h3>Inovação aplicada: tendências em design de interface</h3>
+    <p>Fique de olho em tendências como <strong>glassmorphism</strong>, <strong>neomorfismo</strong>, <strong>design com motion</strong> e <strong>interações orientadas por IA</strong>. Contudo, a inovação mais sustentável é aquela que resolve dores reais do usuário sem adicionar complexidade desnecessária. Teste tendências em protótipos antes de aplicá-las em produtos finais.</p>
+    
+    <div class="curiosidade">
+        Grandes inovações em UI nasceram de restrições: o menu hamburger foi criado para economizar espaço no mobile. O “arrastar para atualizar” (pull-to-refresh) surgiu da necessidade de gestos naturais.
+    </div>
+
+    <!-- Resumo Parte 2 -->
+    <div class="resumo-box">
+        <h3>📌 Resumo – Parte 2</h3>
+        <ul>
+            <li><strong>Prototipagem digital</strong> é etapa obrigatória para validar ideias: utilize ferramentas como Figma, Adobe XD ou Balsamiq.</li>
+            <li><strong>Responsividade</strong> exige planejamento de grades fluidas, breakpoints e adaptação de componentes (mobile first).</li>
+            <li><strong>Ferramentas e plugins</strong> agilizam o trabalho: desde bancos de imagens até verificadores de contraste.</li>
+            <li><strong>Inovação</strong> não é apenas sobre modismos, mas sobre processos criativos e novas soluções centradas no usuário.</li>
+            <li><strong>Gestão do tempo, comunicação e resolução de conflitos</strong> são diferenciais profissionais e garantem projetos mais saudáveis.</li>
+            <li>Testes de validação com usuários reais são indispensáveis antes da implementação final.</li>
+        </ul>
+        <p>Na <strong>Parte 3</strong>, concluiremos com um mergulho em tópicos avançados: design para mídias sociais, fluxos narrativos em carrosséis, personalização de templates e estratégias de teste de usabilidade em larga escala. Prepare-se para os desafios finais!</p>
+    </div>
+
+    <hr />
+    <p style="font-size: 0.85rem; text-align: center; color: #5c7f8c;">Parte 2 da apostila de Design de Interface | Baseado no itinerário TEC-046.04 – Técnico Integrado em Multimídia.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figma para Design de Interface - Parte 1 | Primeiros Passos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1e1e2f;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #e0e0e0;
+            padding: 2rem 1rem;
+        }
+
+        .apostila-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #2a2a3a;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            overflow: hidden;
+            padding: 2rem 2rem 3rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', 'Merriweather', Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+            color: #ffffff;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-top: 0.2em;
+            border-left: 6px solid #a259ff;
+            padding-left: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #3a3a4e;
+            padding-bottom: 0.3rem;
+            color: #d9d9ff;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.4em;
+            color: #c084fc;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: #cfcfdf;
+        }
+
+        .dica, .curiosidade, .saibamais {
+            background: #2f2f42;
+            border-left: 5px solid #a259ff;
+            padding: 1rem 1.5rem;
+            margin: 1.6rem 0;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            color: #e2e2f0;
+        }
+
+        .dica::before {
+            content: "💡 DICA: ";
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .curiosidade::before {
+            content: "🔍 CURIOSIDADE: ";
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .saibamais::before {
+            content: "📘 SAIBA MAIS: ";
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .tabela-comparativa {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #2a2a3a;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .tabela-comparativa th {
+            background-color: #3a3a55;
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .tabela-comparativa td {
+            border: 1px solid #3a3a4e;
+            padding: 10px 16px;
+            vertical-align: top;
+            color: #cfcfdf;
+        }
+
+        .exercicio {
+            background: #1e1e2e;
+            border-radius: 20px;
+            padding: 1.3rem 1.8rem;
+            margin: 2rem 0;
+            border-left: 6px solid #f4a261;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .exercicio strong {
+            color: #ffb347;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .figura-placeholder {
+            background: #232335;
+            border: 2px dashed #5a5a7a;
+            border-radius: 24px;
+            padding: 2rem 1rem;
+            margin: 1.8rem 0;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .figura-placeholder .icone {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .figura-placeholder .img-descricao {
+            display: block;
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #8a8aaa;
+            font-style: italic;
+        }
+
+        ul, ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+            color: #cfcfdf;
+        }
+
+        li {
+            margin: 0.4rem 0;
+        }
+
+        .resumo-box {
+            background: #1e1e30;
+            padding: 1.6rem;
+            border-radius: 24px;
+            margin: 2rem 0 1rem;
+            border: 1px solid #3a3a55;
+        }
+
+        .resumo-box h3 {
+            margin-top: 0;
+            color: #c084fc;
+        }
+
+        .atalho {
+            background: #00000030;
+            font-family: monospace;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            color: #ffd966;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #3a3a4e, transparent);
+        }
+
+        @media (max-width: 680px) {
+            .apostila-container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <h1>🎨 Figma para Design de Interface · Parte 1</h1>
+    <p><strong>Primeiros passos e ferramentas essenciais</strong></p>
+    <p>O Figma é a ferramenta de design de interface mais utilizada no mundo — colaborativa, baseada na nuvem e gratuita para estudantes. Nesta apostila prática, você aprenderá a navegar pela interface, criar seus primeiros frames, shapes, textos e exportar assets. Tudo com foco em projetos reais de UI Design.</p>
+
+    <!-- SEÇÃO 1 -->
+    <h2>1. Conhecendo o ambiente do Figma</h2>
+    <p>Ao abrir o Figma (app desktop ou navegador), você verá o <strong>dashboard</strong> com seus arquivos. Crie um novo arquivo (File &gt; New Design File) e vamos explorar as áreas principais.</p>
+    
+    <div class="figura-placeholder">
+        <div class="icone">🖥️</div>
+        <div>[IMAGEM: Print da interface do Figma destacando: Toolbar (topo), Layers (esquerda), Canvas (centro), Properties (direita)]</div>
+        <span class="img-descricao">Figura 1 – Áreas do Figma: ferramentas, camadas, canvas e propriedades.</span>
+    </div>
+
+    <h3>Elementos da interface</h3>
+    <ul>
+        <li><strong>Toolbar (barra superior):</strong> ferramentas de seleção, formas, texto, caneta, mão, etc.</li>
+        <li><strong>Layers (painel esquerdo):</strong> lista todos os objetos da página. Você pode organizar, renomear e agrupar.</li>
+        <li><strong>Canvas (área central):</strong> seu espaço de trabalho infinito. Use <span class="atalho">Space + arrastar</span> para navegar.</li>
+        <li><strong>Properties (painel direito):</strong> ajusta largura, altura, cor, borda, sombra, texto, etc. Tudo que você selecionar aparece aqui.</li>
+    </ul>
+
+    <div class="dica">
+        Pressione <span class="atalho">Ctrl + \</span> (Windows) ou <span class="atalho">Cmd + \</span> (Mac) para esconder/mostrar a interface e focar no design. Use <span class="atalho">Shift + R</span> para entrar no modo de apresentação (espelhar).
+    </div>
+
+    <div class="exercicio">
+        <strong>🧪 MICROATIVIDADE – Explorando o Figma</strong>
+        Crie um novo arquivo. Identifique onde fica a ferramenta "Retângulo", o painel de camadas e o campo de opacidade no painel direito. Anote em um papel os nomes desses três elementos. Isso fixa a navegação!
+    </div>
+
+    <!-- SEÇÃO 2 -->
+    <h2>2. Frames: a base do design de interface</h2>
+    <p>Diferente de outras ferramentas, o Figma usa <strong>Frames</strong> (atalho <span class="atalho">F</span>) como contêineres para telas. Ao contrário de formas comuns, frames permitem definir tamanhos fixos, aplicar grids automáticos e criar protótipos.</p>
+    
+    <h3>Criando seu primeiro frame</h3>
+    <ol>
+        <li>Selecione a ferramenta Frame (<span class="atalho">F</span>).</li>
+        <li>No painel direito, escolha um presets (ex: <strong>iPhone 15</strong> ou <strong>Desktop 1440×1024</strong>).</li>
+        <li>Clique no canvas ou arraste para definir o tamanho.</li>
+        <li>Nomeie o frame no painel de layers (duplo clique ou Enter).</li>
+    </ol>
+
+    <div class="figura-placeholder">
+        <div class="icone">📱</div>
+        <div>[IMAGEM: Canvas com dois frames: um mobile (390x844) e um desktop (1280x832), ambos nomeados]</div>
+        <span class="img-descricao">Figura 2 – Frames representando telas de diferentes dispositivos.</span>
+    </div>
+
+    <div class="curiosidade">
+        Frames também podem conter outros frames (aninhamento). Isso é útil para criar componentes como cards, headers ou barras laterais dentro de uma tela principal.
+    </div>
+
+    <h3>Diferença entre Frame e Grupo</h3>
+    <table class="tabela-comparativa">
+        <thead><tr><th>Frame (<span class="atalho">F</span>)</th><th>Grupo (<span class="atalho">Ctrl+G</span>)</th></tr></thead>
+        <tbody>
+            <tr><td>Possui tamanho definido e clipping (corta objetos que ultrapassam)</td><td>Apenas organiza objetos, sem cortar ou limitar área</td></tr>
+            <tr><td>Pode ter grids, layout grids e auto layout</td><td>Não suporta grids ou auto layout nativamente</td></tr>
+            <tr><td>Ideal para telas, botões, cards, componentes reutilizáveis</td><td>Ideal para agrupar temporariamente elementos</td></tr>
+            <tr><td>Exporta como imagem respeitando o tamanho do frame</td><td>Exporta a área total dos objetos, sem moldura</td></tr>
+        </tbody>
+    </table>
+
+    <div class="dica">
+        Prefira <strong>frames em vez de grupos</strong> quando estiver projetando interfaces. Isso facilita a prototipagem e o uso de auto layout (veremos na Parte 2).
+    </div>
+
+    <!-- SEÇÃO 3 -->
+    <h2>3. Shapes, textos e propriedades visuais</h2>
+    <p>Com os frames criados, é hora de adicionar elementos. As principais ferramentas de desenho estão na toolbar ou via atalhos.</p>
+    
+    <h3>Ferramentas básicas</h3>
+    <ul>
+        <li><strong>Retângulo</strong> (<span class="atalho">R</span>) – formas quadradas ou retangulares.</li>
+        <li><strong>Linha</strong> (<span class="atalho">L</span>) – traços retos.</li>
+        <li><strong>Elipse</strong> (<span class="atalho">O</span>) – círculos e ovais.</li>
+        <li><strong>Texto</strong> (<span class="atalho">T</span>) – clique e digite ou arraste para criar uma caixa de texto.</li>
+    </ul>
+
+    <div class="figura-placeholder">
+        <div class="icone">🔘</div>
+        <div>[IMAGEM: Exibindo um retângulo, uma elipse e um texto editável com fonte Inter, 16px]</div>
+        <span class="img-descricao">Figura 3 – Elementos primitivos e texto no canvas.</span>
+    </div>
+
+    <h3>Ajustando propriedades (painel direito)</h3>
+    <p>Selecione qualquer objeto e no painel direito você encontrará:</p>
+    <ul>
+        <li><strong>Posição (X, Y)</strong> e <strong>Tamanho (W, H)</strong> – valores numéricos precisos.</li>
+        <li><strong>Preenchimento (Fill)</strong> – cor sólida, gradiente ou imagem.</li>
+        <li><strong>Stroke (Borda)</strong> – espessura, cor, tipo (tracejado, pontilhado).</li>
+        <li><strong>Efeitos</strong> – sombras, desfoque.</li>
+        <li><strong>Camada de texto</strong> – família, peso, tamanho, altura da linha, espaçamento entre caracteres.</li>
+    </ul>
+
+    <div class="dica">
+        Use o <strong>seletor de cores</strong> para aplicar cores hexadecimais (#FFFFFF, #A259FF) ou cores do sistema. Você também pode criar estilos de cores e textos (veremos na Parte 2).
+    </div>
+
+    <div class="exercicio">
+        <strong>🎨 EXERCÍCIO – Criando um botão simples</strong>
+        Dentro de um frame mobile (390×844), desenhe um retângulo de 200×50px. Aplique cor de fundo azul (#2C7DA0), borda arredondada de 12px e adicione um texto centralizado “Clique aqui” na cor branca. Salve o arquivo (ele salva automaticamente na nuvem).
+    </div>
+
+    <!-- SEÇÃO 4 -->
+    <h2>4. Organização com Layers e seleção</h2>
+    <p>Projetos reais possuem dezenas ou centenas de camadas. Organizar desde o início evita dores de cabeça.</p>
+
+    <h3>Boas práticas no painel Layers</h3>
+    <ul>
+        <li><strong>Renomeie camadas:</strong> duplo clique no nome. Use nomes descritivos: “btn_primario”, “header_bg”, “icone_usuario”.</li>
+        <li><strong>Agrupe com Frame:</strong> selecione elementos e pressione <span class="atalho">Ctrl+Alt+G</span> (cria um frame ao redor).</li>
+        <li><strong>Bloqueie camadas:</strong> clique no cadeado ao lado da layer para evitar edição acidental.</li>
+        <li><strong>Oculte camadas:</strong> clique no ícone de olho para esconder temporariamente.</li>
+    </ul>
+
+    <div class="figura-placeholder">
+        <div class="icone">📁</div>
+        <div>[IMAGEM: Painel Layers mostrando hierarquia: “Tela Login” (frame) → dentro: “Campo Email”, “Campo Senha”, “Botão Entrar”]</div>
+        <span class="img-descricao">Figura 4 – Organização de camadas com nomes claros e hierarquia.</span>
+    </div>
+
+    <div class="curiosidade">
+        Figma suporta <strong>emoji nos nomes de layer</strong>! Isso pode ajudar na identificação visual rápida: 🔒 Campo_Senha, ✅ btn_sucesso.
+    </div>
+
+    <!-- SEÇÃO 5 -->
+    <h2>5. Exportando assets para desenvolvimento</h2>
+    <p>Após criar ícones, botões ou imagens, você precisará exportá-los como PNG, JPG, SVG ou PDF. O Figma facilita esse processo.</p>
+
+    <h3>Passo a passo para exportar</h3>
+    <ol>
+        <li>Selecione o frame, grupo ou shape desejado.</li>
+        <li>No painel direito, role até a seção <strong>Export</strong>.</li>
+        <li>Clique no botão <strong>“+”</strong> para adicionar um formato.</li>
+        <li>Escolha o formato (PNG é o mais comum para interfaces).</li>
+        <li>Ajuste o tamanho (1x, 2x, 3x para telas retina).</li>
+        <li>Clique em <strong>Exportar</strong> e salve no seu computador.</li>
+    </ol>
+
+    <table class="tabela-comparativa">
+        <thead><tr><th>Formato</th><th>Quando usar</th></tr></thead>
+        <tbody>
+            <tr><td>PNG</td><td>Imagens com fundo transparente, ícones, botões (qualidade com perda leve).</td></tr>
+            <tr><td>JPG</td><td>Fotos, backgrounds (não suporta transparência).</td></tr>
+            <tr><td>SVG</td><td>Ícones vetoriais (infinitamente redimensionáveis). Ótimo para devs.</td></tr>
+            <tr><td>PDF</td><td>Apresentações, entregáveis para clientes.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="dica">
+        Para exportar múltiplos assets de uma vez, selecione todos e configure a exportação. O Figma exportará cada um em um arquivo separado automaticamente.
+    </div>
+
+    <div class="exercicio">
+        <strong>📤 MICROATIVIDADE – Exporte seu botão</strong>
+        Exporte o botão azul que você criou no exercício anterior em dois formatos: PNG (1x) e SVG. Compare os arquivos resultantes. Qual pesa menos? Qual mantém a nitidez ao ampliar?
+    </div>
+
+    <!-- Resumo da Parte 1 -->
+    <div class="resumo-box">
+        <h3>📌 Resumo – Parte 1</h3>
+        <ul>
+            <li>O Figma tem 4 áreas principais: <strong>Toolbar, Layers, Canvas, Properties</strong>.</li>
+            <li><strong>Frames</strong> são contêineres de tela (prefira frames a grupos).</li>
+            <li>Use as ferramentas <span class="atalho">R</span>, <span class="atalho">L</span>, <span class="atalho">O</span>, <span class="atalho">T</span> para criar formas e textos.</li>
+            <li>O painel direito permite ajustar cores, bordas, sombras e tipografia.</li>
+            <li>Organize camadas com nomes descritivos e hierarquia.</li>
+            <li>Exporte assets em PNG, SVG ou JPG conforme a necessidade.</li>
+        </ul>
+        <p>Na <strong>Parte 2</strong>, vamos mergulhar em <strong>componentes, auto layout e design system</strong> – o que torna o Figma poderoso para projetos profissionais.</p>
+    </div>
+
+    <hr />
+    <p style="font-size: 0.85rem; text-align: center; color: #8a8aaa;">Figma para Design de Interface – Parte 1 | Material prático para iniciantes. Próxima aula: Componentes e Layouts Inteligentes.</p>
+</div>
+</body>
+</html>

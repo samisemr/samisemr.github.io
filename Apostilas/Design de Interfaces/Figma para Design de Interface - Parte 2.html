@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figma para Design de Interface - Parte 2 | Componentes, Auto Layout e Design System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1e1e2f;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #e0e0e0;
+            padding: 2rem 1rem;
+        }
+
+        .apostila-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #2a2a3a;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            overflow: hidden;
+            padding: 2rem 2rem 3rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', 'Merriweather', Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+            color: #ffffff;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-top: 0.2em;
+            border-left: 6px solid #a259ff;
+            padding-left: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #3a3a4e;
+            padding-bottom: 0.3rem;
+            color: #d9d9ff;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.4em;
+            color: #c084fc;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: #cfcfdf;
+        }
+
+        .dica, .curiosidade, .saibamais {
+            background: #2f2f42;
+            border-left: 5px solid #a259ff;
+            padding: 1rem 1.5rem;
+            margin: 1.6rem 0;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            color: #e2e2f0;
+        }
+
+        .dica::before {
+            content: "💡 DICA: ";
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .curiosidade::before {
+            content: "🔍 CURIOSIDADE: ";
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .saibamais::before {
+            content: "📘 SAIBA MAIS: ";
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .tabela-comparativa {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #2a2a3a;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .tabela-comparativa th {
+            background-color: #3a3a55;
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .tabela-comparativa td {
+            border: 1px solid #3a3a4e;
+            padding: 10px 16px;
+            vertical-align: top;
+            color: #cfcfdf;
+        }
+
+        .exercicio {
+            background: #1e1e2e;
+            border-radius: 20px;
+            padding: 1.3rem 1.8rem;
+            margin: 2rem 0;
+            border-left: 6px solid #f4a261;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .exercicio strong {
+            color: #ffb347;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .figura-placeholder {
+            background: #232335;
+            border: 2px dashed #5a5a7a;
+            border-radius: 24px;
+            padding: 2rem 1rem;
+            margin: 1.8rem 0;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .figura-placeholder .icone {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .figura-placeholder .img-descricao {
+            display: block;
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: #8a8aaa;
+            font-style: italic;
+        }
+
+        ul, ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+            color: #cfcfdf;
+        }
+
+        li {
+            margin: 0.4rem 0;
+        }
+
+        .resumo-box {
+            background: #1e1e30;
+            padding: 1.6rem;
+            border-radius: 24px;
+            margin: 2rem 0 1rem;
+            border: 1px solid #3a3a55;
+        }
+
+        .resumo-box h3 {
+            margin-top: 0;
+            color: #c084fc;
+        }
+
+        .atalho {
+            background: #00000030;
+            font-family: monospace;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            color: #ffd966;
+        }
+
+        .codigo {
+            background: #1a1a2a;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #b0b0d0;
+            border: 1px solid #3a3a55;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #3a3a4e, transparent);
+        }
+
+        @media (max-width: 680px) {
+            .apostila-container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="apostila-container">
+    <h1>🧩 Figma para Design de Interface · Parte 2</h1>
+    <p><strong>Componentes, Auto Layout e Design System</strong></p>
+    <p>Na Parte 1, você aprendeu a navegar no Figma, criar frames, formas, textos e exportar assets. Agora vamos elevar seu nível: <strong>componentes reutilizáveis</strong>, <strong>auto layout</strong> (responsividade mágica) e os primeiros passos para construir um <strong>Design System</strong>. Esses recursos separam o design amador do profissional.</p>
+
+    <!-- SEÇÃO 1: COMPONENTES -->
+    <h2>1. Componentes: crie uma vez, use muitas vezes</h2>
+    <p>Componentes são elementos mestres que podem ser reutilizados em todo o projeto. Quando você edita o componente principal, todas as suas <strong>instâncias</strong> são atualizadas automaticamente. Isso é fundamental para manter consistência em botões, ícones, cards e headers.</p>
+
+    <div class="figura-placeholder">
+        <div class="icone">🧩</div>
+        <div>[IMAGEM: Componente principal (diamante roxo) e três instâncias (diamante vazado) em diferentes telas]</div>
+        <span class="img-descricao">Figura 1 – Componente principal (ícone de diamante) e instâncias espalhadas pelo projeto.</span>
+    </div>
+
+    <h3>Criando e usando componentes</h3>
+    <ol>
+        <li>Desenhe um elemento (ex: botão com texto “Enviar”).</li>
+        <li>Selecione o elemento e clique no ícone de <strong>diamante</strong> na toolbar (ou pressione <span class="atalho">Ctrl+Alt+K</span> / <span class="atalho">Cmd+Option+K</span>).</li>
+        <li>O frame fica com borda roxa (quatro diamantes no contorno) – agora é um <strong>Component Master</strong>.</li>
+        <li>Para criar instâncias, copie (<span class="atalho">Ctrl+C / Ctrl+V</span>) ou arraste segurando <span class="atalho">Alt</span>.</li>
+        <li>Edite o componente principal: todas as instâncias se atualizam.</li>
+    </ol>
+
+    <div class="dica">
+        Você pode <strong>sobrescrever</strong> propriedades em uma instância específica (ex: mudar o texto de um botão de “Enviar” para “Cancelar”). Isso não afeta o componente principal. Para resetar, clique no ícone de “reset” no painel de propriedades.
+    </div>
+
+    <h3>Variants (variantes): organize componentes similares</h3>
+    <p>Variantes permitem agrupar diferentes estados ou tamanhos de um mesmo componente. Exemplo: um botão com variantes <strong>Primário / Secundário / Desabilitado</strong> e <strong>Pequeno / Médio / Grande</strong>.</p>
+    
+    <div class="codigo">
+        Exemplo de estrutura de variantes:<br>
+        Botão / Estado [Primário | Secundário | Desabilitado] / Tamanho [P | M | G]
+    </div>
+
+    <div class="figura-placeholder">
+        <div class="icone">🎛️</div>
+        <div>[IMAGEM: Painel de variantes mostrando um componente "Botão" com duas propriedades: Estado (3 opções) e Tamanho (3 opções)]</div>
+        <span class="img-descricao">Figura 2 – Variantes de botão: diferentes estados e tamanhos dentro de um único componente.</span>
+    </div>
+
+    <div class="exercicio">
+        <strong>🧩 MICROATIVIDADE – Crie seu primeiro componente</strong>
+        Crie um card simples com: imagem placeholder, título “Card Exemplo” e botão “Saiba mais”. Transforme em componente. Duplique o card 2 vezes. Depois, edite o componente principal alterando a cor de fundo para azul escuro. Observe todas as instâncias se atualizarem.
+    </div>
+
+    <!-- SEÇÃO 2: AUTO LAYOUT -->
+    <h2>2. Auto Layout: design responsivo sem sofrimento</h2>
+    <p>Auto layout é o recurso mais amado do Figma. Ele transforma frames em contêineres inteligentes que se redimensionam automaticamente conforme o conteúdo ou o espaço disponível. É como ter <strong>CSS Flexbox</strong> dentro do Figma.</p>
+
+    <h3>Ativando Auto Layout</h3>
+    <ul>
+        <li>Selecione um frame ou grupo de elementos.</li>
+        <li>Pressione <span class="atalho">Shift+A</span> (atalho universal).</li>
+        <li>Ou clique com botão direito → <strong>Add Auto Layout</strong>.</li>
+    </ul>
+
+    <div class="figura-placeholder">
+        <div class="icone">📐</div>
+        <div>[IMAGEM: Dois cards lado a lado – sem auto layout (fixos) vs com auto layout (se ajustam ao texto e à largura)]</div>
+        <span class="img-descricao">Figura 3 – Auto layout permite que componentes se reorganizem dinamicamente.</span>
+    </div>
+
+    <h3>Propriedades essenciais do Auto Layout</h3>
+    <table class="tabela-comparativa">
+        <thead>
+            <tr><th>Propriedade</th><th>O que controla</th><th>Exemplo</th>
+        </thead>
+        <tbody>
+            <tr><td><strong>Direction</strong></td><td>Horizontal ou vertical</td><td>Botões em linha (horizontal) vs. formulário empilhado (vertical)</td>
+            <tr><td><strong>Spacing</strong></td><td>Distância entre elementos internos</td><td>8px entre cada campo de texto</td>
+            <tr><td><strong>Padding</strong></td><td>Espaçamento interno entre borda do frame e elementos</td><td>16px em todas as laterais de um card</td>
+            <tr><td><strong>Resizing (Fill / Fixed / Hug)</strong></td><td>Como cada elemento se comporta</td><td>Botão “Hug” (abraça conteúdo) / Campo “Fill” (ocupa largura disponível)</td>
+        </tbody>
+    </table>
+
+    <div class="curiosidade">
+        O Auto Layout também suporta <strong>Wrap</strong> (quebra de linha) – útil para galerias de imagens ou tags que precisam se reorganizar em múltiplas linhas quando a tela encolhe.
+    </div>
+
+    <div class="exercicio">
+        <strong>📐 EXERCÍCIO – Criando um formulário responsivo</strong>
+        Crie um frame vertical com Auto Layout (Shift+A). Adicione: label “Nome”, campo de texto (retângulo com Fill horizontal), label “E-mail”, campo de texto, e um botão “Enviar” com Hug. Teste redimensionar o frame – veja os campos se expandirem e o botão permanecer no tamanho do texto.
+    </div>
+
+    <!-- SEÇÃO 3: GRIDS E LAYOUT RESPONSIVO -->
+    <h2>3. Layout Grids: estrutura profissional para telas</h2>
+    <p>Assim como vimos na parte teórica, grids organizam o conteúdo. No Figma, você pode adicionar grids a qualquer frame.</p>
+
+    <h3>Adicionando grid a um frame</h3>
+    <ol>
+        <li>Selecione um frame (ex: tela desktop 1280×832).</li>
+        <li>No painel direito, na seção <strong>Layout grid</strong>, clique no ícone “+” (mais).</li>
+        <li>Escolha o tipo: <strong>Grid</strong> (quadriculado), <strong>Columns</strong> (colunas) ou <strong>Rows</strong> (linhas).</li>
+        <li>Para design responsivo, use <strong>Columns</strong> com 12 colunas, largura variável e gutters (espaços) de 16px.</li>
+    </ol>
+
+    <div class="figura-placeholder">
+        <div class="icone">📏</div>
+        <div>[IMAGEM: Frame desktop com grid de 12 colunas visível; elementos de interface alinhados às colunas]</div>
+        <span class="img-descricao">Figura 4 – Grid de 12 colunas guiando o posicionamento de cards e texto.</span>
+    </div>
+
+    <div class="dica">
+        Você pode salvar grids como estilos (ícone de 4 pontos ao lado de Layout grid) para reutilizar em várias telas. Isso garante consistência entre todas as páginas do projeto.
+    </div>
+
+    <!-- SEÇÃO 4: DESIGN SYSTEM E ESTILOS -->
+    <h2>4. Construindo um Design System básico</h2>
+    <p>Um Design System é um conjunto de padrões reutilizáveis: cores, tipografia, sombras, espaçamentos e componentes. O Figma permite criar <strong>estilos</strong> e <strong>componentes</strong> que formam a base do seu sistema.</p>
+
+    <h3>Estilos de cor</h3>
+    <p>Selecione um elemento com a cor desejada → no painel de Fill, clique no ícone de 4 pontos → “+” → nomeie (ex: “Primary / Azul Principal”). Agora qualquer frame pode aplicar esse estilo.</p>
+
+    <h3>Estilos de texto</h3>
+    <p>Selecione um texto → no painel de texto, clique no ícone de 4 pontos → “+” → crie estilos como “Heading 1”, “Body Large”, “Caption”.</p>
+
+    <h3>Estilos de efeito (sombra, desfoque)</h3>
+    <p>Em Effects, clique no ícone de 4 pontos para salvar uma sombra padrão.</p>
+
+    <div class="figura-placeholder">
+        <div class="icone">🎨</div>
+        <div>[IMAGEM: Painel de estilos mostrando paleta de cores (primária, secundária, neutras) e estilos de texto (títulos, corpo)]</div>
+        <span class="img-descricao">Figura 5 – Design System em construção: estilos de cor e tipografia organizados.</span>
+    </div>
+
+    <div class="saibamais">
+        Ferramenta <strong>Plugins</strong> no Figma: procure por “Stark” (acessibilidade), “Figma Tokens” ou “Design System Organizer” para automatizar partes do seu sistema.
+    </div>
+
+    <div class="exercicio">
+        <strong>🎨 MICROATIVIDADE – Monte seu mini Design System</strong>
+        Crie uma página chamada “Design System” no seu arquivo. Adicione:
+        <ul>
+            <li>3 estilos de cor (Primária, Secundária, Cinza Neutro).</li>
+            <li>2 estilos de texto (Título H1, Corpo P).</li>
+            <li>1 componente “Botão Primário” com variante de hover.</li>
+        </ul>
+        Aplique esses estilos em uma tela de exemplo.
+    </div>
+
+    <!-- SEÇÃO 5: PLUGINS ESSENCIAIS -->
+    <h2>5. Plugins que vão acelerar seu trabalho</h2>
+    <p>O Figma possui uma comunidade enorme de plugins (Menu → Plugins → Browse Plugins). Alguns indispensáveis para iniciantes:</p>
+
+    <table class="tabela-comparativa">
+        <thead><tr><th>Plugin</th><th>Função</th></tr></thead>
+        <tbody>
+            <tr><td>Unsplash</td><td>Insere imagens stock de alta qualidade diretamente no seu design.</td></tr>
+            <tr><td>Iconify</td><td>Biblioteca com milhares de ícones (Material, Feather, Font Awesome).</td></tr>
+            <tr><td>Autoflow</td><td>Cria setas de fluxo entre telas – ótimo para wireframes.</td></tr>
+            <tr><td>Stark</td><td>Verifica contraste de cores e simula daltonismo.</td></tr>
+            <tr><td>Content Reel</td><td>Preenche textos placeholder (lorem ipsum, nomes, e-mails) automaticamente.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="dica">
+        Para instalar um plugin: vá em <strong>Plugins → Browse plugins</strong>, pesquise, clique em “Install”. Depois, aparecerá no menu Plugins para uso imediato.
+    </div>
+
+    <!-- Resumo da Parte 2 -->
+    <div class="resumo-box">
+        <h3>📌 Resumo – Parte 2</h3>
+        <ul>
+            <li><strong>Componentes</strong> (<span class="atalho">Ctrl+Alt+K</span>) centralizam a manutenção de UI. Use variantes para organizar estados.</li>
+            <li><strong>Auto Layout</strong> (<span class="atalho">Shift+A</span>) torna o design responsivo e eficiente (Fill, Hug, Fixed).</li>
+            <li><strong>Layout Grids</strong> (colunas, gutters) garantiam alinhamento profissional.</li>
+            <li><strong>Estilos</strong> de cor, texto e efeito formam a base do Design System.</li>
+            <li><strong>Plugins</strong> (Unsplash, Iconify, Stark) aumentam produtividade.</li>
+        </ul>
+        <p>Na <strong>Parte 3</strong>, vamos finalizar com <strong>prototipagem interativa, testes de usabilidade dentro do Figma, dicas de colaboração em equipe e um projeto completo passo a passo</strong>.</p>
+    </div>
+
+    <hr />
+    <p style="font-size: 0.85rem; text-align: center; color: #8a8aaa;">Figma para Design de Interface – Parte 2 | Componentes, Auto Layout e Design System. Próximo: Prototipagem e Projeto Final.</p>
+</div>
+</body>
+</html>
