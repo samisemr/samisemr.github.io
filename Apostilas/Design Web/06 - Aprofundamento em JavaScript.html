@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apostila: JavaScript Avançado - Objetos, Arrays, DOM e Eventos</title>
+    <title>Apostila Completa: JavaScript Avançado - Objetos, Arrays, DOM e Eventos</title>
     <style>
         * {
             margin: 0;
@@ -13,80 +13,119 @@
 
         body {
             font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
-            background-color: #F2D8CE;
+            background-color: #e9ecef;
             padding: 48px 24px;
-            color: #1E3259;
-            line-height: 1.65;
+            color: #212529;
+            line-height: 1.7;
         }
 
         .apostila-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             background-color: #ffffff;
-            border-radius: 28px;
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             padding: 48px 56px;
         }
 
+        /* Sumário */
+        .sumario {
+            background-color: #f8f9fa;
+            padding: 24px 32px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid #dee2e6;
+        }
+        .sumario h2 {
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+            font-size: 24px;
+        }
+        .sumario ul {
+            columns: 2;
+            column-gap: 40px;
+            list-style: none;
+            margin-left: 0;
+        }
+        .sumario li {
+            margin: 8px 0;
+        }
+        .sumario a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: 500;
+        }
+        .sumario a:hover {
+            text-decoration: underline;
+            color: #0a58ca;
+        }
+
         h1 {
-            font-size: 34px;
-            color: #243E73;
-            border-left: 6px solid #8BB4D9;
+            font-size: 36px;
+            color: #0a1c3a;
+            border-left: 6px solid #2c7da0;
             padding-left: 22px;
             margin-bottom: 28px;
-            font-weight: 700;
-            line-height: 1.3;
+            font-weight: 800;
         }
 
         h2 {
-            font-size: 26px;
-            margin-top: 40px;
+            font-size: 28px;
+            margin-top: 48px;
             margin-bottom: 20px;
-            color: #1E3259;
-            border-bottom: 2px solid #8BB4D9;
-            padding-bottom: 8px;
-            font-weight: 600;
+            color: #0a1c3a;
+            border-bottom: 3px solid #2c7da0;
+            padding-bottom: 10px;
+            font-weight: 700;
+            scroll-margin-top: 30px;
         }
 
         h3 {
             font-size: 22px;
-            margin-top: 28px;
-            margin-bottom: 14px;
-            color: #243E73;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: #1e4a6b;
             font-weight: 600;
+            scroll-margin-top: 30px;
         }
 
         p {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             font-size: 16px;
             text-align: justify;
-            line-height: 1.7;
         }
 
         .destaque-box {
-            background-color: #F2D8CE;
-            border-left: 5px solid #A67E6F;
-            padding: 18px 24px;
+            background-color: #e7f1ff;
+            border-left: 6px solid #2c7da0;
+            padding: 20px 28px;
             margin: 28px 0;
-            border-radius: 20px;
-            line-height: 1.65;
-            color: #1E3259;
+            border-radius: 16px;
+        }
+
+        .atencao-box {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 20px 28px;
+            margin: 28px 0;
+            border-radius: 16px;
         }
 
         code {
-            background-color: #eef2fa;
+            background-color: #e9ecef;
             font-family: 'Courier New', 'Consolas', monospace;
             font-size: 14px;
             padding: 3px 8px;
             border-radius: 8px;
-            color: #A67E6F;
+            color: #d63384;
             font-weight: 500;
         }
 
         pre {
-            background-color: #1E3259;
-            color: #F2D8CE;
+            background-color: #1e293b;
+            color: #e2e8f0;
             padding: 20px 24px;
             border-radius: 20px;
             overflow-x: auto;
@@ -94,97 +133,117 @@
             font-size: 14px;
             margin: 24px 0;
             white-space: pre-wrap;
-            word-wrap: break-word;
-            line-height: 1.5;
+            word-break: break-all;
         }
 
         pre code {
             background: none;
-            color: #F2D8CE;
+            color: #e2e8f0;
             padding: 0;
         }
 
+        /* Tabela responsiva */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 16px;
+            border: 1px solid #dee2e6;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 24px 0;
             font-size: 15px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            min-width: 500px;
         }
-
         th {
-            background-color: #8BB4D9;
-            border: 1px solid #cbdbe2;
-            padding: 12px 14px;
+            background-color: #2c7da0;
+            color: white;
+            padding: 12px 16px;
             text-align: left;
             font-weight: 700;
-            color: #1E3259;
         }
-
         td {
-            border: 1px solid #cbdbe2;
-            padding: 10px 14px;
+            border: 1px solid #dee2e6;
+            padding: 10px 16px;
+            vertical-align: top;
             background-color: #fff;
         }
 
         ul, ol {
             margin: 16px 0 20px 28px;
-            line-height: 1.7;
         }
-
         li {
             margin: 8px 0;
         }
 
         .micro-atividade {
-            background-color: #F2D8CE;
-            border: 1px solid #A67E6F;
-            border-radius: 28px;
-            padding: 22px 28px;
-            margin: 32px 0;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+            background-color: #fef3e2;
+            border-left: 6px solid #f4a261;
+            border-radius: 20px;
+            padding: 24px 30px;
+            margin: 36px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-
         .micro-atividade h4 {
             font-size: 20px;
-            color: #243E73;
+            color: #c46b2b;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .badge {
-            background-color: #243E73;
-            color: #F2D8CE;
-            padding: 5px 14px;
+            background-color: #0a1c3a;
+            color: #ffffff;
+            padding: 6px 16px;
             border-radius: 40px;
             font-size: 12px;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .img-placeholder {
+            background-color: #f1f3f5;
+            border: 2px dashed #adb5bd;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 25px 0;
+            font-family: monospace;
+            color: #495057;
+        }
+        .img-placeholder span {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .img-placeholder img{
+            width: 100%;
+        }
+
+        .legenda-img {
+            font-size: 13px;
+            color: #6c757d;
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 20px;
         }
 
         hr {
-            margin: 36px 0;
+            margin: 40px 0;
             border: none;
             height: 2px;
-            background: linear-gradient(90deg, #8BB4D9, #F2D8CE, transparent);
+            background: linear-gradient(90deg, #2c7da0, #dee2e6, transparent);
         }
 
         footer {
             text-align: center;
-            margin-top: 56px;
+            margin-top: 60px;
             font-size: 13px;
-            color: #6c7a89;
-            border-top: 1px solid #e2e8f0;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
             padding-top: 28px;
-        }
-
-        footer p{
-            font-size: 0.8rem;
-            text-align: center;
         }
 
         @media (max-width: 700px) {
@@ -192,340 +251,816 @@
                 padding: 28px 20px;
             }
             h1 { font-size: 28px; }
-            h2 { font-size: 22px; }
-        }
-
-        strong {
-            color: #243E73;
+            .sumario ul { columns: 1; }
         }
     </style>
 </head>
 <body>
 <div class="apostila-container">
-    <span class="badge">JAVASCRIPT AVANÇADO | DOM + BOM</span>
-    <h1>Aprofundamento em JavaScript<br><span style="font-size: 22px; color:#1E3259;">Objetos, Arrays, Funções, BOM, DOM e Eventos na prática</span></h1>
-    
-    <p>Nesta apostila, você vai elevar seus conhecimentos em JavaScript para o próximo nível. Aprenderá a trabalhar com <strong>objetos e arrays</strong> (estruturas de dados essenciais), criar <strong>funções</strong> reutilizáveis, interagir com o navegador via <strong>BOM (Browser Object Model)</strong>, manipular a página com <strong>DOM (Document Object Model)</strong> e responder a <strong>eventos do usuário</strong>. Ao final, você será capaz de criar páginas web dinâmicas e interativas como um profissional.</p>
+    <span class="badge">⚡ JAVASCRIPT AVANÇADO | DOM + BOM + EVENTOS</span>
+    <h1>Aprofundamento em JavaScript<br><span style="font-size: 24px;">Objetos, Arrays, Funções, BOM, DOM e Eventos na prática</span></h1>
 
-    <h2>1. Tipos de dados complexos: Objetos e Arrays</h2>
+    <!-- SUMÁRIO -->
+    <div class="sumario">
+        <h2>📑 Sumário</h2>
+        <ul>
+            <li><a href="#objetos">1. Objetos: agrupando dados com significado</a></li>
+            <li><a href="#arrays">1.4 Arrays: listas ordenadas e métodos essenciais</a></li>
+            <li><a href="#funcoes">2. Funções: reutilizando código (declaração, arrow, parâmetros)</a></li>
+            <li><a href="#date">2.4 Trabalhando com datas (Date)</a></li>
+            <li><a href="#bom">3. BOM (Browser Object Model) – interagindo com o navegador</a></li>
+            <li><a href="#setinterval">3.4 setTimeout e setInterval – temporizadores</a></li>
+            <li><a href="#dom">4. DOM – manipulando a página dinamicamente</a></li>
+            <li><a href="#eventos">5. Eventos – respondendo às ações do usuário</a></li>
+            <li><a href="#localstorage">6. Persistência com localStorage</a></li>
+            <li><a href="#projeto-final">7. Projeto final: To-Do List completa</a></li>
+            <li><a href="#resumo">8. Resumo para consulta rápida</a></li>
+        </ul>
+    </div>
+
+    <!-- ================= TEMA 1 ================= -->
+    <h2 id="objetos">1. Objetos: agrupando dados com significado</h2>
+    <p>Objetos são uma das estruturas de dados mais importantes em JavaScript. Eles armazenam <strong>pares de chave-valor</strong> (também chamados de propriedades), onde a chave é uma string (ou Symbol) e o valor pode ser qualquer tipo de dado: string, número, booleano, array, função, ou até outro objeto.</p>
     
-    <h3>1.1 Objetos – agrupando dados com significado</h3>
-    <p>Objetos são estruturas que armazenam <strong>pares chave-valor</strong>. São ideais para representar entidades do mundo real (usuário, produto, carro).</p>
-    <pre><code>// Criando um objeto literal
-let usuario = {
-    nome: "Ana",
-    idade: 28,
-    email: "ana@email.com",
+    <div class="img-placeholder">
+        <img src="Imagens/06/Figura 01.webp" alt="">
+        <strong>Representação visual de um objeto: chaves apontando para valores</strong><br>
+    </div>
+
+    <pre><code>// Criando um objeto literal (a forma mais comum)
+const pessoa = {
+    nome: "Carlos Silva",
+    idade: 32,
+    email: "carlos@email.com",
+    endereco: {
+        rua: "Av. Paulista",
+        numero: 1000,
+        cidade: "São Paulo"
+    },
+    // Método (função dentro do objeto)
     saudacao: function() {
-        return `Olá, meu nome é ${this.nome}`;
+        return `Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`;
+    },
+    // Sintaxe moderna de método (ES6)
+    aniversario() {
+        this.idade++;
     }
 };
 
-console.log(usuario.nome);        // "Ana"
-console.log(usuario["idade"]);    // 28
-console.log(usuario.saudacao());  // "Olá, meu nome é Ana"</code></pre>
+// Acessando propriedades (duas formas)
+console.log(pessoa.nome);           // "Carlos Silva"
+console.log(pessoa["idade"]);       // 32
+console.log(pessoa.endereco.cidade); // "São Paulo"
+console.log(pessoa.saudacao());      // "Olá, meu nome é Carlos Silva..."
+
+// Adicionando novas propriedades
+pessoa.telefone = "(11) 99999-8888";
+pessoa["estaAtivo"] = true;
+
+// Removendo propriedades
+delete pessoa.email;
+
+// Verificando se uma propriedade existe
+console.log("nome" in pessoa);       // true
+console.log(pessoa.hasOwnProperty("email")); // false (foi deletado)</code></pre>
+
+    <h3>1.1 Funções construtoras e a palavra-chave <code>new</code></h3>
+    <p>Quando precisamos criar vários objetos com a mesma estrutura, usamos <strong>funções construtoras</strong> (por convenção, com a primeira letra maiúscula). O operador <code>new</code> cria um novo objeto e o associa ao <code>this</code> da função.</p>
     
-    <h3>1.2 Funções construtoras</h3>
-    <p>Para criar múltiplos objetos com a mesma estrutura, use <strong>funções construtoras</strong> (convenção: nome com letra maiúscula).</p>
-    <pre><code>function Produto(nome, preco, estoque) {
+    <pre><code>// Função construtora
+function Produto(nome, preco, estoque) {
     this.nome = nome;
     this.preco = preco;
     this.estoque = estoque;
+    
     this.aplicarDesconto = function(percentual) {
-        this.preco = this.preco * (1 - percentual / 100);
+        if (percentual >= 0 && percentual <= 100) {
+            this.preco = this.preco * (1 - percentual / 100);
+        }
+    };
+    
+    this.valorEmEstoque = function() {
+        return this.preco * this.estoque;
     };
 }
 
-let notebook = new Produto("Notebook", 2500, 10);
-let mouse = new Produto("Mouse", 80, 50);
-notebook.aplicarDesconto(10);
-console.log(notebook.preco);  // 2250</code></pre>
+// Criando instâncias
+const notebook = new Produto("Notebook Dell", 3500, 10);
+const mouse = new Produto("Mouse Logitech", 120, 50);
+
+notebook.aplicarDesconto(15);
+console.log(notebook.preco);              // 2975
+console.log(notebook.valorEmEstoque());   // 29750
+console.log(mouse.preco);                 // 120</code></pre>
+
+    <h3>1.2 Classes (ES6 – sintaxe moderna)</h3>
+    <p>A partir do ECMAScript 2015 (ES6), JavaScript introduziu a sintaxe de <strong>classes</strong>, que é um açúcar sintático sobre as funções construtoras, mas torna o código mais organizado.</p>
     
-    <h3>1.3 Iterando sobre objetos (for...in)</h3>
-    <pre><code>let carro = { marca: "Honda", modelo: "Civic", ano: 2022 };
-for (let propriedade in carro) {
-    console.log(`${propriedade}: ${carro[propriedade]}`);
+    <pre><code>class Usuario {
+    constructor(nome, email, idade) {
+        this.nome = nome;
+        this.email = email;
+        this.idade = idade;
+        this.dataCadastro = new Date();
+    }
+    
+    saudacao() {
+        return `Olá, eu sou ${this.nome}.`;
+    }
+    
+    fazerAniversario() {
+        this.idade++;
+        console.log(`${this.nome} agora tem ${this.idade} anos!`);
+    }
+    
+    // Método estático (chamado na classe, não na instância)
+    static compararIdade(usuario1, usuario2) {
+        return usuario1.idade - usuario2.idade;
+    }
 }
-// marca: Honda
-// modelo: Civic
-// ano: 2022</code></pre>
 
-    <h3>1.4 Arrays – listas ordenadas</h3>
-    <p>Arrays armazenam valores indexados numericamente (começando do 0). Podem conter qualquer tipo de dado, inclusive outros arrays ou objetos.</p>
-    <pre><code>let frutas = ["maçã", "banana", "laranja"];
-console.log(frutas[0]);        // "maçã"
-console.log(frutas.length);    // 3
+const user1 = new Usuario("Ana", "ana@email.com", 25);
+const user2 = new Usuario("Bruno", "bruno@email.com", 30);
 
-// Adicionar no final
-frutas.push("uva");
-// Remover do final
-let ultimo = frutas.pop();
-// Adicionar no início
-frutas.unshift("morango");
-// Remover do início
-let primeiro = frutas.shift();
+console.log(user1.saudacao());  // "Olá, eu sou Ana."
+user2.fazerAniversario();       // "Bruno agora tem 31 anos!"
 
-console.log(frutas);  // ["banana", "laranja", "uva"]</code></pre>
-    
-    <h3>1.5 Métodos úteis de array</h3>
-    <table>
-        <tr><th>Método</th><th>O que faz</th><th>Exemplo</th></tr>
-        <tr><td><code>indexOf()</code></code></td>Retorna o índice do elemento</td><code>frutas.indexOf("laranja") // 1</code></td></tr>
-        <tr><td><code>slice()</code></code>么Copia parte do array</td><code>frutas.slice(0,2)</code></td></tr>
-        <tr><td><code>concat()</code></code>么Junta dois arrays</td><code>array1.concat(array2)</code></td></tr>
-        <tr><td><code>reverse()</code></code>么Inverte a ordem</td><code>frutas.reverse()</code></td></tr>
-        <tr><td><code>includes()</code></code>么Verifica se existe</td><code>frutas.includes("banana") // true</code></td></tr>
-    </table>
-    
-    <h3>1.6 Iterando sobre arrays (for...of)</h3>
-    <pre><code>let numeros = [10, 20, 30, 40];
-let soma = 0;
-for (let valor of numeros) {
-    soma += valor;
+// Método estático
+console.log(Usuario.compararIdade(user1, user2)); // -5 (Ana é mais nova)</code></pre>
+
+    <h3>1.3 Iterando sobre objetos: <code>for...in</code> e métodos modernos</h3>
+    <pre><code>const carro = { marca: "Toyota", modelo: "Corolla", ano: 2022, cor: "Prata" };
+
+// for...in (percorre propriedades enumeráveis)
+for (let chave in carro) {
+    console.log(`${chave}: ${carro[chave]}`);
 }
-console.log(soma);  // 100
 
-// for tradicional (quando precisa do índice)
+// Métodos modernos para trabalhar com objetos
+const chaves = Object.keys(carro);     // ["marca", "modelo", "ano", "cor"]
+const valores = Object.values(carro);  // ["Toyota", "Corolla", 2022, "Prata"]
+const entradas = Object.entries(carro); // [["marca","Toyota"], ["modelo","Corolla"], ...]
+
+// Usando for...of com entries
+for (let [chave, valor] of Object.entries(carro)) {
+    console.log(`${chave} = ${valor}`);
+}</code></pre>
+
+    <h2 id="arrays">1.4 Arrays: listas ordenadas</h2>
+    <p>Arrays são estruturas que armazenam valores indexados numericamente (começando do índice 0). Podem conter qualquer tipo de dado, inclusive outros arrays (matrizes) ou objetos.</p>
+    
+    <pre><code>// Criando arrays
+const frutas = ["maçã", "banana", "laranja"];
+const numeros = [1, 2, 3, 4, 5];
+const misto = ["texto", 42, true, null, { nome: "objeto" }, [1, 2, 3]];
+
+// Acessando elementos
+console.log(frutas[0]);     // "maçã"
+console.log(frutas.length); // 3
+
+// Métodos de array fundamentais
+frutas.push("uva");         // adiciona no final → ["maçã", "banana", "laranja", "uva"]
+const ultima = frutas.pop(); // remove e retorna o último → "uva"
+frutas.unshift("morango");  // adiciona no início → ["morango", "maçã", "banana", "laranja"]
+const primeira = frutas.shift(); // remove e retorna o primeiro → "morango"
+
+// Encontrar posição
+console.log(frutas.indexOf("banana")); // 1
+console.log(frutas.includes("laranja")); // true
+
+// Fatiar array (sem modificar original)
+const citricas = frutas.slice(1, 3);  // ["banana", "laranja"] (índice 1 até 2)
+
+// Remover/substituir elementos com splice
+frutas.splice(1, 1, "kiwi", "pera"); // remove 1 elemento no índice 1 e adiciona kiwi e pera</code></pre>
+
+    <h3>1.5 Iterando sobre arrays</h3>
+    <pre><code>const numeros = [10, 20, 30, 40, 50];
+
+// 1. for tradicional (com índice)
 for (let i = 0; i < numeros.length; i++) {
     console.log(`Índice ${i}: ${numeros[i]}`);
-}</code></pre>
-    
-    <div class="micro-atividade">
-        <h4>📦 Micro-atividade 1: Cadastro de produtos com array de objetos</h4>
-        <p>Crie um array vazio chamado <code>produtos</code>. Adicione 3 objetos, cada um com <code>nome</code>, <code>preco</code> e <code>categoria</code>. Depois, percorra o array com <code>for...of</code> e exiba no console uma frase: "Produto: [nome], preço: R$ [preco]".</p>
-    </div>
-
-    <h2>2. Funções: reutilizando código</h2>
-    <h3>2.1 Declaração de função x Arrow function</h3>
-    <pre><code>// Declaração tradicional
-function saudacao(nome) {
-    return `Olá, ${nome}!`;
 }
 
-// Arrow function (moderna, mais concisa)
-const saudacaoArrow = (nome) => `Olá, ${nome}!`;
-const soma = (a, b) => a + b;
+// 2. for...of (recomendado quando não precisa do índice)
+for (let valor of numeros) {
+    console.log(valor);
+}
 
-console.log(saudacao("João"));      // Olá, João!
-console.log(saudacaoArrow("Maria")); // Olá, Maria!
-console.log(soma(5, 3));            // 8</code></pre>
+// 3. forEach (método funcional)
+numeros.forEach(function(valor, indice) {
+    console.log(`${indice}: ${valor}`);
+});
+
+// 4. map (cria um novo array transformado)
+const dobros = numeros.map(n => n * 2);  // [20, 40, 60, 80, 100]
+
+// 5. filter (filtra elementos)
+const maioresQue30 = numeros.filter(n => n > 30); // [40, 50]
+
+// 6. reduce (acumula valores)
+const soma = numeros.reduce((acumulador, atual) => acumulador + atual, 0); // 150</code></pre>
+
+    <div class="micro-atividade">
+        <h4>📊 Micro-atividade 1: Catálogo de produtos com array de objetos</h4>
+        <p>Crie um array chamado <code>produtos</code> contendo pelo menos 3 objetos, cada um com as propriedades: <code>nome</code>, <code>preco</code>, <code>categoria</code> (ex: "eletrônicos", "vestuário", "alimentos"). Depois:</p>
+        <ul>
+            <li>Use <code>forEach</code> para exibir no console: "Produto: [nome], Preço: R$ [preco]".</li>
+            <li>Use <code>filter</code> para criar um novo array apenas com produtos de uma categoria específica.</li>
+            <li>Use <code>map</code> para criar um array apenas com os nomes dos produtos.</li>
+            <li>Use <code>reduce</code> para calcular o valor total de todos os produtos (soma dos preços).</li>
+        </ul>
+    </div>
+
+    <!-- ================= TEMA 2 ================= -->
+    <h2 id="funcoes">2. Funções: reutilizando código</h2>
     
-    <h3>2.2 Parâmetros e retorno</h3>
-    <pre><code>// Função com múltiplos parâmetros e retorno
-function calcularImc(peso, altura) {
-    let imc = peso / (altura * altura);
+    <h3>2.1 Declaração de função vs. Arrow function vs. Expressão de função</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Tipo</th><th>Sintaxe</th><th>Hoisting</th><th>this</th><th>Quando usar</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td>Declaração de função</code></td>
+                    <td><code>function soma(a,b) { return a+b; }</code></td>
+                    <td>Sim (pode ser chamada antes da declaração)</code></td>
+                    <td>Dinâmico (depende de como é chamada)</code></td>
+                    <td>Funções principais, métodos de objeto</code></td>
+                </tr>
+                <tr>
+                    <td>Expressão de função</code></td>
+                    <td><code>const soma = function(a,b) { return a+b; };</code></td>
+                    <td>Não (a variável tem hoisting, mas a atribuição não)</code></td>
+                    <td>Dinâmico</code></td>
+                    <td>Callbacks, funções anônimas</code></td>
+                </tr>
+                <tr>
+                    <td>Arrow function (ES6+)</code></td>
+                    <td><code>const soma = (a,b) => a + b;</code></td>
+                    <td>Não</code></td>
+                    <td>Lexical (herda o this do escopo pai)</code></td>
+                    <td>Callbacks, funções curtas, quando precisa preservar o this</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pre><code>// Exemplos práticos
+// Declaração (pode ser chamada antes)
+console.log(soma(5, 3)); // 8
+function soma(a, b) {
+    return a + b;
+}
+
+// Arrow function (sintaxe concisa)
+const multiplicar = (a, b) => a * b;
+const quadrado = x => x ** 2;  // um parâmetro: parênteses opcionais
+const saudacao = () => "Olá, mundo!"; // sem parâmetros
+
+// Arrow function com corpo (várias linhas)
+const calcularImc = (peso, altura) => {
+    const imc = peso / (altura ** 2);
     if (imc < 18.5) return "Abaixo do peso";
     if (imc < 25) return "Peso normal";
     if (imc < 30) return "Sobrepeso";
     return "Obesidade";
-}
-console.log(calcularImc(70, 1.75)); // Peso normal</code></pre>
-    
-    <h3>2.3 Recursividade (exemplo: fatorial)</h3>
-    <pre><code>// Função que chama a si mesma
-function fatorial(n) {
-    if (n <= 1) return 1;
-    return n * fatorial(n - 1);
-}
-console.log(fatorial(5)); // 120 (5*4*3*2*1)</code></pre>
-    
-    <h3>2.4 Objeto Date – trabalhando com datas</h3>
-    <pre><code>const agora = new Date();
-console.log(agora.getDate());      // dia do mês
-console.log(agora.getMonth());     // mês (0-11)
-console.log(agora.getFullYear());  // ano com 4 dígitos
-console.log(agora.getHours());     // hora
+};
 
-// Exemplo: dias até o Natal
-function diasAteNatal() {
-    let hoje = new Date();
-    let natal = new Date(hoje.getFullYear(), 11, 25);
-    let diff = natal - hoje;
-    let dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    return dias > 0 ? dias : 0;
+// Parâmetros padrão (default parameters)
+function cumprimentar(nome = "Visitante", saudacao = "Olá") {
+    return `${saudacao}, ${nome}!`;
 }
-console.log(`Faltam ${diasAteNatal()} dias para o Natal`);</code></pre>
+console.log(cumprimentar());               // "Olá, Visitante!"
+console.log(cumprimentar("João"));         // "Olá, João!"
+console.log(cumprimentar("Maria", "Oi"));  // "Oi, Maria!"
+
+// Rest parameters (...args) – número variável de argumentos
+function somarTodos(...numeros) {
+    return numeros.reduce((total, n) => total + n, 0);
+}
+console.log(somarTodos(1, 2, 3, 4, 5)); // 15</code></pre>
+
+    <h3 id="date">2.2 Trabalhando com datas (Date)</h3>
+    <p>O objeto <code>Date</code> é usado para trabalhar com datas e horários. É importante lembrar que os meses vão de 0 (janeiro) a 11 (dezembro).</p>
     
+    <pre><code>// Criando datas
+const agora = new Date();                    // data e hora atual
+const dataEspecifica = new Date(2026, 5, 15); // 15 de junho de 2026 (mês 5 = junho)
+const timestamp = new Date(1700000000000);   // a partir de timestamp (milissegundos desde 1970)
+
+// Métodos get
+console.log(agora.getFullYear());   // ano com 4 dígitos
+console.log(agora.getMonth());      // mês (0-11) → adicione +1 para humano
+console.log(agora.getDate());       // dia do mês (1-31)
+console.log(agora.getDay());        // dia da semana (0 = domingo, 6 = sábado)
+console.log(agora.getHours());      // horas (0-23)
+console.log(agora.getMinutes());    // minutos
+console.log(agora.getSeconds());    // segundos
+
+// Formatação para exibição
+const opcoes = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+console.log(agora.toLocaleDateString('pt-BR', opcoes)); // "terça-feira, 15 de junho de 2026"
+console.log(agora.toLocaleTimeString('pt-BR'));         // "14:30:25"
+
+// Calculando diferença entre datas
+function diasEntreDatas(data1, data2) {
+    const diffMs = Math.abs(data2 - data1);   // diferença em milissegundos
+    return Math.ceil(diffMs / (1000 * 60 * 60 * 24)); // converte para dias
+}
+
+const inicio = new Date(2026, 0, 1);   // 1 de janeiro de 2026
+const fim = new Date(2026, 11, 31);    // 31 de dezembro de 2026
+console.log(`Dias no ano: ${diasEntreDatas(inicio, fim)}`);</code></pre>
+
     <div class="micro-atividade">
-        <h4>⏰ Micro-atividade 2: Função de boas-vindas com data</h4>
-        <p>Crie uma função chamada <code>mensagemDia()</code> que retorna uma saudação diferente conforme o horário: "Bom dia" (até 12h), "Boa tarde" (12h-18h), "Boa noite" (após 18h). Use o objeto <code>Date()</code> para obter a hora atual.</p>
+        <h4>⏰ Micro-atividade 2: Saudação baseada no horário</h4>
+        <p>Crie uma função <code>mensagemHorario()</code> que retorna uma saudação diferente conforme o horário atual:</p>
+        <ul>
+            <li>06:00 - 11:59 → "Bom dia!"</li>
+            <li>12:00 - 17:59 → "Boa tarde!"</li>
+            <li>18:00 - 23:59 → "Boa noite!"</li>
+            <li>00:00 - 05:59 → "Boa madrugada!"</li>
+        </ul>
+        <p>Use o objeto <code>Date</code> para obter a hora atual e exiba a mensagem no console ou em um alerta.</p>
     </div>
 
-    <h2>3. BOM (Browser Object Model) – interagindo com o navegador</h2>
-    <p>O BOM fornece objetos para interagir com a janela do navegador, histórico, URL, etc.</p>
-    
-    <h3>3.1 Objeto window</h3>
-    <ul>
-        <li><code>window.alert()</code>, <code>window.confirm()</code>, <code>window.prompt()</code> (já vistos)</li>
-        <li><code>window.open()</code> – abre nova janela</li>
-        <li><code>window.close()</code> – fecha a janela atual</li>
-        <li><code>window.innerWidth</code> / <code>window.innerHeight</code> – dimensões da janela</li>
-    </ul>
-    
-    <h3>3.2 Objeto history</h3>
-    <pre><code>// Navegação no histórico
-history.back();    // volta uma página
-history.forward(); // avança uma página
-history.go(-2);    // volta duas páginas</code></pre>
-    
-    <h3>3.3 Objeto location</h3>
-    <pre><code>// Informações sobre a URL atual
-console.log(location.href);     // URL completa
-console.log(location.pathname); // caminho da página
-// location.reload();  // recarrega a página
-// location.assign("https://google.com"); // redireciona</code></pre>
-    
-    <h3>3.4 setTimeout e setInterval</h3>
-    <pre><code>// setTimeout: executa uma vez após X milissegundos
-setTimeout(() => {
-    console.log("Executado após 2 segundos");
-}, 2000);
+    <!-- ================= TEMA 3 ================= -->
+    <h2 id="bom">3. BOM (Browser Object Model) – interagindo com o navegador</h2>
+    <p>O BOM é um conjunto de objetos que permitem ao JavaScript interagir com a janela do navegador, fora do conteúdo da página em si. O objeto principal é o <code>window</code> (que é global no navegador).</p>
 
-// setInterval: executa repetidamente a cada X milissegundos
+    <div class="img-placeholder">
+        <img src="Imagens/06/Figura 02.png" alt="">
+        <strong>Hierarquia do BOM: window → document, history, location, navigator, screen</strong><br>
+
+    <h3>3.1 Objeto window</h3>
+    <pre><code>// window é o objeto global (no navegador)
+console.log(window.innerWidth);   // largura da janela de visualização (viewport)
+console.log(window.innerHeight);  // altura da janela
+console.log(window.outerWidth);   // largura da janela incluindo bordas
+console.log(window.screenX);      // posição X da janela na tela
+
+// window.open() – abre nova janela/aba
+const novaJanela = window.open("https://www.google.com", "_blank");
+
+// window.close() – fecha a janela (apenas se aberta por script)
+// novaJanela.close();
+
+// window.scrollTo() – rola a página
+window.scrollTo({ top: 0, behavior: "smooth" });</code></pre>
+
+    <h3>3.2 Objeto navigator (informações do navegador)</h3>
+    <pre><code>console.log(navigator.userAgent);      // identificação do navegador
+console.log(navigator.language);        // idioma do navegador ("pt-BR")
+console.log(navigator.onLine);          // true/false – conectado à internet?
+console.log(navigator.platform);        // sistema operacional</code></pre>
+
+    <h3>3.3 Objeto location (URL atual)</h3>
+    <pre><code>console.log(location.href);        // URL completa da página
+console.log(location.protocol);     // "https:" ou "http:"
+console.log(location.hostname);     // dominio.com.br
+console.log(location.pathname);     // caminho após o domínio
+
+// Redirecionar para outra página
+// location.assign("https://www.google.com");
+
+// Recarregar a página
+// location.reload();
+
+// Obter parâmetros da URL (query string)
+const params = new URLSearchParams(location.search);
+const id = params.get("id");        // se URL for "...?id=123", id = "123"</code></pre>
+
+    <h3 id="setinterval">3.4 setTimeout e setInterval – temporizadores</h3>
+    <pre><code>// setTimeout – executa UMA VEZ após o atraso (em milissegundos)
+const timeoutId = setTimeout(() => {
+    console.log("Isso aparece após 3 segundos");
+}, 3000);
+
+// Cancelar o timeout antes de executar
+// clearTimeout(timeoutId);
+
+// setInterval – executa REPETIDAMENTE a cada intervalo
 let contador = 0;
-let intervalo = setInterval(() => {
+const intervalId = setInterval(() => {
     contador++;
-    console.log(`Passaram-se ${contador} segundos`);
-    if (contador === 5) clearInterval(intervalo); // para após 5 execuções
-}, 1000);</code></pre>
+    console.log(`Execução número ${contador}`);
     
+    if (contador === 5) {
+        clearInterval(intervalId);  // para após 5 execuções
+        console.log("Intervalo finalizado!");
+    }
+}, 1000);  // a cada 1 segundo
+
+// Exemplo prático: relógio digital
+function iniciarRelogio() {
+    setInterval(() => {
+        const agora = new Date();
+        const horaFormatada = agora.toLocaleTimeString('pt-BR');
+        console.log(horaFormatada);
+        // Na prática, atualizaria um elemento HTML
+    }, 1000);
+}</code></pre>
+
     <div class="micro-atividade">
         <h4>🌐 Micro-atividade 3: Cronômetro simples com setInterval</h4>
-        <p>Crie uma página HTML com um botão "Iniciar cronômetro" e um <code>&lt;p id="cronometro"&gt;0&lt;/p&gt;</code>. Ao clicar, um <code>setInterval</code> deve incrementar o número a cada segundo. Adicione outro botão "Parar" que usa <code>clearInterval()</code>.</p>
+        <p>Crie uma página HTML com:</p>
+        <ul>
+            <li>Um elemento <code>&lt;div id="cronometro"&gt;0&lt;/div&gt;</code> para exibir os segundos.</li>
+            <li>Botões: "Iniciar", "Pausar", "Zerar".</li>
+            <li>Use <code>setInterval</code> para incrementar um contador a cada segundo e atualizar o elemento.</li>
+            <li>Use <code>clearInterval</code> para pausar e <code>clearInterval</code> + reset para zerar.</li>
+        </ul>
     </div>
 
-    <h2>4. DOM (Document Object Model) – manipulando a página</h2>
-    <p>O DOM representa a estrutura HTML da página como uma árvore de elementos. Com JavaScript, podemos acessar, modificar, adicionar ou remover elementos dinamicamente.</p>
-    
+    <!-- ================= TEMA 4 ================= -->
+    <h2 id="dom">4. DOM – manipulando a página dinamicamente</h2>
+    <p>O DOM (Document Object Model) é a representação em árvore de todos os elementos HTML da página. Com ele, podemos acessar, modificar, adicionar e remover elementos dinamicamente.</p>
+
+    <div class="img-placeholder">
+        <img src="Imagens/06/Figura 03.jpg" alt="">
+        <strong>Árvore DOM: document → html → head/body → elementos filhos</strong><br>
+    </div>
+
     <h3>4.1 Selecionando elementos</h3>
-    <table>
-        <tr><th>Método</th><th>Descrição</th><th>Exemplo</th></tr>
-        <tr><td><code>getElementById()</code></code>么Retorna UM elemento pelo ID</td><code>document.getElementById("titulo")</code></td></tr>
-        <tr><td><code>getElementsByClassName()</code>么Retorna lista (HTMLCollection) pela classe</td><code>document.getElementsByClassName("card")</code></td></tr>
-        <tr><td><code>getElementsByTagName()</code>么Retorna lista pela tag</td><code>document.getElementsByTagName("p")</code></td></tr>
-        <tr><td><code>querySelector()</code>么Retorna o PRIMEIRO elemento que combina com o seletor CSS</td><code>document.querySelector(".classe")</code></td></tr>
-        <tr><td><code>querySelectorAll()</code>么Retorna todos (NodeList) que combinam</td><code>document.querySelectorAll("div.card")</code></td></tr>
-    </table>
-    
-    <h3>4.2 Modificando conteúdo e estilo</h3>
-    <pre><code>&lt;h1 id="titulo"&gt;Título original&lt;/h1&gt;
-&lt;p id="mensagem"&gt;Conteúdo inicial&lt;/p&gt;
-&lt;div class="caixa" style="width:100px;height:100px;background:blue;"&gt;&lt;/div&gt;
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Método</th><th>Retorna</th><th>Performance</th><th>Exemplo</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><code>getElementById()</code></td>
+                    <td>Elemento único ou null</td>
+                    <td>Muito rápida</td>
+                    <td><code>document.getElementById("titulo")</code></td>
+                </tr>
+                <tr>
+                    <td><code>querySelector()</code></td>
+                    <td>Primeiro elemento ou null</td>
+                    <td>Rápida</td>
+                    <td><code>document.querySelector(".classe")</code><br><code>document.querySelector("#id")</code></td>
+                </tr>
+                <tr>
+                    <td><code>querySelectorAll()</code></td>
+                    <td>NodeList (estático, com forEach)</td>
+                    <td>Rápida</td>
+                    <td><code>document.querySelectorAll("p.card")</code></td>
+                </tr>
+                <tr>
+                    <td><code>getElementsByClassName()</code></td>
+                    <td>HTMLCollection (viva, sem forEach)</td>
+                    <td>Muito rápida</td>
+                    <td><code>document.getElementsByClassName("item")</code></td>
+                </tr>
+                <tr>
+                    <td><code>getElementsByTagName()</code></td>
+                    <td>HTMLCollection</td>
+                    <td>Muito rápida</td>
+                    <td><code>document.getElementsByTagName("div")</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-&lt;script&gt;
-    // Modificando texto
-    document.getElementById("titulo").textContent = "Novo título!";
-    
-    // innerHTML permite HTML (cuidado com segurança)
-    document.getElementById("mensagem").innerHTML = "&lt;strong&gt;Texto em negrito&lt;/strong&gt;";
-    
-    // Modificando estilo
-    let caixa = document.querySelector(".caixa");
-    caixa.style.backgroundColor = "red";
-    caixa.style.borderRadius = "10px";
-    caixa.style.width = "200px";
-&lt;/script&gt;</code></pre>
-    
-    <h3>4.3 Criando e removendo elementos</h3>
-    <pre><code>&lt;ul id="lista"&gt;
-    &lt;li&gt;Item 1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;button onclick="adicionarItem()"&gt;Adicionar&lt;/button&gt;
+    <h3>4.2 Modificando conteúdo, atributos e estilos</h3>
+    <pre><code>// HTML de exemplo
+// &lt;div id="caixa" class="container"&gt;Texto original&lt;/div&gt;
+// &lt;img id="foto" src="imagem1.jpg" alt="Descrição original"&gt;
 
-&lt;script&gt;
-function adicionarItem() {
-    let lista = document.getElementById("lista");
-    let novoItem = document.createElement("li");
-    novoItem.textContent = `Item ${lista.children.length + 1}`;
-    lista.appendChild(novoItem);
-}
-&lt;/script&gt;</code></pre>
-    
+const caixa = document.getElementById("caixa");
+
+// textContent vs innerHTML
+caixa.textContent = "Texto plano (ignora HTML)";
+caixa.innerHTML = "&lt;strong&gt;Texto em negrito&lt;/strong&gt;";
+
+// Modificando atributos
+const imagem = document.getElementById("foto");
+imagem.setAttribute("src", "nova-imagem.jpg");
+imagem.alt = "Nova descrição";
+console.log(imagem.getAttribute("src"));  // "nova-imagem.jpg"
+
+// Modificando classes
+caixa.classList.add("destaque");
+caixa.classList.remove("container");
+caixa.classList.toggle("visivel");  // adiciona se não tiver, remove se tiver
+console.log(caixa.classList.contains("destaque")); // true
+
+// Modificando estilos inline
+caixa.style.backgroundColor = "#2c7da0";
+caixa.style.color = "white";
+caixa.style.padding = "20px";
+caixa.style.borderRadius = "12px";
+
+// Lendo estilos computados (o que o navegador realmente aplicou)
+const estilos = window.getComputedStyle(caixa);
+console.log(estilos.backgroundColor);</code></pre>
+
+    <h3>4.3 Criando, inserindo e removendo elementos</h3>
+    <pre><code>// Criar um novo elemento
+const novoParagrafo = document.createElement("p");
+novoParagrafo.textContent = "Este parágrafo foi criado dinamicamente!";
+novoParagrafo.classList.add("dinamico");
+
+// Inserir no final de um elemento pai
+const container = document.querySelector(".container");
+container.appendChild(novoParagrafo);
+
+// Inserir no início
+const primeiroParagrafo = document.createElement("p");
+primeiroParagrafo.textContent = "Sou o primeiro!";
+container.insertBefore(primeiroParagrafo, container.firstChild);
+
+// Inserir em posição específica (antes de um elemento)
+const referencia = document.querySelector(".referencia");
+container.insertBefore(novoParagrafo, referencia);
+
+// Remover elemento
+const elementoParaRemover = document.querySelector(".remover");
+elementoParaRemover.remove();  // método moderno
+// ou container.removeChild(elementoParaRemover);
+
+// Clonar elemento
+const original = document.querySelector(".card");
+const clone = original.cloneNode(true);  // true = clone profundo (inclui filhos)
+container.appendChild(clone);</code></pre>
+
     <div class="micro-atividade">
         <h4>✏️ Micro-atividade 4: Lista de tarefas interativa</h4>
-        <p>Crie uma página com um campo de texto (input), um botão "Adicionar" e uma lista <code>&lt;ul&gt;</code> vazia. Ao clicar no botão, o texto do input deve ser adicionado como um novo <code>&lt;li&gt;</code> na lista. Inclua também um botão "Limpar lista" que remove todos os itens.</p>
-    </div>
-
-    <h2>5. Eventos – respondendo às ações do usuário</h2>
-    <p>Eventos são ações que ocorrem na página (clique, mouse sobre, tecla pressionada, carregamento, etc.). JavaScript pode "escutar" esses eventos e executar funções.</p>
-    
-    <h3>5.1 Principais eventos</h3>
-    <table>
-        <tr><th>Evento</th><th>Ocorre quando...</th></tr>
-        <tr><td><code>click</code></code>么usuário clica em um elemento</td></tr>
-        <tr><td><code>dblclick</code>么clique duplo</td></tr>
-        <tr><td><code>mouseover</code>么mouse passa sobre o elemento</td></tr>
-        <tr><td><code>mouseout</code>么mouse sai do elemento</td></tr>
-        <tr><td><code>focus</code>么campo de formulário recebe foco</td></tr>
-        <tr><td><code>blur</code>么campo perde o foco</td></tr>
-        <tr><td><code>keydown</code>么tecla é pressionada</td></tr>
-        <tr><td><code>load</code>么página termina de carregar</td></tr>
-        <tr><td><code>submit</code>么formulário é enviado</td></tr>
-    </table>
-    
-    <h3>5.2 Duas formas de anexar eventos</h3>
-    <pre><code>&lt;!-- Método 1: atributo HTML (simples) --&gt;
-&lt;button onclick="alert('Clicou!')"&gt;Clique&lt;/button&gt;
-
-&lt;!-- Método 2: addEventListener (recomendado, permite múltiplos eventos) --&gt;
-&lt;button id="meuBotao"&gt;Clique aqui&lt;/button&gt;
-&lt;script&gt;
-    let botao = document.getElementById("meuBotao");
-    botao.addEventListener("click", function() {
-        console.log("Botão clicado!");
-        alert("Evento via addEventListener");
-    });
-    
-    // Pode adicionar mais de um evento para o mesmo elemento
-    botao.addEventListener("mouseover", () => {
-        botao.style.backgroundColor = "#8BB4D9";
-    });
-    botao.addEventListener("mouseout", () => {
-        botao.style.backgroundColor = "";
-    });
-&lt;/script&gt;</code></pre>
-    
-    <h3>5.3 Evento load – executar após página carregada</h3>
-    <pre><code>&lt;script&gt;
-    window.addEventListener("load", function() {
-        console.log("Página completamente carregada!");
-        // Inicializações seguras aqui
-    });
-&lt;/script&gt;</code></pre>
-    
-    <div class="micro-atividade">
-        <h4>🎮 Micro-atividade 5: Card interativo com eventos</h4>
-        <p>Crie um card (div) com imagem, título e descrição. Adicione os seguintes eventos: (1) <code>mouseover</code> aumenta a borda e adiciona sombra; (2) <code>mouseout</code> volta ao normal; (3) <code>click</code> exibe um alerta com o título do card. Use <code>addEventListener</code> para todos.</p>
-    </div>
-
-    <h2>6. Projeto final integrador</h2>
-    <div class="destaque-box" style="background:#eef2fa; border-left-color: #243E73;">
-        <h3 style="margin-top:0">🎯 To-Do List completa com localStorage</h3>
-        <p><strong>Desafio final:</strong> Construa um aplicativo de lista de tarefas que:</p>
+        <p>Crie uma página com:</p>
         <ul>
-            <li>Permita adicionar novas tarefas via input + botão.</li>
-            <li>Exiba as tarefas em uma lista, cada uma com um botão "Remover".</li>
-            <li>Permita marcar tarefas como concluídas (riscar o texto).</li>
-            <li>Use <strong>localStorage</strong> para salvar as tarefas no navegador (para que não sumam ao recarregar).</li>
-            <li>Carregue as tarefas salvas ao iniciar a página (evento <code>load</code>).</li>
+            <li>Um campo de texto (input) e um botão "Adicionar tarefa".</li>
+            <li>Uma lista <code>&lt;ul&gt;</code> vazia para exibir as tarefas.</li>
+            <li>Cada tarefa adicionada deve ser um <code>&lt;li&gt;</code> com o texto do input e um botão "Remover" ao lado.</li>
+            <li>O botão "Remover" deve excluir aquela tarefa específica.</li>
+            <li>Inclua um botão "Limpar tudo" que remove todas as tarefas.</li>
+            <li>Valide para não adicionar tarefas vazias.</li>
         </ul>
-        <p>Este projeto consolida: arrays, objetos (opcional), manipulação do DOM, eventos, e persistência de dados.</p>
+    </div>
+
+    <!-- ================= TEMA 5 ================= -->
+    <h2 id="eventos">5. Eventos – respondendo às ações do usuário</h2>
+    <p>Eventos são ações que ocorrem na página (cliques, teclas pressionadas, movimentos do mouse, carregamento, etc.). JavaScript pode "escutar" esses eventos e executar funções em resposta.</p>
+
+    <h3>5.1 Principais eventos do DOM</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Evento</th><th>Descrição</th><th>Elementos típicos</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><code>click</code></td>
+                    <td>Usuário clica no elemento (mouse ou touch)</td>
+                    <td>Botões, links, qualquer elemento</code></td>
+                </tr>
+                <tr>
+                    <td><code>dblclick</code></td>
+                    <td>Clique duplo</code></td>
+                    <td>Elementos que precisam de ação especial</code></td>
+                </tr>
+                <tr>
+                    <td><code>mouseover</code> / <code>mouseout</code></code></td>
+                    <td>Mouse entra/sai do elemento</code></td>
+                    <td>Efeitos de hover, tooltips</code></td>
+                </tr>
+                <tr>
+                    <td><code>focus</code> / <code>blur</code></code></td>
+                    <td>Campo recebe/perde foco</code></td>
+                    <td>Validação de formulário, placeholders</code></td>
+                </tr>
+                <tr>
+                    <td><code>keydown</code> / <code>keyup</code></code></td>
+                    <td>Tecla pressionada/solta</code></td>
+                    <td>Jogos, atalhos de teclado, máscaras</code></td>
+                </tr>
+                <tr>
+                    <td><code>submit</code></code></td>
+                    <td>Formulário é enviado</code></td>
+                    <td>Validação antes do envio, prevenção do comportamento padrão</code></td>
+                </tr>
+                <tr>
+                    <td><code>load</code></code></td>
+                    77Página ou recurso termina de carregar</code></td>
+                    <td>Inicializações seguras</code></td>
+                </tr>
+                <tr>
+                    <td><code>scroll</code></code></td>
+                    <td>Usuário rola a página</code></td>
+                    <td>Efeitos de parallax, lazy loading, menu fixo</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>5.2 addEventListener vs. atributos HTML</h3>
+    <pre><code>&lt;!-- Método 1: Atributo HTML (mais antigo, menos flexível) --&gt;
+&lt;button onclick="alert('Clicou!')"&gt;Clique&lt;/button&gt;
+&lt;button onclick="minhaFuncao()"&gt;Chamar função&lt;/button&gt;
+
+&lt;!-- Método 2: addEventListener (RECOMENDADO) --&gt;
+&lt;button id="meuBotao"&gt;Clique com addEventListener&lt;/button&gt;
+
+&lt;script&gt;
+function minhaFuncao() {
+    console.log("Função chamada!");
+}
+
+const botao = document.getElementById("meuBotao");
+botao.addEventListener("click", function(evento) {
+    console.log("Botão clicado!");
+    console.log("Elemento:", evento.target);
+    console.log("Tipo do evento:", evento.type);
+});
+
+// Múltiplos eventos no mesmo elemento
+botao.addEventListener("mouseover", () => {
+    botao.style.backgroundColor = "#2c7da0";
+});
+botao.addEventListener("mouseout", () => {
+    botao.style.backgroundColor = "";
+});
+
+// Remover evento (a função deve ser nomeada)
+function handleClick() {
+    console.log("Clique tratado");
+}
+botao.addEventListener("click", handleClick);
+// botao.removeEventListener("click", handleClick);
+&lt;/script&gt;</code></pre>
+
+    <h3>5.3 Evento load e DOMContentLoaded</h3>
+    <pre><code>// window.load – espera TODOS os recursos (imagens, CSS, etc.)
+window.addEventListener("load", function() {
+    console.log("Página completamente carregada (incluindo imagens)");
+});
+
+// DOMContentLoaded – espera apenas o HTML ser parseado (mais rápido)
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM pronto, mas imagens podem ainda estar carregando");
+    // É seguro manipular elementos aqui
+});</code></pre>
+
+    <div class="micro-atividade">
+        <h4>🎯 Micro-atividade 5: Card interativo com múltiplos eventos</h4>
+        <p>Crie um card (div com borda, padding e largura fixa) contendo:</p>
+        <ul>
+            <li>Título, descrição e uma imagem placeholder.</li>
+            <li>Evento <code>mouseover</code>: aumenta a sombra e adiciona uma borda colorida.</li>
+            <li>Evento <code>mouseout</code>: remove os efeitos.</li>
+            <li>Evento <code>click</code>: exibe um alerta com o título do card.</li>
+            <li>Evento <code>dblclick</code> (clique duplo): altera a cor de fundo do card.</li>
+        </ul>
+        <p>Use <code>addEventListener</code> para todos os eventos.</p>
+    </div>
+
+    <!-- ================= TEMA 6 ================= -->
+    <h2 id="localstorage">6. Persistência com localStorage</h2>
+    <p>O <code>localStorage</code> é uma API de armazenamento que permite salvar dados no navegador do usuário de forma persistente (os dados não expiram e permanecem mesmo após fechar o navegador). É ideal para salvar preferências, tarefas, carrinho de compras, etc.</p>
+    
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Método</th><th>Descrição</th><th>Exemplo</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><code>setItem(chave, valor)</code></code></td>
+                    <td>Salva um par chave-valor (valor deve ser string)</code></td>
+                    <td><code>localStorage.setItem("nome", "João");</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>getItem(chave)</code></code></td>
+                    <td>Recupera o valor associado à chave (ou null)</code></td>
+                    <td><code>const nome = localStorage.getItem("nome");</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>removeItem(chave)</code></code></td>
+                    <td>Remove o item com a chave especificada</code></td>
+                    <td><code>localStorage.removeItem("nome");</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>clear()</code></code></td>
+                    <td>Remove TODOS os itens do localStorage</code></td>
+                    <td><code>localStorage.clear();</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>length</code></code></td>
+                    <td>Número de itens armazenados</code></td>
+                    <td><code>console.log(localStorage.length);</code></code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pre><code>// Salvando dados (valores precisam ser strings)
+localStorage.setItem("usuario", JSON.stringify({ nome: "Ana", idade: 28 }));
+
+// Recuperando dados
+const usuarioString = localStorage.getItem("usuario");
+if (usuarioString) {
+    const usuario = JSON.parse(usuarioString);
+    console.log(usuario.nome);  // "Ana"
+}
+
+// Exemplo prático: salvar e carregar tarefas
+function salvarTarefas(tarefas) {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+}
+
+function carregarTarefas() {
+    const tarefasString = localStorage.getItem("tarefas");
+    if (tarefasString) {
+        return JSON.parse(tarefasString);
+    }
+    return [];  // retorna array vazio se não houver tarefas salvas
+}
+
+// Uso
+let minhasTarefas = ["Estudar JS", "Fazer exercícios"];
+salvarTarefas(minhasTarefas);
+
+const tarefasCarregadas = carregarTarefas();
+console.log(tarefasCarregadas);  // ["Estudar JS", "Fazer exercícios"]</code></pre>
+
+    <div class="atencao-box">
+        ⚠️ <strong>Limitações do localStorage:</strong><br>
+        - Capacidade: geralmente 5-10 MB por domínio.<br>
+        - Armazena apenas strings (use <code>JSON.stringify()</code> e <code>JSON.parse()</code> para objetos/arrays).<br>
+        - Síncrono: operações bloqueiam a thread principal (não use para grandes volumes de dados).<br>
+        - Disponível apenas no lado do cliente (não é enviado ao servidor).
+    </div>
+
+    <!-- ================= TEMA 7 ================= -->
+    <h2 id="projeto-final">7. Projeto final: To-Do List completa com localStorage</h2>
+    
+    <div class="destaque-box" style="background: #eef2fa; border-left-color: #0a1c3a;">
+        <h3 style="margin-top: 0">🎯 PROJETO FINAL – Lista de Tarefas com Persistência</h3>
+        <p><strong>Desafio completo:</strong> Construa um aplicativo de lista de tarefas (To-Do List) com as seguintes funcionalidades:</p>
+        
+        <strong>📝 Requisitos obrigatórios:</strong>
+        <ul>
+            <li>Campo de texto para adicionar nova tarefa + botão "Adicionar".</li>
+            <li>Lista (<code>&lt;ul&gt;</code>) exibindo todas as tarefas.</li>
+            <li>Cada tarefa deve ter:
+                <ul>
+                    <li>Texto da tarefa.</li>
+                    <li>Checkbox para marcar como concluída (quando marcado, o texto deve ser riscado com <code>text-decoration: line-through</code>).</li>
+                    <li>Botão "Remover" para excluir a tarefa individualmente.</li>
+                </ul>
+            </li>
+            <li>Botão "Limpar todas" que remove todas as tarefas.</li>
+            <li>Contador de tarefas pendentes (ex: "3 tarefas restantes").</li>
+            <li>Usar <strong>localStorage</strong> para salvar as tarefas automaticamente sempre que houver alteração (adicionar, remover, marcar/desmarcar).</li>
+            <li>Carregar as tarefas salvas ao iniciar a página (evento <code>DOMContentLoaded</code>).</li>
+        </ul>
+        
+        <strong>🎨 Extras (opcionais, mas recomendados):</strong>
+        <ul>
+            <li>Permitir editar o texto da tarefa (duplo clique no texto abre um prompt).</li>
+            <li>Filtros: mostrar todas, apenas ativas, apenas concluídas.</li>
+            <li>Animações suaves ao adicionar/remover tarefas (CSS transition).</li>
+            <li>Design responsivo e agradável (uso de CSS Grid/Flexbox).</li>
+        </ul>
+        
+        <p><strong>Estrutura de dados sugerida:</strong> Um array de objetos, cada objeto com: <code>{ id: Date.now(), texto: "string", concluida: false }</code>.</p>
+        <p>Este projeto consolida: arrays de objetos, manipulação do DOM, eventos, localStorage e funções de alta ordem (map, filter, forEach).</p>
     </div>
 
     <hr>
-    <h2>Resumo para consulta rápida</h2>
-    <ul>
-        <li><strong>Objetos:</strong> <code>{ chave: valor }</code>, acesso com <code>obj.chave</code> ou <code>obj["chave"]</code>.</li>
-        <li><strong>Arrays:</strong> <code>[]</code>, métodos: <code>push()</code>, <code>pop()</code>, <code>shift()</code>, <code>unshift()</code>, <code>indexOf()</code>, <code>slice()</code>.</li>
-        <li><strong>Funções:</strong> declaração <code>function nome() {}</code> ou arrow <code>const nome = () => {}</code>.</li>
-        <li><strong>BOM:</strong> <code>window</code>, <code>history</code>, <code>location</code>, <code>setTimeout/setInterval</code>.</li>
-        <li><strong>DOM:</strong> <code>document.getElementById/querySelector</code>, <code>.textContent</code>, <code>.innerHTML</code>, <code>.style</code>.</li>
-        <li><strong>Eventos:</strong> <code>addEventListener("click", funcao)</code>.</li>
-    </ul>
+    <h2 id="resumo">8. Resumo para consulta rápida</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Categoria</th><th>Conceitos/Sintaxe</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><strong>Objetos</strong></code></td>
+                    <td><code>{ chave: valor }</code>, acesso com <code>obj.chave</code> ou <code>obj["chave"]</code>, <code>Object.keys()</code>, <code>Object.values()</code>, <code>for...in</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>Arrays</strong></code></td>
+                    <td><code>[]</code>, métodos: <code>push/pop</code>, <code>shift/unshift</code>, <code>map/filter/reduce</code>, <code>forEach</code>, <code>for...of</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>Funções</strong></code></td>
+                    <td>Declaração: <code>function nome() {}</code>, Arrow: <code>const nome = () => {}</code>, parâmetros padrão, rest parameters</code></td>
+                </tr>
+                <tr>
+                    <td><strong>BOM</strong></code></td>
+                    <td><code>window</code>, <code>location</code> (URL), <code>navigator</code> (info navegador), <code>setTimeout</code>, <code>setInterval</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>DOM</strong></code></td>
+                    <td>Seletores: <code>getElementById/querySelector</code>, modificação: <code>textContent/innerHTML/classList/style</code>, criação: <code>createElement/appendChild/remove</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>Eventos</strong></code></td>
+                    <td><code>addEventListener("click", funcao)</code>, eventos comuns: <code>click/mouseover/focus/submit/load</code>, objeto <code>event</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>localStorage</strong></code></td>
+                    <td><code>setItem/getItem/removeItem/clear</code>, usar <code>JSON.stringify/parse</code> para objetos</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <footer>
-        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
-        <p>Edição 1 | Junho de 2026</p>
+        <p>📚 Material aprofundado sobre JavaScript – Objetos, Arrays, BOM, DOM, Eventos e localStorage</p>
+        <p>✅ 6ª Apostila da série completa de Desenvolvimento Web | Edição revisada com sumário interativo, tabelas responsivas e placeholders para imagens</p>
     </footer>
 </div>
 </body>

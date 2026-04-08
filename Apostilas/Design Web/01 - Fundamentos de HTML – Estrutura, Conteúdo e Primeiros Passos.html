@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apostila: Fundamentos de HTML para Web e Multimídia</title>
+    <title>Apostila Completa: Fundamentos de HTML para Web e Multimídia</title>
     <style>
-        /* Reset básico e estilos com a nova paleta de cores e espaçamento confortável */
         * {
             margin: 0;
             padding: 0;
@@ -14,87 +13,113 @@
 
         body {
             font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
-            background-color: #F2D8CE;  /* tom suave de fundo externo */
+            background-color: #e9ecef;
             padding: 48px 24px;
-            color: #1E3259;  /* cor principal para textos */
-            line-height: 1.6;  /* espaçamento entre linhas aumentado para leitura confortável */
+            color: #212529;
+            line-height: 1.7;
         }
 
-        /* Container principal estilo página limpa */
         .apostila-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 24px;
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             padding: 48px 56px;
-            transition: all 0.2s;
         }
 
-        /* Estilos tipográficos com as cores da paleta */
-        h1 {
-            font-size: 34px;
-            color: #243E73;  /* azul profundo principal */
-            border-left: 6px solid #8BB4D9;  /* toque de azul claro */
-            padding-left: 22px;
+        /* Sumário estilo */
+        .sumario {
+            background-color: #f8f9fa;
+            padding: 24px 32px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid #dee2e6;
+        }
+        .sumario h2 {
             margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+            font-size: 24px;
+        }
+        .sumario ul {
+            columns: 2;
+            column-gap: 40px;
+            list-style: none;
+            margin-left: 0;
+        }
+        .sumario li {
+            margin: 8px 0;
+        }
+        .sumario a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .sumario a:hover {
+            color: #0a58ca;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #0a1c3a;
+            border-left: 6px solid #2c7da0;
+            padding-left: 22px;
             margin-bottom: 28px;
-            font-weight: 700;
-            line-height: 1.3;
+            font-weight: 800;
         }
 
         h2 {
-            font-size: 26px;
-            margin-top: 40px;
+            font-size: 28px;
+            margin-top: 48px;
             margin-bottom: 20px;
-            color: #1E3259;  /* tom mais escuro, elegante */
-            border-bottom: 2px solid #8BB4D9;
-            padding-bottom: 8px;
-            font-weight: 600;
-            line-height: 1.3;
+            color: #0a1c3a;
+            border-bottom: 3px solid #2c7da0;
+            padding-bottom: 10px;
+            font-weight: 700;
+            scroll-margin-top: 30px;
         }
 
         h3 {
             font-size: 22px;
-            margin-top: 28px;
-            margin-bottom: 14px;
-            color: #243E73;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: #1e4a6b;
             font-weight: 600;
-            line-height: 1.4;
+            scroll-margin-top: 30px;
         }
 
         p {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             font-size: 16px;
             text-align: justify;
-            line-height: 1.7;  /* extra conforto */
         }
 
         .destaque-box {
-            background-color: #F2D8CE;  /* fundo suave da paleta */
-            border-left: 5px solid #A67E6F;  /* toque terroso */
-            padding: 18px 24px;
+            background-color: #e7f1ff;
+            border-left: 6px solid #2c7da0;
+            padding: 20px 28px;
             margin: 28px 0;
-            border-radius: 20px;
+            border-radius: 16px;
             font-size: 15px;
-            line-height: 1.65;
-            color: #1E3259;
         }
 
-        code, .code-example {
-            background-color: #eef2fa;
+        code {
+            background-color: #e9ecef;
             font-family: 'Courier New', 'Consolas', monospace;
             font-size: 14px;
             padding: 3px 8px;
             border-radius: 8px;
-            color: #A67E6F;  /* detalhe terroso nos códigos */
+            color: #d63384;
             font-weight: 500;
         }
 
         pre {
-            background-color: #1E3259;  /* fundo escuro elegante */
-            color: #F2D8CE;
+            background-color: #1e293b;
+            color: #e2e8f0;
             padding: 20px 24px;
             border-radius: 20px;
             overflow-x: auto;
@@ -102,106 +127,119 @@
             font-size: 14px;
             margin: 24px 0;
             white-space: pre-wrap;
-            word-wrap: break-word;
-            line-height: 1.5;
+            word-break: break-all;
         }
 
         pre code {
             background: none;
-            color: #F2D8CE;
-            font-weight: normal;
+            color: #e2e8f0;
             padding: 0;
         }
 
+        /* TABELA RESPONSIVA COM ROLAGEM HORIZONTAL */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 16px;
+            border: 1px solid #dee2e6;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 24px 0;
             font-size: 15px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-            line-height: 1.5;
+            min-width: 500px;
         }
-
         th {
-            background-color: #8BB4D9;  /* azul médio */
-            border: 1px solid #cbdbe2;
-            padding: 12px 14px;
+            background-color: #2c7da0;
+            color: white;
+            padding: 12px 16px;
             text-align: left;
             font-weight: 700;
-            color: #1E3259;
         }
-
         td {
-            border: 1px solid #cbdbe2;
-            padding: 10px 14px;
+            border: 1px solid #dee2e6;
+            padding: 10px 16px;
             vertical-align: top;
             background-color: #ffffff;
         }
 
         ul, ol {
             margin: 16px 0 20px 28px;
-            line-height: 1.7;
         }
-
         li {
             margin: 8px 0;
         }
 
         .micro-atividade {
-            background-color: #F2D8CE;
-            border: 1px solid #A67E6F;
-            border-radius: 28px;
-            padding: 22px 28px;
-            margin: 32px 0;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
-            transition: 0.2s;
+            background-color: #fef3e2;
+            border-left: 6px solid #f4a261;
+            border-radius: 20px;
+            padding: 24px 30px;
+            margin: 36px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-
         .micro-atividade h4 {
             font-size: 20px;
-            color: #243E73;
+            color: #c46b2b;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .badge {
-            background-color: #243E73;
-            color: #F2D8CE;
-            padding: 5px 14px;
+            background-color: #0a1c3a;
+            color: #ffffff;
+            padding: 6px 16px;
             border-radius: 40px;
             font-size: 12px;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .img-placeholder {
+            background-color: #f1f3f5;
+            border: 2px dashed #adb5bd;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 25px 0;
+            font-family: monospace;
+            color: #495057;
+        }
+        .img-placeholder span {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .img-placeholder img{
+            width: 100%;
+        }
+
+        .legenda-img {
+            font-size: 13px;
+            color: #6c757d;
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 20px;
         }
 
         hr {
-            margin: 36px 0;
+            margin: 40px 0;
             border: none;
             height: 2px;
-            background: linear-gradient(90deg, #8BB4D9, #F2D8CE, transparent);
+            background: linear-gradient(90deg, #2c7da0, #dee2e6, transparent);
         }
 
         footer {
             text-align: center;
-            margin-top: 56px;
+            margin-top: 60px;
             font-size: 13px;
-            color: #6c7a89;
-            border-top: 1px solid #e2e8f0;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
             padding-top: 28px;
-            line-height: 1.5;
         }
 
-        footer p{
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        /* responsividade */
         @media (max-width: 700px) {
             .apostila-container {
                 padding: 28px 20px;
@@ -209,220 +247,250 @@
             h1 {
                 font-size: 28px;
             }
-            h2 {
-                font-size: 22px;
+            .sumario ul {
+                columns: 1;
             }
-            body {
-                padding: 24px 16px;
-            }
-        }
-        
-        /* links internos */
-        a {
-            color: #A67E6F;
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-        a:hover {
-            color: #243E73;
-        }
-        
-        /* realce de textos */
-        strong {
-            color: #243E73;
-        }
-        em {
-            color: #A67E6F;
-            font-style: italic;
         }
     </style>
 </head>
 <body>
 <div class="apostila-container">
-    <span class="badge">WEB + MULTIMÍDIA | SENAI</span>
-    <h1>Ferramentas de Desenvolvimento Web<br><span style="font-size: 22px; color:#1E3259;">Fundamentos de HTML – Estrutura, Conteúdo e Primeiros Passos</span></h1>
+    <span class="badge">📘 WEB + MULTIMÍDIA | Guia Definitivo</span>
+    <h1>🚀 Ferramentas de Desenvolvimento Web<br><span style="font-size: 24px;">Fundamentos de HTML – Estrutura, Conteúdo e Primeiros Passos</span></h1>
     
-    <p>Esta apostila apresenta os conceitos essenciais de <strong>HTML (HyperText Markup Language)</strong>, a base de toda página web. O conteúdo foi adaptado para alunos da área de Multimídia e também para quem está começando em programação web, com foco em <strong>objetividade, exemplos reais e aplicações diretas</strong>. Aqui você aprenderá desde a história até a criação de formulários, tabelas e links — sempre com situações que simulam projetos de mercado.</p>
+    <!-- SUMÁRIO INTERATIVO -->
+    <div class="sumario">
+        <h2>📑 Sumário</h2>
+        <ul>
+            <li><a href="#intro">1. O que é HTML e por que ele é a base da web?</a></li>
+            <li><a href="#historia">1.1 Breve história e evolução até HTML5</a></li>
+            <li><a href="#cliente-servidor">1.2 Como funciona a arquitetura Cliente x Servidor</a></li>
+            <li><a href="#ambiente">2. Ambiente de desenvolvimento profissional</a></li>
+            <li><a href="#estrutura-base">3. Estrutura mínima de uma página HTML</a></li>
+            <li><a href="#tags-texto">4. Tags de texto: títulos, parágrafos, quebras e linhas</a></li>
+            <li><a href="#listas">5. Listas organizadas e não ordenadas</a></li>
+            <li><a href="#links-imagens">6. Links e Imagens – Navegação e conteúdo visual</a></li>
+            <li><a href="#tabelas">7. Tabelas: como exibir dados de forma estruturada</a></li>
+            <li><a href="#formularios">8. Formulários: capturando dados do usuário</a></li>
+            <li><a href="#boas-praticas">9. Boas práticas, semântica e acessibilidade</a></li>
+            <li><a href="#resumo">10. Resumo rápido para consulta</a></li>
+        </ul>
+    </div>
+
+    <!-- ================= TEMA 1 ================= -->
+    <h2 id="intro">1. O que é HTML e por que ele é a base da web?</h2>
+    <p><strong>HTML</strong> (HyperText Markup Language) não é uma linguagem de programação – é uma <strong>linguagem de marcação</strong>. Enquanto linguagens de programação (como JavaScript, Python, Java) executam lógica, cálculos e controlam comportamentos, o HTML tem uma única missão: <strong>estruturar e organizar o conteúdo</strong> de uma página. Pense na construção de uma casa: o HTML seria as paredes, o telhado e os cômodos (a estrutura bruta). O CSS seria a pintura, os revestimentos e a decoração. O JavaScript seria a fiação elétrica, os interruptores e os mecanismos que fazem as coisas acontecerem dinamicamente.</p>
+    <p><strong>Por que todo profissional de multimídia e desenvolvimento precisa dominar HTML?</strong> Porque qualquer entrega digital – um portfólio, um sistema interativo, uma landing page de vendas, um aplicativo híbrido – utiliza HTML como esqueleto. Sem ele, o navegador não sabe onde colocar um texto, uma imagem ou um vídeo.</p>
     
-    <!-- TEMA 1: CONCEITOS INICIAIS -->
-    <h2>1. Conceitos iniciais: a base da web</h2>
-    <p><strong>HTML</strong> significa <em>HyperText Markup Language</em> (Linguagem de Marcação de Hipertexto). Diferente de linguagens de programação, o HTML <strong>estrutura</strong> o conteúdo: títulos, parágrafos, imagens, links. Pense no HTML como o <strong>esqueleto</strong> de uma página; o CSS é a “roupa” (estilos) e o JavaScript os “movimentos” (interações).</p>
-    
-    <h3>1.1 Por que HTML é essencial?</h3>
-    <p>Qualquer site, aplicativo web, portfólio multimídia ou sistema interno usa HTML. Dominar as tags é o primeiro passo para atuar como <strong>front-end</strong> (parte visual) ou full-stack. Para um profissional de multimídia, saber HTML permite criar projetos interativos, animações contextualizadas e integrar vídeos/sons de forma semântica.</p>
-    
+    <div class="img-placeholder">
+        <img src="Imagens/01/Figura 01.webp" alt="">
+        <strong>Exemplo visual: comparativo entre HTML (estrutura), CSS (estilo) e JS (interação)</strong><br>
+    </div>
+    <div class="legenda-img">📌 Figura 1: Ilustração da separação de responsabilidades: HTML = conteúdo, CSS = apresentação, JavaScript = comportamento.</div>
+
+    <h3 id="historia">1.1 Breve história e evolução até HTML5</h3>
+    <p>HTML foi criado por <strong>Tim Berners-Lee</strong> em 1991 enquanto trabalhava no CERN (laboratório europeu de física de partículas). A ideia era permitir que cientistas compartilhassem documentos de forma interligada através de hyperlinks. O primeiro documento HTML era absurdamente simples – cerca de 18 tags. Em 1995, surgiu o HTML 2.0, depois vieram versões 3.2, 4.0 (com suporte a tabelas e frames). O grande marco foi o <strong>HTML5</strong>, lançado oficialmente em 2014, que trouxe recursos nativos para multimídia: as tags <code>&lt;video&gt;</code> e <code>&lt;audio&gt;</code> sem precisar de plugins como Flash, além de elementos semânticos (<code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>) e APIs poderosas (canvas, geolocalização, armazenamento local). Hoje, todo navegador moderno suporta HTML5, então você não precisa se preocupar com versões antigas.</p>
+
+    <h3 id="cliente-servidor">1.2 Arquitetura Cliente x Servidor: como o HTML chega na sua tela</h3>
     <div class="destaque-box">
-        📌 <strong>Arquitetura Cliente x Servidor:</strong><br>
-        - <strong>Cliente</strong>: navegador (Chrome, Edge, Firefox) instalado no dispositivo do usuário.<br>
-        - <strong>Servidor</strong>: computador remoto que armazena os arquivos do site.<br>
-        - Quando você acessa um site, o navegador faz uma requisição HTTP ao servidor e baixa uma cópia do arquivo HTML, que é renderizada na tela.
+        🌐 <strong>Funcionamento prático:</strong><br>
+        - Você digita um endereço (ex: <code>https://meusite.com</code>) no navegador.<br>
+        - O navegador (cliente) faz uma requisição HTTP para o servidor onde o site está hospedado.<br>
+        - O servidor responde enviando um arquivo <code>.html</code> (e possivelmente CSS, JS, imagens).<br>
+        - O navegador então <strong>parseia</strong> (lê e interpreta) o HTML, construindo a <strong>DOM (Document Object Model)</strong> – uma árvore de elementos. Em seguida, aplica os estilos e exibe a página.<br>
+        - Importante: o HTML é <strong>estático</strong>; cada requisição recebe o mesmo código. Para conteúdo dinâmico, usamos linguagens de back-end (PHP, Node.js) que geram HTML sob demanda.
     </div>
     
-    <h3>1.2 Evolução rápida: HTML5</h3>
-    <p>O HTML foi criado por Tim Berners-Lee em 1990. Atualmente, usamos o <strong>HTML5</strong>, que trouxe suporte nativo a vídeos, áudios, elementos semânticos (como <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>) e formulários mais poderosos. Não se preocupe com versões antigas: todo navegador moderno interpreta HTML5.</p>
-    
-    <!-- TEMA 2: AMBIENTE DE DESENVOLVIMENTO (objetivo) -->
-    <h2>2. Ambiente de desenvolvimento: ferramentas práticas</h2>
-    <p>Você só precisa de um editor de código. O mais recomendado hoje é o <strong>Visual Studio Code (VS Code)</strong>, gratuito, multiplataforma e cheio de extensões que aceleram o trabalho. Veja o essencial:</p>
-    <ul>
-        <li><strong>Bloco de Notas</strong>: muito simples, mas sem recursos. Só para testes rápidos.</li>
-        <li><strong>VS Code</strong>: editor poderoso com realce de sintaxe, Emmet (atalhos) e live preview.</li>
-        <li><strong>Extensões úteis</strong>: <em>Live Server</em> (atualiza automática), <em>Material Icon Theme</em> (ícones) e <em>Open in Browser</em>.</li>
-    </ul>
-    <p><strong>Como começar no VS Code (passo a passo direto):</strong></p>
+    <!-- ================= TEMA 2 ================= -->
+    <h2 id="ambiente">2. Ambiente de desenvolvimento: ferramentas práticas</h2>
+    <p>Para escrever HTML, qualquer editor de texto serve (até o Bloco de Notas). Mas para produtividade, o <strong>Visual Studio Code (VS Code)</strong> é a escolha da indústria. Diferenciais: autocompletar tags, realce de sintaxe, emmet (atalhos como <code>!</code> que gera estrutura HTML completa), e extensões que transformam o fluxo de trabalho.</p>
+    <p><strong>Passo a passo para começar do zero:</strong></p>
     <ol>
-        <li>Crie uma pasta no computador (ex: <code>meu-site</code>).</li>
-        <li>Abra o VS Code → File → Open Folder → selecione a pasta.</li>
-        <li>Clique no ícone "New File" (ou Ctrl+N), salve como <code>index.html</code>.</li>
-        <li>Digite <code>!</code> (exclamação) e pressione <strong>Enter</strong> – o VS Code gera a estrutura básica automaticamente.</li>
-        <li>Instale a extensão <strong>Live Server</strong>. Depois, clique com botão direito no HTML e "Open with Live Server". Toda alteração salva atualiza o navegador na hora.</li>
+        <li>Baixe e instale o VS Code (gratuito).</li>
+        <li>Crie uma pasta no computador (ex: <code>meu-primeiro-site</code>).</li>
+        <li>No VS Code: Arquivo → Abrir Pasta → selecione a pasta criada.</li>
+        <li>Clique no ícone "Novo Arquivo" ou pressione <code>Ctrl + N</code>. Salve como <code>index.html</code> (o nome <code>index</code> é o padrão que servidores procuram).</li>
+        <li>Digite <code>!</code> e tecle <strong>Enter</strong> – o VS Code expande para a estrutura completa do HTML5.</li>
+        <li>Instale a extensão <strong>Live Server</strong>. Com o arquivo HTML aberto, clique com botão direito e escolha "Open with Live Server". A cada <code>Ctrl+S</code>, o navegador atualiza automaticamente.</li>
     </ol>
-    
-    <h2>3. HTML na prática: estrutura e principais tags</h2>
-    <h3>3.1 Estrutura mínima de uma página</h3>
+    <div class="img-placeholder">
+        <img src="Imagens/01/Figura 02.gif" alt="">
+        <strong>Tela do VS Code com a estrutura HTML gerada pelo atalho "!"</strong><br>
+    </div>
+
+    <!-- ================= TEMA 3 ================= -->
+    <h2 id="estrutura-base">3. Estrutura mínima de uma página HTML</h2>
     <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="pt-BR"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Minha primeira página&lt;/title&gt;
+    &lt;title&gt;Título da aba do navegador&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;!-- Todo conteúdo visível fica aqui --&gt;
+    &lt;!-- Todo conteúdo visível para o usuário fica aqui --&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-    <p><strong>Explicação clara:</strong> <code>&lt;!DOCTYPE html&gt;</code> informa que é HTML5. <code>&lt;head&gt;</code> contém metadados (título da aba, codificação). <code>&lt;body&gt;</code> é o que o usuário enxerga.</p>
-    
-    <h3>3.2 Títulos, parágrafos, quebras e linhas horizontais</h3>
-    <ul>
-        <li><code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code> – títulos em ordem de importância. Use apenas um <code>&lt;h1&gt;</code> por página (como título principal).</li>
-        <li><code>&lt;p&gt;</code> – parágrafo. Adiciona espaçamento automático.</li>
-        <li><code>&lt;br&gt;</code> – quebra de linha (não precisa fechar).</li>
-        <li><code>&lt;hr&gt;</code> – linha horizontal para divisão de seções.</li>
-    </ul>
-    <pre><code>&lt;h1&gt;Bem-vindo ao Portfólio&lt;/h1&gt;
-&lt;p&gt;Este é um exemplo de parágrafo.&lt;br&gt;Texto com quebra de linha.&lt;/p&gt;
+    <p><strong>Explicação detalhada de cada parte:</strong><br>
+    - <code>&lt;!DOCTYPE html&gt;</code>: instrução obrigatória que diz ao navegador: "estamos usando HTML5". Sem isso, o navegador pode entrar em modo de compatibilidade (quirks mode) e renderizar a página de forma incorreta.<br>
+    - <code>&lt;html lang="pt-BR"&gt;</code>: elemento raiz. O atributo <code>lang</code> define o idioma principal – importante para leitores de tela e SEO.<br>
+    - <code>&lt;head&gt;</code>: contém metadados invisíveis, como codificação de caracteres (<code>meta charset="UTF-8"</code> garante acentos e emojis), viewport (controle de escala em dispositivos móveis), título da aba, links para CSS e scripts.<br>
+    - <code>&lt;body&gt;</code>: tudo que o usuário vê: textos, imagens, vídeos, botões, formulários.</p>
+
+    <!-- ================= TEMA 4 ================= -->
+    <h2 id="tags-texto">4. Tags de texto: títulos, parágrafos, quebras e linhas horizontais</h2>
+    <p><strong>Títulos: de &lt;h1&gt; a &lt;h6&gt;</strong><br>
+    O <code>&lt;h1&gt;</code> representa o título principal da página – deve haver apenas um por página, por questões de SEO e acessibilidade. Os níveis seguintes (<code>&lt;h2&gt;</code> a <code>&lt;h6&gt;</code>) servem para subtítulos e seções hierárquicas. Não pule níveis (ex: não use <code>&lt;h4&gt;</code> depois de <code>&lt;h2&gt;</code> sem um <code>&lt;h3&gt;</code> no meio).</p>
+    <p><strong>Parágrafos e quebras:</strong> <code>&lt;p&gt;</code> cria blocos de texto com espaçamento automático antes e depois. <code>&lt;br&gt;</code> é uma quebra de linha forçada (útil para endereços ou poemas). <code>&lt;hr&gt;</code> insere uma linha horizontal temática para separar seções.</p>
+    <pre><code>&lt;h1&gt;Guia de Viagem para Web Designers&lt;/h1&gt;
+&lt;h2&gt;Destinos mais inspiradores&lt;/h2&gt;
+&lt;p&gt;Conheça lugares que combinam tecnologia e arte.&lt;br&gt;Nova York, Tóquio e Berlim lideram o ranking.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2&gt;Projetos multimídia&lt;/h2&gt;</code></pre>
-    
-    <h3>3.3 Listas organizadas e não ordenadas</h3>
-    <p>Listas ajudam na organização de menus, características ou etapas.</p>
-    <table>
-        <tr><th>Tipo</th><th>Tag</th><th>Exemplo visual</th></tr>
-        <tr><td>Não ordenada (marcadores)</td><td><code>&lt;ul&gt; + &lt;li&gt;</code></td><td>• Edição de vídeo<br>• Motion design</td></tr>
-        <tr><td>Ordenada (numérica)</td><td><code>&lt;ol&gt; + &lt;li&gt;</code></td><td>1. Briefing<br>2. Wireframe</td></tr>
-    </table>
-    
-    <!-- Microatividade 1 -->
-    <div class="micro-atividade">
-        <h4>🎯 Micro-atividade 1: Estruturando um cardápio digital</h4>
-        <p><strong>Situação real:</strong> Uma empresa de produção audiovisual quer um site simples com a lista de serviços (filmagem, edição, motion graphics). Crie uma página HTML contendo: título principal, subtítulo, lista não ordenada com os serviços e uma linha horizontal. Salve como <code>servicos.html</code> e visualize no navegador.</p>
-        <p><em>Dica:</em> Use tags semânticas e teste a hierarquia dos títulos. É um exercício para fixar estrutura e listas.</p>
+&lt;h3&gt;Dicas práticas&lt;/h3&gt;
+&lt;p&gt;Leve sempre um caderno de esboços.&lt;/p&gt;</code></pre>
+
+    <!-- ================= TEMA 5 ================= -->
+    <h2 id="listas">5. Listas organizadas e não ordenadas</h2>
+    <p>Listas são fundamentais para menus, requisitos de projeto, etapas de processo. <code>&lt;ul&gt;</code> cria lista com marcadores (bolinhas, quadrados). <code>&lt;ol&gt;</code> cria lista numerada automaticamente (1, 2, 3...). Cada item fica dentro de <code>&lt;li&gt;</code>.</p>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Comparação</th><th>&lt;ul&gt; (não ordenada)</th><th>&lt;ol&gt; (ordenada)</th></tr</thead>
+            <tbody>
+                <tr><td>Quando usar</td><td>Itens sem ordem específica (ex: lista de ferramentas)</td><td>Passos sequenciais (ex: tutorial, ranking)</td></tr>
+                <tr><td>Personalização</td><td><code>list-style-type: circle/square</code></td><td><code>type="A"</code> (letras maiúsculas) ou <code>type="I"</code> (romanos)</td></tr>
+            </tbody>
+        </table>
     </div>
-    
-    <h2>4. Links, imagens e tabelas – construindo navegação e conteúdo rico</h2>
-    <h3>4.1 Links (âncoras) – a espinha da web</h3>
-    <p>O elemento <code>&lt;a&gt;</code> conecta páginas, arquivos ou seções externas. Atributo obrigatório: <code>href</code>. Atributo <code>target="_blank"</code> abre em nova aba.</p>
-    <pre><code>&lt;a href="https://www.senai.br" target="_blank"&gt;Site do SENAI&lt;/a&gt;
-&lt;a href="contato.html"&gt;Página de contato (mesma pasta)&lt;/a&gt;
-&lt;a href="#galeria"&gt;Ir para seção de imagens&lt;/a&gt; <!-- ancora interna --></code></pre>
-    
-    <h3>4.2 Imagens – elementos visuais essenciais</h3>
-    <p>Tag <code>&lt;img&gt;</code> (autofechada). Atributos obrigatórios: <code>src</code> (caminho da imagem) e <code>alt</code> (texto alternativo acessível). Dica: use <code>width</code> e <code>height</code> para controle de tamanho.</p>
-    <pre><code>&lt;img src="imagens/capa-projeto.jpg" alt="Preview do projeto de animação" width="600"&gt;</code></pre>
-    <p><strong>Importante para multimídia:</strong> otimize imagens (formatos WebP, JPG) para carregamento rápido. Sempre adicione <code>alt</code> descritivo – isso ajuda na acessibilidade e SEO.</p>
-    
-    <h3>4.3 Tabelas – dados organizados em linhas e colunas</h3>
-    <p>Use tabelas para informações comparativas, grades ou dados técnicos. As tags principais: <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> (linha), <code>&lt;th&gt;</code> (cabeçalho) e <code>&lt;td&gt;</code> (célula).</p>
-    <pre><code>&lt;table border="1"&gt;
-  <tr>
-    &lt;th&gt;Ferramenta&lt;/th&gt;
-    &lt;th&gt;Uso principal&lt;/th&gt;
-  </tr>
-  <tr>
-    <td>Adobe Premiere</td>
-    <td>Edição de vídeo</td>
-  </tr>
-  <tr>
-    <td>VS Code</td>
-    <td>Desenvolvimento HTML/CSS</td>
-  </tr>
-&lt;/table&gt;</code></pre>
-    
-    <!-- Microatividade 2 -->
+    <pre><code>&lt;h3&gt;Habilidades de um multimídia profissional&lt;/h3&gt;
+&lt;ul&gt;
+    &lt;li&gt;Edição de vídeo (Premiere, DaVinci)&lt;/li&gt;
+    &lt;li&gt;Motion graphics (After Effects)&lt;/li&gt;
+    &lt;li&gt;HTML e CSS básico&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Etapas para criar um site&lt;/h3&gt;
+&lt;ol&gt;
+    &lt;li&gt;Planejamento e wireframe&lt;/li&gt;
+    &lt;li&gt;Estrutura HTML&lt;/li&gt;
+    &lt;li&gt;Estilização com CSS&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
     <div class="micro-atividade">
-        <h4>📌 Micro-atividade 2: Galeria de projetos com links e tabela de preços</h4>
-        <p>Crie uma página HTML chamada <code>portfolio.html</code>. Ela deve conter: um título, uma imagem de exemplo (use uma URL de placeholder ou caminho local), um link para o Instagram fictício do estúdio, e uma tabela com 3 linhas mostrando os serviços e valores (ex: "Edição de vídeo – R$ 450", "Animação 2D – R$ 1200"). Use <code>target="_blank"</code> no link. Essa atividade simula um portfólio freelancer.</p>
+        <h4>🎯 Micro-atividade 1: Cardápio digital para um estúdio criativo</h4>
+        <p>Crie um arquivo <code>servicos.html</code> contendo: um <code>&lt;h1&gt;</code> com "Estúdio Criativo XYZ", um subtítulo <code>&lt;h2&gt;</code> "Nossos serviços", uma lista não ordenada com 3 serviços (filmagem, edição, motion), e uma linha horizontal. Visualize no navegador e perceba a hierarquia visual.</p>
     </div>
-    
-    <h2>5. Formulários: capturando dados do usuário</h2>
-    <p>Formulários são a porta de entrada para leads, cadastros e pesquisas. A tag <code>&lt;form&gt;</code> agrupa os campos. Ainda que o back-end não seja o foco agora, entender os tipos de campo é vital para criar interfaces interativas.</p>
-    
-    <h3>Principais inputs</h3>
-    <table>
-        <tr><th>Tipo de campo</th><th>HTML</th><th>Exemplo de uso real</th></tr>
-        <tr><td>Texto simples</td><td><code>&lt;input type="text"&gt;</code></td><td>Nome do cliente</td></tr>
-        <tr><td>E-mail</td><td><code>&lt;input type="email"&gt;</code></td><td>Contato para orçamento</td></tr>
-        <tr><td>Botão de opção (radio)</td><td><code>&lt;input type="radio"&gt;</code></td><td>Escolher tipo de serviço (vídeo ou áudio)</td></tr>
-        <tr><td>Caixa de seleção múltipla</td><td><code>&lt;input type="checkbox"&gt;</code></td><td>Interesses: Design, Programação, Motion</td></tr>
-        <tr><td>Área de texto</td><td><code>&lt;textarea&gt;&lt;/textarea&gt;</code></td><td>Descrição do projeto</td></tr>
-        <tr><td>Lista suspensa (select)</td><td><code>&lt;select&gt; + &lt;option&gt;</code></td><td>Prazo de entrega: 7 dias, 15 dias</td></tr>
-        <tr><td>Botão de envio</td><td><code>&lt;input type="submit"&gt;</code></td><td>Enviar formulário</td></tr>
-    </table>
-    
-    <p><strong>Exemplo de formulário simples (com HTML puro):</strong></p>
-    <pre><code>&lt;form action="#" method="post"&gt;
-    &lt;label&gt;Nome completo:&lt;/label&gt;&lt;br&gt;
-    &lt;input type="text" name="nome" placeholder="Seu nome"&gt;&lt;br&gt;&lt;br&gt;
-    
-    &lt;label&gt;Qual serviço você procura?&lt;/label&gt;&lt;br&gt;
-    &lt;input type="radio" name="servico" value="edicao"&gt; Edição de vídeo&lt;br&gt;
-    &lt;input type="radio" name="servico" value="design"&gt; Design gráfico&lt;br&gt;
-    
-    &lt;label&gt;Ferramentas que domina:&lt;/label&gt;&lt;br&gt;
-    &lt;input type="checkbox" name="ferramentas" value="after"&gt; After Effects&lt;br&gt;
-    &lt;input type="checkbox" name="ferramentas" value="premiere"&gt; Premiere Pro&lt;br&gt;
-    
-    &lt;label&gt;Mensagem adicional:&lt;/label&gt;&lt;br&gt;
-    &lt;textarea rows="3" cols="30"&gt;&lt;/textarea&gt;&lt;br&gt;
-    &lt;input type="submit" value="Enviar orçamento"&gt;
+
+    <!-- ================= TEMA 6 ================= -->
+    <h2 id="links-imagens">6. Links e Imagens – Navegação e conteúdo visual</h2>
+    <h3>Links (âncoras): a espinha dorsal da web</h3>
+    <p>O elemento <code>&lt;a&gt;</code> (âncora) conecta páginas, arquivos, seções da mesma página ou endereços externos. Atributo obrigatório: <code>href</code> (Hypertext Reference). <code>target="_blank"</code> abre o link em nova aba – útil para links externos, pois não tira o usuário do seu site. Links internos (para outras páginas do mesmo projeto) usam apenas o nome do arquivo: <code>href="contato.html"</code>. Âncoras internas: <code>href="#secao1"</code> e no destino coloque <code>id="secao1"</code>.</p>
+    <pre><code>&lt;a href="https://www.behance.net" target="_blank"&gt;Veja inspirações no Behance&lt;/a&gt;
+&lt;a href="portfolio.html"&gt;Acesse meu portfólio&lt;/a&gt;
+&lt;a href="#contato"&gt;Ir para formulário de contato&lt;/a&gt;</code></pre>
+
+    <h3>Imagens: a tag &lt;img&gt;</h3>
+    <p>A tag <code>&lt;img&gt;</code> é vazia (não tem fechamento). Atributos essenciais: <code>src</code> (caminho da imagem, pode ser local ou URL externa) e <code>alt</code> (texto alternativo descritivo – obrigatório para acessibilidade, lido por leitores de tela e exibido caso a imagem não carregue). Atributos opcionais: <code>width</code> e <code>height</code> (em pixels ou porcentagem). Para imagens de alta resolução, recomenda-se usar ferramentas de compressão (TinyPNG) e formatos modernos como WebP.</p>
+    <pre><code>&lt;img src="imagens/foto-perfil.jpg" alt="Retrato do designer multimídia trabalhando no tablet" width="300"&gt;</code></pre>
+    <div class="img-placeholder">
+        <img src="Imagens/01/Figura 03.gif" alt="">
+        <strong>Diagrama: caminhos relativos vs. absolutos em HTML</strong><br>
+    </div>
+
+    <!-- ================= TEMA 7 ================= -->
+    <h2 id="tabelas">7. Tabelas: dados organizados em linhas e colunas</h2>
+    <p>Tabelas não devem ser usadas para layout (isso é função do CSS Grid/Flexbox). Use tabelas apenas para dados tabulares: planilhas, horários, comparações de preços. Estrutura: <code>&lt;table&gt;</code> → linhas (<code>&lt;tr&gt;</code>) → células de cabeçalho (<code>&lt;th&gt;</code>) ou células comuns (<code>&lt;td&gt;</code>).</p>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Serviço</th><th>Descrição</th><th>Valor (R$)</th><th>Prazo estimado</th></tr></thead>
+            <tbody>
+                <tr><td>Edição de vídeo</td><td>Corte, correção de cor, trilha básica</td><td>450</td><td>5 dias</td></tr>
+                <tr><td>Motion graphics 2D</td><td>Animação de logo + texto</td><td>1200</td><td>10 dias</td></tr>
+                <tr><td>Landing page HTML/CSS</td><td>Página responsiva até 5 seções</td><td>800</td><td>7 dias</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p><strong>Dica de acessibilidade:</strong> use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> e <code>&lt;th scope="col"&gt;</code> para melhorar a interpretação por leitores de tela.</p>
+
+    <div class="micro-atividade">
+        <h4>📌 Micro-atividade 2: Galeria de projetos com tabela de preços</h4>
+        <p>Crie <code>portfolio.html</code> com: título principal, uma imagem placeholder (use <code>https://picsum.photos/600/300</code> para teste), um link para um perfil fictício do Instagram (abrir em nova aba) e uma tabela com 3 serviços e valores. Pratique também o atributo <code>alt</code> descritivo.</p>
+    </div>
+
+    <!-- ================= TEMA 8 ================= -->
+    <h2 id="formularios">8. Formulários: capturando dados do usuário</h2>
+    <p>Formulários são a principal forma de interação com o usuário: leads de contato, pesquisas, cadastros. A tag <code>&lt;form&gt;</code> agrupa os campos. Os atributos mais importantes: <code>action</code> (para onde os dados serão enviados) e <code>method</code> (<code>GET</code> – dados visíveis na URL, ou <code>POST</code> – dados enviados no corpo da requisição, mais seguro).</p>
+    <p><strong>Tipos de input que você precisa conhecer:</strong></p>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Tipo</th><th>Exemplo de uso</th><th>Atributos importantes</th></tr></thead>
+            <tbody>
+                <tr><td>text</td><td>Nome, endereço</td><td>placeholder, maxlength</td></tr>
+                <tr><td>email</td><td>E-mail para contato</td><td>validação automática de formato</td></tr>
+                <tr><td>tel</td><td>Telefone</td><td>pattern (máscara)</td></tr>
+                <tr><td>radio</td><td>Seleção única (ex: tipo de projeto)</td><td>name idêntico para grupo</td></tr>
+                <tr><td>checkbox</td><td>Seleção múltipla</td><td>checked por padrão</td></tr>
+                <tr><td>select</td><td>Lista suspensa</td><td>option value</td></tr>
+                <tr><td>textarea</td><td>Mensagens longas</td><td>rows, cols</td></tr>
+                <tr><td>submit</td><td>Botão de envio</td><td>value (texto do botão)</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <pre><code>&lt;form action="https://formspree.io/f/seu-id" method="POST"&gt;
+    &lt;label for="nome"&gt;Nome completo:&lt;/label&gt;
+    &lt;input type="text" id="nome" name="nome" placeholder="Digite seu nome" required&gt;
+
+    &lt;label&gt;Tipo de projeto:&lt;/label&gt;
+    &lt;input type="radio" name="projeto" value="video" id="video"&gt; &lt;label for="video"&gt;Vídeo institucional&lt;/label&gt;
+    &lt;input type="radio" name="projeto" value="animacao" id="animacao"&gt; &lt;label for="animacao"&gt;Animação&lt;/label&gt;
+
+    &lt;label for="prazo"&gt;Prazo desejado:&lt;/label&gt;
+    &lt;select id="prazo" name="prazo"&gt;
+        &lt;option value="15"&gt;15 dias&lt;/option&gt;
+        &lt;option value="30"&gt;30 dias&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;label for="mensagem"&gt;Mensagem:&lt;/label&gt;
+    &lt;textarea id="mensagem" rows="4"&gt;&lt;/textarea&gt;
+
+    &lt;input type="submit" value="Solicitar orçamento"&gt;
 &lt;/form&gt;</code></pre>
-    <p>⚠️ <strong>Atenção:</strong> o HTML apenas exibe o formulário. Para processar os dados, você precisará de linguagem back-end (PHP, Node.js) ou serviços de form. Mas a estrutura visual e os campos são 100% HTML.</p>
-    
-    <!-- Microatividade 3: formulário para captação de leads -->
-    <div class="micro-atividade">
-        <h4>📝 Micro-atividade 3: Formulário de orçamento para produtora multimídia</h4>
-        <p><strong>Problema:</strong> Uma produtora precisa de uma página "Contato" com formulário que colete: nome, e-mail, tipo de projeto (vídeo institucional, animação, podcast) via radio, e uma caixa de seleção com prazo desejado (rápido, normal, planejado). Implemente esse formulário com estrutura HTML5, usando <code>&lt;select&gt;</code> para o prazo. Não se preocupe com back-end – apenas visualize e entenda os campos.</p>
-        <p><em>Objetivo:</em> Aplicar formulários em situações comerciais reais.</p>
+    <div class="destaque-box">
+        ⚠️ <strong>Atenção:</strong> O HTML sozinho <strong>não processa</strong> os dados do formulário. Para receber as informações, você precisa de um back-end (PHP, Node, Python) ou usar serviços como Formspree, Netlify Forms ou Google Forms. A estrutura visual, no entanto, é 100% responsabilidade do HTML.
     </div>
+
+    <div class="micro-atividade">
+        <h4>📝 Micro-atividade 3: Formulário de orçamento para produtora</h4>
+        <p>Crie um formulário que colete: nome, e-mail, tipo de serviço (radio: vídeo, animação, podcast) e um select com prazos (rápido, normal, planejado). Use <code>&lt;label&gt;</code> corretamente e teste o envio usando <code>action="#"</code> (apenas simula).</p>
+    </div>
+
+    <!-- ================= TEMA 9 ================= -->
+    <h2 id="boas-praticas">9. Boas práticas, semântica e próximos passos</h2>
+    <p><strong>Semântica HTML:</strong> usar as tags corretas para cada tipo de conteúdo. Ex: <code>&lt;nav&gt;</code> para menus, <code>&lt;article&gt;</code> para posts independentes, <code>&lt;aside&gt;</code> para barras laterais, <code>&lt;footer&gt;</code> para rodapé. Isso melhora SEO e acessibilidade.</p>
+    <p><strong>Acessibilidade (a11y):</strong> sempre forneça <code>alt</code> descritivo em imagens; use <code>&lt;label&gt;</code> associado a inputs via <code>for/id</code>; evite apenas cores para transmitir informação; mantenha contraste legível.</p>
+    <p><strong>Organização de arquivos:</strong> mantenha as imagens na pasta <code>img/</code>, CSS em <code>css/</code>, scripts em <code>js/</code>. Nunca use espaços ou caracteres especiais em nomes de arquivo – use hífen ou underline.</p>
     
-    <h2>6. Boas práticas e próximos passos</h2>
-    <p>Após dominar os elementos básicos (títulos, links, imagens, tabelas e formulários), você está apto a construir páginas web estáticas. Lembre-se:</p>
+    <div class="img-placeholder">
+        <img src="Imagens/01/Figura 04.png" alt="">
+        <strong>Estrutura de pastas recomendada para projetos web</strong><br>
+    </div>
+
+    <h2 id="resumo">10. Resumo rápido para consulta</h2>
     <ul>
-        <li><strong>Semântica:</strong> Use tags pelo significado, não apenas pela aparência. Ex: <code>&lt;strong&gt;</code> para ênfase forte, <code>&lt;em&gt;</code> para itálico semântico.</li>
-        <li><strong>Organização de arquivos:</strong> Mantenha imagens em pastas separadas (ex: <code>/img</code>, <code>/css</code>).</li>
-        <li><strong>Teste em diferentes navegadores</strong> – o HTML básico funciona em todos.</li>
-        <li><strong>Acessibilidade:</strong> Sempre insira <code>alt</code> em imagens e use rótulos (<code>&lt;label&gt;</code>) em formulários.</li>
+        <li>✅ HTML = estrutura; CSS = estilo; JS = comportamento.</li>
+        <li>✅ Toda página começa com <code>&lt;!DOCTYPE html&gt;</code>.</li>
+        <li>✅ Tags de texto: <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>.</li>
+        <li>✅ Links: <code>&lt;a href="url" target="_blank"&gt;</code>. Imagens: <code>&lt;img src="..." alt="..."&gt;</code>.</li>
+        <li>✅ Tabelas: para dados tabulares, sempre envolva em <code>div class="table-wrapper"</code> para rolagem horizontal em mobile.</li>
+        <li>✅ Formulários: use <code>&lt;label&gt;</code>, inputs com <code>type</code> adequado, e lembre-se que o envio requer back-end.</li>
     </ul>
-    
-    <hr>
-    <h2>Resumo rápido para consulta</h2>
-    <ul>
-        <li><strong>HTML</strong> = marcação de hipertexto, estrutura o conteúdo.</li>
-        <li><strong>Tags comuns:</strong> <code>&lt;h1&gt;-&lt;h6&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;form&gt;</code>.</li>
-        <li><strong>Atributos importantes:</strong> href (links), src/alt (imagens), type (inputs).</li>
-        <li><strong>Estrutura básica:</strong> DOCTYPE, html, head, body.</li>
-        <li><strong>Ambiente profissional:</strong> VS Code + Live Server + atalho "!" para estrutura base.</li>
-    </ul>
-    
-    <!-- Dica de projeto integrador -->
-    <div class="destaque-box" style="background:#F2D8CE; border-left-color: #A67E6F;">
-        🧠 <strong>Projeto sugerido (integrador):</strong> Crie uma landing page de portfólio para um designer multimídia. A página deve conter: cabeçalho com menu (links âncora), seção "Sobre", galeria com 2 imagens (ou placeholder), tabela de preços de serviços, formulário de contato com campos obrigatórios. Utilize todas as tags estudadas. Esse mini-projeto simula uma demanda real do mercado.
+
+    <div class="destaque-box" style="background: #e9ecef; border-left-color: #2c7da0;">
+        🧠 <strong>Projeto integrador sugerido:</strong> Construa uma landing page pessoal contendo: menu de navegação âncora (sobre, portfólio, contato), uma seção com imagem de perfil, tabela de habilidades técnicas, formulário de contato com campos obrigatórios, e rodapé com links para redes sociais. Use apenas HTML (sem CSS ainda) – foque na estrutura semântica correta.
     </div>
     
     <footer>
-        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
-        <p>Edição 1 | Junho de 2026</p>
+        <p>📚 Material aprofundado sobre Fundamentos de HTML | Desenvolvido para aprendizado completo de Web e Multimídia</p>
+        <p>✅ Edição revisada com explicações detalhadas, tabelas responsivas e placeholders para imagens | Junho de 2026</p>
     </footer>
 </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apostila: Introdução ao JavaScript - Interatividade e Lógica de Programação</title>
+    <title>Apostila Completa: Introdução ao JavaScript - Interatividade e Lógica de Programação</title>
     <style>
         * {
             margin: 0;
@@ -13,80 +13,119 @@
 
         body {
             font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
-            background-color: #F2D8CE;
+            background-color: #e9ecef;
             padding: 48px 24px;
-            color: #1E3259;
-            line-height: 1.65;
+            color: #212529;
+            line-height: 1.7;
         }
 
         .apostila-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             background-color: #ffffff;
-            border-radius: 28px;
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             padding: 48px 56px;
         }
 
+        /* Sumário */
+        .sumario {
+            background-color: #f8f9fa;
+            padding: 24px 32px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid #dee2e6;
+        }
+        .sumario h2 {
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+            font-size: 24px;
+        }
+        .sumario ul {
+            columns: 2;
+            column-gap: 40px;
+            list-style: none;
+            margin-left: 0;
+        }
+        .sumario li {
+            margin: 8px 0;
+        }
+        .sumario a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: 500;
+        }
+        .sumario a:hover {
+            text-decoration: underline;
+            color: #0a58ca;
+        }
+
         h1 {
-            font-size: 34px;
-            color: #243E73;
-            border-left: 6px solid #8BB4D9;
+            font-size: 36px;
+            color: #0a1c3a;
+            border-left: 6px solid #2c7da0;
             padding-left: 22px;
             margin-bottom: 28px;
-            font-weight: 700;
-            line-height: 1.3;
+            font-weight: 800;
         }
 
         h2 {
-            font-size: 26px;
-            margin-top: 40px;
+            font-size: 28px;
+            margin-top: 48px;
             margin-bottom: 20px;
-            color: #1E3259;
-            border-bottom: 2px solid #8BB4D9;
-            padding-bottom: 8px;
-            font-weight: 600;
+            color: #0a1c3a;
+            border-bottom: 3px solid #2c7da0;
+            padding-bottom: 10px;
+            font-weight: 700;
+            scroll-margin-top: 30px;
         }
 
         h3 {
             font-size: 22px;
-            margin-top: 28px;
-            margin-bottom: 14px;
-            color: #243E73;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: #1e4a6b;
             font-weight: 600;
+            scroll-margin-top: 30px;
         }
 
         p {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             font-size: 16px;
             text-align: justify;
-            line-height: 1.7;
         }
 
         .destaque-box {
-            background-color: #F2D8CE;
-            border-left: 5px solid #A67E6F;
-            padding: 18px 24px;
+            background-color: #e7f1ff;
+            border-left: 6px solid #2c7da0;
+            padding: 20px 28px;
             margin: 28px 0;
-            border-radius: 20px;
-            line-height: 1.65;
-            color: #1E3259;
+            border-radius: 16px;
+        }
+
+        .atencao-box {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 20px 28px;
+            margin: 28px 0;
+            border-radius: 16px;
         }
 
         code {
-            background-color: #eef2fa;
+            background-color: #e9ecef;
             font-family: 'Courier New', 'Consolas', monospace;
             font-size: 14px;
             padding: 3px 8px;
             border-radius: 8px;
-            color: #A67E6F;
+            color: #d63384;
             font-weight: 500;
         }
 
         pre {
-            background-color: #1E3259;
-            color: #F2D8CE;
+            background-color: #1e293b;
+            color: #e2e8f0;
             padding: 20px 24px;
             border-radius: 20px;
             overflow-x: auto;
@@ -94,97 +133,118 @@
             font-size: 14px;
             margin: 24px 0;
             white-space: pre-wrap;
-            word-wrap: break-word;
-            line-height: 1.5;
+            word-break: break-all;
         }
 
         pre code {
             background: none;
-            color: #F2D8CE;
+            color: #e2e8f0;
             padding: 0;
         }
 
+        /* Tabela responsiva */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 16px;
+            border: 1px solid #dee2e6;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 24px 0;
             font-size: 15px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            min-width: 500px;
         }
-
         th {
-            background-color: #8BB4D9;
-            border: 1px solid #cbdbe2;
-            padding: 12px 14px;
+            background-color: #2c7da0;
+            color: white;
+            padding: 12px 16px;
             text-align: left;
             font-weight: 700;
-            color: #1E3259;
         }
-
         td {
-            border: 1px solid #cbdbe2;
-            padding: 10px 14px;
+            border: 1px solid #dee2e6;
+            padding: 10px 16px;
+            vertical-align: top;
             background-color: #fff;
         }
 
         ul, ol {
             margin: 16px 0 20px 28px;
-            line-height: 1.7;
         }
-
         li {
             margin: 8px 0;
         }
 
         .micro-atividade {
-            background-color: #F2D8CE;
-            border: 1px solid #A67E6F;
-            border-radius: 28px;
-            padding: 22px 28px;
-            margin: 32px 0;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+            background-color: #fef3e2;
+            border-left: 6px solid #f4a261;
+            border-radius: 20px;
+            padding: 24px 30px;
+            margin: 36px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-
         .micro-atividade h4 {
             font-size: 20px;
-            color: #243E73;
+            color: #c46b2b;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .badge {
-            background-color: #243E73;
-            color: #F2D8CE;
-            padding: 5px 14px;
+            background-color: #0a1c3a;
+            color: #ffffff;
+            padding: 6px 16px;
             border-radius: 40px;
             font-size: 12px;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .img-placeholder {
+            background-color: #f1f3f5;
+            border: 2px dashed #adb5bd;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 25px 0;
+            font-family: monospace;
+            color: #495057;
+        }
+
+        .img-placeholder span {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .img-placeholder img{
+            width: 100%;
+        }
+
+        .legenda-img {
+            font-size: 13px;
+            color: #6c757d;
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 20px;
         }
 
         hr {
-            margin: 36px 0;
+            margin: 40px 0;
             border: none;
             height: 2px;
-            background: linear-gradient(90deg, #8BB4D9, #F2D8CE, transparent);
+            background: linear-gradient(90deg, #2c7da0, #dee2e6, transparent);
         }
 
         footer {
             text-align: center;
-            margin-top: 56px;
+            margin-top: 60px;
             font-size: 13px;
-            color: #6c7a89;
-            border-top: 1px solid #e2e8f0;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
             padding-top: 28px;
-        }
-
-        footer p{
-            font-size: 0.8rem;
-            text-align: center;
         }
 
         @media (max-width: 700px) {
@@ -192,129 +252,359 @@
                 padding: 28px 20px;
             }
             h1 { font-size: 28px; }
-            h2 { font-size: 22px; }
-        }
-
-        strong {
-            color: #243E73;
+            .sumario ul { columns: 1; }
         }
     </style>
 </head>
 <body>
 <div class="apostila-container">
-    <span class="badge">JAVASCRIPT | INTERATIVIDADE</span>
-    <h1>Introdução ao JavaScript<br><span style="font-size: 22px; color:#1E3259;">Dê vida às suas páginas com lógica, interação e dinamismo</span></h1>
-    
-    <p>Com o <strong>JavaScript</strong>, suas páginas web deixam de ser estáticas e passam a <strong>interagir com o usuário</strong>: validar formulários, exibir mensagens, calcular valores, manipular o DOM e muito mais. Esta apostila oferece uma base sólida na linguagem: variáveis, tipos de dados, operadores, estruturas de decisão, laços de repetição e formas de interação com o usuário. Tudo com exemplos práticos que você pode testar no console do navegador ou em arquivos HTML.</p>
+    <span class="badge">⚡ JAVASCRIPT | LINGUAGEM DE PROGRAMAÇÃO PARA WEB</span>
+    <h1>Introdução ao JavaScript<br><span style="font-size: 24px;">Dê vida às suas páginas com lógica, interação e dinamismo</span></h1>
 
-    <h2>1. JavaScript: o que é e como funciona</h2>
-    <p><strong>JavaScript</strong> é uma linguagem de programação interpretada, que roda diretamente no navegador do usuário (lado do cliente). Isso significa que, ao abrir uma página, o navegador executa o código JS para criar interatividade, sem precisar de comunicação com o servidor a cada ação.</p>
+    <!-- SUMÁRIO -->
+    <div class="sumario">
+        <h2>📑 Sumário</h2>
+        <ul>
+            <li><a href="#o-que-e">1. JavaScript: o que é, onde roda e para que serve</a></li>
+            <li><a href="#como-funciona">1.1 Como o navegador executa JavaScript</a></li>
+            <li><a href="#onde-colocar">1.2 Onde colocar o código (interno vs externo)</a></li>
+            <li><a href="#variaveis">2. Variáveis, tipos de dados e constantes</a></li>
+            <li><a href="#operadores">2.3 Operadores: aritméticos, comparação, lógicos e atribuição</a></li>
+            <li><a href="#interacao">3. Interação com o usuário: alert, confirm, prompt</a></li>
+            <li><a href="#condicionais">4. Estruturas condicionais: if/else, else if, switch</a></li>
+            <li><a href="#lacos">5. Laços de repetição: for, while, do/while</a></li>
+            <li><a href="#dom">6. Manipulação básica do DOM e eventos</a></li>
+            <li><a href="#funcoes">6.2 Funções: reutilizando código</a></li>
+            <li><a href="#praticas">7. Boas práticas e dicas finais</a></li>
+            <li><a href="#resumo">8. Resumo para consulta rápida</a></li>
+        </ul>
+    </div>
+
+    <!-- ================= TEMA 1 ================= -->
+    <h2 id="o-que-e">1. JavaScript: o que é, onde roda e para que serve</h2>
+    <p><strong>JavaScript (JS)</strong> é uma linguagem de programação de alto nível, interpretada e multiparadigma. Originalmente criada para rodar em navegadores (lado do cliente), hoje também é usada no servidor (Node.js), em aplicações mobile (React Native), desktop (Electron) e até em IoT. Diferente de HTML e CSS (que são linguagens de marcação e estilo), o JavaScript é uma <strong>linguagem de programação completa</strong>, com variáveis, funções, estruturas de controle, arrays, objetos e muito mais.</p>
     
     <div class="destaque-box">
-        📌 <strong>Ponto importante:</strong> JavaScript é diferente de Java. O nome foi uma estratégia de marketing na época. O padrão oficial da linguagem é chamado <strong>ECMAScript</strong> (versão atual ES2022+).
+        📌 <strong>O que torna JavaScript essencial para o desenvolvimento web moderno?</strong><br>
+        - Manipulação do DOM: alterar conteúdo, estilos e estrutura da página dinamicamente.<br>
+        - Eventos: reagir a cliques, movimentos do mouse, teclas pressionadas, carregamento da página.<br>
+        - Comunicação assíncrona (AJAX/Fetch): buscar dados do servidor sem recarregar a página.<br>
+        - Validação de formulários antes do envio.<br>
+        - Animações, jogos, aplicações complexas (Single Page Applications - SPAs).
     </div>
-    
-    <h3>1.1 Ambiente de desenvolvimento e console</h3>
-    <p>Para começar, você só precisa de um <strong>navegador</strong> e um <strong>editor de código</strong> (recomendamos VS Code). O navegador já possui um <strong>console JavaScript</strong> integrado, onde você pode testar trechos de código rapidamente.</p>
-    <ul>
-        <li><strong>Abrir console no Chrome/Edge/Firefox:</strong> tecla <code>F12</code> ou <code>Ctrl + Shift + J</code> (Windows/Linux) / <code>Cmd + Option + J</code> (Mac).</li>
-        <li>No console, digite comandos e pressione Enter para executar.</li>
-    </ul>
-    <pre><code>// Exemplo: digite no console e veja o resultado
-console.log("Olá, mundo!");
-alert("Bem-vindo ao JavaScript!");</code></pre>
 
-    <h3>1.2 Onde colocar o JavaScript</h3>
-    <p>Você pode inserir JS diretamente em um arquivo HTML usando a tag <code>&lt;script&gt;</code>, ou criar um arquivo separado com extensão <code>.js</code> e linká-lo.</p>
-    <pre><code>&lt;!-- Interno (dentro do HTML) --&gt;
-&lt;script&gt;
-    console.log("JS interno");
-&lt;/script&gt;
-
-&lt;!-- Externo (recomendado para códigos maiores) --&gt;
-&lt;script src="meu-script.js"&gt;&lt;/script&gt;</code></pre>
+    <h3 id="como-funciona">1.1 Como o navegador executa JavaScript</h3>
+    <p>O navegador possui um <strong>motor JavaScript</strong> (chamado V8 no Chrome, SpiderMonkey no Firefox, JavaScriptCore no Safari) que:</p>
+    <ol>
+        <li>Lê o código-fonte (arquivo .js ou bloco <code>&lt;script&gt;</code>).</li>
+        <li>Converte em uma representação intermediária (bytecode).</li>
+        <li>Executa as instruções linha por linha (interpretação) – embora motores modernos usem compilação JIT (Just-In-Time) para performance.</li>
+    </ol>
     
+    <div class="img-placeholder">
+        <img src="Imagens/05/Figura 01.png" alt="">
+        <strong>Fluxo de execução do JavaScript no navegador</strong><br>
+    </div>
+    <div class="legenda-img">📌 Figura 1: O JavaScript é executado pelo navegador e pode modificar a página em tempo real.</div>
+
+    <h3 id="onde-colocar">1.2 Onde colocar o código (interno vs externo)</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Método</th><th>Sintaxe</th><th>Vantagens</th><th>Desvantagens</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><strong>JavaScript Interno</strong></td>
+                    <td><code>&lt;script&gt; // código aqui &lt;/script&gt;</code> (geralmente no final do <code>&lt;body&gt;</code>)</code></td>
+                    <td>Bom para protótipos e exemplos rápidos, não requer arquivos adicionais</code></td>
+                    <td>Não reutilizável entre páginas, mistura estrutura com comportamento</code></td>
+                </tr>
+                <tr>
+                    <td><strong>JavaScript Externo (recomendado)</strong></td>
+                    <td><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> (arquivo separado)</code></td>
+                    <td>Reutilizável em várias páginas, cacheável pelo navegador, código mais organizado</code></td>
+                    <td>Requer requisição HTTP extra (mínima)</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Inline (eventos HTML)</strong></td>
+                    <td><code>&lt;button onclick="alert('Oi')"&gt;Clique&lt;/button&gt;</code></code></td>
+                    <td>Rápido para testes</code></td>
+                    <td>Mistura HTML com JS (péssima prática), difícil manutenção</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="atencao-box">
+        ⚠️ <strong>Posicionamento da tag &lt;script&gt;:</strong><br>
+        Colocar scripts no <code>&lt;head&gt;</code> pode bloquear o carregamento da página (o navegador para de renderizar até baixar/executar o JS). A prática recomendada é colocar os scripts no <strong>final do <code>&lt;body&gt;</code></strong> ou usar os atributos <code>defer</code> ou <code>async</code>.
+    </div>
+
+    <pre><code>&lt;!-- Posicionamento recomendado --&gt;
+&lt;body&gt;
+    &lt;h1&gt;Minha Página&lt;/h1&gt;
+    &lt;!-- todo o conteúdo HTML --&gt;
+    
+    &lt;script src="meu-script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;!-- Com defer (executa após o HTML ser parseado) --&gt;
+&lt;script src="script.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- Com async (baixa em paralelo e executa assim que pronto) --&gt;
+&lt;script src="analytics.js" async&gt;&lt;/script&gt;</code></pre>
+
     <div class="micro-atividade">
         <h4>🖥️ Micro-atividade 1: Primeiro contato com o console</h4>
-        <p>Crie um arquivo HTML simples, abra o console do navegador (F12). Digite as seguintes linhas e observe os resultados: <code>console.log("Meu nome é [seu nome]")</code>, <code>alert("Mensagem de boas-vindas")</code>, <code>2 + 2 * 5</code>. Depois, insira um bloco <code>&lt;script&gt;</code> no HTML e faça o mesmo.</p>
+        <p>Crie um arquivo HTML simples com um <code>&lt;script&gt;</code> interno. Abra o console do navegador (F12 → Console). Digite comandos como <code>console.log("Olá, mundo!")</code>, <code>alert("Bem-vindo!")</code> e expressões matemáticas (<code>10 + 20 * 3</code>). Depois, mova o código para um arquivo .js externo e linke ao HTML.</p>
     </div>
 
-    <h2>2. Variáveis, tipos de dados e operadores</h2>
-    <h3>2.1 Declarando variáveis e constantes</h3>
-    <p>Em JavaScript moderno, usamos <code>let</code> para variáveis que podem mudar e <code>const</code> para valores fixos (constantes). Evite usar <code>var</code> (método antigo).</p>
-    <pre><code>"use strict"; // Força a declaração correta de variáveis
-let nome = "Ana";
+    <!-- ================= TEMA 2 ================= -->
+    <h2 id="variaveis">2. Variáveis, tipos de dados e constantes</h2>
+    <p>Variáveis são "caixas" onde armazenamos valores que podem mudar durante a execução do programa. Constantes guardam valores fixos.</p>
+
+    <h3>2.1 Declarando variáveis: <code>let</code>, <code>const</code> e o obsoleto <code>var</code></h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Palavra-chave</th><th>Escopo</th><th>Pode ser reatribuída?</th><th>Pode ser redeclarada?</th><th>Recomendação</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><code>let</code></code></td>
+                    <td>Bloco <code>{ ... }</code></code></td>
+                    <td>Sim</code></td>
+                    <td>Não (no mesmo escopo)</code></td>
+                    <td>Use para variáveis que vão mudar de valor</code></td>
+                </tr>
+                <tr>
+                    <td><code>const</code></code></td>
+                    <td>Bloco <code>{ ... }</code></code></td>
+                    <td>Não (gera erro)</code></td>
+                    <td>Não</code></td>
+                    <td>Use para valores fixos (PI, URL da API, etc.)</code></td>
+                </tr>
+                <tr>
+                    <td><code>var</code> (obsoleto)</code></td>
+                    <td>Função (ou global)</code></td>
+                    <td>Sim</code></td>
+                    <td>Sim</code></td>
+                    <td>EVITE – causa bugs de escopo e hoisting confuso</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pre><code>"use strict"; // Modo estrito – ajuda a evitar erros comuns
+
+// Declarações corretas
+let nome = "João";
 let idade = 25;
 const PI = 3.14159;
-let estaLogado = true;</code></pre>
-    
-    <h3>2.2 Tipos de dados primitivos</h3>
-    <table>
-        <tr><th>Tipo</th><th>Descrição</th><th>Exemplo</th></tr>
-        <tr><td><code>string</code></td>曰Sequência de caracteres (texto)</td><td><code>"Olá"</code>, <code>'João'</code>, <code>`template`</code></td></tr>
-        <tr><td><code>number</code></td><td>Números inteiros ou decimais</code></td><td><code>42</code>, <code>3.14</code></code></td></tr>
-        <tr><td><code>boolean</code></code></td>=true ou false</code></td>=<code>true</code>, <code>false</code></code></td></tr>
-        <tr><td><code>undefined</code></code></td>曰Variável declarada mas sem valor</code></td>=<code>let x; console.log(x); // undefined</code></td></tr>
-        <tr><td><code>null</code></code></td>曰Valor nulo (intencionalmente vazio)</code></td><td><code>let resposta = null;</code></code></td></tr>
-    </table>
-    
-    <h3>2.3 Operadores essenciais</h3>
-    <ul>
-        <li><strong>Aritméticos:</strong> <code>+</code> (soma/ concatenação), <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> (resto), <code>**</code> (potência).</li>
-        <li><strong>Atribuição:</strong> <code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, etc.</li>
-        <li><strong>Comparação:</strong> <code>==</code> (igual valor), <code>===</code> (igual valor e tipo), <code>!=</code>, <code>!==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>.</li>
-        <li><strong>Lógicos:</strong> <code>&amp;&amp;</code> (E), <code>||</code> (OU), <code>!</code> (NÃO).</li>
-    </ul>
-    <pre><code>let a = 10, b = 20;
-console.log(a + b);        // 30
-console.log(a === "10");   // false (tipos diferentes)
-console.log(a == "10");    // true (conversão automática, evite)
-console.log(a > 5 &amp;&amp; b < 30); // true</code></pre>
-    
-    <h3>2.4 Trabalhando com strings</h3>
-    <p>Strings possuem métodos úteis: <code>length</code>, <code>charAt()</code>, <code>slice()</code>, <code>split()</code> e <strong>template strings</strong> (usando crase `` ` ``) para interpolar variáveis.</p>
-    <pre><code>let curso = "JavaScript";
-console.log(curso.length);        // 10
-console.log(curso.charAt(0));     // "J"
-console.log(curso.slice(0, 4));   // "Java"
+const URL_API = "https://api.exemplo.com";
 
-// Template string (interpolação)
-let aluno = "Maria";
-console.log(`Bem-vinda, ${aluno}! Hoje é dia ${2 + 3}`);</code></pre>
-    
-    <div class="micro-atividade">
-        <h4>🧮 Micro-atividade 2: Calculadora de IMC no console</h4>
-        <p>Use o console do navegador para declarar variáveis: <code>peso</code> (kg) e <code>altura</code> (m). Calcule o IMC (peso / altura²) e exiba uma mensagem usando template string: "Seu IMC é X". Depois, verifique se está acima de 25 e exiba "Acima do peso" ou "Peso saudável".</p>
+// Reatribuição permitida (com let)
+nome = "Maria";   // OK
+idade = idade + 1;
+
+// Reatribuição NÃO permitida (com const)
+// PI = 3.14;     // ERRO! Assignment to constant variable
+
+// Nomes de variáveis: case-sensitive, podem conter letras, números, $, _
+let precoProduto = 99.90;   // camelCase (padrão JavaScript)
+let _privado = "dado";      // underline para "privado" (convenção)
+let $elemento = document.querySelector("#id");</code></pre>
+
+    <h3>2.2 Tipos de dados primitivos</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Tipo</th><th>Descrição</th><th>Exemplo</th><th>typeof retorna</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><code>string</code></code></td>
+                    <td>Sequência de caracteres (texto). Pode usar aspas simples, duplas ou crase (template string).</code></td>
+                    <td><code>"Olá"</code>, <code>'Mundo'</code>, <code>`Template`</code></code></td>
+                    <td><code>"string"</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>number</code></code></td>
+                    <td>Números inteiros ou decimais (ponto flutuante). Não diferencia inteiro de decimal.</code></td>
+                    <td><code>42</code>, <code>3.14</code>, <code>-10</code>, <code>1.2e5</code> (científico)</code></td>
+                    <td><code>"number"</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>boolean</code></code></td>
+                    77Valores lógicos: verdadeiro ou falso.</code></td>
+                    <td><code>true</code>, <code>false</code></code></td>
+                    <td><code>"boolean"</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>undefined</code></code></td>
+                    <td>Variável declarada mas que ainda não recebeu valor.</code></td>
+                    <td><code>let x; console.log(x); // undefined</code></code></td>
+                    <td><code>"undefined"</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>null</code></code></td>
+                    <td>Valor nulo (intencionalmente vazio). É um "nada" atribuído pelo programador.</code></td>
+                    <td><code>let resposta = null;</code></code></td>
+                    <td><code>"object"</code> (bug histórico)</code></td>
+                </tr>
+                <tr>
+                    <td><code>bigint</code></code></td>
+                    <td>Números inteiros muito grandes (além do limite do number).</code></td>
+                    <td><code>9007199254740991n</code></code></td>
+                    <td><code>"bigint"</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>symbol</code></code></td>
+                    <td>Valor único e imutável (usado como chave de propriedade).</code></td>
+                    <td><code>Symbol("id")</code></code></td>
+                    <td><code>"symbol"</code></code></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <h2>3. Interação com o usuário (alert, confirm, prompt)</h2>
-    <p>JavaScript oferece três funções básicas para interagir com o usuário. Use com moderação (são bloqueantes), mas são excelentes para aprendizado.</p>
+    <pre><code>// Exemplos práticos com tipos
+let texto = "JavaScript";           // string
+let numero = 10;                    // number
+let decimal = 3.1415;               // number
+let estaChovendo = false;           // boolean
+let indefinido;                     // undefined (valor)
+let vazio = null;                   // null
+
+// Verificando tipos com typeof
+console.log(typeof texto);          // "string"
+console.log(typeof numero);         // "number"
+console.log(typeof estaChovendo);   // "boolean"
+console.log(typeof indefinido);     // "undefined"
+console.log(typeof vazio);          // "object" (comportamento histórico do JS)
+
+// Conversão de tipos (coerção)
+let numStr = "123";
+let numeroConvertido = Number(numStr);   // 123 (number)
+let textoNumero = 456;
+let stringConvertida = String(textoNumero); // "456" (string)
+
+// Cuidado com o operador + (concatenação vs soma)
+console.log(10 + 20);      // 30 (soma numérica)
+console.log("10" + 20);    // "1020" (concatenação de string)</code></pre>
+
+    <h3 id="operadores">2.3 Operadores essenciais</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Categoria</th><th>Operadores</th><th>Exemplo</th><th>Resultado</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><strong>Aritméticos</strong></code></td>
+                    <td><code>+ - * / % **</code></code></td>
+                    <td><code>10 % 3</code> → resto da divisão, <code>2 ** 3</code> → potência</code></td>
+                    <td><code>1</code> e <code>8</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>Atribuição</strong></code></td>
+                    <td><code>= += -= *= /=</code></code></td>
+                    <td><code>let x = 5; x += 3;</code> (equivale a <code>x = x + 3</code>)</code></td>
+                    <td><code>x = 8</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>Comparação (igualdade)</strong></code></td>
+                    <td><code>== !=</code> (com coerção), <code>=== !==</code> (estrito, SEM coerção)</code></td>
+                    <td><code>10 == "10"</code> → <code>true</code> (coerção de tipo)<br><code>10 === "10"</code> → <code>false</code> (tipos diferentes)</code></td>
+                    <td>Use SEMPRE <code>===</code> e <code>!==</code> para evitar bugs</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Comparação (relacionais)</strong></code></td>
+                    <td><code>&gt; &lt; &gt;= &lt;=</code></code></td>
+                    <td><code>15 > 10</code></code></td>
+                    <td><code>true</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>Lógicos</strong></code></td>
+                    <td><code>&amp;&amp;</code> (E), <code>||</code> (OU), <code>!</code> (NÃO)</code></td>
+                    <td><code>(idade >= 18) &amp;&amp; (possuiCarteira === true)</code></code></td>
+                    <td><code>true</code> se ambas condições verdadeiras</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Incremento/Decremento</strong></code></td>
+                    <td><code>++ --</code></code></td>
+                    <td><code>let contador = 0; contador++;</code> (pós-incremento)</code></td>
+                    <td><code>contador = 1</code></code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="atencao-box">
+        🔍 <strong>Diferença crucial: == vs ===</strong><br>
+        - <code>==</code> (igualdade abstrata): tenta converter os tipos antes de comparar. Ex: <code>5 == "5"</code> → <code>true</code> (string "5" vira número 5).<br>
+        - <code>===</code> (igualdade estrita): compara valor E tipo sem conversão. Ex: <code>5 === "5"</code> → <code>false</code> (number vs string).<br>
+        ✅ <strong>Sempre prefira <code>===</code> e <code>!==</code></strong> – evita bugs silenciosos.
+    </div>
+
+    <div class="micro-atividade">
+        <h4>🧮 Micro-atividade 2: Calculadora de IMC</h4>
+        <p>No console do navegador, declare variáveis: <code>peso</code> (kg) e <code>altura</code> (m). Calcule o IMC usando a fórmula <code>peso / (altura * altura)</code>. Exiba o resultado com <code>console.log</code> usando template string: <code>`Seu IMC é ${imc.toFixed(2)}`</code>. Depois, verifique se o IMC está acima de 25 e exiba "Acima do peso" ou "Peso saudável" usando um operador ternário: <code>let status = imc > 25 ? "Acima do peso" : "Peso saudável";</code></p>
+    </div>
+
+    <!-- ================= TEMA 3 ================= -->
+    <h2 id="interacao">3. Interação com o usuário: alert, confirm, prompt</h2>
+    <p>JavaScript oferece três funções nativas para comunicação básica com o usuário. São <strong>bloqueantes</strong> (param a execução do script até o usuário responder) e úteis para aprendizado, mas em projetos reais prefira interfaces HTML personalizadas.</p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Função</th><th>O que faz</th><th>Retorno</th><th>Exemplo</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><code>alert(mensagem)</code></code></td>
+                    <td>Exibe uma caixa de diálogo com uma mensagem e um botão "OK"</code></td>
+                    <td><code>undefined</code> (não retorna valor)</code></td>
+                    <td><code>alert("Bem-vindo ao site!");</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>confirm(pergunta)</code></code></td>
+                    <td>Exibe uma caixa com mensagem, botões "OK" (true) e "Cancelar" (false)</code></td>
+                    <td><code>boolean</code> (<code>true</code> se OK, <code>false</code> se Cancelar)</code></td>
+                    <td><code>let maiorIdade = confirm("Você tem 18 anos ou mais?");</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>prompt(pergunta, valorPadrao)</code></code></td>
+                    <td>Exibe uma caixa com campo de texto para o usuário digitar</code></td>
+                    <td><code>string</code> (o que o usuário digitou) ou <code>null</code> (se cancelar)</code></td>
+                    <td><code>let nome = prompt("Qual é o seu nome?", "Visitante");</code></code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pre><code>// Exemplo completo usando as três funções
+let nome = prompt("Digite seu nome:", "Anônimo");
+
+if (nome !== null && nome.trim() !== "") {
+    let confirmacao = confirm(`Olá, ${nome}! Deseja receber nossa newsletter?`);
     
-    <h3>3.1 Alert – mensagem informativa</h3>
-    <pre><code>alert("Bem-vindo ao meu site!");</code></pre>
-    
-    <h3>3.2 Confirm – pergunta com OK/Cancelar (retorna true/false)</h3>
-    <pre><code>let resposta = confirm("Você tem mais de 18 anos?");
-if (resposta) {
-    console.log("Acesso permitido");
+    if (confirmacao) {
+        alert(`Ótimo! ${nome}, você será inscrito.`);
+    } else {
+        alert(`Tudo bem, ${nome}. Você pode se inscrever depois.`);
+    }
 } else {
-    console.log("Acesso negado");
+    alert("Você não digitou um nome válido.");
 }</code></pre>
-    
-    <h3>3.3 Prompt – entrada de texto do usuário</h3>
-    <pre><code>let nome = prompt("Qual é o seu nome?");
-alert(`Olá, ${nome}! Seja bem-vindo(a).`);</code></pre>
-    
+
     <div class="micro-atividade">
         <h4>💬 Micro-atividade 3: Saudação personalizada</h4>
-        <p>Crie um arquivo HTML com um bloco <code>&lt;script&gt;</code>. Use <code>prompt</code> para perguntar o nome do usuário e a cidade onde mora. Depois, exiba uma mensagem personalizada com <code>alert</code> ou <code>console.log</code> no formato: "Olá, [nome]! Você mora em [cidade]."</p>
+        <p>Crie um arquivo HTML com um bloco <code>&lt;script&gt;</code>. Use <code>prompt</code> para perguntar o nome do usuário e a cidade onde mora. Depois, exiba uma mensagem personalizada com <code>alert</code> no formato: "Olá, [nome]! Você mora em [cidade]. Seja bem-vindo(a)!"</p>
     </div>
 
-    <h2>4. Estruturas de controle de fluxo (decisões)</h2>
-    <h3>4.1 if / else / else if</h3>
-    <p>Executa blocos de código conforme condições lógicas.</p>
-    <pre><code>let idade = parseInt(prompt("Digite sua idade:"));
-if (idade < 12) {
+    <!-- ================= TEMA 4 ================= -->
+    <h2 id="condicionais">4. Estruturas condicionais: if/else, else if, switch</h2>
+    <p>Estruturas condicionais permitem que o programa execute diferentes blocos de código baseado em condições lógicas (verdadeiro/falso).</p>
+
+    <h3>4.1 if, else if, else</h3>
+    <pre><code>let idade = Number(prompt("Digite sua idade:"));
+
+if (isNaN(idade)) {
+    console.log("Valor inválido. Digite um número.");
+} else if (idade < 12) {
     console.log("Criança");
 } else if (idade < 18) {
     console.log("Adolescente");
@@ -322,122 +612,299 @@ if (idade < 12) {
     console.log("Adulto");
 } else {
     console.log("Idoso");
-}</code></pre>
-    
-    <h3>4.2 switch – múltiplas comparações com um valor</h3>
-    <pre><code>let dia = prompt("Digite um dia da semana (segunda, terça, ...)");
-switch (dia) {
+}
+
+// Operador ternário (forma reduzida do if/else)
+let status = idade >= 18 ? "Maior de idade" : "Menor de idade";
+console.log(status);</code></pre>
+
+    <h3>4.2 switch – múltiplas comparações com um mesmo valor</h3>
+    <pre><code>let diaSemana = prompt("Digite um dia da semana (segunda, terça, ...):").toLowerCase();
+
+switch (diaSemana) {
     case "segunda":
     case "terça":
     case "quarta":
     case "quinta":
     case "sexta":
-        console.log("Dia útil");
+        console.log("Dia útil - hora de trabalhar!");
         break;
     case "sábado":
     case "domingo":
-        console.log("Fim de semana");
+        console.log("Fim de semana - descanso!");
         break;
     default:
-        console.log("Dia inválido");
+        console.log("Dia inválido. Digite um dia da semana válido.");
 }</code></pre>
-    
+
     <div class="micro-atividade">
         <h4>🎯 Micro-atividade 4: Classificador de notas</h4>
-        <p>Peça ao usuário que digite a nota de um aluno (0 a 100). Use estruturas <code>if/else</code> para classificar: A (>=90), B (>=80), C (>=70), D (>=60), F (abaixo de 60). Exiba o resultado com <code>alert</code>.</p>
+        <p>Peça ao usuário que digite a nota de um aluno (0 a 100) usando <code>prompt</code>. Use <code>if/else if/else</code> para classificar: A (>=90), B (>=80), C (>=70), D (>=60), F (<60). Valide se o valor é um número válido entre 0 e 100. Exiba o resultado com <code>alert</code>.</p>
     </div>
 
-    <h2>5. Laços de repetição (loops)</h2>
-    <p>Loops executam um bloco de código várias vezes.</p>
-    
-    <h3>5.1 for – quando se sabe o número de repetições</h3>
-    <pre><code>// Exibe números de 0 a 9
-for (let i = 0; i < 10; i++) {
+    <!-- ================= TEMA 5 ================= -->
+    <h2 id="lacos">5. Laços de repetição (loops)</h2>
+    <p>Loops executam um bloco de código repetidamente enquanto uma condição for verdadeira.</p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Loop</th><th>Sintaxe</th><th>Quando usar</th><th>Exemplo</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><code>for</code></code></td>
+                    <td><code>for (inicialização; condição; incremento) { }</code></code></td>
+                    <td>Quando se sabe (ou pode calcular) o número de repetições</code></td>
+                    <td><code>for (let i = 0; i < 10; i++) { console.log(i); }</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>while</code></code></td>
+                    <td><code>while (condição) { }</code></code></td>
+                    <td>Quando o número de repetições é desconhecido, e depende de uma condição que pode mudar dentro do loop</code></td>
+                    <td><code>while (senha !== "1234") { senha = prompt("Digite a senha:"); }</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>do...while</code></code></td>
+                    <td><code>do { } while (condição);</code></code></td>
+                    <td>Quando o bloco deve ser executado PELO MENOS uma vez (a condição é verificada no final)</code></td>
+                    <td><code>do { resposta = prompt("Continuar? (s/n)"); } while (resposta === "s");</code></code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pre><code>// Exemplo 1: Tabuada com for
+let numero = 7;
+console.log(`Tabuada do ${numero}:`);
+for (let i = 1; i <= 10; i++) {
+    console.log(`${numero} x ${i} = ${numero * i}`);
+}
+
+// Exemplo 2: while com contador
+let contador = 0;
+while (contador < 5) {
+    console.log(`Volta número ${contador + 1}`);
+    contador++;
+}
+
+// Exemplo 3: do...while (executa ao menos uma vez)
+let opcao;
+do {
+    opcao = prompt("Escolha: 1 - Ver saldo, 2 - Sair");
+    if (opcao === "1") {
+        alert("Seu saldo é R$ 1.000,00");
+    }
+} while (opcao !== "2");
+alert("Sistema encerrado.");
+
+// Exemplo 4: break (interrompe o loop) e continue (pula para próxima iteração)
+for (let i = 1; i <= 10; i++) {
+    if (i === 5) {
+        console.log("Parou no 5!");
+        break;  // sai do loop
+    }
     console.log(i);
 }
 
-// Tabuada do 5
-let numero = 5;
 for (let i = 1; i <= 10; i++) {
-    console.log(`${numero} x ${i} = ${numero * i}`);
+    if (i % 2 === 0) {
+        continue;  // pula números pares
+    }
+    console.log(i);  // exibe apenas ímpares
 }</code></pre>
-    
-    <h3>5.2 while – repete enquanto condição for verdadeira</h3>
-    <pre><code>let contador = 0;
-while (contador < 5) {
-    console.log(`Contador: ${contador}`);
-    contador++;
-}</code></pre>
-    
-    <h3>5.3 do/while – executa ao menos uma vez</h3>
-    <pre><code>let senha;
-do {
-    senha = prompt("Digite a senha (1234):");
-} while (senha !== "1234");
-alert("Acesso liberado!");</code></pre>
-    
+
     <div class="micro-atividade">
         <h4>🔄 Micro-atividade 5: Jogo de adivinhação</h4>
-        <p>Gere um número aleatório com <code>Math.floor(Math.random() * 10) + 1</code>. Use um loop <code>while</code> que só para quando o usuário acertar o número. A cada tentativa, dê dicas ("Muito baixo", "Muito alto"). Ao final, exiba quantas tentativas foram necessárias.</p>
+        <p>Crie um jogo onde o computador gera um número aleatório entre 1 e 100 usando <code>Math.floor(Math.random() * 100) + 1</code>. Use um loop <code>while</code> que só para quando o usuário acertar o número. A cada tentativa, dê dicas ("Muito baixo", "Muito alto") usando <code>alert</code> ou <code>console.log</code>. Ao final, exiba quantas tentativas foram necessárias.</p>
     </div>
 
-    <h2>6. Manipulação básica do DOM (acessando elementos HTML)</h2>
-    <p>O <strong>DOM (Document Object Model)</strong> é a representação da página HTML em forma de árvore. Com JavaScript, podemos acessar elementos, ler valores e alterar conteúdos dinamicamente.</p>
-    
+    <!-- ================= TEMA 6 ================= -->
+    <h2 id="dom">6. Manipulação básica do DOM (Document Object Model)</h2>
+    <p>O <strong>DOM</strong> é uma representação em árvore de todos os elementos HTML da página. Com JavaScript, podemos acessar, modificar, adicionar ou remover elementos dinamicamente.</p>
+
+    <div class="img-placeholder">
+        <img src="Imagens/05/Figura 02.jpg" alt="">
+        <strong>Representação da árvore DOM: document → html → head/body → elementos filhos</strong><br>
+    </div>
+
     <h3>6.1 Selecionando elementos</h3>
-    <pre><code>&lt;input type="text" id="nome" placeholder="Digite seu nome"&gt;
-&lt;button onclick="mostrarNome()"&gt;Enviar&lt;/button&gt;
-&lt;p id="mensagem"&gt;&lt;/p&gt;
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Método</th><th>Descrição</th><th>Retorna</th><th>Exemplo</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><code>getElementById()</code></code></td>
+                    <td>Seleciona um elemento pelo atributo <code>id</code> (único na página)</code></td>
+                    <td>Elemento (ou <code>null</code> se não encontrado)</code></td>
+                    <td><code>document.getElementById("titulo")</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>querySelector()</code></code></td>
+                    <td>Seleciona o primeiro elemento que corresponde a um seletor CSS</code></td>
+                    <td>Elemento (ou <code>null</code>)</code></td>
+                    <td><code>document.querySelector(".classe")</code><br><code>document.querySelector("#id")</code></code></td>
+                </tr>
+                <tr>
+                    <td><code>querySelectorAll()</code></code></td>
+                    <td>Seleciona TODOS os elementos que correspondem ao seletor CSS</code></td>
+                    <td>NodeList (similar a array, com forEach)</code></td>
+                    <td><code>document.querySelectorAll("p")</code> → todos os parágrafos</code></td>
+                </tr>
+                <tr>
+                    <td><code>getElementsByClassName()</code></code></td>
+                    <td>Seleciona elementos por classe (HTMLCollection)</code></td>
+                    <td>HTMLCollection (não tem forEach nativo)</code></td>
+                    <td><code>document.getElementsByClassName("item")</code></code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>6.2 Manipulando conteúdo e atributos</h3>
+    <pre><code>&lt;!-- HTML de exemplo --&gt;
+&lt;div id="mensagem"&gt;Texto original&lt;/div&gt;
+&lt;input type="text" id="nomeUsuario" placeholder="Digite seu nome"&gt;
+&lt;button id="botaoEnviar"&gt;Enviar&lt;/button&gt;
+&lt;img id="foto" src="imagem1.jpg" alt="Imagem exemplo"&gt;
 
 &lt;script&gt;
-function mostrarNome() {
-    let campo = document.getElementById("nome");
-    let nomeDigitado = campo.value;
-    document.getElementById("mensagem").innerHTML = `Olá, ${nomeDigitado}!`;
-}
+    // 1. Modificando conteúdo de texto
+    let divMensagem = document.getElementById("mensagem");
+    divMensagem.innerHTML = "&lt;strong&gt;Novo conteúdo em negrito&lt;/strong&gt;";
+    divMensagem.textContent = "Texto simples sem HTML";
+    
+    // 2. Lendo e alterando valores de input
+    let campoNome = document.getElementById("nomeUsuario");
+    let botao = document.getElementById("botaoEnviar");
+    
+    botao.onclick = function() {
+        let nome = campoNome.value;
+        if (nome.trim() !== "") {
+            divMensagem.textContent = `Olá, ${nome}! Bem-vindo(a).`;
+            campoNome.value = ""; // limpa o campo
+        } else {
+            alert("Por favor, digite seu nome.");
+        }
+    };
+    
+    // 3. Alterando atributos (src, alt, href, etc.)
+    let imagem = document.getElementById("foto");
+    imagem.setAttribute("src", "nova-imagem.jpg");
+    imagem.alt = "Nova descrição da imagem";
+    
+    // 4. Modificando estilos inline
+    divMensagem.style.backgroundColor = "#e7f1ff";
+    divMensagem.style.padding = "20px";
+    divMensagem.style.borderRadius = "12px";
 &lt;/script&gt;</code></pre>
+
+    <h3 id="funcoes">6.3 Funções: reutilizando código</h3>
+    <p>Funções são blocos de código nomeados que podem ser executados quantas vezes quisermos. Elas evitam repetição e organizam a lógica.</p>
     
-    <h3>6.2 Eventos comuns</h3>
-    <ul>
-        <li><code>onclick</code> – quando o elemento é clicado.</li>
-        <li><code>onmouseover</code> – mouse sobre o elemento.</li>
-        <li><code>onchange</code> – quando um campo de formulário é alterado.</li>
-        <li><code>onload</code> – quando a página termina de carregar.</li>
-    </ul>
-    
+    <pre><code>// Declaração de função (function declaration)
+function saudacao(nome) {
+    return `Olá, ${nome}! Seja bem-vindo.`;
+}
+
+// Chamando a função
+let mensagem = saudacao("Carlos");
+console.log(mensagem);  // "Olá, Carlos! Seja bem-vindo."
+
+// Função com parâmetros padrão (ES6)
+function calcularPrecoComDesconto(preco, desconto = 0.1) {
+    return preco - (preco * desconto);
+}
+console.log(calcularPrecoComDesconto(100));      // 90 (desconto padrão 10%)
+console.log(calcularPrecoComDesconto(100, 0.2)); // 80 (desconto 20%)
+
+// Arrow function (sintaxe moderna)
+const somar = (a, b) => a + b;
+console.log(somar(5, 3));  // 8
+
+// Função anônima (evento)
+document.getElementById("meuBotao").onclick = function() {
+    alert("Botão clicado!");
+};</code></pre>
+
     <div class="micro-atividade">
-        <h4>📝 Micro-atividade 6: Formulário interativo simples</h4>
-        <p>Crie uma página com: um campo de texto (para o nome), um botão "Exibir mensagem" e uma div vazia. Ao clicar no botão, o JavaScript deve ler o valor do campo e escrever dentro da div: "Bem-vindo, [nome]!". Adicione também um evento <code>onmouseover</code> no botão para mudar sua cor de fundo.</p>
+        <h4>📝 Micro-atividade 6: Formulário interativo com validação</h4>
+        <p>Crie uma página HTML com: um campo de texto (para o nome), um campo de email, um botão "Cadastrar" e uma div vazia para exibir mensagens. Ao clicar no botão, o JavaScript deve:</p>
+        <ul>
+            <li>Ler os valores dos campos.</li>
+            <li>Validar se ambos não estão vazios.</li>
+            <li>Exibir na div a mensagem: "Usuário [nome] cadastrado com email [email]".</li>
+            <li>Limpar os campos após o cadastro.</li>
+            <li>Se houver erro, mostrar alerta com a mensagem apropriada.</li>
+        </ul>
     </div>
 
-    <h2>7. Dicas finais e boas práticas</h2>
+    <!-- ================= TEMA 7 ================= -->
+    <h2 id="praticas">7. Boas práticas e dicas finais</h2>
     <ul>
-        <li><strong>Use "use strict"</strong> no início dos seus scripts para evitar erros silenciosos.</li>
-        <li><strong>Nomeie variáveis de forma clara</strong> (ex: <code>precoProduto</code>, <code>idadeUsuario</code>).</li>
-        <li><strong>Teste seus códigos no console</strong> antes de implementar no HTML.</li>
-        <li><strong>Evite poluição do escopo global</strong> – mantenha variáveis dentro de funções ou blocos.</li>
-        <li><strong>Comente seu código</strong> usando <code>//</code> para linha única ou <code>/* ... */</code> para múltiplas linhas.</li>
+        <li><strong>Sempre use "use strict"</strong> no início dos seus scripts (ou dentro de funções) para evitar variáveis globais acidentais e erros silenciosos.</li>
+        <li><strong>Nomeie variáveis e funções de forma clara</strong> em inglês ou português (mas seja consistente). Ex: <code>calcularTotal</code>, <code>usuarioEstaLogado</code>.</li>
+        <li><strong>Use <code>===</code> e <code>!==</code></strong> para comparações. Evite <code>==</code> e <code>!=</code>.</li>
+        <li><strong>Evite poluição do escopo global:</strong> mantenha variáveis dentro de funções ou blocos (<code>let</code> e <code>const</code> têm escopo de bloco).</li>
+        <li><strong>Comente seu código</strong> explicando o "porquê", não o "o quê" (o código já diz o que faz).</li>
+        <li><strong>Use o console do navegador para testar trechos</strong> antes de integrar ao projeto.</li>
+        <li><strong>Mantenha o JavaScript separado do HTML</strong> (arquivos .js externos) para facilitar manutenção.</li>
     </ul>
-    
+
     <div class="destaque-box">
-        🧠 <strong>Desafio final (projeto prático):</strong> Crie uma calculadora simples de descontos. O usuário informa o valor do produto e a porcentagem de desconto via <code>prompt</code>. O programa deve calcular o valor final e exibir em uma janela <code>alert</code> ou diretamente no HTML. Use variáveis, operadores e estrutura condicional para validar se os valores são válidos.
+        🧠 <strong>Desafio final (projeto prático):</strong><br>
+        Crie uma <strong>Calculadora de Descontos</strong> completa:<br>
+        - O usuário informa o valor do produto (via <code>prompt</code> ou input HTML).<br>
+        - O usuário informa a porcentagem de desconto (0 a 100).<br>
+        - O programa deve calcular o valor do desconto e o valor final.<br>
+        - Valide se os valores são números válidos e se estão dentro dos limites (valor positivo, desconto entre 0 e 100).<br>
+        - Exiba o resultado formatado com duas casas decimais.<br>
+        - Permita que o usuário faça novos cálculos sem recarregar a página (use um loop ou um botão "Novo cálculo").
     </div>
 
     <hr>
-    <h2>Resumo para consulta rápida</h2>
-    <ul>
-        <li><strong>Variáveis:</strong> <code>let nome = valor;</code> | <strong>Constantes:</strong> <code>const PI = 3.14;</code></li>
-        <li><strong>Tipos:</strong> string, number, boolean, undefined, null.</li>
-        <li><strong>Operadores:</strong> aritméticos (+ - * / %), comparação (===, !==, >, <), lógicos (&&, ||, !).</li>
-        <li><strong>Entrada/saída:</strong> <code>alert()</code>, <code>confirm()</code>, <code>prompt()</code>, <code>console.log()</code>.</li>
-        <li><strong>Decisões:</strong> <code>if/else if/else</code>, <code>switch/case</code>.</li>
-        <li><strong>Repetições:</strong> <code>for</code> (com contador), <code>while</code> (condição no início), <code>do/while</code> (executa ao menos uma vez).</li>
-        <li><strong>DOM básico:</strong> <code>document.getElementById()</code>, <code>.value</code>, <code>.innerHTML</code>.</li>
-    </ul>
+    <h2 id="resumo">8. Resumo para consulta rápida</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Conceito</th><th>Sintaxe/Resumo</th></tr</thead>
+            <tbody>
+                <tr>
+                    <td><strong>Variáveis</strong></code></td>
+                    <td><code>let nome = "valor";</code> (mutável), <code>const PI = 3.14;</code> (fixo)</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Tipos primitivos</strong></code></td>
+                    <td><code>string, number, boolean, undefined, null</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>Operadores</strong></code></td>
+                    <td>Aritméticos (<code>+ - * / % **</code>), Comparação (<code>=== !== &gt; &lt;</code>), Lógicos (<code>&amp;&amp; || !</code>)</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Entrada/Saída</strong></code></td>
+                    <td><code>alert()</code> (mensagem), <code>confirm()</code> (true/false), <code>prompt()</code> (texto), <code>console.log()</code> (debug)</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Condicionais</strong></code></td>
+                    <td><code>if (cond) { } else if { } else { }</code>, <code>switch (valor) { case x: ... }</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>Loops</strong></code></td>
+                    <td><code>for (let i=0; i<n; i++)</code> (contador), <code>while (cond)</code> (condicional), <code>do { } while (cond)</code> (executa ao menos uma vez)</code></td>
+                </tr>
+                <tr>
+                    <td><strong>DOM</strong></code></td>
+                    <td><code>document.getElementById("id")</code>, <code>querySelector(".classe")</code>, <code>.value</code>, <code>.innerHTML</code>, <code>.style</code></code></td>
+                </tr>
+                <tr>
+                    <td><strong>Funções</strong></code></td>
+                    <td><code>function nome(param) { return valor; }</code>, arrow function <code>const nome = (param) => valor</code></code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <footer>
-        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
-        <p>Edição 1 | Junho de 2026</p>
+        <p>📚 Material aprofundado sobre JavaScript – da lógica de programação à manipulação do DOM</p>
+        <p>✅ 5ª Apostila da série completa de Desenvolvimento Web | Edição revisada com sumário interativo, tabelas responsivas e placeholders para imagens</p>
     </footer>
 </div>
 </body>

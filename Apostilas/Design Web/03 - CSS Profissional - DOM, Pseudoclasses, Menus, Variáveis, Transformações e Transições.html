@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apostila: CSS Avançado - Seletores, Menus, Variáveis, Transformações e Transições</title>
+    <title>Apostila Completa: CSS Profissional - DOM, Seletores Avançados, Menus, Variáveis, Transformações e Transições</title>
     <style>
         * {
             margin: 0;
@@ -13,80 +13,119 @@
 
         body {
             font-family: 'Arial', 'Helvetica', 'Roboto', sans-serif;
-            background-color: #F2D8CE;
+            background-color: #e9ecef;
             padding: 48px 24px;
-            color: #1E3259;
-            line-height: 1.65;
+            color: #212529;
+            line-height: 1.7;
         }
 
         .apostila-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             background-color: #ffffff;
-            border-radius: 28px;
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             padding: 48px 56px;
         }
 
+        /* Sumário */
+        .sumario {
+            background-color: #f8f9fa;
+            padding: 24px 32px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid #dee2e6;
+        }
+        .sumario h2 {
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+            font-size: 24px;
+        }
+        .sumario ul {
+            columns: 2;
+            column-gap: 40px;
+            list-style: none;
+            margin-left: 0;
+        }
+        .sumario li {
+            margin: 8px 0;
+        }
+        .sumario a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: 500;
+        }
+        .sumario a:hover {
+            text-decoration: underline;
+            color: #0a58ca;
+        }
+
         h1 {
-            font-size: 34px;
-            color: #243E73;
-            border-left: 6px solid #8BB4D9;
+            font-size: 36px;
+            color: #0a1c3a;
+            border-left: 6px solid #2c7da0;
             padding-left: 22px;
             margin-bottom: 28px;
-            font-weight: 700;
-            line-height: 1.3;
+            font-weight: 800;
         }
 
         h2 {
-            font-size: 26px;
-            margin-top: 40px;
+            font-size: 28px;
+            margin-top: 48px;
             margin-bottom: 20px;
-            color: #1E3259;
-            border-bottom: 2px solid #8BB4D9;
-            padding-bottom: 8px;
-            font-weight: 600;
+            color: #0a1c3a;
+            border-bottom: 3px solid #2c7da0;
+            padding-bottom: 10px;
+            font-weight: 700;
+            scroll-margin-top: 30px;
         }
 
         h3 {
             font-size: 22px;
-            margin-top: 28px;
-            margin-bottom: 14px;
-            color: #243E73;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: #1e4a6b;
             font-weight: 600;
+            scroll-margin-top: 30px;
         }
 
         p {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             font-size: 16px;
             text-align: justify;
-            line-height: 1.7;
         }
 
         .destaque-box {
-            background-color: #F2D8CE;
-            border-left: 5px solid #A67E6F;
-            padding: 18px 24px;
+            background-color: #e7f1ff;
+            border-left: 6px solid #2c7da0;
+            padding: 20px 28px;
             margin: 28px 0;
-            border-radius: 20px;
-            line-height: 1.65;
-            color: #1E3259;
+            border-radius: 16px;
+        }
+
+        .atencao-box {
+            background-color: #fff3e0;
+            border-left: 6px solid #f4a261;
+            padding: 20px 28px;
+            margin: 28px 0;
+            border-radius: 16px;
         }
 
         code {
-            background-color: #eef2fa;
+            background-color: #e9ecef;
             font-family: 'Courier New', 'Consolas', monospace;
             font-size: 14px;
             padding: 3px 8px;
             border-radius: 8px;
-            color: #A67E6F;
+            color: #d63384;
             font-weight: 500;
         }
 
         pre {
-            background-color: #1E3259;
-            color: #F2D8CE;
+            background-color: #1e293b;
+            color: #e2e8f0;
             padding: 20px 24px;
             border-radius: 20px;
             overflow-x: auto;
@@ -94,97 +133,140 @@
             font-size: 14px;
             margin: 24px 0;
             white-space: pre-wrap;
-            word-wrap: break-word;
-            line-height: 1.5;
+            word-break: break-all;
         }
 
         pre code {
             background: none;
-            color: #F2D8CE;
+            color: #e2e8f0;
             padding: 0;
         }
 
+        /* Tabela responsiva */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 16px;
+            border: 1px solid #dee2e6;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 24px 0;
             font-size: 15px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            min-width: 500px;
         }
-
         th {
-            background-color: #8BB4D9;
-            border: 1px solid #cbdbe2;
-            padding: 12px 14px;
+            background-color: #2c7da0;
+            color: white;
+            padding: 12px 16px;
             text-align: left;
             font-weight: 700;
-            color: #1E3259;
         }
-
         td {
-            border: 1px solid #cbdbe2;
-            padding: 10px 14px;
+            border: 1px solid #dee2e6;
+            padding: 10px 16px;
+            vertical-align: top;
             background-color: #fff;
         }
 
         ul, ol {
             margin: 16px 0 20px 28px;
-            line-height: 1.7;
         }
-
         li {
             margin: 8px 0;
         }
 
         .micro-atividade {
-            background-color: #F2D8CE;
-            border: 1px solid #A67E6F;
-            border-radius: 28px;
-            padding: 22px 28px;
-            margin: 32px 0;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+            background-color: #fef3e2;
+            border-left: 6px solid #f4a261;
+            border-radius: 20px;
+            padding: 24px 30px;
+            margin: 36px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-
         .micro-atividade h4 {
             font-size: 20px;
-            color: #243E73;
+            color: #c46b2b;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .badge {
-            background-color: #243E73;
-            color: #F2D8CE;
-            padding: 5px 14px;
+            background-color: #0a1c3a;
+            color: #ffffff;
+            padding: 6px 16px;
             border-radius: 40px;
             font-size: 12px;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .img-placeholder {
+            background-color: #f1f3f5;
+            border: 2px dashed #adb5bd;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            margin: 25px 0;
+            font-family: monospace;
+            color: #495057;
+        }
+        .img-placeholder span {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .img-placeholder img{
+            width: 100%;
+        }
+
+        .legenda-img {
+            font-size: 13px;
+            color: #6c757d;
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+
+        .demo-menu {
+            background-color: #2c7da0;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            color: white;
+        }
+        .demo-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .demo-menu > ul {
+            display: flex;
+            gap: 20px;
+        }
+        .demo-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            display: block;
         }
 
         hr {
-            margin: 36px 0;
+            margin: 40px 0;
             border: none;
             height: 2px;
-            background: linear-gradient(90deg, #8BB4D9, #F2D8CE, transparent);
+            background: linear-gradient(90deg, #2c7da0, #dee2e6, transparent);
         }
 
         footer {
             text-align: center;
-            margin-top: 56px;
+            margin-top: 60px;
             font-size: 13px;
-            color: #6c7a89;
-            border-top: 1px solid #e2e8f0;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
             padding-top: 28px;
-        }
-
-        footer p{
-            font-size: 0.8rem;
-            text-align: center;
         }
 
         @media (max-width: 700px) {
@@ -192,272 +274,563 @@
                 padding: 28px 20px;
             }
             h1 { font-size: 28px; }
-            h2 { font-size: 22px; }
-        }
-
-        strong {
-            color: #243E73;
+            .sumario ul { columns: 1; }
         }
     </style>
 </head>
 <body>
 <div class="apostila-container">
-    <span class="badge">CSS AVANÇADO | WEB + MULTIMÍDIA</span>
-    <h1>CSS Profissional: DOM, Pseudoclasses, Menus, Variáveis, Transformações e Transições<br><span style="font-size: 22px; color:#1E3259;">Domine seletores complexos, crie menus interativos e adicione movimento às suas páginas</span></h1>
-    
-    <p>Nesta apostila, você vai além do básico do CSS. Aprenderá a navegar pela <strong>árvore do documento (DOM)</strong>, usar <strong>pseudoclasses e pseudoelementos</strong> para estilizar estados e partes específicas, construir <strong>menus profissionais (vertical, horizontal e suspenso)</strong>, trabalhar com <strong>variáveis CSS</strong>, controlar o <strong>dimensionamento de caixas</strong> e ainda criar <strong>animações suaves com transformações 2D e transições</strong>. Tudo com exemplos práticos e situações reais de mercado.</p>
+    <span class="badge">🚀 CSS AVANÇADO | WEB DESIGN PROFISSIONAL</span>
+    <h1>CSS Profissional: DOM, Pseudoclasses, Menus, Variáveis, Transformações e Transições<br><span style="font-size: 22px;">Domine seletores complexos, crie menus interativos e dê vida às suas páginas</span></h1>
 
-    <h2>1. Árvore do documento (DOM) e seletores avançados</h2>
-    <h3>1.1 O que é o DOM?</h3>
-    <p>O <strong>Document Object Model (DOM)</strong> é uma representação hierárquica (em árvore) dos elementos HTML. Entender essa hierarquia permite aplicar estilos de forma precisa, usando relações como <strong>pai-filho</strong>, <strong>ancestral-descendente</strong> e <strong>irmãos</strong>. No CSS, podemos mirar elementos com base nessas relações, sem precisar de classes ou IDs.</p>
-    
-    <div class="destaque-box">
-        📌 <strong>Exemplo prático de hierarquia:</strong><br>
-        <code>div &gt; p</code> → seleciona apenas parágrafos que são <strong>filhos diretos</strong> de uma div.<br>
-        <code>div p</code> → seleciona todos os parágrafos <strong>descendentes</strong> da div (qualquer nível).<br>
-        <code>h1 + p</code> → seleciona o parágrafo que vem <strong>imediatamente após</strong> um h1 (irmão adjacente).<br>
-        <code>h1 ~ h2</code> → seleciona todos os h2 que são irmãos <strong>posteriores</strong> a um h1.
+    <!-- SUMÁRIO -->
+    <div class="sumario">
+        <h2>📑 Sumário</h2>
+        <ul>
+            <li><a href="#dom">1. Árvore do documento (DOM) – a hierarquia dos elementos</a></li>
+            <li><a href="#seletores-avancados">1.1 Seletores estruturais: filho, irmão, descendente</a></li>
+            <li><a href="#heranca">1.2 Herança no CSS: o que é passado para os filhos?</a></li>
+            <li><a href="#pseudoclasses">2. Pseudoclasses: estilizando estados do elemento</a></li>
+            <li><a href="#pseudoelementos">2.1 Pseudoelementos: estilizando partes específicas</a></li>
+            <li><a href="#menus">3. Barra de navegação profissional</a></li>
+            <li><a href="#menu-vertical">3.1 Menu vertical estilizado</a></li>
+            <li><a href="#menu-horizontal">3.2 Menu horizontal com inline-block e flexbox</a></li>
+            <li><a href="#menu-dropdown">3.3 Menu suspenso (dropdown) com subnível</a></li>
+            <li><a href="#botoes">3.4 Botões estilizados com efeitos</a></li>
+            <li><a href="#box-sizing">4. Box-sizing: controlando o dimensionamento</a></li>
+            <li><a href="#variaveis">4.1 Variáveis CSS (Custom Properties) – o poder da manutenção</a></li>
+            <li><a href="#imagens">4.2 Formatação profissional de imagens</a></li>
+            <li><a href="#transformacoes">5. Transformações 2D: mova, gire, escale</a></li>
+            <li><a href="#transicoes">5.1 Transições suaves: o segredo da interatividade</a></li>
+            <li><a href="#combinacoes">5.2 Combinando transformações e transições</a></li>
+            <li><a href="#resumo">6. Resumo prático para consulta</a></li>
+        </ul>
     </div>
-    
-    <h3>1.2 Seletores estruturais (first-child, last-child, etc.)</h3>
-    <p>Esses seletores permitem estilizar elementos com base na posição dentro do pai.</p>
-    <ul>
-        <li><code>li:first-child</code> → primeiro item de uma lista.</li>
-        <li><code>li:last-child</code> → último item.</li>
-        <li><code>p:nth-child(2)</code> → segundo filho do tipo parágrafo (independente do tipo).</li>
-    </ul>
-    <pre><code>/* Exemplo: estiliza o primeiro link dentro de um nav */
-nav &gt; a:first-child {
-    font-weight: bold;
-    color: #A67E6F;
-}</code></pre>
-    
-    <h3>1.3 Herança no CSS</h3>
-    <p>Algumas propriedades (como <code>color</code>, <code>font-family</code>) são herdadas pelos elementos filhos. Outras (como <code>width</code>, <code>border</code>) não são. Saber isso evita repetição de código.</p>
 
-    <!-- Microatividade 1 -->
+    <!-- ================= TEMA 1 ================= -->
+    <h2 id="dom">1. Árvore do documento (DOM) – a hierarquia dos elementos</h2>
+    <p>O <strong>Document Object Model (DOM)</strong> é uma representação em árvore de todos os elementos HTML de uma página. Cada elemento é um <strong>nó</strong>, e as relações entre eles seguem uma estrutura hierárquica: <strong>pai, filho, ancestral, descendente, irmão</strong>. Entender o DOM é fundamental para aplicar seletores CSS avançados, pois você pode mirar em elementos baseados em sua <strong>posição</strong> e <strong>relação</strong> com outros elementos, sem depender de classes ou IDs.</p>
+
+    <div class="img-placeholder">
+        <img src="Imagens/03/Figura 01.webp" alt="">
+        <strong>Diagrama da árvore DOM de uma página HTML simples</strong><br>
+    </div>
+    <div class="legenda-img">📌 Figura 1: Estrutura em árvore do DOM – cada elemento é um nó com conexões hierárquicas.</div>
+
+    <h3 id="seletores-avancados">1.1 Seletores estruturais: filho, irmão, descendente</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Seletor</th><th>Significado</th><th>Exemplo</th><th>Quando usar</th></tr</thead>
+            <tbody>
+                <tr><td><code>pai &gt; filho</code></td><td>Filho direto (apenas primeiro nível)</td><td><code>div &gt; p</code> – só parágrafos que são filhos diretos da div</td><td>Evitar estilizar elementos aninhados mais profundamente</td></tr>
+                <tr<td><code>ancestral descendente</code></td><td>Qualquer descendente (qualquer nível)</td><td><code>div p</code> – todos os parágrafos dentro da div, em qualquer profundidade</td><td>Estilizar todos os elementos de um tipo dentro de um container</td></tr>
+                <tr<td><code>anterior + proximo</code></td><td>Irmão adjacente (imediatamente após)</td><td><code>h1 + p</code> – o parágrafo que vem logo depois de um h1</td><td>Estilizar elementos que seguem imediatamente outro</td></tr>
+                <tr<td><code>anterior ~ proximos</code></td><td>Irmãos posteriores (todos após)</td><td><code>h1 ~ p</code> – todos os parágrafos irmãos após o h1</td><td>Estilizar todos os elementos que vêm depois de um determinado</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pre><code>&lt;div class="container"&gt;
+    &lt;p&gt;Parágrafo filho direto 1&lt;/p&gt;
+    &lt;div&gt;
+        &lt;p&gt;Parágrafo descendente (neto)&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Parágrafo filho direto 2&lt;/p&gt;
+&lt;/div&gt;
+
+/* CSS */
+.container > p { color: blue; }      /* Apenas os filhos diretos (1 e 2) ficam azuis */
+.container p { text-decoration: underline; } /* Todos os parágrafos (incluindo neto) */
+
+h2 + p { margin-top: 0; }            /* Remove margem do parágrafo após um h2 */
+h2 ~ p { color: gray; }              /* Todos os parágrafos irmãos após h2 ficam cinza */</code></pre>
+
+    <h3 id="heranca">1.2 Herança no CSS: o que é passado para os filhos?</h3>
+    <p><strong>Herança</strong> é o mecanismo pelo qual algumas propriedades CSS aplicadas a um elemento são automaticamente repassadas para seus descendentes. Isso evita repetição de código. Propriedades que geralmente são herdadas: <code>color</code>, <code>font-family</code>, <code>font-size</code>, <code>line-height</code>, <code>text-align</code>. Propriedades que <strong>não são herdadas</strong>: <code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code>, <code>border</code>, <code>background</code>.</p>
+    <div class="destaque-box">
+        💡 <strong>Controle fino da herança:</strong><br>
+        - <code>inherit</code> → força um elemento a herdar o valor do pai.<br>
+        - <code>initial</code> → define o valor padrão do navegador.<br>
+        - <code>unset</code> → se a propriedade é herdável, age como inherit; senão, como initial.
+    </div>
+    <pre><code>body {
+    color: #212529;        /* herdado por todos os textos */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Forçando herança onde não ocorre naturalmente */
+button {
+    color: inherit;        /* botão herda a cor do body */
+    font-family: inherit;
+}</code></pre>
+
     <div class="micro-atividade">
         <h4>🌳 Micro-atividade 1: Navegando pela árvore DOM</h4>
-        <p>Crie uma estrutura HTML com uma <code>&lt;div&gt;</code> contendo um <code>&lt;header&gt;</code> com título e um <code>&lt;nav&gt;</code> com três links. Use seletores CSS avançados para: (1) deixar o primeiro link do nav em negrito; (2) aplicar uma borda inferior apenas no título que é filho direto do header; (3) alterar a cor de todos os parágrafos que são irmãos de um h2. Teste no navegador.</p>
+        <p>Crie uma estrutura HTML com <code>&lt;article&gt;</code> contendo <code>&lt;header&gt;</code> com <code>&lt;h1&gt;</code>, <code>&lt;section&gt;</code> com três parágrafos, e um <code>&lt;footer&gt;</code> com links. Use seletores avançados: (1) estilize apenas o primeiro parágrafo de cada seção (<code>:first-child</code>); (2) selecione o link que vem imediatamente após um parágrafo no footer; (3) aplique uma borda inferior apenas no <code>&lt;h1&gt;</code> que é filho direto do <code>&lt;header&gt;</code>. Teste no navegador e entenda como os seletores funcionam.</p>
     </div>
 
-    <h2>2. Pseudoclasses e pseudoelementos</h2>
-    <h3>2.1 Pseudoclasses: estilizando estados</h3>
-    <p>Pseudoclasses (<code>:</code>) definem o estilo de um elemento em um <strong>estado específico</strong>.</p>
-    <table>
-        <tr><th>Pseudoclasse</th><th>Aplicação</th><th>Exemplo real</th></tr>
-        <tr><td><code>:link</code></td><td>Link não visitado</td><td><code>a:link { color: #243E73; }</code></td></tr>
-        <tr><td><code>:visited</code></td><td>Link já visitado</td><td><code>a:visited { color: #A67E6F; }</code></td></tr>
-        <tr><td><code>:hover</code></td><td>Mouse sobre o elemento</td><td>Menu que muda de cor ao passar o mouse</td></tr>
-        <tr><td><code>:active</code></td><td>Elemento sendo clicado</td><td>Botão com efeito de clique</td></tr>
-        <tr><td><code>:focus</code></td><td>Campo de formulário selecionado</td><td><code>input:focus { border: 2px solid #8BB4D9; }</code></td></tr>
-        <tr><td><code>:checked</code></td><td>Radio ou checkbox marcado</td><td>Personalizar botões de opção</td></tr>
-        <tr><td><code>:enabled / :disabled</code></td><td>Campos habilitados/desabilitados</td><td>Estilizar campos bloqueados com fundo cinza</td></tr>
-    </table>
-    <p><strong>Ordem importante para links:</strong> <code>:link → :visited → :hover → :active</code> (LVHA).</p>
+    <!-- ================= TEMA 2 ================= -->
+    <h2 id="pseudoclasses">2. Pseudoclasses: estilizando estados do elemento</h2>
+    <p><strong>Pseudoclasses</strong> (representadas por <code>:</code>) permitem estilizar um elemento com base em seu <strong>estado</strong> ou <strong>posição</strong> na árvore, não apenas em sua tag ou classe. São extremamente úteis para criar interatividade.</p>
     
-    <h3>2.2 Pseudoelementos: estilizando partes específicas</h3>
-    <p>Pseudoelementos (<code>::</code>) permitem estilizar <strong>partes de um elemento</strong> ou inserir conteúdo virtual.</p>
-    <ul>
-        <li><code>::first-letter</code> → primeira letra (cria efeito de letra capitular).</li>
-        <li><code>::first-line</code> → primeira linha de um texto.</li>
-        <li><code>::before</code> e <code>::after</code> → inserem conteúdo antes/depois do elemento (ex: ícones, aspas).</li>
-        <li><code>::marker</code> → estiliza marcadores de lista (bullets ou números).</li>
-        <li><code>::selection</code> → estiliza o texto selecionado pelo usuário.</li>
-    </ul>
-    <pre><code>/* Exemplo prático: letra capitular */
-p::first-letter {
-    font-size: 40px;
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Pseudoclasse</th><th>Descrição</th><th>Exemplo de uso real</th></tr</thead>
+            <tbody>
+                <tr<td><code>:hover</code></td><td>Mouse sobre o elemento</td><td>Menu que muda de cor, botão com efeito de elevação</td></tr>
+                <tr<td><code>:focus</code></td><td>Elemento selecionado (tab ou clique)</td><td>Campo de formulário com borda azul quando ativo</td></tr>
+                <tr<td><code>:active</code></td><td>Elemento sendo clicado (momento do clique)</td><td>Botão que "afunda" ligeiramente ao clicar</td></tr>
+                <tr<td><code>:visited</code></td><td>Link já clicado pelo usuário</td><td>Links visitados com cor diferente</td></tr>
+                <tr<td><code>:link</code></td><td>Link não visitado</td><td>Estilo padrão de links não acessados</td></tr>
+                <tr<td><code>:first-child</code></td><td>Primeiro filho do pai</td><td>Primeiro item de lista com estilo diferente</td></tr>
+                <tr<td><code>:last-child</code></td><td>Último filho do pai</td><td>Último cartão de uma galeria sem margem direita</td></tr>
+                <tr<td><code>:nth-child(n)</code></td><td>Enésimo filho (1-based)</td><td>Linhas pares/ímpares de tabela: <code>:nth-child(even)</code></td></tr>
+                <tr<td><code>:not(seletor)</code></td><td>Exceção – tudo exceto o seletor</td><td>Todos os botões exceto o último: <code>.btn:not(:last-child)</code></td></tr>
+                <tr<td><code>:checked</code></td><td>Checkbox ou radio marcado</td><td>Personalizar o visual de inputs selecionados</td></tr>
+                <tr<td><code>:disabled</code></td><td>Campo desabilitado</td><td>Estilizar campos bloqueados com fundo cinza claro</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="atencao-box">
+        ⚠️ <strong>Ordem LVHA para links:</strong> Para que todos os estados funcionem corretamente, os estilos de links devem seguir a ordem: <code>:link → :visited → :hover → :active</code>. Caso contrário, regras podem ser sobrescritas indevidamente.
+    </div>
+
+    <pre><code>/* Exemplo completo de link */
+a:link { color: #0a1c3a; text-decoration: none; }
+a:visited { color: #6c757d; }
+a:hover { color: #2c7da0; text-decoration: underline; }
+a:active { color: #f4a261; }
+
+/* Estilizando linhas alternadas de tabela */
+tr:nth-child(even) { background-color: #f8f9fa; }
+tr:nth-child(odd) { background-color: #ffffff; }
+
+/* Excluindo o primeiro item */
+.item:not(:first-child) { margin-top: 10px; }</code></pre>
+
+    <h3 id="pseudoelementos">2.1 Pseudoelementos: estilizando partes específicas</h3>
+    <p><strong>Pseudoelementos</strong> (representados por <code>::</code>) permitem estilizar <strong>partes de um elemento</strong> ou <strong>inserir conteúdo virtual</strong> antes ou depois. Diferente das pseudoclasses, que representam estados, pseudoelementos criam "sub-elementos" lógicos.</p>
+    
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Pseudoelemento</th><th>Descrição</th><th>Exemplo prático</th></tr</thead>
+            <tbody>
+                <tr<td><code>::before</code></td><td>Insere conteúdo ANTES do conteúdo do elemento</td><td>Adicionar ícone antes de cada link externo</td></tr>
+                <tr<td><code>::after</code></td><td>Insere conteúdo DEPOIS do conteúdo do elemento</td><td>Adicionar "🔗" após links que abrem em nova aba</td></tr>
+                <tr<td><code>::first-letter</code></td><td>Primeira letra do texto</td><td>Efeito de letra capitular (estilo revista)</td></tr>
+                <tr<td><code>::first-line</code></td><td>Primeira linha do texto (depende do viewport)</td><td>Destacar a primeira linha de um parágrafo</td></tr>
+                <tr<td><code>::marker</code></td><td>Marcador de item de lista (bullet ou número)</td><td>Personalizar cor e tamanho dos bullets</td></tr>
+                <tr<td><code>::selection</code></td><td>Texto selecionado pelo usuário</td><td>Alterar cor de fundo e texto quando o usuário seleciona conteúdo</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pre><code>/* Letra capitular estilo livro */
+article p:first-of-type::first-letter {
+    font-size: 48px;
     font-weight: bold;
-    color: #A67E6F;
+    color: #2c7da0;
     float: left;
-    margin-right: 8px;
+    margin-right: 10px;
+    line-height: 1;
 }
 
-/* Inserir ícone antes de cada link externo */
-a[target="_blank"]::after {
-    content: "🔗";
-    margin-left: 5px;
+/* Adicionar ícone de PDF antes de links para arquivos PDF */
+a[href$=".pdf"]::before {
+    content: "📄 ";
+}
+
+/* Personalizar bullets de lista */
+ul li::marker {
+    color: #2c7da0;
+    font-size: 1.2em;
+}
+
+/* Estilo do texto selecionado */
+::selection {
+    background-color: #2c7da0;
+    color: white;
 }</code></pre>
-    
+
+    <div class="img-placeholder">
+        <img src="Imagens/03/Figura 02.png" alt="">
+        <strong>Exemplo visual de letra capitular com ::first-letter</strong><br>
+    </div>
+
     <div class="micro-atividade">
         <h4>✨ Micro-atividade 2: Efeitos com pseudoclasses e pseudoelementos</h4>
-        <p>Crie uma página com um formulário simples (nome, e-mail, checkbox). Aplique: (1) campo de texto com borda azul ao receber foco; (2) botão de enviar com fundo que escurece no hover; (3) use <code>::before</code> para adicionar um ícone de "✔️" antes de cada item de uma lista de vantagens; (4) altere a cor do texto selecionado para branco com fundo #243E73.</p>
+        <p>Crie uma página com: (1) um formulário com campos de texto, e-mail e checkbox – aplique <code>:focus</code> com borda azul e sombra; (2) um botão que no <code>:active</code> sofre <code>transform: scale(0.98)</code>; (3) uma lista de diferenciais onde cada item começa com "✔️ " usando <code>::before</code>; (4) estilize o texto selecionado em toda a página com fundo dourado e texto escuro.</p>
     </div>
 
-    <h2>3. Barra de navegação (menus) e botões</h2>
-    <h3>3.1 Menu vertical estilizado</h3>
-    <p>Menus são tradicionalmente construídos com listas <code>&lt;ul&gt;</code>. Para um menu vertical profissional:</p>
-    <pre><code>ul {
-    list-style-type: none;
+    <!-- ================= TEMA 3 ================= -->
+    <h2 id="menus">3. Barra de navegação profissional</h2>
+    <p>Menus são componentes fundamentais em qualquer site. A melhor prática é construí-los com listas não ordenadas (<code>&lt;ul&gt;</code>), pois semanticamente representam uma lista de links de navegação.</p>
+
+    <h3 id="menu-vertical">3.1 Menu vertical estilizado</h3>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;nav class="menu-vertical"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Início&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Serviços&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contato&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+/* CSS */
+.menu-vertical ul {
+    list-style: none;
     margin: 0;
     padding: 0;
-    width: 200px;
-    background-color: #8BB4D9;
+    width: 250px;
+    background-color: #2c7da0;
+    border-radius: 12px;
+    overflow: hidden;
 }
-li a {
-    display: block;  /* torna toda a área clicável */
-    color: #1E3259;
-    padding: 12px 16px;
-    text-decoration: none;
-}
-li a:hover {
-    background-color: #243E73;
-    color: #F2D8CE;
-}</code></pre>
 
-    <h3>3.2 Menu horizontal com <code>display: inline-block</code> ou <code>float</code></h3>
-    <p>Para transformar o menu vertical em horizontal, basta mudar os <code>&lt;li&gt;</code> para <code>display: inline-block;</code> ou usar <code>float: left;</code>.</p>
-    <pre><code>li {
-    display: inline-block;
-}
-/* ou */
-li {
-    float: left;
-}</code></pre>
-
-    <h3>3.3 Menu suspenso (dropdown) com subnível</h3>
-    <p>Um submenu é criado aninhando outra <code>&lt;ul&gt;</code> dentro de um <code>&lt;li&gt;</code>. No CSS, usamos <code>position: relative</code> no item pai e <code>position: absolute</code> no submenu, que fica oculto (<code>display: none</code>) até o hover.</p>
-    <pre><code>&lt;ul&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Lojas&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Notícias&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    <pre><code>li { position: relative; }
-li ul {
-    position: absolute;
-    left: 150px;
-    top: 0;
-    display: none;
-}
-li:hover ul {
-    display: block;
-}</code></pre>
-    
-    <h3>3.4 Botões estilizados</h3>
-    <p>Botões podem ser criados com <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> ou <code>&lt;input&gt;</code>. Aplique uma classe .btn para padronizar.</p>
-    <pre><code>.btn {
-    background-color: #243E73;
-    border: none;
+.menu-vertical li a {
+    display: block;        /* Torna toda a área do link clicável */
     color: white;
-    padding: 12px 24px;
-    text-align: center;
+    padding: 14px 20px;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 30px;
     transition: background 0.3s;
 }
-.btn:hover {
-    background-color: #8BB4D9;
-    cursor: pointer;
+
+.menu-vertical li a:hover {
+    background-color: #0a1c3a;
 }</code></pre>
-    
-    <div class="micro-atividade">
-        <h4>🧭 Micro-atividade 3: Menu completo com submenu e botões</h4>
-        <p>Construa um site simples com: (1) barra de navegação horizontal com pelo menos 3 itens, sendo um deles com submenu (ex: "Serviços" → Design, Vídeo, Motion); (2) ao lado, um botão de "Contato" estilizado que abre um link fictício; (3) o menu deve ter efeito hover com mudança de cor suave.</p>
+
+    <h3 id="menu-horizontal">3.2 Menu horizontal com inline-block e flexbox</h3>
+    <p>A abordagem moderna usa <strong>Flexbox</strong>, que é mais flexível e poderosa que <code>float</code> ou <code>inline-block</code>.</p>
+    <pre><code>.menu-horizontal ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #2c7da0;
+    display: flex;          /* Ativa o Flexbox */
+    gap: 20px;             /* Espaçamento entre itens */
+    padding: 0 20px;
+}
+
+.menu-horizontal li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.menu-horizontal li a:hover {
+    background-color: #0a1c3a;
+}</code></pre>
+
+    <h3 id="menu-dropdown">3.3 Menu suspenso (dropdown) com subnível</h3>
+    <p>Dropdowns permitem economizar espaço organizando links relacionados em submenus. A técnica envolve <strong>aninhar uma nova lista</strong> dentro de um item de menu e usar <strong>position: absolute</strong> para posicionar o submenu.</p>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;nav class="dropdown-menu"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="dropdown"&gt;
+            &lt;a href="#"&gt;Serviços ▼&lt;/a&gt;
+            &lt;ul class="submenu"&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Web Design&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Edição de Vídeo&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Motion Graphics&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Portfólio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contato&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+/* CSS */
+.dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #2c7da0;
+}
+
+.dropdown-menu li {
+    position: relative;    /* Necessário para posicionar o submenu */
+}
+
+.dropdown-menu li a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;             /* Aparece abaixo do item pai */
+    left: 0;
+    background-color: #1e4a6b;
+    flex-direction: column;
+    min-width: 180px;
+    display: none;         /* Escondido por padrão */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dropdown:hover .submenu {
+    display: flex;         /* Exibe ao passar o mouse */
+}
+
+.submenu li a:hover {
+    background-color: #0a1c3a;
+}</code></pre>
+
+    <div class="demo-menu">
+        <p style="margin-bottom: 10px;"><strong>🎯 Demonstração visual do menu dropdown:</strong> (apenas ilustração conceitual)</p>
+        <ul style="display: flex; gap: 20px; background: #1e4a6b; border-radius: 8px; padding: 10px;">
+            <li><a href="#" style="color:white;">Home</a></li>
+            <li><a href="#" style="color:white;">Serviços ▼</a></li>
+            <li><a href="#" style="color:white;">Portfólio</a></li>
+            <li><a href="#" style="color:white;">Contato</a></li>
+        </ul>
     </div>
 
-    <h2>4. Dimensionamento, variáveis e formatação de imagens</h2>
-    <h3>4.1 Box-sizing: controlando o cálculo de largura</h3>
-    <p>Por padrão, <code>width</code> + <code>padding</code> + <code>border</code> = largura real. Para incluir padding e border dentro da largura definida, use <code>box-sizing: border-box</code>. Recomenda-se aplicar a todos os elementos:</p>
-    <pre><code>* {
+    <h3 id="botoes">3.4 Botões estilizados com efeitos</h3>
+    <pre><code>.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primario {
+    background-color: #2c7da0;
+    color: white;
+}
+
+.btn-primario:hover {
+    background-color: #0a1c3a;
+    transform: translateY(-2px);   /* Efeito de elevação */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primario:active {
+    transform: translateY(0);      /* Volta ao clicar */
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: #2c7da0;
+    border: 2px solid #2c7da0;
+}
+
+.btn-secundario:hover {
+    background-color: #2c7da0;
+    color: white;
+}</code></pre>
+
+    <div class="micro-atividade">
+        <h4>🧭 Micro-atividade 3: Menu completo com dropdown e botões</h4>
+        <p>Construa uma barra de navegação horizontal com: (1) 4 itens principais, sendo um deles "Serviços" com submenu (3 subitens); (2) um botão "Orçamento" à direita (use flexbox para espaçar); (3) efeitos hover com mudança de cor e transição suave; (4) o submenu deve ter fundo escuro e bordas arredondadas. Teste o comportamento em diferentes resoluções.</p>
+    </div>
+
+    <!-- ================= TEMA 4 ================= -->
+    <h2 id="box-sizing">4. Box-sizing: controlando o dimensionamento</h2>
+    <p>Por padrão, a largura total de um elemento é calculada como: <code>width + padding-left + padding-right + border-left + border-right</code>. Isso frequentemente causa surpresas em layouts, pois um elemento com <code>width: 300px</code> e <code>padding: 20px</code> ocupará <code>340px</code> na prática.</p>
+    <div class="destaque-box">
+        ✅ <strong>Solução moderna:</strong> <code>box-sizing: border-box;</code> faz com que padding e borda sejam <strong>deduzidos</strong> da largura definida. Assim, <code>width: 300px</code> sempre será 300px, independente de padding e borda. É altamente recomendável aplicar a todos os elementos:
+        <pre><code>* {
     box-sizing: border-box;
 }</code></pre>
-    
-    <h3>4.2 Variáveis CSS (Custom Properties)</h3>
-    <p>Variáveis evitam repetição e facilitam manutenção. Defina no <code>:root</code> (escopo global) e use com <code>var()</code>.</p>
-    <pre><code>:root {
-    --cor-primaria: #243E73;
-    --cor-destaque: #A67E6F;
-    --espaco-padrao: 16px;
-}
-h1 {
-    color: var(--cor-primaria);
-    margin-bottom: var(--espaco-padrao);
-}</code></pre>
-    
-    <h3>4.3 Formatações para imagens</h3>
-    <ul>
-        <li><strong>Cantos arredondados:</strong> <code>border-radius: 10px;</code></li>
-        <li><strong>Imagem circular:</strong> <code>border-radius: 50%;</code> (com largura/altura iguais)</li>
-        <li><strong>Opacidade:</strong> <code>opacity: 0.8;</code></li>
-        <li><strong>Centralizar:</strong> <code>display: block; margin: auto;</code></li>
-        <li><strong>Responsiva:</strong> <code>max-width: 100%; height: auto;</code></li>
-    </ul>
-    
-    <div class="micro-atividade">
-        <h4>🎨 Micro-atividade 4: Variáveis e imagens responsivas</h4>
-        <p>Crie uma galeria com 3 imagens. Use variáveis CSS para definir a cor de borda e o espaçamento entre elas. Aplique border-radius uniforme, opacidade no hover (0.8) e garanta que todas as imagens sejam responsivas (max-width 100%). Centralize cada imagem com margin automática.</p>
     </div>
 
-    <h2>5. Movimentos em CSS: transformações 2D e transições</h2>
-    <h3>5.1 Transformações 2D (<code>transform</code>)</h3>
-    <p>A propriedade <code>transform</code> permite mover, girar, escalar e inclinar elementos.</p>
-    <table>
-        <tr><th>Método</th><th>Efeito</th><th>Exemplo</th></tr>
-        <tr><td><code>translate(x, y)</code></td><td>Move o elemento</td><td><code>transform: translate(50px, 20px);</code></td></tr>
-        <tr><td><code>rotate(deg)</code></td><td>Gira o elemento</td><td><code>transform: rotate(45deg);</code></td></tr>
-        <tr><td><code>scale(x, y)</code></td><td>Altera o tamanho</td><td><code>transform: scale(1.5);</code> (aumenta 50%)</td></tr>
-        <tr><td><code>skewX(deg)</code> / <code>skewY(deg)</code></td><td>Inclina o elemento</td><td><code>transform: skewX(10deg);</code></td></tr>
-    </table>
-    
-    <h3>5.2 Transições suaves</h3>
-    <p>Transições (<code>transition</code>) criam animações suaves entre estados. Defina a <strong>propriedade</strong> e a <strong>duração</strong>.</p>
-    <pre><code>.box {
+    <div class="img-placeholder">
+        <img src="Imagens/03/Figura 03.png" alt="">
+        <strong>Comparação visual: content-box vs border-box</strong><br>
+    </div>
+
+    <h3 id="variaveis">4.1 Variáveis CSS (Custom Properties) – o poder da manutenção</h3>
+    <p>Variáveis CSS (também chamadas de Custom Properties) permitem armazenar valores reutilizáveis em um único lugar. São declaradas com <code>--nome</code> e usadas com <code>var(--nome)</code>. O escopo global é definido no seletor <code>:root</code> (que representa o elemento <code>&lt;html&gt;</code>).</p>
+    <pre><code>:root {
+    --cor-primaria: #2c7da0;
+    --cor-secundaria: #0a1c3a;
+    --cor-destaque: #f4a261;
+    --espacamento-padrao: 16px;
+    --border-radius-padrao: 12px;
+    --sombra-suave: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card {
+    background: white;
+    border-radius: var(--border-radius-padrao);
+    padding: var(--espacamento-padrao);
+    box-shadow: var(--sombra-suave);
+}
+
+.botao {
+    background-color: var(--cor-primaria);
+    color: white;
+    border-radius: calc(var(--border-radius-padrao) / 2);
+}</code></pre>
+    <p><strong>Vantagens das variáveis CSS:</strong> mudar um valor no <code>:root</code> atualiza automaticamente todas as ocorrências; facilita criação de temas (ex: tema escuro/claro); pode ser manipulado via JavaScript.</p>
+
+    <h3 id="imagens">4.2 Formatação profissional de imagens</h3>
+    <pre><code>/* Imagem responsiva (essencial para mobile) */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Imagem circular (avatar) */
+.avatar {
     width: 150px;
     height: 150px;
-    background: #243E73;
-    transition: all 0.4s ease;  /* 'all' anima todas as propriedades que mudarem */
+    border-radius: 50%;
+    object-fit: cover;   /* Garante que a imagem preencha sem distorcer */
 }
-.box:hover {
-    transform: rotate(10deg) scale(1.1);
-    background: #A67E6F;
+
+/* Galeria de imagens com efeito hover */
+.galeria img {
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.galeria img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+    box-shadow: var(--sombra-suave);
 }</code></pre>
-    <p>Propriedades complementares: <code>transition-delay</code> (atraso), <code>transition-timing-function</code> (aceleração: ease, linear, ease-in-out).</p>
-    
-    <div class="destaque-box">
-        💡 <strong>Dica profissional:</strong> Combine transformações com transições para criar efeitos sutis em cards, botões e menus. Exemplo: um card que sobe levemente (<code>translateY(-5px)</code>) e aumenta sombra no hover.
+
+    <div class="micro-atividade">
+        <h4>🎨 Micro-atividade 4: Variáveis CSS e galeria responsiva</h4>
+        <p>Crie uma galeria com 4 imagens (use placeholders do Unsplash ou LoremFlick). Defina variáveis CSS para: cor da borda, espaçamento entre imagens, raio da borda e sombra. As imagens devem ser responsivas (max-width: 100%), com efeito de escala no hover (scale 1.02) e transição suave. Utilize <code>gap</code> do Flexbox/Grid para espaçamento.</p>
     </div>
+
+    <!-- ================= TEMA 5 ================= -->
+    <h2 id="transformacoes">5. Transformações 2D: mova, gire, escale</h2>
+    <p>A propriedade <code>transform</code> permite modificar o espaço visual de um elemento sem afetar o fluxo do documento. É excelente para animações e microinterações.</p>
     
+    <div class="table-wrapper">
+        <table>
+            <thead><tr<th>Função</th><th>Descrição</th><th>Exemplo</th><th>Efeito visual</th></tr</thead>
+            <tbody>
+                <tr<td><code>translate(x, y)</code></tr<td>Move o elemento (x horizontal, y vertical)</td><td><code>transform: translate(50px, 20px);</code></tr<td>Desloca 50px para direita, 20px para baixo</tr</tr>
+                <tr<td><code>rotate(deg)</code></tr<td>Gira o elemento em graus (positivo = horário)</tr<td><code>transform: rotate(15deg);</code></tr<td>Inclina 15 graus no sentido horário</tr</tr>
+                <tr<td><code>scale(x, y)</code></tr<td>Altera o tamanho (1 = original, 1.5 = 50% maior)</tr<td><code>transform: scale(1.2);</code></tr<td>Aumenta 20% mantendo proporções</tr</tr>
+                <tr<td><code>skewX(deg)</code></tr<td>Inclina no eixo X (distorce horizontalmente)</tr<td><code>transform: skewX(10deg);</code></tr<td>Efeito de "inclinação" lateral</tr</tr>
+                <tr<td><code>skewY(deg)</code></tr<td>Inclina no eixo Y</tr<td><code>transform: skewY(5deg);</code></tr<td>Efeito de inclinação vertical</tr</tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pre><code>/* Múltiplas transformações (a ordem importa!) */
+.card:hover {
+    transform: translateY(-8px) scale(1.02) rotate(1deg);
+}
+
+/* Ícone que gira ao passar o mouse */
+.icone-giratorio:hover {
+    transform: rotate(360deg);
+    transition: transform 0.5s ease;
+}</code></pre>
+
+    <div class="atencao-box">
+        ⚠️ <strong>A ordem das transformações importa!</strong> <code>transform: translate(50px) rotate(45deg)</code> é diferente de <code>rotate(45deg) translate(50px)</code>. No primeiro, move primeiro e depois gira; no segundo, gira primeiro e depois move (o eixo de movimento também gira).
+    </div>
+
+    <h3 id="transicoes">5.1 Transições suaves: o segredo da interatividade</h3>
+    <p><code>transition</code> cria animações automáticas quando uma propriedade muda de valor (ex: no hover). Sem transição, as mudanças são instantâneas; com transição, tornam-se suaves e profissionais.</p>
+    <pre><code>.elemento {
+    background-color: #2c7da0;
+    width: 200px;
+    height: 200px;
+    transition: all 0.3s ease-in-out;
+    /* Propriedades individuais: transition-property, transition-duration, transition-timing-function, transition-delay */
+}
+
+.elemento:hover {
+    background-color: #0a1c3a;
+    width: 250px;
+}
+
+/* Timing functions úteis */
+.transicao-linear { transition-timing-function: linear; }      /* Velocidade constante */
+.transicao-ease { transition-timing-function: ease; }         /* Acelera e desacelera suavemente */
+.transicao-ease-in { transition-timing-function: ease-in; }   /* Começa devagar, acelera no fim */
+.transicao-ease-out { transition-timing-function: ease-out; } /* Começa rápido, desacelera */
+.transicao-custom { transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); } /* Efeito elástico */</code></pre>
+
+    <h3 id="combinacoes">5.2 Combinando transformações e transições – efeitos avançados</h3>
+    <pre><code>/* Card com efeito 3D sutil */
+.card-interativo {
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.card-interativo:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
+}
+
+/* Botão com efeito pulsante (combinação de transformações) */
+.botao-pulsante {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}</code></pre>
+
+    <div class="img-placeholder">
+        <img src="Imagens/03/Figura 04.jpg" alt="">
+        <strong>Exemplo visual: card com elevação (translateY) e escala no hover</strong><br>
+    </div>
+
     <div class="micro-atividade">
         <h4>🚀 Micro-atividade 5: Card animado com transform e transition</h4>
-        <p>Crie um card de produto (div com 200px de largura, borda arredondada, sombra). No hover, o card deve: (1) aumentar 5% (scale 1.05); (2) girar 2 graus (rotate(2deg)); (3) mudar a cor da borda suavemente em 0.3s. Utilize transição para todas as propriedades.</p>
+        <p>Crie um card de produto com: largura 260px, borda arredondada (16px), sombra suave, imagem placeholder, título e preço. No hover, o card deve: (1) subir 8px (<code>translateY(-8px)</code>); (2) aumentar 3% (<code>scale(1.03)</code>); (3) ter sombra mais pronunciada; (4) todas as transições devem durar 0.3s com timing ease. Adicione um botão "Comprar" que também mude de cor suavemente no hover.</p>
+    </div>
+
+    <!-- ================= TEMA 6 ================= -->
+    <h2 id="resumo">6. Resumo prático para consulta rápida</h2>
+    <ul>
+        <li>✅ <strong>DOM:</strong> Hierarquia pai-filho-irmão. Seletores: <code>></code> (filho direto), <code>+</code> (irmão adjacente), <code>~</code> (irmãos posteriores).</li>
+        <li>✅ <strong>Pseudoclasses principais:</strong> <code>:hover</code>, <code>:focus</code>, <code>:first-child</code>, <code>:nth-child()</code>, <code>:not()</code>.</li>
+        <li>✅ <strong>Pseudoelementos úteis:</strong> <code>::before</code>, <code>::after</code> (inserir conteúdo), <code>::first-letter</code>, <code>::selection</code>.</li>
+        <li>✅ <strong>Menus:</strong> Construir com <code>&lt;ul&gt;</code>; dropdown com <code>position: absolute</code> + <code>display: none/hover</code>; Flexbox para layout horizontal.</li>
+        <li>✅ <strong>Box-sizing:</strong> <code>border-box</code> evita surpresas com padding e borda.</li>
+        <li>✅ <strong>Variáveis CSS:</strong> <code>:root { --nome: valor; }</code> e <code>var(--nome)</code>.</li>
+        <li>✅ <strong>Transformações 2D:</strong> <code>translate()</code>, <code>rotate()</code>, <code>scale()</code>, <code>skew()</code>.</li>
+        <li>✅ <strong>Transições:</strong> <code>transition: propriedade duração timing;</code> – use <code>all 0.3s ease</code> para efeitos gerais.</li>
+    </ul>
+
+    <div class="destaque-box" style="background: #e9ecef; border-left-color: #2c7da0;">
+        🧩 <strong>Projeto integrador final – Site profissional completo</strong><br><br>
+        Desenvolva um site institucional de portfólio para um estúdio criativo. Requisitos obrigatórios:
+        <ul style="margin-top: 12px;">
+            <li><strong>HTML semântico</strong> (header, nav, main, section, article, footer).</li>
+            <li><strong>Menu horizontal com dropdown</strong> (ex: "Trabalhos" com subitens "Web", "Vídeo", "Motion").</li>
+            <li><strong>Banner principal</strong> com imagem de fundo, texto sobreposto e botão CTA com efeito hover.</li>
+            <li><strong>Seção "Diferenciais"</strong> com 3 cards usando <code>::before</code> para ícones, transições e transformações no hover.</li>
+            <li><strong>Galeria responsiva</strong> com 4 imagens (uso de grid ou flexbox), efeito de escala no hover.</li>
+            <li><strong>Formulário de contato</strong> estilizado com <code>:focus</code> em todos os campos.</li>
+            <li><strong>Variáveis CSS</strong> para todas as cores, espaçamentos e sombras.</li>
+            <li><strong>Transições e transformações</strong> aplicadas a botões, cards e links do menu.</li>
+        </ul>
+        <p>Este projeto consolida TODOS os conceitos das três apostilas (HTML básico, CSS essencial, CSS avançado) e resulta em um site pronto para portfólio profissional.</p>
     </div>
 
     <hr>
-    <h2>Resumo prático para consulta rápida</h2>
-    <ul>
-        <li><strong>Seletores avançados:</strong> <code>E > F</code> (filho), <code>E + F</code> (irmão adjacente), <code>:first-child</code>.</li>
-        <li><strong>Pseudoclasses comuns:</strong> <code>:hover</code>, <code>:focus</code>, <code>:checked</code>.</li>
-        <li><strong>Pseudoelementos úteis:</strong> <code>::before</code>, <code>::after</code>, <code>::first-letter</code>.</li>
-        <li><strong>Menus:</strong> use <code>&lt;ul&gt;</code> com <code>list-style: none</code>, <code>display: block</code> nos links, e submenu com <code>position: absolute</code>.</li>
-        <li><strong>Variáveis:</strong> <code>:root { --nome: valor; }</code> e <code>var(--nome)</code>.</li>
-        <li><strong>Transformações:</strong> <code>translate()</code>, <code>rotate()</code>, <code>scale()</code>, <code>skew()</code>.</li>
-        <li><strong>Transições:</strong> <code>transition: propriedade duração timing;</code> (ex: <code>all 0.3s ease</code>).</li>
-    </ul>
-
-    <!-- Projeto integrador final -->
-    <div class="destaque-box" style="background:#eef2fa; border-left-color: #243E73;">
-        🧩 <strong>Projeto integrador (site completo):</strong> Desenvolva um pequeno site institucional com:
-        <ul style="margin-top: 12px;">
-            <li>Menu horizontal com dropdown (ex: "Serviços" com subitens).</li>
-            <li>Banner com imagem e texto, usando transform/transition suave no hover.</li>
-            <li>Seção de diferenciais com ícones criados via <code>::before</code>.</li>
-            <li>Galeria de imagens responsivas com bordas arredondadas e efeito de escala no hover.</li>
-            <li>Rodapé com formulário de contato estilizado (campos com foco colorido).</li>
-            <li>Utilize variáveis CSS para cores e espaçamentos.</li>
-        </ul>
-        <p>Este projeto consolida todos os tópicos das três apostilas: HTML estrutural, CSS básico e CSS avançado.</p>
-    </div>
 
     <footer>
-        <p>Este material foi criado com prompt de inteligência artificial por <a href="http://be.net/saminunes" target="_blank" style="text-decoration: none;"><strong>Sami Nunes (@samisemr)</strong></a> através do uso da ferramenta <strong>DeepSeek</strong>.</p>
-        <p>Edição 1 | Junho de 2026</p>
+        <p>📚 Material aprofundado sobre CSS Avançado – DOM, seletores complexos, menus interativos, variáveis, transformações e transições</p>
+        <p>✅ Edição revisada com explicações detalhadas, tabelas responsivas, placeholders para imagens e exemplos práticos de mercado</p>
     </footer>
 </div>
 </body>
